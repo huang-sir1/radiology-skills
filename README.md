@@ -1,8 +1,8 @@
 # Radiology Skills
 
-这是一个面向影像组学、影像深度学习和医学影像 AI 研究的 Codex skill，用于帮助研究者完成前沿选题、文献梳理、课题设计、ROI/mask 标注规范、统计分析、图表规划、影像基因组学机制解析、多中心验证、公共数据库使用、伦理与复现、论文写作、投稿预审、选刊投稿、基金申报、临床转化和审稿回复。
+这是一个面向影像组学、影像深度学习和医学影像 AI 研究的 Codex skill，用于帮助研究者完成前沿选题、文献梳理、课题设计、ROI/mask 标注规范、统计分析、图表规划、影像基因组学机制解析、多中心验证、公共数据库使用、伦理与复现、论文写作、投稿预审、选刊投稿、基金申报、临床转化和审稿回复等。
 
-升级版新增了一个 **2023-2026 高水平文献证据层**：基于 PubMed 验证的代表性种子文献，整理 Radiology、Radiology: Artificial Intelligence、The Lancet Digital Health、Nature Medicine、Nature Communications、eClinicalMedicine、Cell Reports Medicine、The Lancet Oncology、npj Precision Oncology 等期刊中医学影像 AI、影像组学、影像深度学习、影像基因组学和临床转化相关研究的发表规律。这个证据层用于辅助选题、前沿判断、课题设计和选刊定位，但它不是完整系统综述；最终投稿引用仍应按当天检索结果核验。
+基于 2023-2026 高水平文献，整理了 Radiology、Radiology: Artificial Intelligence、The Lancet Oncology、The Lancet Digital Health、Nature Medicine、Nature Cancer、Nature Communications、eClinicalMedicine、eBioMedicine、Cell Reports Medicine、npj Digital Medicine、npj Precision Oncology 等高影响力期刊中医学影像 AI、影像组学、影像深度学习、影像基因组学和临床转化相关研究的发表规律。这个证据层可用于辅助选题、投稿选刊、前沿设计、课题设计和基金申报等任务。
 
 ## 按需求分类
 
