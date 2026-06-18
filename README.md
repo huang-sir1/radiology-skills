@@ -25,7 +25,7 @@ reviewer response.
 Clone this repository and copy the skill folder into your Codex skills directory:
 
 ```powershell
-git clone https://github.com/iamjaxjax/radiology-skills.git
+git clone https://github.com/huang-sir1/radiology-skills.git
 cd radiology-skills
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills" | Out-Null
 Copy-Item -Recurse -Force .\radiology-skills "$env:USERPROFILE\.codex\skills\"
@@ -34,7 +34,7 @@ Copy-Item -Recurse -Force .\radiology-skills "$env:USERPROFILE\.codex\skills\"
 On macOS or Linux:
 
 ```bash
-git clone https://github.com/iamjaxjax/radiology-skills.git
+git clone https://github.com/huang-sir1/radiology-skills.git
 cd radiology-skills
 mkdir -p ~/.codex/skills
 cp -R radiology-skills ~/.codex/skills/
