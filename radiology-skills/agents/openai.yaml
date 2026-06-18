@@ -1,4 +1,4 @@
 interface:
   display_name: "Radiology Skills"
-  short_description: "Plan, audit, write, explain mechanisms, select journals, and polish grants for imaging AI studies"
-  default_prompt: "Use $radiology-skills to design, audit, write, interpret multi-omics mechanisms, choose target journals, or polish grant proposals for a radiomics or medical imaging deep learning study."
+  short_description: "Plan, audit, write, validate, reproduce, and translate radiomics and imaging AI studies"
+  default_prompt: "Use $radiology-skills to design, audit, write, validate, reproduce, interpret mechanisms, plan figures, pre-review, choose journals, polish grants, or plan clinical translation for a radiomics or medical imaging deep learning study."
