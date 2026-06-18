@@ -16,6 +16,7 @@ Use this file when the user writes in Chinese or provides Chinese author notes.
 | 规范 | reporting checklist |
 | 数据 | data and availability |
 | 写作 | manuscript writing |
+| 选刊 | target journal selection and submission strategy |
 | 回复 | reviewer response |
 | 中文 | bilingual terminology |
 | 依据 | source basis |
@@ -37,6 +38,10 @@ Use this file when the user writes in Chinese or provides Chinese author notes.
 | 疗效预测 | treatment response prediction |
 | 多模态融合 | multimodal fusion |
 | 临床实用性 | clinical utility |
+| 选刊 | target journal selection |
+| 投稿定位 | submission positioning |
+| 期刊匹配度 | journal fit |
+| 备选期刊梯队 | journal submission tiers |
 
 ## Chinese output rule
 

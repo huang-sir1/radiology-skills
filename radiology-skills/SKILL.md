@@ -6,8 +6,9 @@ description: >-
   topic selection, CT/MRI/PET/ultrasound datasets, DICOM/NIfTI/ROI/masks, radiomics
   features, deep learning classification/segmentation/prognosis, multimodal models,
   external validation, data leakage, CLAIM, CLEAR, RQS, IBSI, TRIPOD+AI, PROBAST+AI,
-  STARD-AI, METRICS, manuscript Methods/Results/Discussion, reviewer response, or
-  Chinese-to-English radiology manuscript support.
+  STARD-AI, METRICS, manuscript Methods/Results/Discussion, target journal selection,
+  journal fit, submission strategy, reviewer response, or Chinese-to-English radiology
+  manuscript support.
 ---
 
 # Radiology Skills
@@ -51,6 +52,7 @@ Identify the task mode, then load only the relevant reference file.
 | Pick reporting checklist or audit compliance | 规范 | `references/checklists.md` |
 | Data, privacy, DICOM/NIfTI/ROI/masks, sharing | 数据 | `references/data.md` |
 | Manuscript wording and structure | 写作 | `references/writing.md` |
+| Choose target journals and submission tiers after a manuscript is drafted | 选刊 | `references/journal-selection.md` |
 | Reviewer response and revision strategy | 回复 | `references/response.md` |
 | Chinese author notes and terminology | 中文 | `references/chinese.md` |
 | Guideline/source provenance | 依据 | `references/sources.md` |
@@ -59,7 +61,7 @@ Identify the task mode, then load only the relevant reference file.
 
 1. **Route.** Classify the request as `frontier`, `literature`, `radiomics`,
    `deep-learning`, `study-design`, `validation`, `checklist`, `data`, `writing`,
-   `response`, or `mixed`.
+   `journal-selection`, `response`, or `mixed`.
 2. **Build the study card.** Capture disease, modality, sample size, centers,
    labels, endpoint, segmentation, data format, split plan, external validation,
    clinical variables, and intended output.
@@ -108,6 +110,24 @@ Ready-to-use text
 [only when enough facts are supplied]
 ```
 
+For journal selection, return:
+
+```text
+投稿定位
+- 文章类型：
+- 核心卖点：
+- 最大短板：
+
+期刊梯队
+| 梯队 | 期刊 | 匹配理由 | 需要补强 | 风险 |
+
+投稿前修改建议
+- [title/abstract/methods/results/discussion/data-code fixes]
+
+需要作者确认
+- [missing facts before final journal advice]
+```
+
 ## Scripts
 
 - `scripts/radiology_audit.py`: quick Markdown audit from a JSON study card.
@@ -125,3 +145,4 @@ Scripts are helpers, not substitutes for manual scientific judgment.
 - Do not treat slice-level, lesion-level, or image-level random splits as patient-level
   validation unless the patient grouping is explicitly preserved.
 - Do not write final claims from placeholder performance numbers.
+- Do not promise acceptance or rank journals only by impact factor.

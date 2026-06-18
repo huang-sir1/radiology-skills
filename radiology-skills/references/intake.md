@@ -16,6 +16,7 @@ AI request.
 | `checklist` | User asks about CLAIM, CLEAR, RQS, IBSI, TRIPOD+AI, PROBAST+AI, STARD-AI, METRICS | 规范 |
 | `data` | User asks about DICOM, NIfTI, masks, labels, privacy, repository, or sharing | 数据 |
 | `writing` | User asks for Methods, Results, Discussion, abstract, title, or translation | 写作 |
+| `journal-selection` | User has a draft/manuscript and asks where to submit, whether a journal fits, or how to choose target journals | 选刊 |
 | `response` | User gives reviewer comments or revision notes | 回复 |
 
 ## Study card
@@ -40,6 +41,8 @@ split_plan:
 external_validation:
 model_type:
 target_journal_or_output:
+candidate_journals:
+publication_goal:
 main_constraint:
 ```
 
@@ -61,4 +64,5 @@ Ask before final wording when missing facts would otherwise fabricate:
 - "我有 200 例 CT 想做预后模型" -> 设计 + 组学 or 深度 + 验证
 - "近三年影像 AI 前沿有哪些" -> 前沿 + 文献
 - "帮我看 Methods 是否符合 CLAIM" -> 规范 + 深度 + 验证
+- "文章写好了，帮我选刊" -> 选刊 + 文献 + 规范 + 验证
 - "审稿人说没有外部验证怎么回复" -> 回复 + 验证

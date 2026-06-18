@@ -1,4 +1,4 @@
 interface:
   display_name: "Radiology Skills"
-  short_description: "Plan and audit imaging AI studies"
-  default_prompt: "Use $radiology-skills to design, audit, or write a radiomics or medical imaging deep learning study."
+  short_description: "Plan, audit, write, and select journals for imaging AI studies"
+  default_prompt: "Use $radiology-skills to design, audit, write, or choose target journals for a radiomics or medical imaging deep learning study."
