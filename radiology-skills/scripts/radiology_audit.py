@@ -171,7 +171,7 @@ def main(argv: list[str]) -> int:
         print(json.dumps(TEMPLATE, indent=2, ensure_ascii=False))
         return 0
     if args.input:
-        card = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        card = json.loads(Path(args.input).read_text(encoding="utf-8-sig"))
     elif args.json:
         card = json.loads(args.json)
     else:
