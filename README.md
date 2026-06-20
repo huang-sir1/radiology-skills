@@ -309,7 +309,14 @@
 
 ## 安装
 
-克隆这个仓库，并把 skill 文件夹复制到 Codex 的 skills 目录：
+这个仓库现在支持两种安装方式：
+
+1. `radiology-skills/`：单体总入口，适合想用一个统一 skill 处理所有影像组学、影像深度学习和医学影像 AI 任务的用户。
+2. `skills/radiology-*`：模块化套件，适合想让 Codex 按任务自动触发更细分模块的用户。
+
+更详细的安装说明见 [install.md](install.md)。
+
+### 方式一：安装单体总入口
 
 ```powershell
 git clone https://github.com/huang-sir1/radiology-skills.git
@@ -326,6 +333,53 @@ cd radiology-skills
 mkdir -p ~/.codex/skills
 cp -R radiology-skills ~/.codex/skills/
 ```
+
+### 方式二：安装 22 个独立模块
+
+Windows PowerShell：
+
+```powershell
+git clone https://github.com/huang-sir1/radiology-skills.git
+cd radiology-skills
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\radiology-* "$env:USERPROFILE\.codex\skills\"
+```
+
+macOS 或 Linux：
+
+```bash
+git clone https://github.com/huang-sir1/radiology-skills.git
+cd radiology-skills
+mkdir -p ~/.codex/skills
+cp -R skills/radiology-* ~/.codex/skills/
+```
+
+22 个独立模块包括：
+
+| 模块 | 用途 |
+|---|---|
+| `radiology-frontier` | 前沿方向、创新点和高水平期刊发表规律 |
+| `radiology-design` | 课题可行性、研究设计和验证策略 |
+| `radiology-search` | 文献和公共数据检索、PMID/DOI 核验 |
+| `radiology-annotation` | ROI/VOI/mask 标注 SOP、一致性和质控 |
+| `radiology-data` | DICOM 脱敏、数据共享、代码和 FAIR |
+| `radiology-ethics` | 伦理、知情同意、隐私和数据治理 |
+| `radiology-radiomics` | 传统影像组学流程、IBSI/CLEAR、泄漏检查 |
+| `radiology-deep-learning` | 影像深度学习、CNN/Transformer/基础模型设计 |
+| `radiology-radiogenomics` | 影像基因组学、多组学、单细胞和空间转录组机制解析 |
+| `radiology-stats` | ROC、DeLong、校准、DCA、MRMC、生存和样本量 |
+| `radiology-figure` | Radiology 风格图表、统计图和影像 panel |
+| `radiology-reporting` | CLAIM、TRIPOD+AI、CLEAR、RQS、IBSI、STARD 等规范 |
+| `radiology-writing` | Radiology 风格论文结构、摘要、Methods、Results、Discussion |
+| `radiology-polishing` | 英文润色、统计表述和过度结论检查 |
+| `radiology-reader` | 医学影像论文中英对照精读 |
+| `radiology-citation` | 影像期刊范围内的引用检索和 RIS/ENW/BibTeX 导出 |
+| `radiology-prereview` | 投稿前模拟审稿和 blocker/major/minor 问题清单 |
+| `radiology-journal` | 选刊、投稿梯队和期刊匹配判断 |
+| `radiology-response` | 审稿意见逐点回复和返修策略 |
+| `radiology-translation` | 临床转化、读者研究、前瞻验证和部署路径 |
+| `radiology-grant` | 国自然、省自然和院级课题申报写作 |
+| `radiology-paper2ppt` | 影像论文中文汇报 PPT |
 
 如有需要，重启 Codex 或重新加载 skills。
 
