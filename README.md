@@ -1,8 +1,8 @@
 # Radiology Skills
 
-本skills由发表过《Radiology》的三名第一作者联合开发（Huang Yuhong、Gu Wenchao、Song Xinyang），是一个面向影像组学、影像深度学习和医学影像 AI 研究的 Codex skill，用于帮助研究者完成前沿选题、文献梳理、课题设计、ROI/mask 标注规范、统计分析、图表规划、影像基因组学机制解析、多中心验证、公共数据库使用、伦理与复现、论文写作、投稿预审、选刊投稿、基金申报、临床转化和审稿回复等。
+本skills由黄sir组学工作室的核心成员开发，三位成员为发表过《Radiology》原创性研究的第一作者（Huang Yuhong、Gu Wenchao、Song Xinyang），对影像组学领域有深刻认知，这是一个面向影像组学、影像深度学习和医学影像 AI 研究的全开源 Codex skill，用于帮助研究者完成前沿选题、文献梳理、课题设计、ROI/mask 标注规范、统计分析、图表规划、影像基因组学机制解析、多中心验证、公共数据库使用、伦理与复现、论文写作、投稿预审、选刊投稿、基金申报、临床转化和返修回复等。
 
-基于 2023-2026 高水平文献，整理了 Radiology、Radiology: Artificial Intelligence、The Lancet Oncology、The Lancet Digital Health、Nature Medicine、Nature Cancer、Nature Communications、eClinicalMedicine、eBioMedicine、Cell Reports Medicine、npj Digital Medicine、npj Precision Oncology 等高影响力期刊中医学影像 AI、影像组学、影像深度学习、影像基因组学和临床转化相关研究的发表规律。这个证据层可用于辅助选题、投稿选刊、前沿设计、课题设计和基金申报等任务。
+基于 2023-2026 高水平文献，整理了 Radiology、Radiology: Artificial Intelligence、The Lancet Oncology、The Lancet Digital Health、Nature Medicine、Nature Cancer、Nature Communications、Science Advances、eClinicalMedicine、eBioMedicine、Cell Reports Medicine、npj Digital Medicine 等高影响力期刊中医学影像 AI、影像组学、影像深度学习、影像基因组学和临床转化相关研究的发表规律。这个证据层可用于辅助选题、投稿选刊、前沿设计、课题设计和基金申报等任务。
 
 ## 按需求分类
 
