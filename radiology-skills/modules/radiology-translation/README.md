@@ -1,38 +1,34 @@
 # radiology-translation
 
-**Stage 5 — Submission & Translation.** Move a validated model from retrospective performance
-toward clinical use — the step that earns a clinical-utility claim.
+面向影像 AI / radiomics 模型临床转化证据链的 skill。它帮助作者从 retrospective performance 走向 clinical utility claim：明确模型在流程中的位置、输出如何影响决策、阈值如何对应动作、读者研究如何设计，以及什么时候才有资格谈 prospective deployment。
 
-## What it does
+## 它能做什么
 
-- **Use scenario** — pathway position (screening/triage/diagnosis/staging/prognosis/response/
-  surveillance/MDT), output type, decision-maker, and the cost of false positives/negatives.
-- **Reader (MRMC) study** — radiologist alone vs +AI, washout, randomisation, reader experience,
-  time/confidence outcomes, the right statistic.
-- **Threshold-to-action map** — operating points tied to clinical actions; net-benefit /
-  decision-curve framing; calibration as prerequisite.
-- **Prospective / real-world plan** — temporal/prospective/RWE design, PACS/RIS integration,
-  drift monitoring.
-- **Claim ladder** — what each evidence level licenses, with the honest current claim marked.
+- 定义 **use scenario**：screening、triage、diagnosis、staging、prognosis、response、surveillance、MDT 中的位置、输出类型、决策者和误判代价。
+- 设计 **reader / MRMC study**：radiologist alone vs +AI、washout、randomisation、reader experience、time / confidence outcomes、统计方法。
+- 建立 **threshold-to-action map**：operating point 到临床动作、net benefit / DCA、calibration prerequisite。
+- 规划 **prospective / real-world evaluation**：temporal / prospective / RWE design、PACS/RIS integration、drift monitoring。
+- 形成 **claim ladder**：当前证据能支持什么说法，哪些结论还需要补证据。
 
-## Trigger examples
+## 典型触发
 
-- "帮我设计读者研究、医生+AI 增益、前瞻性验证。"
-- "What does it take to claim clinical utility / move toward deployment?"
-- "Map my model's threshold to a clinical action and net benefit."
+- “帮我设计读者研究、医生 + AI 增益、前瞻性验证。”
+- “怎样才能声称 clinical utility 或进入部署前验证？”
+- “把模型阈值映射到临床动作和 net benefit。”
 
-## Reference files
+## 参考文件
 
-| File | Use |
+| File | 用途 |
 |---|---|
-| `references/use-scenario.md` | Pathway position, output, error costs |
-| `references/reader-study.md` | MRMC design: readers, washout, arms, outcomes |
-| `references/threshold-to-action.md` | Operating point → action; net benefit / DCA |
-| `references/prospective-deployment.md` | Prospective/RWE design, PACS/RIS, drift |
+| `references/use-scenario.md` | 流程位置、输出、错误代价 |
+| `references/reader-study.md` | MRMC 设计：读者、washout、arms、outcomes |
+| `references/threshold-to-action.md` | operating point 到 action，net benefit / DCA |
+| `references/prospective-deployment.md` | Prospective / RWE、PACS/RIS、drift |
 
-## Handoffs
+## 下游衔接
 
-`radiology-stats` (MRMC, net benefit, DCA) · `radiology-reporting` (DECIDE-AI/CONSORT-AI) ·
-`radiology-design` (validation cohort) · `radiology-figure` (net-benefit/reader plots).
+`radiology-stats`（MRMC、net benefit、DCA）· `radiology-reporting`（DECIDE-AI / CONSORT-AI）· `radiology-design`（验证队列）· `radiology-figure`（net-benefit / reader plots）。
 
-Plans research and evaluation only — no individual-patient clinical or diagnostic advice.
+## 边界
+
+该 skill 规划科研评价和临床转化证据，不提供个体患者诊断或治疗建议。

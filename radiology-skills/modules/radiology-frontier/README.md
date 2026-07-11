@@ -1,44 +1,32 @@
 # radiology-frontier
 
-**Stage 1 — Scope & Design.** Find publishable frontier directions and innovation points,
-grounded in how high-impact journals actually publish — and matched to the user's real data.
+面向影像 AI、放射组学和影像基因组学的前沿方向与创新点筛选 skill。它不只是罗列热点，而是把 foundation model、self-supervised learning、vision-language、多模态融合、纵向影像、联邦学习、radiogenomics 等趋势，转化为与用户真实数据匹配的可执行研究问题。
 
-## What it does
+## 它能做什么
 
-- **Frontier shortlist** — surveys current themes (foundation models, self-supervised learning,
-  vision-language, multimodal fusion, longitudinal/delta, weak/semi-supervision, domain
-  adaptation, federated learning, generative, uncertainty/safety, radiogenomics, AI+reader) and
-  filters each by whether the user's data can carry it.
-- **Evidence layer** — explains the *publication-pattern* basis behind each recommendation: what
-  Radiology, Radiology: AI, Lancet Digital Health/Oncology, Nature Medicine, Nature
-  Communications, npj Digital Medicine/Precision Oncology, eClinicalMedicine reward, and the
-  methodological bar each enforces.
-- **Executable questions** — converts the best 2–4 directions into concrete questions (endpoint,
-  comparator, minimum evidence, target-venue tier).
-- **Hot-but-unsuitable** — flags trendy directions that are a poor fit for the data, with reasons.
+- 生成 **frontier shortlist**：识别近年高影响力期刊偏好的方向，并判断用户数据是否能承载。
+- 提供 **evidence layer**：解释推荐背后的 publication-pattern 依据，例如 _Radiology_、Radiology: AI、Lancet Digital Health、Nature Medicine、Nature Communications、npj Digital Medicine 等期刊通常奖励什么证据。
+- 输出 **executable questions**：把 2-4 个最佳方向转成 endpoint、comparator、最低证据门槛和目标期刊层级。
+- 标记 **hot-but-unsuitable**：指出看似热门但当前数据不适合做的方向，避免为了追热点牺牲可信度。
 
-## Integrity
+## 诚信规则
 
-Encodes **durable publication patterns, not a fixed citation list**. Specific recent papers
-(PMID/DOI) are retrieved and verified **live** via `radiology-search` — never cited from memory.
-Every concrete claim ships with a *Verify-now* item.
+该 skill 编码的是稳定的发表模式，而不是固定文献清单。具体近期论文、PMID、DOI 和期刊 scope 必须通过 `radiology-search` 实时检索验证；不能凭记忆引用。
 
-## Trigger examples
+## 典型触发
 
-- "找近三年的前沿方向和创新点，结合我的数据。"
-- "Is a foundation model right for my single-center CT cohort?"
-- "What's the evidence basis for recommending external validation here? / 有什么文献依据？"
+- “结合我的数据，找近三年的影像 AI 前沿方向和创新点。”
+- “单中心 CT 队列适合做 foundation model 吗？”
+- “为什么你建议做外部验证，有什么文献依据？”
 
-## Reference files
+## 参考文件
 
-| File | Use |
+| File | 用途 |
 |---|---|
-| `references/frontier-themes.md` | Themes + data prerequisites + fit test |
-| `references/evidence-layer.md` | Journal publication-pattern heuristics; verify-live discipline |
-| `references/idea-to-question.md` | Trend → executable question; novelty framing |
+| `references/frontier-themes.md` | 前沿主题、数据前提、fit test |
+| `references/evidence-layer.md` | 期刊发表模式、verify-live discipline |
+| `references/idea-to-question.md` | 趋势到可执行问题，创新性包装 |
 
-## Handoffs
+## 下游衔接
 
-`radiology-design` (full design) · `radiology-search` (verify gap + seeds) ·
-`radiology-journal` (venue tier) · `radiology-radiomics` / `radiology-deep-learning` /
-`radiology-radiogenomics` (method fit) · `radiology-citation` (export verified seeds).
+`radiology-design`（完整设计）· `radiology-search`（验证 gap 与 seed papers）· `radiology-journal`（目标期刊层级）· `radiology-radiomics` / `radiology-deep-learning` / `radiology-radiogenomics`（方法适配）· `radiology-citation`（导出已验证引用）。

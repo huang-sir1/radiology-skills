@@ -25,3 +25,10 @@ Map each data type to a durable repository with a **persistent identifier**.
 If data cannot be public (privacy/consent/DUA/commercial), state: the **reason**, the
 **controller/steward**, the **review/access process**, and the **conditions/timeline** — not
 just "on request."
+
+## Nature-portfolio: Source Data is separate from all of the above
+Figure-level raw values (Source Data) are not a "repository choice" like the table above — they
+travel with the manuscript itself. Don't conflate "I deposited the dataset in TCIA/GEO" with
+"I provided Source Data for Figure 2" — a reviewer may ask for both. See
+`availability-and-fair.md` for the Extended Data / Supplementary Information / Source Data
+distinction and the "condition of publication" wording.

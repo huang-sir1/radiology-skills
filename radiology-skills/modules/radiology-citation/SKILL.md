@@ -1,6 +1,6 @@
 ---
 name: radiology-citation
-description: "Turn manuscript text or claims into verified, imaging-journal-scoped citation candidates and export one reference-manager-ready file (RIS, EndNote ENW, or BibTeX). Use when the user needs references for an imaging paper, wants to find supporting citations for a claim, scope citations to radiology/imaging journals (Radiology, Radiology: AI, RadioGraphics, AJR, European Radiology, JACR, etc.), verify a DOI/PMID, or export a bibliography. Verifies identifiers before formatting and never fabricates DOIs, pages, volumes, or journal metadata."
+description: "Turn manuscript text, claims, figure/table statements, abstracts, slides, or novelty/comparison assertions into verified, imaging-journal-scoped citation candidates and export one reference-manager-ready file (RIS, EndNote ENW, or BibTeX). Use when the user needs references for an imaging paper, wants supporting citations, wants a two-pass claim/citation/numerical verification gate, needs to check whether a cited source actually says the claimed thing, scope citations to radiology/imaging journals (Radiology, Radiology: AI, RadioGraphics, AJR, European Radiology, JACR, etc.), verify a DOI/PMID, or export a bibliography. Verifies identifiers before formatting and never fabricates DOIs, pages, volumes, journal metadata, or source support."
 ---
 
 # Imaging-Scoped Citation Retrieval & Export
@@ -29,8 +29,11 @@ the imaging literature when desired, and export a clean reference file.
 |---|---|
 | [references/radiology-journal-scope.md](references/radiology-journal-scope.md) | Choosing the journal scope (imaging-only vs. broadened) and ranking by venue |
 | [references/export-formats.md](references/export-formats.md) | RIS / ENW / BibTeX field mapping and integrity rules |
+| [references/claim-verification-gate.md](references/claim-verification-gate.md) | Pre-submission claim-by-claim verification, doc-only/source-limited audits, numerical checks, novelty checks, or figure/table claim verification |
 
 ## Workflow
+0. **For manuscript safety checks**, open `claim-verification-gate.md` and state the mode:
+   Search / Doc-only / Visual-table.
 1. **Segment** the text into citable claim units (stable IDs).
 2. **Translate** Chinese claims into precise English scientific concepts; prefer precision
    over volume.
@@ -44,10 +47,13 @@ the imaging literature when desired, and export a clean reference file.
 ## Output contract
 1. **`Claim → candidates`** table: `Claim ID | Candidate (authors, year, journal) | DOI/PMID |
    Support grade | Verified?`.
-2. **`Export`** — a single RIS/ENW/BibTeX file with only verified records.
-3. **`Unresolved`** — claims with no verified support, and identifiers that failed lookup.
+2. **`Verification gate`** — if used: `Claim ID | Status | Required action` with unsupported,
+   partial, conflicting, or cannot-assess claims made explicit.
+3. **`Export`** — a single RIS/ENW/BibTeX file with only verified records.
+4. **`Unresolved`** — claims with no verified support, and identifiers that failed lookup.
 
 ## Handoffs
 - Retrieval/verification engine → `radiology-search`.
 - In-text citation style/placement in prose → `radiology-polishing` / `radiology-writing`.
 - Dataset citations (TCIA/GEO) → `radiology-data`.
+- Full bilingual read of a cited paper → `radiology-reader`.

@@ -1,26 +1,24 @@
 # radiology-reader
 
-**Full-paper bilingual (中英对照), figure/table-aware, source-grounded Markdown reader** for
-imaging-research papers. Default output is a paragraph-level original/translation companion —
-never a summary-only dump.
+面向影像科研论文的中英对照全文阅读 skill。它默认生成段落级原文/译文对照，并保留 Methods、统计、图表和 source anchors，适合精读 _Radiology_、Radiology: AI、European Radiology、Lancet Digital Health 等论文，而不是只输出摘要。
 
-## What it does
-- Whole-paper 中英对照 at block level, preserving Methods/statistics detail.
-- Extracts and **places figures/tables near their first mention**, cropped tightly —
-  imaging panels (with windowing/arrows), result charts (ROC/KM/forest/calibration), and
-  cohort/scanner/performance tables.
-- Stable source anchors on every block; `source_map.json` for traceability.
-- Imaging-tuned reading notes (what metric/CI/window to inspect in each figure).
+## 它能做什么
 
-## Outputs
-`paper.md` (primary) · `source_map.json` · `translation_notes.md` · `assets/`
-(optional `reader.html` only if a browser preview is requested).
+- 生成整篇论文的中英对照 Markdown，保留方法学和统计细节。
+- 将图表放在首次提及附近：影像 panel、ROC / KM / forest / calibration、cohort / scanner / performance table。
+- 为每个 block 保留稳定 source anchors，并输出 `source_map.json` 方便回溯。
+- 加入影像科研阅读提示：每张图该看哪个 metric、CI、window、label 或 methodological risk。
 
-## Example prompts
-- "把这篇 Radiology 论文做成中英对照全文阅读。"
-- "Translate this radiomics paper into a full markdown reader, keep the Methods detail."
-- "Read this paper and place the ROC and KM figures next to where they're discussed."
+## 输出
 
-## Handoffs
-PDF extraction → `pdf` skill; references export → `radiology-citation`; journal-club slides →
-`radiology-paper2ppt`.
+`paper.md`（主文件）· `source_map.json` · `translation_notes.md` · `assets/`。如果用户要求浏览器预览，可额外生成 `reader.html`。
+
+## 典型触发
+
+- “把这篇 Radiology 论文做成中英对照全文阅读。”
+- “把这篇 radiomics 论文翻译成完整 Markdown reader，保留 Methods 细节。”
+- “读这篇论文，把 ROC 和 KM 图放到讨论它们的位置。”
+
+## 下游衔接
+
+PDF 解析交给 `pdf` skill；参考文献导出交给 `radiology-citation`；组会 PPT 交给 `radiology-paper2ppt`。

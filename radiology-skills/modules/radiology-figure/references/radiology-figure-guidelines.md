@@ -2,6 +2,12 @@
 
 > Verify exact numbers against the **current** _Radiology_ author instructions before
 > submission — specs change. This file captures durable conventions.
+>
+> **This file is the _Radiology_-family spec.** For Nature Medicine / Nature Biomedical
+> Engineering / Nature Communications / npj Digital Medicine and similar Nature-portfolio
+> venues, use [nature-figure-spec.md](nature-figure-spec.md) instead — different column widths
+> (89/183 mm) and, notably, **lowercase** panel letters (a, b, c) rather than the uppercase
+> (A, B, C) default below.
 
 ## File format & resolution
 - **Vector** for charts/diagrams: `.svg`/`.pdf`/`.eps` (editable; text as text). This skill

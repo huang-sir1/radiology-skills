@@ -1,6 +1,6 @@
 ---
 name: radiology-reporting
-description: "Route an imaging-research manuscript or protocol to the correct reporting/quality guideline and audit it item-by-item for Radiology (RSNA) submission. Use when the user mentions CLAIM, TRIPOD+AI, STARD, PRISMA-DTA, QUADAS-2, CLEAR, METRICS, RQS, IBSI, PROBAST, CONSORT-AI, a \"reporting checklist\", \"what's required for submission\", radiomics quality, or wants to know what a reviewer will check. Produces a filled checklist with PRESENT / PARTIAL / MISSING per item, manuscript location, and concrete fixes. Do not fabricate compliance — flag missing items honestly."
+description: "Route an imaging-research manuscript or protocol to the correct reporting/quality guideline and audit it item-by-item for Radiology (RSNA) or Nature-portfolio submission. Use when the user mentions CLAIM, TRIPOD+AI, STARD, PRISMA-DTA, QUADAS-2, CLEAR, METRICS, RQS, IBSI, PROBAST, CONSORT-AI, FUTURE-AI, TRIPOD-LLM, the Nature Portfolio Reporting Summary / Editorial Policy Checklist, a \"reporting checklist\", \"what's required for submission\", radiomics quality, or wants to know what a reviewer will check. Produces a filled checklist with PRESENT / PARTIAL / MISSING per item, manuscript location, and concrete fixes. Do not fabricate compliance — flag missing items honestly."
 ---
 
 # Radiology Reporting-Guideline Compliance
@@ -27,6 +27,10 @@ item-by-item, and (4) returns a submission-ready checklist plus a prioritised fi
   the right one(s).
 - **Don't invent the science.** This skill audits reporting; it never fabricates the missing
   experiment, metric, or dataset. It tells the author what to add.
+- **Venue changes the stack, not the rigor.** _Radiology_-family submissions stop at the
+  guideline checklist; Nature-portfolio submissions add a **Reporting Summary / Editorial
+  Policy Checklist** on top of the same guideline stack (→ `nature-reporting-summary.md`) —
+  never treat the Reporting Summary as a replacement for CLAIM/TRIPOD+AI/CLEAR.
 
 ## When to use
 
@@ -56,19 +60,21 @@ quality/risk-of-bias tool).
 
 > Open [`references/guideline-router.md`](references/guideline-router.md) for the full
 > decision tree, including hybrid studies (e.g. a radiomics **prediction model** validated
-> for **diagnostic accuracy** → CLEAR + TRIPOD+AI + STARD + IBSI).
+> for **diagnostic accuracy** → CLEAR + TRIPOD+AI + STARD + IBSI) and Nature-portfolio venues
+> (add the Reporting Summary on top of whichever stack applies).
 
 ## When to open extra files
 
 | File | Open when |
 |---|---|
-| [references/guideline-router.md](references/guideline-router.md) | Choosing guideline(s); hybrid/edge-case study types; how guidelines stack |
+| [references/guideline-router.md](references/guideline-router.md) | Choosing guideline(s); hybrid/edge-case study types; how guidelines stack; Nature-portfolio add-on; FUTURE-AI; TRIPOD-LLM |
 | [references/claim-2024.md](references/claim-2024.md) | Auditing a medical-imaging AI paper against the CLAIM 2024 Update |
 | [references/tripod-ai-probast.md](references/tripod-ai-probast.md) | Prediction-model reporting (TRIPOD+AI) and PROBAST(-AI) risk-of-bias |
 | [references/clear-metrics-rqs.md](references/clear-metrics-rqs.md) | Radiomics reporting (CLEAR) and quality scoring (METRICS, RQS / RQS 2.0) |
 | [references/ibsi-features.md](references/ibsi-features.md) | Making radiomic features reproducible/standardised (IBSI image processing + feature nomenclature) |
 | [references/stard-prisma-quadas.md](references/stard-prisma-quadas.md) | Diagnostic-accuracy reporting (STARD), DTA reviews (PRISMA-DTA), risk of bias (QUADAS-2) |
 | [references/radiology-submission-map.md](references/radiology-submission-map.md) | Mapping checklist items to where they belong in a _Radiology_ manuscript + submission logistics |
+| [references/nature-reporting-summary.md](references/nature-reporting-summary.md) | Target is a Nature-portfolio journal — completing the Reporting Summary / Editorial Policy Checklist alongside the primary guideline stack |
 
 ## Workflow
 
@@ -83,7 +89,9 @@ quality/risk-of-bias tool).
    `Should-fix` (reviewer will likely ask), `Polish`. Tie each blocker to the specific
    reviewer risk.
 5. **Cross-check integrity hot-spots** (see below) — the items reviewers weaponise most.
-6. **Return** the filled checklist + a one-screen executive summary + the prioritised fix
+6. **If the target is a Nature-portfolio venue**, also complete the Reporting Summary /
+   Editorial Policy Checklist (`nature-reporting-summary.md`) — additive, not a substitute.
+7. **Return** the filled checklist + a one-screen executive summary + the prioritised fix
    list. Offer to draft the missing text/Methods sentences (hand off to `radiology-writing`).
 
 ## Integrity hot-spots (audit these even if not asked)
@@ -141,6 +149,8 @@ doesn't have.
 
 - Missing statistics → `radiology-stats` (compute/report AUC CIs, DeLong, ICC, calibration, DCA).
 - Missing Methods/Results prose → `radiology-writing`.
-- Data/code availability wording, DICOM de-identification → `radiology-data`.
+- Data/code availability wording, DICOM de-identification, Extended Data/Source Data → `radiology-data`.
 - Radiogenomics-specific design/leakage → `radiology-radiogenomics`.
 - Figure that proves an item (ROC, calibration, flow diagram) → `radiology-figure`.
+- Explainability/uncertainty items for a DL model → `radiology-deep-learning/interpretability-uncertainty.md`.
+- Checklist complete; want a full adversarial pre-submission read → `radiology-prereview`.

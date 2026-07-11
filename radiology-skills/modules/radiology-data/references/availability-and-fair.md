@@ -17,6 +17,39 @@
 (DOI …). Trained model weights are available at [repository] under [license] for non-commercial
 research; the model is provided for research use and is not a medical device."*
 
+## Extended Data, Supplementary Information, and Source Data (Nature-portfolio)
+
+Three different containers, often confused. Decide which each item belongs in **before**
+finalising the manuscript, and coordinate with `radiology-figure/nature-figure-spec.md` (which
+plans the figure-level split) and `radiology-writing/nature-family-shape.md` (display-item plan):
+
+| Container | What goes there | Peer-reviewed? | Published with article? |
+|---|---|---|---|
+| **Main text figures/tables** | The small number of display items carrying the headline claim | Yes | Yes |
+| **Extended Data** | Additional figures/tables a methods-literate reader would want but that don't carry the headline claim (commonly capped in the single digits to ~10 items — verify live per venue) | Yes | Yes |
+| **Supplementary Information** | Bulk material: full statistical tables, extended cohort tables, code listings, extended methods | Not in the same formal sense | Yes, as a separate file |
+| **Source Data** | The raw numbers behind **every** individual graph/plot, one file (commonly one sheet/tab per panel), explicitly linked to the figure it supports | N/A — a data requirement, not a display item | Yes, alongside the article |
+
+Source Data is a **publication requirement** for figures showing quantitative data at
+Nature-portfolio journals, not optional supplementary material — plan for it at figure-generation
+time (the same values the plotting script uses, exported alongside the figure; see
+`radiology-figure/figure-set-consistency.md`, which already requires every plotted number to be
+re-derived from the data file rather than hand-typed).
+
+## Data/code availability as a condition of publication (Nature-portfolio)
+
+_Radiology_-style guidance above ("avoid bare 'on request'") is a strong recommendation.
+Nature Portfolio states it more strongly: making materials, data, code, and associated protocols
+**promptly available to readers, without undue qualifications, is a condition of publication** —
+not a best-practice suggestion. When drafting for a Nature-portfolio venue:
+- Treat any residual restriction as something that must be **justified and bounded** (consent,
+  privacy, DUA, commercial), never left vague.
+- Confirm the code/model repository is archived with a persistent identifier (Zenodo release DOI,
+  not a bare GitHub URL) **before** submission, since availability is checked as part of
+  acceptance, not fixed later.
+- Cross-check that this statement, the Ethics/consent statement (`radiology-ethics`), and the
+  Reporting Summary (`radiology-reporting/nature-reporting-summary.md`) all say the same thing.
+
 ## Dataset citations (DataCite style)
 `Creator(s). (Year). Title [Data set]. Repository. https://doi.org/…` — cite public datasets
 (TCIA/TCGA/GEO) you used in the reference list, not just inline.

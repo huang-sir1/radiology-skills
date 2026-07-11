@@ -39,6 +39,7 @@ assumption fails.
 | **Unfocused aims** | Aims don't share one question | Subordinate all aims to the key scientific question |
 | **No validation/generalisability** | Single-center plan claiming broad impact | Add external/prospective validation (→ radiology-design) |
 | **Ethics/data gap** | No approval/access plan | Address governance (→ radiology-ethics) |
+| **Eligibility mismatch (international targets only)** | Drafting a full NIH/ERC/Wellcome proposal before checking whether the author/institution can be lead PI under current rules | Check eligibility **first** (→ international-grants.md); route to a co-PI structure or a directly-reachable mechanism if the flagship route isn't open |
 
 ## Guideline verification (待核验)
 

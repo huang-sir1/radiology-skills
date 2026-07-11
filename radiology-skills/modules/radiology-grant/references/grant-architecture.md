@@ -32,3 +32,21 @@ adapt for provincial/institutional. Confirm current required sections/limits aga
 clinical need → what's known → **specific unanswered question (gap)** → why now (data/method
 ready) → this proposal answers it. Each link cited and current (verify gaps live via
 `radiology-frontier`/`radiology-search`; never fabricate citations).
+
+## Quick section map to international funders
+
+If the same research also targets NIH / ERC / Wellcome, this is the rough correspondence —
+**not** a 1:1 substitution (each funder weighs and orders things differently; full detail,
+current page limits, and — critically — **applicant eligibility** are in
+`international-grants.md`, which should be read before drafting, not after):
+
+| NSFC section | NIH R01 | ERC | Wellcome (e.g. CDA) |
+|---|---|---|---|
+| 关键科学问题 + 立项依据 | Specific Aims (1p) + Significance | Part I: the idea (~5p) | Research proposal (question framing) |
+| 技术路线 | Approach, organised per-aim | Part II: implementation (~7p) | Research proposal (plan) |
+| 创新点 | Innovation | Folded into "excellence" (no separate criterion) | Research proposal |
+| 可行性分析 | Preliminary data within Approach | Feasibility — Step 2 only, not Part I | Skills/experience + research environment (≈50/25/25 weighting) |
+| 研究基础/工作条件 | Biosketch, resources | CV & track record (assessed with Part I) | Skills/experience + research environment |
+
+Eligibility (who can be lead PI) is **not** a formality for any of the three — see the eligibility
+table in `international-grants.md` before assuming this mapping is directly usable.

@@ -25,6 +25,12 @@ a Chinese-only summary, a highlights list, or captions without figure crops.
     interpreting paragraph.
 - Stable anchors on every block (`S###` body, `C###` captions, `F###` figures, `T###` tables).
 
+## When to open extra files
+
+| File | Open when |
+|---|---|
+| [references/structured-reading-notes.md](references/structured-reading-notes.md) | The user is reading for literature review, paper comparison, journal club, gap discovery, manuscript writing, or wants craft/figure/limitation patterns rather than translation only |
+
 ## Workflow
 1. **Identify source & paper type** (DTA / prediction model / radiomics / radiogenomics /
    review) — this sets how tightly to couple text, figures, and stats.
@@ -36,9 +42,11 @@ a Chinese-only summary, a highlights list, or captions without figure crops.
 4. **Extract & place figures/tables** at first substantive mention; tight crops; keep caption
    + Chinese caption; add a one-line **reading note** (what to inspect — e.g. "AUC and CI in
    panel A; calibration in panel B").
-5. **Generate `paper.md`** (primary) + `source_map.json` + `translation_notes.md` + `assets/`.
+5. **For literature-review or journal-club reading**, open `structured-reading-notes.md` and
+   create Pass 1/2/3 notes at the depth the task deserves.
+6. **Generate `paper.md`** (primary) + `source_map.json` + `translation_notes.md` + `assets/`.
    Add a terminology table for recurring imaging/AI terms.
-6. **Answer follow-ups from the source** with block IDs + page numbers; don't answer from
+7. **Answer follow-ups from the source** with block IDs + page numbers; don't answer from
    memory.
 
 ## Block shapes
@@ -62,6 +70,8 @@ a Chinese-only summary, a highlights list, or captions without figure crops.
 - `paper.md` with `**Original:**`/`**中文:**` pairs for all substantive blocks.
 - Every figure/table in `assets/` has a Markdown block + source pointer; every link resolves.
 - `source_map.json` parses; `translation_notes.md` records skipped/uncertain/draft content.
+- If structured reading was requested: paper note with depth level, claim-evidence table, and
+  craft/positioning notes where relevant.
 - Don't hide missing content — label draft mode.
 
 ## Tooling & handoffs

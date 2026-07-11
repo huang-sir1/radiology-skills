@@ -1,46 +1,33 @@
 # radiology-grant
 
-**Stage 5 — Submission & Translation.** Turn an imaging-research idea or finished study into a
-**fundable proposal** — NSFC (国自然: 青年/面上/地区), 省自然, or institutional.
+面向国自然、区域/省自然和院内基金的影像科研标书重构 skill。它解决的是很多影像 AI / radiomics 项目常见的基金痛点：只有“建一个模型”的工程目标，却缺少清晰科学问题、机制逻辑、创新分类、技术路线闭环和可行性证据。
 
-## What it does
+## 它能做什么
 
-- **Reframes paper→grant logic** — converts "build a model / improve accuracy" into a fundable
-  **scientific question** (mechanism or generalisable principle), then hypothesis → aims →
-  technical route → innovation → feasibility → expected outcomes.
-- **Drafts/restructures every section** — 题目, 摘要, 立项依据, 研究目标/内容, 关键科学问题,
-  技术路线, 创新点, 可行性, 预期成果.
-- **Forges the innovation point** — specific, classified (question/data/method/validation/
-  mechanism), tied to the gap — not "novel".
-- **Closes the technical route** — the loop from need → question → aims → results → question, with
-  validation and contingencies.
-- **Pre-empts rejection reasons** — weak innovation, engineering-not-science, thin preliminary
-  data, open-loop route, over-promising, unfocused aims.
+- 将 paper logic 转成 grant logic：把“提高准确率”重构为机制、泛化规律、临床决策或方法学科学问题。
+- 起草或重排：题目、摘要、立项依据、研究目标/内容、关键科学问题、技术路线、创新点、可行性、预期成果。
+- 打磨 **innovation point**：明确属于 question / data / method / validation / mechanism 哪一类创新，并与 gap 绑定。
+- 闭合 **technical route**：从临床需求到科学问题、aims、实验设计、验证路径、预期结果和风险预案形成闭环。
+- 预判常见拒绝理由：创新虚、工程化过重、预实验薄、路线开环、承诺过满、aims 发散。
 
-## Integrity
+## 典型触发
 
-Never fabricates preliminary results or citations. Gap/"first" claims are verified live
-(→ radiology-frontier / radiology-search). Always flags that the author must confirm the
-**current** official 申报指南 (字数/格式/附件/伦理/限项) — these change yearly.
+- “把我的研究改写成国自然标书，帮我写立项依据、科学问题、技术路线、创新点。”
+- “这个创新点和可行性够不够强？”
+- “把 build a model 改成可资助的科学问题。”
 
-## Trigger examples
+## 参考文件
 
-- "把我的研究改写成国自然标书，帮我写立项依据、科学问题、技术路线、创新点。"
-- "Is my innovation point and feasibility strong enough?"
-- "Reframe 'build a model' into a fundable scientific question."
-
-## Reference files
-
-| File | Use |
+| File | 用途 |
 |---|---|
-| `references/grant-architecture.md` | Section-by-section structure; abstract & 立项依据 templates |
-| `references/reframe-and-innovation.md` | Engineering→science reframing; innovation classification |
-| `references/feasibility-and-pitfalls.md` | Feasibility evidence, route closure, rejection reasons |
+| `references/grant-architecture.md` | 各部分结构、摘要与立项依据模板 |
+| `references/reframe-and-innovation.md` | 工程目标到科学问题，创新分类 |
+| `references/feasibility-and-pitfalls.md` | 可行性证据、路线闭环、常见拒绝原因 |
 
-## Handoffs
+## 下游衔接
 
-`radiology-design` (design behind an aim) · `radiology-frontier` / `radiology-search` (gap, live
-verification) · `radiology-stats` (sample size for an aim) · `radiology-ethics` / `radiology-data`
-(data/ethics feasibility) · `radiology-polishing` (English polish).
+`radiology-design`（支撑 aim 的研究设计）· `radiology-frontier` / `radiology-search`（gap 与实时验证）· `radiology-stats`（样本量）· `radiology-ethics` / `radiology-data`（伦理与数据可行性）· `radiology-polishing`（英文润色）。
 
-Drafts and critiques proposals; does not guarantee funding or replace the official 申报指南.
+## 边界
+
+不会编造预实验结果或引用。基金指南、字数、附件、伦理和限项要求每年可能变化，正式提交前必须核对当前官方申报指南。

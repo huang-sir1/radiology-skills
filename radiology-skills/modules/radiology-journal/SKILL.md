@@ -1,6 +1,6 @@
 ---
 name: radiology-journal
-description: "Match a finished or near-finished imaging-AI / radiomics / radiogenomics manuscript to the right target journals and build a submission tier list (reach / target / safety) grounded in each venue's publication patterns and the paper's real strengths and weaknesses. Use when the user asks where to submit, \"选刊/投哪个期刊\", journal selection, \"can this go to Nature Medicine / Lancet Digital Health / Radiology\", fit assessment, or a submission ladder. Extracts the paper's type, core selling point, and biggest weakness; grades it on the dimensions top venues weigh (external validation, prospectivity, reader study, calibration, clinical utility, sample size, centers); and returns reach/target/safety tiers with the match reason, risk, and what to strengthen first. Verifies current journal scope via live search; never selects on impact factor alone or inflates an under-validated paper."
+description: "Match a finished or near-finished imaging-AI / radiomics / radiogenomics manuscript to the right target journals and build a submission tier list (reach / target / safety) grounded in each venue's publication patterns, author-guide style profiles, and the paper's real strengths and weaknesses. Use when the user asks where to submit, \"选刊/投哪个期刊\", journal selection, \"can this go to Nature Medicine / Science / NEJM / Lancet / Lancet Oncology / Lancet Digital Health / Radiology\", fit assessment, or a submission ladder. Uses The Lancet Digital Health guide as the default Lancet-series proxy. Grades external validation, prospectivity, reader study, calibration, clinical utility, sample size, centers, novelty, and reporting compliance; returns fit, risk, strengthening priorities, and venue-style requirements. Verifies current journal scope via live search; never selects on impact factor alone."
 ---
 
 # Journal Selection & Submission Tiering
@@ -40,6 +40,7 @@ list ranked by impact factor.
 | [references/venue-patterns.md](references/venue-patterns.md) | What each imaging/clinical/AI venue tends to publish and the bar it enforces (verify live) |
 | [references/fit-grading.md](references/fit-grading.md) | Grading the paper on the tier-deciding dimensions; turning the grade into reach/target/safety |
 | [references/submission-logistics.md](references/submission-logistics.md) | Article types, format/word/figure limits, cover letter, suggested reviewers, transfer cascades |
+| [references/venue-style-profiles.md](references/venue-style-profiles.md) | The user supplies author-guide PDFs/classic articles, asks for journal "taste," or the target is European Radiology / Nature Partner / npj and style/logistics must match the parsed guide profile |
 
 ## Workflow
 
@@ -49,11 +50,14 @@ list ranked by impact factor.
    calibration, sample size, centers, novelty, reporting compliance.
 3. **Map to venues** (venue-patterns.md) — which tiers the grade realistically reaches; reject
    obvious mismatches with the reason.
-4. **Verify current scope** — hand each shortlisted venue to `radiology-search` to confirm it
+4. **Apply venue style profile when available** (venue-style-profiles.md) — article shape,
+   house taste, required compliance artifacts, and visual/writing constraints from supplied
+   guides or classic papers.
+5. **Verify current scope** — hand each shortlisted venue to `radiology-search` to confirm it
    still publishes this kind of work and recently has.
-5. **Build the ladder** — reach / target / safety, each with match reason, risk, turnaround
+6. **Build the ladder** — reach / target / safety, each with match reason, risk, turnaround
    consideration, and the one thing to strengthen to climb.
-6. **Logistics** (submission-logistics.md) — article type, limits, cover-letter angle, suggested
+7. **Logistics** (submission-logistics.md) — article type, limits, cover-letter angle, suggested
    reviewers, and any transfer cascade.
 
 ## Output contract
@@ -64,7 +68,9 @@ list ranked by impact factor.
    verified live), match reason, risk, what to strengthen to move up.
 4. **`Strengthen-first`** — the highest-leverage improvements to raise the tier (→ relevant skill).
 5. **`Verify now`** — the live-scope checks to run before submitting (→ radiology-search).
-6. **`Logistics`** — article type, limits, cover-letter angle, suggested reviewers.
+6. **`Venue style`** — if a guide/profile is available: article shape, voice, figure/table
+   taste, and compliance artifacts to satisfy before submission.
+7. **`Logistics`** — article type, limits, cover-letter angle, suggested reviewers.
 
 ## Quality bar
 

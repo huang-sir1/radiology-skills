@@ -5,6 +5,10 @@ abstracts, workflow diagrams, performance plots, radiomics pipeline figures, dee
 learning architecture figures, mechanism diagrams, or figure legends for imaging AI
 studies.
 
+If the user names a target journal family, load `modules/radiology-figure/SKILL.md`.
+Radiology-family and Nature/npj-family figures differ in panel-letter case, column
+widths, display-item limits, Source Data expectations, and legend conventions.
+
 ## Core goal
 
 图表模块的目标是让图表服务于论文论证，而不是简单堆放 ROC。先明确每张图回答什么问题，再决定图形类型。
@@ -17,6 +21,8 @@ studies.
 - 是否有外部验证、多中心验证、亚组和失败案例？
 - 目标期刊或文章类型是什么？
 - 需要主图、补充图，还是投稿前图表审查？
+- 目标是 Radiology/RSNA、Nature/npj、Lancet、Cell Reports Medicine、European Radiology，
+  还是尚未定刊？
 
 ## Recommended figure set
 
@@ -47,6 +53,8 @@ studies.
 - Architecture overview without unnecessary layer-by-layer clutter.
 - Data split and augmentation workflow.
 - Representative saliency/Grad-CAM/attention maps only after checking plausibility.
+- Uncertainty/OOD/robustness plots when the model claims trustworthy or deployment-grade use.
+- Failure-case and high-uncertainty examples, not only best-looking examples.
 - Segmentation examples: best, typical, and failure cases.
 - External validation performance and center subgroup performance.
 
@@ -118,6 +126,8 @@ Each legend should state:
 - Figure showing how ROI was drawn.
 - Supplementary table of image acquisition parameters.
 - Reproducibility materials table.
+- Venue-specific figure QA: panel letters, widths, legends, Source Data/Extended Data,
+  and graphical abstract requirements.
 
 ## Output format
 

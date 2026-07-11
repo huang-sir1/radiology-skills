@@ -42,6 +42,7 @@ worth doing and likely to be accepted at a high-impact venue*.
 | [references/frontier-themes.md](references/frontier-themes.md) | Surveying current themes (foundation models, SSL, VLM, multimodal fusion, longitudinal, weak/semi-supervision, domain adaptation, federated, generative, radiogenomics) and their data prerequisites |
 | [references/evidence-layer.md](references/evidence-layer.md) | Explaining the publication-pattern evidence: what each high-impact journal rewards, the methodological bar, and how to verify with live search |
 | [references/idea-to-question.md](references/idea-to-question.md) | Converting a trend into a concrete, executable, submittable research question; novelty framing |
+| [references/ai-radiogenomics-frontier-map.md](references/ai-radiogenomics-frontier-map.md) | The user asks for radiology AI/radiogenomics directions over the next 12-24 months, or needs to choose among foundation models, SSL, VLM, multimodal fusion, federated learning, UQ/XAI, and radiogenomics |
 
 ## Workflow
 
@@ -49,14 +50,17 @@ worth doing and likely to be accepted at a high-impact venue*.
    (reuse the inventory from `radiology-design` if present).
 2. **Scan themes** (frontier-themes.md) and **filter by fit** — for each candidate direction,
    state the data prerequisites and whether the user meets them. Reject poor fits explicitly.
-3. **Ground in evidence** (evidence-layer.md) — for each surviving direction, state the
+3. **For AI/radiogenomics strategy**, open `ai-radiogenomics-frontier-map.md` and judge the
+   idea against generalisability, supervision cost, multimodal fusion, trustworthy inference,
+   external validation, and clinical-value evidence.
+4. **Ground in evidence** (evidence-layer.md) — for each surviving direction, state the
    publication pattern (what kind of study, what validation, which venues) and the
    methodological bar it must clear. Flag every concrete claim that needs **live verification**.
-4. **Convert to questions** (idea-to-question.md) — turn the best 2–4 directions into specific
+5. **Convert to questions** (idea-to-question.md) — turn the best 2–4 directions into specific
    research questions with endpoint, comparator, and the minimum evidence to be competitive.
-5. **Trigger live search** — hand the chosen direction to `radiology-search` to retrieve and
+6. **Trigger live search** — hand the chosen direction to `radiology-search` to retrieve and
    verify current seed papers (PMID/DOI) and confirm the gap is still open.
-6. **Return** a ranked shortlist: direction → fit → evidence pattern → executable question →
+7. **Return** a ranked shortlist: direction → fit → evidence pattern → executable question →
    target-venue tier → what to verify now.
 
 ## Output contract
@@ -84,4 +88,6 @@ that are fashionable but wrong for them, and never invents a citation to sound c
 - Method-specific feasibility → `radiology-radiomics` / `radiology-deep-learning` /
   `radiology-radiogenomics`.
 - Citation export of verified seeds → `radiology-citation`.
+- The direction fits a funding proposal better than (or in addition to) a paper right now →
+  `radiology-grant`.
 - This skill advises on research strategy; specific recent claims must be verified live.

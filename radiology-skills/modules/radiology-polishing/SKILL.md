@@ -1,6 +1,6 @@
 ---
 name: radiology-polishing
-description: "Polish finished imaging-research prose to Radiology (RSNA) house style — clear active-or-passive sentences, past tense in Methods/Results, precise statistical reporting (estimates with 95% CIs, exact p-values, correct number/unit formatting), American English, correct abbreviation use, and detection of overclaiming or unwarranted causal language. Use when the user wants to tighten, copyedit, or align existing sentences/paragraphs to Radiology style (not draft new content — use radiology-writing for that). Returns clean copy-paste prose plus a short change log; never alters reported numbers or invents content."
+description: "Polish finished imaging-research prose to Radiology (RSNA), Nature-portfolio/npj, European Radiology, NEJM, Science, or Lancet-family house style: concise sentences, correct tense, precise statistical reporting, venue-specific p-value/number/reference style, AI/data-sharing declarations, abbreviation control, and overclaim/causal-language detection. Uses The Lancet Digital Health guide as the default Lancet-series proxy. Use when the user wants to tighten, copyedit, or align existing paragraphs to a target journal style, not draft new content. Returns clean copy-paste prose plus a short change log; never alters reported numbers or invents content."
 ---
 
 # Radiology-Style Prose Polishing
@@ -35,9 +35,15 @@ building new content, use `radiology-writing`.
 | [references/radiology-house-style.md](references/radiology-house-style.md) | Voice, tense, abbreviations, American spelling, terminology, units |
 | [references/stat-reporting.md](references/stat-reporting.md) | Formatting p-values, CIs, decimals, percentages, n, ranges, and test names |
 | [references/style-guardrails.md](references/style-guardrails.md) | Overclaim/causation detection, hedging calibration, forbidden phrasings |
+| [references/venue-voice-and-house-style.md](references/venue-voice-and-house-style.md) | Target venue is known, or the user supplied author-guide PDFs/classic papers and wants European Radiology / Nature Partner / npj / other venue voice rather than generic Radiology polish |
 
 ## Workflow
 
+0. **Confirm the target venue** (_Radiology_-family default, or Nature-family — see the deltas
+   table at the end of `radiology-house-style.md`) — the leading-zero and reference-style rules
+   flip between the two; polishing to the wrong one is itself an error.
+0. **For venue-specific voice**, open `venue-voice-and-house-style.md` and apply the target
+   family's wording, abbreviation, p-value, data-availability, and pending-guide checks.
 1. **Identify the section** (sets tense and expectations).
 2. **Pass 1 — clarity:** split long sentences, cut filler, fix vague verbs, ensure each
    sentence has one idea and the subject is clear.
@@ -53,7 +59,9 @@ building new content, use `radiology-writing`.
 
 1. **`Polished`** — clean, copy-paste-ready prose.
 2. **`Change log`** — grouped bullets (clarity / stats / style / claims); brief.
-3. **`Flags`** — items needing author decision (possible data error, unverifiable "first,"
+3. **`Venue checks`** — house-style items applied, plus any exact limits marked
+   `VERIFY FROM GUIDE`.
+4. **`Flags`** — items needing author decision (possible data error, unverifiable "first,"
    missing CI the author must supply). Never fabricate the missing number.
 
 ## Quality bar

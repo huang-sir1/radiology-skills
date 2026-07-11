@@ -1,5 +1,13 @@
 # Radiology manuscript architecture
 
+> This file is the **_Radiology_-family** skeleton (default). If the target is Nature Medicine /
+> Nature Biomedical Engineering / Nature Communications / npj Digital Medicine / Cell Reports
+> Medicine or a similar Nature-portfolio venue, use
+> [nature-family-shape.md](nature-family-shape.md) instead — unstructured abstract, no Summary
+> statement/Key Results box, different Methods placement and reference style. When the venue is
+> undecided, draft this shape first (it is the stricter one) and confirm before finalising the
+> abstract.
+
 ## Skeleton (Original Research)
 1. **Title** — concrete; population/condition + modality/method + finding or role.
 2. **Structured abstract** — Background, Purpose, Materials and Methods, Results, Conclusion.

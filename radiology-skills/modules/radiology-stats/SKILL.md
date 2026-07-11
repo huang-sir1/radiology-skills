@@ -95,5 +95,7 @@ on.
 - Plotting the result (ROC, calibration, DCA, forest, KM) → `radiology-figure`.
 - High-dimensional study design (leakage, batch effects in radiogenomics) →
   `radiology-radiogenomics`.
+- Sample-size numbers feeding a grant's feasibility section → `radiology-grant`.
+- Analysis plan is locked and results are in; want a harsh pre-submission read → `radiology-prereview`.
 - This skill is statistical guidance, not a substitute for a qualified biostatistician on
   high-stakes or regulatory work.

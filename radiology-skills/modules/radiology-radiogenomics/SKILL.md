@@ -53,6 +53,7 @@ sequencing batch effects can masquerade as biology.
 | [references/omics-qc-preprocessing.md](references/omics-qc-preprocessing.md) | Preparing RNA-seq, mutation, methylation, CNV, proteomics, or other molecular matrices with QC, normalization, batch handling |
 | [references/analysis-plan-sap.md](references/analysis-plan-sap.md) | Writing a protocol/SAP, defining primary versus discovery analyses, covariates, FDR, validation, sensitivity analyses |
 | [references/multi-omics-integration.md](references/multi-omics-integration.md) | Choosing integration strategy and methods: MOFA+, iCluster, SNF, DIABLO/mixOmics, sparse CCA, fusion strategies |
+| [references/deep-radiogenomics-fusion-strategies.md](references/deep-radiogenomics-fusion-strategies.md) | Deep radiomics, foundation-model embeddings, radiopathomics, cross-attention/joint embeddings, pathway-informed fusion, disease-endpoint prioritisation, or modern hybrid fusion strategy |
 | [references/single-cell-spatial.md](references/single-cell-spatial.md) | scRNA-seq deconvolution, pseudobulk, spatial transcriptomics, and habitat linkage |
 | [references/association-validation.md](references/association-validation.md) | Feature-gene/pathway association, GSEA/ssGSEA, multiple testing, radiogenomic signatures, validation |
 | [references/biological-validation.md](references/biological-validation.md) | Calibrating biological claims and adding pathway, IHC, spatial, single-cell, or orthogonal validation support |
@@ -74,13 +75,16 @@ sequencing batch effects can masquerade as biology.
    habitat definitions, stability filtering, and scanner/site harmonisation.
 6. **Prepare omics**: assay-specific QC, filtering, normalization, batch correction, feature definitions,
    accessions, software versions, and controlled-access constraints.
-7. **Integrate or associate**: choose association, pathway analysis, supervised prediction, or formal
+7. **For deep/hybrid radiogenomics**, open `deep-radiogenomics-fusion-strategies.md` and
+   decide whether early fusion, late fusion, joint embedding, pathway graph, radiopathomics,
+   or foundation-model adapter is justified by matched n and validation.
+8. **Integrate or associate**: choose association, pathway analysis, supervised prediction, or formal
    multi-omics integration. Keep all data-dependent operations inside training or discovery only.
-8. **Validate and interpret**: replicate direction/effect size, add biological corroboration where
+9. **Validate and interpret**: replicate direction/effect size, add biological corroboration where
    available, and keep mechanistic language bounded.
-9. **Report and submit**: map to CLEAR/IBSI and the appropriate prediction/diagnostic/observational
+10. **Report and submit**: map to CLEAR/IBSI and the appropriate prediction/diagnostic/observational
    guidelines, prepare supplement and data/code statements, then run pre-review and journal selection.
-10. **Revise with traceability**: classify reviewer comments, perform feasible analyses, soften unsupported
+11. **Revise with traceability**: classify reviewer comments, perform feasible analyses, soften unsupported
     claims, and cite exact manuscript/supplement locations.
 
 ## Output contract
@@ -93,11 +97,13 @@ For design or audit tasks, return as many of these as the task requires:
 4. **`Protocol/SAP`**: primary hypothesis, covariates, FDR/test family, validation rule, sensitivity analyses.
 5. **`Pipeline`**: imaging pipeline and omics QC/preprocessing with leakage-prone steps marked train-only.
 6. **`Analysis`**: association/integration/prediction method, multiplicity control, validation, code/tool route.
-7. **`Biological interpretation`**: claim level, pathway/cell/spatial evidence, alternative explanations.
-8. **`Reporting map`**: CLEAR/IBSI plus TRIPOD+AI/STARD/STROBE/REMARK/omics standards as applicable.
-9. **`Submission package`**: main-manuscript requirements, supplement tables, checklists, data/code/accessions.
-10. **`Reviewer risk list`**: likely radiogenomics critiques and concrete fixes or response strategy.
-11. **`Author input needed`**: any missing counts, accessions, approvals, line numbers, software versions, or results.
+7. **`Fusion strategy`**: baseline ladder, early/late/joint/pathway/radiopathomics route,
+   matched-n justification, missing-modality and overfitting controls.
+8. **`Biological interpretation`**: claim level, pathway/cell/spatial evidence, alternative explanations.
+9. **`Reporting map`**: CLEAR/IBSI plus TRIPOD+AI/STARD/STROBE/REMARK/omics standards as applicable.
+10. **`Submission package`**: main-manuscript requirements, supplement tables, checklists, data/code/accessions.
+11. **`Reviewer risk list`**: likely radiogenomics critiques and concrete fixes or response strategy.
+12. **`Author input needed`**: any missing counts, accessions, approvals, line numbers, software versions, or results.
 
 ## Handoffs
 
@@ -111,6 +117,9 @@ For design or audit tasks, return as many of these as the task requires:
 - Ethics, consent, DUA, HIPAA/GDPR/PIPL, genomic re-identification risk -> `radiology-ethics`.
 - Manuscript drafting and claim calibration -> `radiology-writing` / `radiology-polishing`.
 - Pre-submission mock review -> `radiology-prereview`; journal ladder -> `radiology-journal`; rebuttal -> `radiology-response`.
+- Emerging linkage themes (liquid biopsy/ctDNA, pathology-foundation-model fusion) and whether the
+  data can carry them -> `radiology-frontier`.
+- Reframing this research as a funding proposal -> `radiology-grant`.
 
 This skill guides design, analysis logic, reporting, and submission readiness. It does not replace
 a genomics/bioinformatics collaborator for production pipelines or institutional legal/ethics review.

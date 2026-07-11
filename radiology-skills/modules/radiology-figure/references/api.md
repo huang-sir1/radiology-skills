@@ -27,8 +27,10 @@ mpl.rcParams.update({
     "lines.linewidth": 1.3,
 })
 
-# Column widths (inches): single ~3.35 in (85 mm), double ~6.7 in (170 mm)
+# Column widths (inches): _Radiology_-family single ~3.35 in (85 mm), double ~6.7 in (170 mm)
 SINGLE, DOUBLE = 3.35, 6.7
+# Nature-family single 89 mm / double 183 mm (see nature-figure-spec.md) — swap in for that venue:
+SINGLE_NATURE, DOUBLE_NATURE = 89/25.4, 183/25.4
 
 # Color-blind-safe (Okabe-Ito)
 PALETTE = {"blue":"#0072B2","orange":"#E69F00","green":"#009E73","vermillion":"#D55E00",
@@ -38,6 +40,21 @@ PALETTE = {"blue":"#0072B2","orange":"#E69F00","green":"#009E73","vermillion":"#
 def save(fig, stem):
     fig.savefig(f"{stem}.svg")                 # primary, editable vector
     fig.savefig(f"{stem}.png", dpi=600)        # raster companion (or .tiff)
+
+def panel_letter(i, case="upper"):
+    """Single source of truth for panel labels — don't hardcode chr(65+i) per script.
+    case="upper" -> A, B, C  (_Radiology_-family default, radiology-figure-guidelines.md)
+    case="lower" -> a, b, c  (Nature-family default, nature-figure-spec.md)
+    Always bold, top-left of the panel, in every figure of the same manuscript — pick ONE case
+    for the whole figure set and pass it explicitly; never let it default silently per script.
+    """
+    letter = chr(97 + i) if case == "lower" else chr(65 + i)
+    return letter
+
+def add_panel_letter(ax, i, case="upper", **kwargs):
+    style = dict(transform=ax.transAxes, fontsize=10, fontweight="bold", va="top", ha="left")
+    style.update(kwargs)
+    ax.text(0.02, 0.98, panel_letter(i, case), **style)
 ```
 
 ## ROC (with optional comparison)
@@ -118,3 +135,102 @@ def plot_dca(ax, thresholds, net_benefit_model, nb_all, nb_none=0):
 
 Compute the statistics (AUC CIs, DeLong, calibration slope, net benefit) with
 `radiology-stats`; this file is about rendering them correctly.
+
+---
+
+## House palettes (NPG / Morandi) + semantic roles
+
+Use Okabe-Ito (above) when color-blind-safety is required. For a "Nature-journal" or soft house
+look use one of these — but keep **one** palette for the whole paper and map color→meaning, not
+color→figure (see `color-systems.md`).
+
+```python
+NPG = {"red":"#E64B35","blue":"#4DBBD5","green":"#00A087","navy":"#3C5488","orange":"#F39B7F",
+       "slate":"#8491B4","teal":"#91D1C2","brightred":"#DC0000","brown":"#7E6148","tan":"#B09C85"}
+
+MORANDI = {"low":"#6F9BB5","high":"#C56B5A","mid":"#D8B265","neutral":"#A2B189","grey":"#A7AAB0"}
+
+# Map ROLES once, then reuse in every figure (example, Morandi):
+C = {"Low":MORANDI["low"], "High":MORANDI["high"],                  # 2-group / risk endpoints
+     "G1":MORANDI["low"], "G2":MORANDI["mid"], "G3":MORANDI["high"], # 3-level ordered ramp
+     "clinical":MORANDI["low"], "augmented":MORANDI["high"],         # incremental-value comparison
+     "neutral":MORANDI["neutral"]}
+```
+For **on-screen / teaching decks** bump the print ladder up (e.g. `font.size` 12-15, titles 16-18,
+panel letters 20, `axes.linewidth` 1.6-1.8) and keep it uniform across the deck.
+
+## Kaplan-Meier, publication-grade (numbers-at-risk + censor control + flat extension)
+
+```python
+import numpy as np
+def km_estimate(t, e, tmax):
+    """KM survival extended flat to last follow-up (<=tmax)."""
+    t=np.asarray(t,float); e=np.asarray(e,int); tt=np.sort(np.unique(t[e==1]))
+    S=1.; xs=[0.]; ys=[1.]
+    for x in tt[tt<=tmax]:
+        at=(t>=x).sum(); d=((t==x)&(e==1)).sum()
+        S*= (1-d/at) if at>0 else 1; xs.append(x); ys.append(S)
+    last=min(t.max(), tmax)                         # extend flat to last follow-up
+    if last>xs[-1]: xs.append(last); ys.append(ys[-1])
+    return np.array(xs), np.array(ys)
+
+def km_panel(axK, axR, df, group_col, order, C, ticks=(0,1,2,3,4,5), max_ticks=14):
+    """axK=curve axes, axR=numbers-at-risk axes (shared x). df has columns DMFS, evt, group_col."""
+    t=df["DMFS"].values; e=df["evt"].values.astype(int); g=df[group_col].values; xmax=max(ticks)
+    for grp in order:
+        m=g==grp; xs,ys=km_estimate(t[m],e[m],xmax)
+        axK.step(xs,ys,where="post",color=C[grp],lw=2.2,solid_capstyle="round",zorder=3)
+        ct=t[(e==0)&m]; ct=ct[ct<=xmax]                          # censoring ticks (thinned, not deleted)
+        if len(ct)>max_ticks:
+            rng=np.random.default_rng(abs(hash((grp,group_col)))%2**32)
+            ct=np.sort(rng.choice(ct,max_ticks,replace=False))
+        for cx in ct:
+            i=np.searchsorted(xs,cx,side="right")-1
+            axK.plot([cx,cx],[ys[i]-0.013,ys[i]+0.013],color=C[grp],lw=1.1,zorder=4)
+    axK.set(xlim=(0,xmax), ylim=(0.5,1.004)); axK.set_xticks(ticks); axK.tick_params(labelbottom=False)
+    axR.set(xlim=(0,xmax), ylim=(-0.4,len(order)-0.3)); axR.set_xticks(ticks); axR.set_yticks([])
+    for s in ("top","right","left"): axR.spines[s].set_visible(False)
+    axR.annotate("Number at risk", xy=(0,1.02), xycoords="axes fraction", fontweight="bold")
+    tr=axR.get_xaxis_transform()
+    for i,grp in enumerate(order):
+        yy=len(order)-1-i
+        axR.text(-0.5, yy, grp, color=C[grp], fontweight="bold", ha="right", va="center", clip_on=False)
+        for x in ticks:
+            axR.text(x, yy, str(int((t[g==grp]>=x).sum())), color=C[grp], ha="center", va="center")
+    # real, censoring-aware at-risk above. For a teaching no-tick figure swap to the
+    # complete-follow-up convention:  N_group - cumulative events (see survival-figures.md)
+```
+Annotate each panel with log-rank P and HR (95% CI) vs a reference; if the reference group has
+~0 events (unstable HR/CI), show per-group k-year survival % instead of an exploding HR.
+
+## Time-dependent discrimination / calibration / utility (survival endpoints)
+
+```python
+def _km_censor(t,e):                                # KM of the censoring distribution G(t)
+    return km_estimate(t, 1-np.asarray(e,int), float(np.max(t)))
+def _Geval(xs,ys,q):
+    idx=np.searchsorted(xs,np.asarray(q,float),side="right")-1; return ys[np.clip(idx,0,len(ys)-1)]
+
+def td_auc(t,e,score,horizon):                      # IPCW cumulative/dynamic AUC at a horizon
+    t=np.asarray(t,float); e=np.asarray(e,int); s=np.asarray(score,float)
+    gx,gy=_km_censor(t,e); cases=(e==1)&(t<=horizon); ctrl=t>horizon
+    if cases.sum()==0 or ctrl.sum()==0: return np.nan
+    w=1/np.clip(_Geval(gx,gy,t[cases]),1e-6,None); sc=s[cases]; sd=s[ctrl]
+    num=sum(wi*((sd<si).sum()+0.5*(sd==si).sum()) for si,wi in zip(sc,w))
+    return num/(w.sum()*len(sd))
+
+def breslow_S0(t,e,lp,grid):                        # baseline survival for a Cox linear predictor
+    o=np.argsort(t); t,e,lp=t[o],e[o],lp[o]; eb=np.exp(lp); H=0.; xs=[0.]; H0=[0.]
+    for x in np.unique(t[e==1]):
+        risk=t>=x; d=((t==x)&(e==1)).sum(); denom=eb[risk].sum()
+        H+= d/denom if denom>0 else 0; xs.append(x); H0.append(H)
+    xs=np.array(xs); H0=np.array(H0); idx=np.searchsorted(xs,np.asarray(grid,float),side="right")-1
+    return np.exp(-H0[np.clip(idx,0,len(H0)-1)])
+# predicted risk at t:  1 - breslow_S0(...)**exp(lp_centered)
+# survival calibration: bin predicted risk; plot mean predicted vs (1 - km_at(t)) per bin vs y=x
+# survival DCA at t: nb(p) = (n_flag/N)*( ev - (1-ev)*p/(1-p) ), ev = 1 - KM_t within {risk>p};
+#                    clip the y-axis to the decision band (treat-all dives steeply negative)
+```
+Statistics (AUC 95% CI by bootstrap, C-index, NRI/IDI, calibration slope) -> `radiology-stats`;
+this file renders them. KM/ROC/calibration/DCA must use the **same** palette roles as the rest of
+the figure set (`figure-set-consistency.md`).

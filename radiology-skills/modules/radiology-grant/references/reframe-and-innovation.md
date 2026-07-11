@@ -48,3 +48,8 @@ Hypothesis:
 Innovation point(s) [classified + specific + tied to gap]:
 Gap-check to verify live: [→ radiology-search]
 ```
+
+This reframing is funder-independent — the same forged question and innovation point feed an
+NSFC 立项依据/创新点 section, an NIH Specific Aims/Significance/Innovation, or an ERC Part I
+"excellence of the research project" narrative alike. Only the packaging differs
+(→ `international-grants.md`); redo this step once, not per funder.

@@ -48,6 +48,7 @@ generalisable or single-center-anecdote.
 | [references/study-blueprints.md](references/study-blueprints.md) | Picking a design template (diagnostic accuracy, prediction/prognosis, treatment-response, segmentation, radiogenomics, reader study) and its minimum-viable vs stronger version |
 | [references/validation-strategy.md](references/validation-strategy.md) | Designing internal/temporal/geographic/external/multi-center/federated validation; center & scanner effects; what counts as "external" |
 | [references/endpoints-and-estimands.md](references/endpoints-and-estimands.md) | Choosing the clinical question, target population, endpoint, comparator, and clinical-use scenario |
+| [references/ai-radiogenomics-12-24-roadmap.md](references/ai-radiogenomics-12-24-roadmap.md) | The user wants a 12-24 month plan for radiology AI/deep radiomics/radiogenomics, or asks how to turn data into a staged publication and translation program |
 
 ## Workflow
 
@@ -63,12 +64,15 @@ generalisable or single-center-anecdote.
 4. **Pick the blueprint** (study-blueprints.md). Choose the design template and give a
    **minimum-viable** version (what's publishable now) and a **stronger** version (what would
    reach a higher tier), with the extra cost of each.
-5. **Design the validation** (validation-strategy.md). Specify the split (patient-level),
+5. **For program-level AI/radiogenomics planning**, open `ai-radiogenomics-12-24-roadmap.md`
+   and place the project on the staged route from cohort lock to baselines, fusion, external
+   validation, and silent/reader/prospective evidence.
+6. **Design the validation** (validation-strategy.md). Specify the split (patient-level),
    internal scheme, and the external/temporal/geographic/multi-center plan. State what is held
    out and what "external" honestly means here.
-6. **Name the binding constraint** and the sample-size / EPV question (hand the numbers to
+7. **Name the binding constraint** and the sample-size / EPV question (hand the numbers to
    `radiology-stats`).
-7. **Return** the blueprint + feasibility verdict + validation plan + the prioritised list of
+8. **Return** the blueprint + feasibility verdict + validation plan + the prioritised list of
    what to secure next.
 
 ## Output contract
@@ -81,7 +85,8 @@ generalisable or single-center-anecdote.
    guideline each will be judged against (→ `radiology-reporting`).
 5. **`Validation plan`** — split scheme, internal + external/temporal/geographic/multi-center
    design, and the honest definition of "external" for this data.
-6. **`Next actions`** — what to collect, label, or confirm before/while running it, in priority
+6. **`Roadmap`** — when relevant: staged 0-3, 3-6, 6-9, 9-12, 12-18, and 18-24 month milestones.
+7. **`Next actions`** — what to collect, label, or confirm before/while running it, in priority
    order. Questions only the author can answer go here.
 
 ## Quality bar
@@ -102,4 +107,5 @@ inflating a single-center retrospective dataset into a claim it cannot support.
 - Which checklist the design must satisfy → `radiology-reporting`.
 - Ethics/consent/data-sharing feasibility → `radiology-ethics`.
 - Clinical-use scenario, reader study, prospective plan → `radiology-translation`.
+- Turning this design into a funding proposal instead of / alongside a paper → `radiology-grant`.
 - This skill plans research; it does not provide clinical or diagnostic recommendations.

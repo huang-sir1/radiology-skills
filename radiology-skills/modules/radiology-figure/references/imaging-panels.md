@@ -26,20 +26,27 @@ Imaging figures are evidence. Build them legible, annotated, and **de-identified
 ## Layout
 ```python
 import matplotlib.pyplot as plt
-def montage(images, rows, cols, labels=None, wlww=None, panel_letters=True, figw=6.7):
+def montage(images, rows, cols, labels=None, wlww=None, panel_letters=True, figw=6.7,
+            letter_case="upper"):
+    # letter_case="upper" -> A,B,C (_Radiology_-family default); "lower" -> a,b,c (Nature-family,
+    # see nature-figure-spec.md). Use the same panel_letter() helper as api.md — don't hardcode
+    # chr(65+i); pick one case for the whole figure set, never mix within a manuscript.
     fig, axs = plt.subplots(rows, cols, figsize=(figw, figw*rows/cols))
     for i, ax in enumerate(axs.ravel()):
         ax.axis("off")
         if i < len(images):
             ax.imshow(images[i], cmap="gray", vmin=0, vmax=255)
             if panel_letters:
-                ax.text(0.04, 0.96, chr(65+i), transform=ax.transAxes, color="w",
+                letter = chr(97+i) if letter_case == "lower" else chr(65+i)
+                ax.text(0.04, 0.96, letter, transform=ax.transAxes, color="w",
                         fontsize=10, fontweight="bold", va="top")
             if labels: ax.set_title(labels[i], fontsize=8)
     fig.subplots_adjust(wspace=0.02, hspace=0.06)
     return fig
 ```
-- Align panels on a grid; equal gutters; label **A, B, C** (white text, top-left, bold).
+- Align panels on a grid; equal gutters; label **A, B, C** for _Radiology_-family (or lowercase
+  **a, b, c** for Nature-family — see `nature-figure-spec.md`); white text, top-left, bold; the
+  same case throughout the whole figure set.
 - For before/after or multi-sequence, keep the same crop, zoom, and window across panels.
 
 ## Overlays (segmentation / parametric maps / habitats)

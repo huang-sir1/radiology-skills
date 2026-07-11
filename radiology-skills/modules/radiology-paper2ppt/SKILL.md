@@ -23,6 +23,12 @@ The deck follows the paper's **scientific argument**, not its section order.
 - "把这篇论文做成读片会/文献汇报 PPT。" / "Make journal-club slides from this imaging paper."
 - "组会要讲这篇 radiomics/AI 论文，做个中文 PPT。"
 
+## When to open extra files
+
+| File | Open when |
+|---|---|
+| [references/deck-quality-qa.md](references/deck-quality-qa.md) | Building a full PPTX, repairing a weak deck, fixing cropped figures/text overflow/loose alignment, or running final slide QA |
+
 ## Slide flow (adapt to paper type)
 1. **标题页** — title, authors/journal/year, presenter/date.
 2. **背景与临床问题** — the gap (1–2 slides).
@@ -40,16 +46,19 @@ The deck follows the paper's **scientific argument**, not its section order.
 ## Workflow
 1. Read/parse the paper (load `pdf` skill for PDFs; or `radiology-reader` for full bilingual
    extraction).
-2. Classify paper type; extract the evidence chain and the figures/tables that carry it.
-3. Write Chinese slide titles, bullets (concise), captions, takeaways, and **speaker notes**.
-4. Build the `.pptx` (load the `pptx` skill); place cropped figures with sources.
-5. **QA** — reopen/inspect the package: slide count, embedded images, notes present, no
+2. Open `deck-quality-qa.md`; classify paper type and choose the slide arc before writing slides.
+3. Extract the evidence chain and the figures/tables that carry it.
+4. Write Chinese slide titles, bullets (concise), captions, takeaways, and **speaker notes**.
+   Maintain a terminology ledger for datasets, genes, metrics, models, and abbreviations.
+5. Build the `.pptx` (load the `pptx` skill); place cropped figures with sources.
+6. **QA** — use `deck-quality-qa.md`, reopen/inspect the package: slide count, embedded images, notes present, no
    unreadable panels, no fabricated content.
 
 ## Output contract
 1. **`.pptx`** deck (primary deliverable) — Chinese, with speaker notes.
 2. **`Slide map`** — title → message → figure used, per slide.
-3. **`QA`** — slide count, embedded media, notes, any rendering limits or missing source
+3. **`QA`** — slide count, embedded media, notes, figure-crop completeness, text overflow,
+   terminology consistency, any rendering limits or missing source
    content.
 
 ## Handoffs

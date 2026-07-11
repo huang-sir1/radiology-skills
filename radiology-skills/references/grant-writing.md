@@ -3,7 +3,9 @@
 Use this file when the user asks to write, polish, restructure, or strengthen a
 grant/funding proposal for radiomics, medical imaging deep learning, or imaging AI
 projects, including 国家自然科学基金、国自然、省级自然科学基金、省自然、院校级课题、
-青年基金、面上项目、重点项目申报书等。
+青年基金、面上项目、重点项目申报书等。For international schemes such as NIH R01,
+ERC, or Wellcome, load `modules/radiology-grant/SKILL.md` and verify applicant and
+host-institution eligibility before drafting.
 
 ## 核心原则
 
@@ -14,10 +16,15 @@ projects, including 国家自然科学基金、国自然、省级自然科学基
 
 不同年份、不同地区、不同项目类型的申报指南会变化。涉及限项、格式、字数、代码、预算、伦理、依托单位、附件和年度重点方向时，必须提醒用户以当年官方申报指南为准，必要时联网核验。
 
+国际基金不能简单套用国自然逻辑。涉及 NIH、ERC、Wellcome 或其他跨境基金时，先核查
+PI 国籍/地区、依托机构、合作单位、预算通道、subaward/host institution、数据出境和伦理
+要求；没有资格或通道不清楚时，不要直接生成“可申报”的完整承诺。
+
 ## 需要收集的信息
 
 ```yaml
 funding_scheme: 国自然青年/面上/地区/省自然/院校课题/其他
+eligibility_context: 申请人/依托单位/合作单位/地区/是否国际基金
 proposal_section: 题目/摘要/立项依据/研究内容/研究目标/关键科学问题/技术路线/创新点/可行性/研究基础/年度计划/预期成果
 disease:
 modality:
@@ -120,3 +127,4 @@ current_text:
 - 不要把临床应用承诺写得超过验证证据。
 - 不要忽略当年官方申报指南、格式和字数限制。
 - 不要把模型性能当成唯一创新点。
+- 不要在未核验资格时假设中国申请人或中国机构可以直接作为 NIH、ERC、Wellcome 等国际基金的主申请方。

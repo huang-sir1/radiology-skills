@@ -1,43 +1,36 @@
 # radiology-journal
 
-**Stage 5 — Submission & Translation.** Match a finished manuscript to the right journals and
-build an honest reach/target/safety submission ladder.
+面向已完成或接近完成稿件的选刊与投稿梯队 skill。它不是按影响因子机械排序，而是根据文章真实强项、致命短板、外部验证、前瞻性、读者研究、校准、临床效用、样本量、中心数和报告规范，建立 honest reach / target / safety ladder。
 
-## What it does
+## 它能做什么
 
-- **Paper profile** — type, core selling point, and the single biggest weakness.
-- **Fit grade** — scores the paper on the dimensions that decide tier (external validation,
-  prospectivity, reader/utility evidence, calibration, sample size, centers, novelty, reporting
-  compliance) and names the limiting factor.
-- **Submission ladder** — reach / target / safety venues, each with match reason, risk,
-  turnaround consideration, and the one thing to strengthen to climb.
-- **Logistics** — article type, current limits, cover-letter angle, suggested reviewers, transfer
-  cascades.
+- 生成 **paper profile**：文章类型、核心卖点、最大短板。
+- 给出 **fit grade**：判断文章当前被哪个因素限制层级，以及补强哪一项最有价值。
+- 建立 **submission ladder**：冲刺、主投、稳妥期刊，每个给出匹配理由、风险和上移路径。
+- 处理 **submission logistics**：article type、当前限制、cover letter angle、suggested reviewers、transfer cascades。
 
-## Integrity
+## 诚信规则
 
-Uses durable publication-pattern heuristics but **verifies each venue's current scope live**
-(→ radiology-search). Never selects on impact factor alone and never inflates an under-validated
-paper into a top-tier pitch.
+可以使用稳定的 publication-pattern heuristics，但每个候选期刊的当前 aims / scope / article type / 限制必须实时验证。不会只按 impact factor 选刊，也不会把证据不足的单中心回顾性研究包装成顶刊故事。
 
-## Trigger examples
+## 典型触发
 
-- "这篇文章适合投哪个期刊？帮我做投稿梯队。"
-- "Can my single-center retrospective radiomics paper realistically go to Lancet Digital Health?"
-- "What's the biggest weakness capping my journal tier, and how do I move up?"
+- “这篇文章适合投哪个期刊？帮我做投稿梯队。”
+- “单中心回顾性 radiomics 文章能不能冲 Lancet Digital Health？”
+- “限制我文章层级的最大短板是什么，怎样补强？”
 
-## Reference files
+## 参考文件
 
-| File | Use |
+| File | 用途 |
 |---|---|
-| `references/venue-patterns.md` | What each venue rewards + the bar (verify live) |
-| `references/fit-grading.md` | Grade the paper; build the ladder; move-up levers |
-| `references/submission-logistics.md` | Article type, limits, cover letter, reviewers, cascades |
+| `references/venue-patterns.md` | 各 venue 通常奖励什么、门槛在哪里，使用时实时验证 |
+| `references/fit-grading.md` | 文章分层、投稿梯队、上移杠杆 |
+| `references/submission-logistics.md` | Article type、限制、cover letter、reviewers、cascade |
 
-## Handoffs
+## 下游衔接
 
-`radiology-prereview` (fix weaknesses first) · `radiology-reporting` (compliance + submission map)
-· `radiology-design` / `radiology-translation` (strengthen evidence) · `radiology-search`
-(verify scope) · `radiology-writing` (cover letter).
+`radiology-prereview`（先修短板）· `radiology-reporting`（规范与 submission map）· `radiology-design` / `radiology-translation`（增强证据）· `radiology-search`（验证 scope）· `radiology-writing`（cover letter）。
 
-Strategy, not a prediction of acceptance.
+## 边界
+
+这是投稿策略，不是录用预测。

@@ -18,6 +18,7 @@ Map the **message** to the chart; reviewers expect specific ones for specific cl
 | Cell-type composition | **Stacked bar** | fractions sum to 1; consistent cell-type colors |
 | Patient selection | **CONSORT/STARD/PRISMA flow** | counts at each in/exclusion step |
 | Confusion of classes | **Confusion matrix** | counts + row/col normalised option |
+| Whole-study summary (graphical/visual abstract) | **Graphical abstract** | one schematic panel: data/cohort → method/pipeline → key finding (icon + one headline number); no new data, must match numbers already in the main figures; commonly required/expected by Nature Communications, npj-family, Cell Reports Medicine — see `nature-figure-spec.md`; keep to the venue's aspect-ratio/size spec (verify live) |
 
 ## Defaults to enforce
 - **ROC**: don't smooth; plot empirical steps or a faithful curve; annotate operating point

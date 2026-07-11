@@ -1,319 +1,223 @@
-# Radiology Skills
+﻿# Radiology Skills · 影像科研全链路技能包
 
-本skills由黄sir组学工作室的核心成员开发，三位成员为发表过《Radiology》原创性研究的第一作者（Huang Yuhong、Gu Wenchao、Song Xinyang），对影像组学领域有深刻认知，这是一个面向影像组学、影像深度学习和医学影像 AI 研究的全开源 Codex skill，用于帮助研究者完成前沿选题、文献梳理、课题设计、ROI/mask 标注规范、统计分析、图表规划、影像基因组学机制解析、多中心验证、公共数据库使用、伦理与复现、论文写作、投稿预审、选刊投稿、基金申报、临床转化和返修回复等。
+本skills由黄sir组学工作室的核心成员开发，三位成员为发表过《Radiology》原创性研究的第一作者（Huang Yuhong、Gu Wenchao、Song Xinyang），对影像组学领域有深刻认知。这是一个面向影像组学、影像深度学习和医学影像 AI 研究的全开源 Codex skill，用于帮助研究者完成前沿选题、文献梳理、课题设计、ROI/mask 标注规范、统计分析、图表规划、影像基因组学机制解析、多中心验证、公共数据库使用、伦理与复现、论文写作、投稿预审、选刊投稿、基金申报、临床转化和返修回复等。
 
 基于 2023-2026 高水平文献，整理了 Radiology、Radiology: Artificial Intelligence、The Lancet Oncology、The Lancet Digital Health、Nature Medicine、Nature Cancer、Nature Communications、Science Advances、eClinicalMedicine、eBioMedicine、Cell Reports Medicine、npj Digital Medicine 等高影响力期刊中医学影像 AI、影像组学、影像深度学习、影像基因组学和临床转化相关研究的发表规律。这个证据层可用于辅助选题、投稿选刊、前沿设计、课题设计和基金申报等任务。
 
-## 按需求分类
+**让论文和标书在投出去之前，先过一遍审稿人的眼光。**
 
-### 1. 我不知道这个课题能不能做
+> 审稿人拒稿，往往只需要三个问题：测试集是不是按患者划分的？外部验证在哪里？校准曲线呢？
+> 多数影像 AI、放射组学稿件不是败在工作量，而是败在设计和写作阶段没人用审稿人的标准提前审过一遍——
+> 等收到大修甚至直接拒稿才发现，已经晚了一整轮周期。`radiology-skills` 就是提前替你把这一关过掉的那双眼睛。
 
-适合场景：你有一批 CT、MRI、PET/CT、超声、钼靶或多模态影像数据，但还不确定能做什么研究。
+面向中国高水平医学影像科研团队的 Claude / Codex 技能包：以 **_Radiology_（RSNA）级别、以及 Nature 系列**（Nature Medicine、Nature Biomedical Engineering、Nature Communications、npj Digital Medicine 等）**级别的研究设计、方法学规范、统计呈现和投稿要求**为目标，把影像 AI、深度学习、放射组学、影像基因组学与多组学研究，拆解成 22 位"虚拟专科顾问"、可以随时调用的专业工作流。
 
-它会帮你梳理：
+`radiology-skills` 不是泛泛的"论文写作提示词合集"。它解决的是医学影像科研中最容易卡壳、也最容易被高水平期刊审稿人当场击中的问题：课题到底能不能做、创新点站不站得住、样本量和外部验证撑不撑得起结论、标注和建模流程有没有数据泄漏、统计报告齐不齐全、图表符不符合投稿标准、论文满不满足国际通行的报告规范，深度学习模型有没有可解释性和不确定性证据，以及审稿意见能不能被逐条、可追溯地回应。
 
-- 疾病、模态、样本量、中心数量、标签来源和终点是否足够支撑研究；
-- 数据是适合做诊断、分型、分期、预后、疗效预测、复发预测，还是分割任务；
-- 是否有外部验证、时间验证、临床变量、分割 mask、随访信息和病理/分子标签；
-- 当前数据最适合走影像组学、深度学习、多模态融合、放射基因组学，还是先做可行性研究。
+> 开发团队长期从事影像组学、影像深度学习和医学影像 AI 研究，规则来自真实投稿、真实审稿意见和真实基金评审的一线经验。它不是把通用论文写作建议套壳，而是把“审稿人会怎么追问”前置到课题设计、统计验证、图表和投稿材料中。
 
-### 2. 我想找近三年的前沿方向和创新点
+---
 
-适合场景：你想结合自己的数据，从 Radiology、Lancet Digital Health、Nature Medicine、Nature Communications、Lancet Oncology、npj Digital Medicine、npj Precision Oncology 等高影响力期刊中寻找影像 AI 前沿。
+## 核心卖点，30 秒说清楚
 
-它会帮你分析：
+- **全链路一次装好**：22 个技能、90 余份模块化规则文件，覆盖从"这批数据到底能不能做"到"基金标书怎么写"的完整科研链路，不用在十几个工具、公众号文章和往届师兄师姐的经验之间来回拼凑。
+- **双期刊规格内置**：同一套技能同时懂 _Radiology_ 家族和 Nature 系列的投稿规矩——摘要结构、图表尺寸、图版字母大小写、Reporting Summary、Extended Data 该放哪——不用自己再去猜哪本期刊要什么格式。
+- **审稿人视角前置**：数据泄漏审计、CLAIM / TRIPOD+AI / CLEAR 等报告规范逐条核查、投稿前模拟严审——把审稿人真正会问的问题，在投出去之前先自己问一遍。
+- **三位 _Radiology_ 一作坐镇**：规则来自真实投稿和真实评审经验，不是把"如何写好论文"这类通用建议套壳成产品。
+- **诚信是底线，也是卖点**：缺什么就明确标注"待确认"，绝不编造数据、文献、合规性或申请资格——这恰恰是通用 AI 工具最容易栽跟头、也是让你论文/标书翻车的地方。
 
-- 2023-2026 年 PubMed 验证的代表性高水平种子文献；
-- 近三年影像组学和影像深度学习的主要趋势；
-- 基础模型、自监督学习、视觉语言模型、多模态融合、放射基因组学、纵向影像、弱监督、域适应、联邦学习等方向是否适合你的数据；
-- 哪些方向只是热门但不适合你当前数据；
-- 如何把前沿方法转化成可执行、可投稿的研究问题。
+---
 
-### 3. 证据：我想知道这些建议背后有哪些近三年文献依据
+## 适合谁
 
-适合场景：你不只是想听“前沿方向”，而是想知道这些判断来自哪些近三年高水平文章、哪些期刊发表了什么类型的研究、哪些规律可以迁移到自己的数据。
+- 已经有 CT、MRI、PET、超声、乳腺钼靶或多模态影像数据，但还不确定"这批数据到底能做成什么课题"的临床科研团队。
+- 正在冲击 _Radiology_、Radiology: AI、Lancet Digital Health、Nature Medicine、European Radiology 等高水平期刊的影像 AI、放射组学、影像组学研究者。
+- 需要把中文实验记录、组会思路、初稿或审稿意见转化为英文投稿文本、规范补充材料、图表和回复信的作者。
+- 正在准备国自然、省自然或院内基金，想把"做一个模型"升级为有科学问题、机制逻辑和可验证路径的基金标书；也包括同步筹备 NIH、ERC、Wellcome 等国际基金、需要先弄清楚自己到底有没有申请资格的团队。
+- 希望在投稿前提前发现方法学、统计、伦理、数据共享、报告规范和临床转化证据短板的 PI、博士后、研究生与科研秘书团队。
 
-它会帮你完成：
+## 重点解决的科研痛点
 
-- 提供 2023-2026 年 PubMed 验证的代表性种子文献表；
-- 按报告规范、读者研究/真实世界、临床验证、多中心、影像基因组学、多组学、foundation model、生成式 AI、分布式/异质性数据等主题整理规律；
-- 把文献规律转成选题规则：什么数据适合做、什么数据不建议做、最低验证要求是什么；
-- 辅助判断 Nature Medicine、Lancet Digital Health、Lancet Oncology、Radiology、Cell Reports Medicine、npj Precision Oncology 等期刊的证据偏好；
-- 明确哪些结论需要当天重新检索，避免把种子文献当成完整系统综述。
+| 常见痛点 | `radiology-skills` 的处理方式 |
+|---|---|
+| 有数据但不知道课题能不能做 | 先判断可行性、任务天花板、样本量/事件数/外部验证瓶颈，再给出最小可行方案与升级版设计 |
+| 追热点但创新点空泛 | 把基础模型、多模态、纵向影像、联邦学习、影像基因组学等趋势转成可执行问题，并要求实时核验文献依据 |
+| 模型看起来准确但经不起审稿 | 对患者级别数据划分、仅在训练集拟合、特征筛选、调参、外部验证、校准曲线、决策曲线、多阅片者研究等做数据泄漏和可信度审计 |
+| 病灶勾画、标注协议写不清楚 | 输出勾画范围、阅片者盲法与共识流程、一致性评价（ICC / Dice / Hausdorff）、掩膜几何一致性等标准操作流程 |
+| 论文不符合报告规范 | 自动路由到 CLAIM 2024、TRIPOD+AI、CLEAR、METRICS、RQS、IBSI、STARD、PRISMA-DTA、QUADAS 等清单逐项审计 |
+| 统计结果和图表表达不专业 | 规范 AUC 比较（DeLong / bootstrap）、95% 置信区间、P 值、校准、决策曲线、生存分析、阅片者一致性和可发表图件 |
+| 中文思路难转成高水平英文稿 | 将中文/中英混排笔记转成 _Radiology_ 风格的结构化摘要（含一句话结论与要点框），或 Nature 系列的非结构化摘要，及对应的方法、结果、讨论部分 |
+| 投稿前不知道自己的短板在哪 | 模拟严苛审稿，按致命问题 / 大修意见 / 小修意见分级，输出可执行修改清单 |
+| 审稿回复缺少证据链 | 把每条审稿意见拆成稳定编号、修改动作、稿件位置、补充分析和可追溯回应 |
+| 临床转化证据不足 | 设计临床使用场景、阈值到临床动作的映射、多阅片者对照研究、前瞻验证、PACS/RIS 接入和上线后漂移监测 |
+| 深度学习模型没有可解释性/不确定性证据 | 规范化报告显著图、特征归因方法与不确定性量化（蒙特卡洛丢弃、深度集成、保形预测），鲁棒性与分布外检测，并对齐 FUTURE-AI 可信 AI 框架 |
+| 想投 Nature 系列但不知道格式差在哪 | 摘要结构、图表尺寸与图版字母大小写、Reporting Summary、Extended Data / Source Data、数字格式与参考文献体例的逐项对照 |
+| 只想做国自然，但也想留一条国际基金的路 | 国自然为主线，同时提供 NIH R01 / ERC / Wellcome 的结构改写，并**先核查申请资格**——不让你在进不去的赛道上浪费精力 |
 
-### 4. 我想系统梳理文献
+---
 
-适合场景：你需要整理影像组学、影像深度学习、医学影像 AI 或某个疾病/模态方向的高水平文献。
+## 为什么不直接用通用 AI，或找论文中介？
+
+这是一笔值得算清楚的账，不是营销话术：
+
+| 对比维度 | 通用 AI 直接问 | 论文润色 / 基金中介 | 自己啃指南 | `radiology-skills` |
+|---|---|---|---|---|
+| 方法学规则（患者级别划分、报告规范版本） | 靠运气，容易给出泛泛而谈的建议 | 多数只做语言润色，很少同时具备方法学审计能力 | 需要自己追踪 20 多份国际报告规范及其更新 | 内置且持续核对当前版本（CLAIM 2024、CLEAR 2023、METRICS 2024、RQS 2.0 等） |
+| 投稿格式（_Radiology_ 家族 vs Nature 系列） | 不区分期刊家族，容易套错模板 | 少数具备双规格能力，且按篇加价 | 需要逐刊翻查最新作者须知 | 摘要结构、图表尺寸、图版字母大小写等按目标期刊自动切换 |
+| 复用性 | 每次对话从零开始，规则不持久 | 按篇、按字数计费 | 一次性学习成本高，但长期可复用 | 一次安装，覆盖立题到基金申报的每一篇后续论文 |
+| 响应速度 | 快但不可靠 | 以天、周计 | 以周、月计（学习曲线） | 分钟级出可执行清单 |
+| 诚信底线 | 可能编造文献、合规性、统计量而不自知 | 依赖具体经办人的经验和责任心 | 取决于个人严谨程度 | 明确写入每个技能：不编造数据、置信区间、文献编号、伦理号、样本量；缺什么就标注"待确认"，绝不装作齐全 |
+
+`radiology-skills` 要做的不是取代生物统计师、临床合作者或伦理委员会，而是在把稿子/标书交给他们之前，先帮你把能自己查清楚的部分都查清楚——省下的是反复返工的那几轮周期，而不是省掉该有的专业把关。
+
+---
+
+## 全链路架构
+
+```text
+ ① 立题与设计               ② 数据 · 标注 · 伦理          ③ 建模与分析
+   frontier ─ design        annotation ─ data           radiomics ─ deep-learning
+        └ search                 └ ethics                 radiogenomics ─ stats
+        │                          │                          │
+        └──────────────►  ④ 写作 · 图表 · 报告规范  ◄─────────┘
+                            writing · figure · polishing
+                            reporting · reader · citation
+                                       │
+                                       ▼
+                          ⑤ 投稿 · 回复 · 转化 · 基金
+                            journal · prereview · response
+                            translation · grant · paper2ppt
+```
 
-它会帮你完成：
+每个技能都包含"下一步去哪个技能"的衔接说明，因此既可以单独调用某一个技能，也可以让一个研究项目沿着链路推进：先判断数据能不能做，再补齐标注和伦理，之后设计建模和统计，最后进入写作、投稿、回复与转化。
 
-- 制定 PubMed、期刊官网、出版社页面和综述的检索策略；
-- 按疾病、模态、任务、模型方法、验证方式和临床场景筛选文献；
-- 区分直接相关文献、可迁移方法文献、背景文献和弱相关文献；
-- 从文献中总结常见研究设计、验证方式、模型路线和创新缺口。
+---
 
-### 5. 公库：我想使用公共数据库做验证或机制解释
+## 技能索引
 
-适合场景：你想使用 TCIA、TCGA、GEO、CPTAC、IDC 或公开单细胞/空间转录组数据，做外部验证、影像基因组学机制解释、背景支持或方法对照。
+**22 位虚拟专科顾问**——把这 22 个技能想象成一支科研智囊团：每一位都只管自己最擅长的一段，交接清楚，不越界，也不漏项。技能标识（英文，用于实际调用）配一个好记的中文角色名。
 
-它会帮你完成：
+### ① 立题与设计
 
-- 判断公共数据是适合做直接外部验证、配对影像基因组学验证、机制注释，还是只能做背景支持；
-- 区分“同一患者/同一病灶/同一时间点配对数据”和“非配对公共组学数据”；
-- 设计 TCIA-TCGA、GEO、CPTAC 等数据的检索、纳入排除、样本匹配和引用策略；
-- 检查公共数据的疾病、模态、终点、治疗背景和样本量是否与你的研究相容；
-- 避免把非配对公共数据写成直接验证，避免把公共数据混入训练集后又称为外部验证。
+| 技能标识 · 角色名 | 状态 | 解决什么问题 |
+|---|---|---|
+| [`radiology-frontier`](radiology-skills/modules/radiology-frontier/README.md) · **选题雷达** | 测试版 | 找前沿方向和创新点；把热点转成适合当前数据的可投稿科学问题；实时核验文献依据 |
+| [`radiology-design`](radiology-skills/modules/radiology-design/README.md) · **课题诊断师** | 稳定版 | 判断数据可行性，形成完整研究设计蓝图，并设计内部、时间、地域、多中心、外部或联邦验证方案 |
+| [`radiology-search`](radiology-skills/modules/radiology-search/README.md) · **文献猎手** | 测试版 | 多源检索文献与公共数据集（PubMed、arXiv、Crossref、TCIA、GEO 等），并验证 DOI / PMID / 数据集编号 |
 
-### 6. 我想做影像组学研究
+### ② 数据、标注与伦理
 
-适合场景：你计划提取 handcrafted radiomics features，使用 Pyradiomics 或类似工具做特征筛选、建模和预测。
+| 技能标识 · 角色名 | 状态 | 解决什么问题 |
+|---|---|---|
+| [`radiology-annotation`](radiology-skills/modules/radiology-annotation/README.md) · **标注质检员** | 测试版 | 设计病灶勾画标准操作流程、阅片者协议、一致性评价和掩膜几何质控 |
+| [`radiology-data`](radiology-skills/modules/radiology-data/README.md) · **数据合规官** | 测试版 | 数据/代码可用性声明、DICOM 去标识化、仓库选择、FAIR 与可复现包；Nature 系列的 Extended Data / 补充材料 / Source Data 划分 |
+| [`radiology-ethics`](radiology-skills/modules/radiology-ethics/README.md) · **伦理顾问** | 测试版 | 伦理审批、知情同意/豁免、隐私与共享治理，保证伦理声明与数据可用性声明前后一致 |
 
-它会重点检查：
+### ③ 建模与分析
 
-- ROI/mask 来源、分割一致性、读片者信息和质量控制；
-- 重采样、灰度离散化、归一化、滤波和 IBSI 相关设置；
-- 特征筛选是否只在训练集内完成；
-- 是否存在先提特征、先筛特征、先标准化再划分训练测试集的数据泄漏；
-- 模型复杂度、样本量、事件数、校准、决策曲线和外部验证是否匹配。
+| 技能标识 · 角色名 | 状态 | 解决什么问题 |
+|---|---|---|
+| [`radiology-radiomics`](radiology-skills/modules/radiology-radiomics/README.md) · **组学工程师** | 测试版 | 按 IBSI / CLEAR 设计放射组学流程：预处理、特征提取、训练集内筛选、建模与数据泄漏审计、delta 放射组学、体模/重复扫描稳定性 |
+| [`radiology-deep-learning`](radiology-skills/modules/radiology-deep-learning/README.md) · **深度学习审查员** | 测试版 | 按 CLAIM 2024 设计或审查影像深度学习研究：架构、输入、多模态、训练协议、外部验证、可解释性、不确定性量化与鲁棒性 |
+| [`radiology-radiogenomics`](radiology-skills/modules/radiology-radiogenomics/README.md) · **影像基因组顾问** | 测试版 | 影像 × 多组学研究：匹配队列、TCIA-TCGA、多组学整合方法、单细胞/空间组学与机制验证 |
+| [`radiology-stats`](radiology-skills/modules/radiology-stats/README.md) · **统计军师** | 稳定版 | 影像统计与模型评价：ROC 比较（DeLong）、一致性分析（ICC/多阅片者研究）、校准、决策曲线、多重比较、生存分析和样本量 |
 
-### 7. 标注：我想把 ROI、VOI 和 mask 标注写规范
+### ④ 写作、图表与报告规范
 
-适合场景：你已经有 CT、MRI、PET/CT、超声或病理影像的 ROI/mask，但不确定病灶选择、标注流程、读片者一致性和质量控制是否足够支撑投稿。
+| 技能标识 · 角色名 | 状态 | 解决什么问题 |
+|---|---|---|
+| [`radiology-writing`](radiology-skills/modules/radiology-writing/README.md) · **论文架构师** | 测试版 | 构建 _Radiology_ 风格（结构化摘要、一句话结论、要点框）或 Nature 系列风格（非结构化摘要）稿件：方法、结果、讨论 |
+| [`radiology-figure`](radiology-skills/modules/radiology-figure/README.md) · **图表设计师** | 稳定版 | 生成投稿级统计图和影像图版：ROC 曲线、森林图、校准曲线、生存曲线、决策曲线、患者筛选流程图、MRI/CT 图版、图文摘要；同时支持 _Radiology_ 与 Nature 系列两套尺寸/字母规格 |
+| [`radiology-polishing`](radiology-skills/modules/radiology-polishing/README.md) · **定稿抛光师** | 稳定版 | 按 _Radiology_ 或 Nature 系列行文规范润色英文，校准统计表达（含期刊相关的数字格式差异）、语气、时态，标出结论夸大之处 |
+| [`radiology-reporting`](radiology-skills/modules/radiology-reporting/README.md) · **规范审计员** | 稳定版 | 将稿件路由到正确报告规范并逐项审计：CLAIM、TRIPOD+AI、CLEAR、METRICS、RQS、IBSI、STARD 等，Nature 系列另加 Reporting Summary，并可对齐 FUTURE-AI 可信 AI 框架 |
+| [`radiology-reader`](radiology-skills/modules/radiology-reader/README.md) · **双语精读官** | 测试版 | 生成影像论文中英对照全文阅读材料，保留图表、统计和原文定位标记 |
+| [`radiology-citation`](radiology-skills/modules/radiology-citation/README.md) · **引文核验官** | 测试版 | 为论点检索并验证影像期刊参考文献，导出 RIS / EndNote / BibTeX 格式 |
 
-它会帮你完成：
+### ⑤ 投稿、回复、转化与基金
 
-- 明确 2D、3D、whole tumor、largest slice、peritumoral ring、habitat 或多病灶策略；
-- 设计读片者数量、年资、盲法、独立标注、共识处理和第三方裁决流程；
-- 规划重复标注、ICC、Dice、Hausdorff、特征稳定性筛选和敏感性分析；
-- 检查 mask 与 DICOM、NIfTI、DICOM-SEG、RTSTRUCT 的 spacing、origin、direction 和 slice order 是否一致；
-- 帮你写出 Methods 中关于 ROI/mask、软件、质控和一致性评价的规范表述。
+| 技能标识 · 角色名 | 状态 | 解决什么问题 |
+|---|---|---|
+| [`radiology-journal`](radiology-skills/modules/radiology-journal/README.md) · **投稿参谋** | 测试版 | 根据文章真实强弱项建立投稿梯队：冲刺、主投、稳妥，并实时核对期刊收稿范围；含 _Radiology_ 家族与 Nature 系列两套投稿前检查清单 |
+| [`radiology-prereview`](radiology-skills/modules/radiology-prereview/README.md) · **模拟审稿官** | 测试版 | 投稿前模拟严苛审稿，提前暴露直接拒稿/大修风险 |
+| [`radiology-response`](radiology-skills/modules/radiology-response/README.md) · **回复信教练** | 测试版 | 逐条拆解审稿意见，生成可追溯的回复信、修改动作和补充分析路线 |
+| [`radiology-translation`](radiology-skills/modules/radiology-translation/README.md) · **临床转化顾问** | 测试版 | 设计临床转化证据链：使用场景、多阅片者对照研究、阈值到临床动作、前瞻验证、PACS/RIS 接入 |
+| [`radiology-grant`](radiology-skills/modules/radiology-grant/README.md) · **标书操盘手** | 测试版 | **主线：**将影像研究改写为国自然/省自然标书（科学问题、研究内容、技术路线、创新点、可行性）。**延伸：**同一份研究改写为 NIH R01 / ERC（Starting/Consolidator/Advanced）/ Wellcome 等国际基金申请，先核查 PI/机构申请资格再动笔，避免在进不去的赛道上投入精力 |
+| [`radiology-paper2ppt`](radiology-skills/modules/radiology-paper2ppt/README.md) · **组会讲解员** | 测试版 | 将影像论文转成中文读片会/组会 PPT，保留关键图表并加入方法学点评 |
 
-### 8. 我想做影像深度学习研究
+> 状态说明：**草案** = 规则已定义但未充分测试；**测试版** = 已在示例上验证，仍可能有边界情况；**稳定版** = 已在真实影像科研内容中反复校准。
 
-适合场景：你想做 CNN、Transformer、3D 模型、分割模型、检测模型、预后模型、基础模型迁移、多模态模型或报告辅助模型。
+---
 
-它会帮你设计：
+## "我现在卡在……"快速选择
 
-- 2D、2.5D、3D、序列模型、Transformer、基础模型或多模态融合路线；
-- 小样本下是否应使用迁移学习、自监督预训练、简单基线或嵌套交叉验证；
-- 图像、mask、临床变量、病理/分子标签和报告文本如何进入模型；
-- 数据增强、类别不平衡、超参数搜索、基线模型和外部验证如何安排；
-- 如何避免切片级随机划分、患者重叠、测试集调参和报告标签噪声。
+| 需求 | 推荐技能 |
+|---|---|
+| 这批数据能不能做？能做成什么级别？ | `radiology-design` 课题诊断师 |
+| 想找近三年前沿方向和创新点 | `radiology-frontier` 选题雷达 + `radiology-search` 文献猎手 |
+| 需要系统梳理文献或公共数据集 | `radiology-search` 文献猎手 |
+| 需要用 TCIA / TCGA / GEO 做外部验证或机制分析 | `radiology-data` + `radiology-radiogenomics` + `radiology-search` |
+| 影像组学流程怕不规范 | `radiology-radiomics` + `radiology-annotation` + `radiology-reporting` |
+| 深度学习模型怕数据泄漏或缺少外部验证 | `radiology-deep-learning` + `radiology-design` + `radiology-stats` |
+| 深度学习模型没有可解释性/不确定性证据 | `radiology-deep-learning` 深度学习审查员 |
+| 模型评价、AUC 比较、校准、决策曲线、样本量不会写 | `radiology-stats` 统计军师 |
+| 多中心、外部验证、中心效应、扫描仪差异不知道怎么处理 | `radiology-design` + `radiology-stats` |
+| 论文要按高水平期刊规范补齐 | `radiology-reporting` 规范审计员 |
+| 想投 Nature 系列但不确定格式差异 | `radiology-writing` + `radiology-figure` + `radiology-reporting` |
+| 中文实验记录要变成英文方法/结果/讨论 | `radiology-writing` + `radiology-polishing` |
+| 图表和图例需要投稿级输出 | `radiology-figure` 图表设计师 |
+| 投稿前想找出致命问题 | `radiology-prereview` 模拟审稿官 |
+| 不知道该投哪个期刊 | `radiology-journal` 投稿参谋 |
+| 审稿意见很复杂，想逐条回应 | `radiology-response` 回复信教练 |
+| 想做阅片者研究、前瞻验证或临床效用评估 | `radiology-translation` 临床转化顾问 |
+| 想把论文思路升级成国自然/省自然 | `radiology-grant` 标书操盘手 |
+| 想同步申请 NIH / ERC / Wellcome，但不确定自己有没有资格 | `radiology-grant`（国际基金部分） |
+| 想把论文做成中文组会/读片会 PPT | `radiology-paper2ppt` 组会讲解员 |
 
-### 9. 我想解释影像组学模型背后的生物机制
+---
 
-适合场景：你的影像组学模型、radiomics score 或影像深度学习模型已经完成，希望联合 bulk 转录组、单细胞转录组、空间转录组、基因组、蛋白组、代谢组、病理组学或免疫微环境数据，解释影像模型背后的生物学联系。
+## 四个专业支柱
 
-它会帮你完成：
+### `radiology-reporting` 规范审计员：报告规范与投稿合规骨架
 
-- 判断组学数据是否与影像数据来自同一患者、同一病灶、同一时间点或同一空间区域；
-- 设计从 radiomics score、关键影像特征、影像 habitat 或深度模型特征到基因模块、分子通路、细胞类型和空间生态位的证据链；
-- 对 bulk RNA-seq 设计差异表达、GSEA/GSVA、WGCNA、免疫浸润估计和外部验证路线；
-- 对单细胞转录组设计细胞注释、marker、module score、细胞状态、细胞比例、拟时序和细胞通讯分析；
-- 对空间转录组设计区域差异、空间通路、细胞反卷积、空间邻域、配体-受体和影像 habitat 对应关系；
-- 帮你把“影像表型 -> 分子通路 -> 细胞状态/空间生态位 -> 临床终点”的逻辑讲清楚；
-- 区分相关性、机制解释、验证证据和因果结论，避免过度表述。
+把每一类影像研究路由到正确清单，并逐项审计是否满足投稿要求：**CLAIM 2024**、**TRIPOD+AI 2024**、PROBAST(-AI)、**CLEAR 2023**、**METRICS 2024**、RQS / RQS 2.0、**IBSI**、**STARD 2015**、PRISMA-DTA、QUADAS-2、CONSORT-AI / SPIRIT-AI 等；投 Nature 系列时再叠加 **Reporting Summary**，并用 **FUTURE-AI**（公平性、普适性、可追溯性、可用性、鲁棒性、可解释性）框架检查部署类声称是否有证据支撑。它回答的问题是：审稿人会按什么标准检查你，你现在还缺什么。
 
-### 10. 我想把现有数据设计成一个完整课题
+### `radiology-stats` 统计军师：经得起审稿的影像统计
 
-适合场景：你已经知道疾病、模态和样本量，希望形成一个可投稿的研究方案。
+覆盖诊断准确性、AUC 比较（DeLong / bootstrap）、一致性分析（ICC/kappa）、Bland-Altman 一致性界限、多阅片者研究、校准、Brier 评分、决策曲线、多重比较校正、放射组学/多组学高维统计、生存分析和样本量估算。目标不是"算出一个 P 值"，而是让统计方法、报告句式和图表都经得起追问。
 
-它会帮你明确：
+### `radiology-radiogenomics` 影像基因组顾问：影像 × 多组学高难度研究链
 
-- 临床问题、目标人群、预测终点和使用场景；
-- 最小可行方法和更强方法；
-- 内部验证、时间验证、外部验证或多中心验证方案；
-- 主要指标、次要指标、校准、临床实用性和亚组分析；
-- 目标期刊更看重临床验证、方法透明性、机制解释还是前沿模型。
+围绕 TCIA-TCGA、GEO、dbGaP、EGA、cBioPortal 等数据源，处理匹配影像-组学队列、样本与影像对应关系、IBSI 放射组学、批次效应校正、多组学融合方法、单细胞去卷积和空间转录组。重点防止小样本匹配、批次/扫描仪混杂、空间错位、重复取样和生物学结论夸大。
 
-### 11. 我想申报国自然、省自然或其他科研基金
+### `radiology-design` 课题诊断师 + `radiology-frontier` 选题雷达：从数据到高水平课题的战略前端
 
-适合场景：你准备申报国家自然科学基金、国自然青年/面上/地区项目、省级自然科学基金、院校级课题或其他科研项目，希望把影像组学、影像深度学习或医学影像 AI 方向写得更符合基金申请书的表达习惯。
+先判断数据能支撑什么，再把前沿趋势转成可执行、可验证、可投稿的研究问题。输出包括可行性结论、最小可行版本与升级版设计对比、验证阶梯、临床使用场景、限制条件和需要实时核验的文献证据。
 
-它会帮你完成：
+---
 
-- 把论文式表述改成基金式逻辑：临床需求 -> 科学问题 -> 研究假设 -> 研究内容 -> 技术路线 -> 创新点 -> 可行性；
-- 润色题目、摘要、立项依据、研究目标、研究内容、关键科学问题、技术路线、创新点、可行性分析和预期成果；
-- 把“构建模型”“提高准确率”改写成更适合申报书的科学问题和研究主线；
-- 强化影像表型、病理/分子标签、疗效、预后、模型泛化、可解释性和临床转化之间的逻辑；
-- 识别申请书中证据不足、前期基础不足、创新点虚弱、技术路线不闭环和过度承诺的问题；
-- 提醒你按当年国自然或省自然官方申报指南核验格式、字数、附件、伦理和限项要求。
+## 共同原则
 
-### 12. 我担心模型结果不可信
+这七条不是免责声明式的场面话，而是这套技能真正的竞争力所在——大多数通用 AI 工具恰恰在这些地方最容易翻车：
 
-适合场景：你已经有 AUC、C-index、Dice、敏感度、特异度或其他结果，但不确定是否可靠。
+1. **一手来源优先**：以 _Radiology_ 作者须知、Nature Portfolio 编辑政策、国际报告规范（EQUATOR）和同行评议方法学文献为依据。
+2. **完整链路而非单点润色**：从立题到回复信再到基金申报，每个阶段既能独立使用，也能向下游衔接。
+3. **报告规范前置**：设计、统计、图表和写作都提前对齐审稿人会使用的核查清单。
+4. **诚信优先**：不编造数据、P 值、置信区间、文献编号、伦理号、样本量、图表、申请资格或做过的实验——查不到就明确标注"待确认"。
+5. **实时核验近期事实**：前沿文献、期刊收稿范围、投稿要求、基金指南和国际基金申请资格会变化，具体条目应实时检索确认。
+6. **中英双语友好**：允许中文/中英混排输入，输出可以是中文策略说明、英文投稿文本，或中英对照材料。
+7. **面向真实科研决策**：每次输出都尽量指出限制条件、下一步动作和最可能影响文章层级或申请结果的短板。
 
-它会帮你审查：
-
-- 是否按患者级划分训练集、验证集和测试集；
-- 同一患者的切片、病灶、序列、期相或随访图像是否跨集合泄漏；
-- 特征选择、标准化、缺失值填补、harmonization、数据增强是否发生在错误阶段；
-- 是否使用测试集做阈值选择、模型选择或早停；
-- 是否报告置信区间、校准、决策曲线、亚组分析和失败案例。
-
-### 13. 统计：我想确认统计分析和模型评价是否规范
-
-适合场景：你已经有 LASSO、logistic 回归、Cox、随机森林、SVM、XGBoost、深度学习模型、AUC、C-index、Dice、KM 曲线或 DCA，但不确定统计流程是否正确。
-
-它会帮你审查：
-
-- 样本量、阳性/阴性比例、事件数、删失比例、随访时间和 EPV 是否能支撑模型复杂度；
-- 特征筛选、标准化、缺失值填补、阈值选择和超参数调优是否只在训练集或内部验证中完成；
-- ROC、PR-AUC、C-index、time-dependent AUC、校准、DCA、Brier score、置信区间是否报告完整；
-- 生存分析中 Cox、KM、风险分组、比例风险假设和固定时间点校准是否合理；
-- 小样本、多特征、类别不平衡、多重检验和测试集调参等风险。
-
-### 14. 多中心：我想处理多医院、多机器和外部验证
-
-适合场景：你的数据来自多个医院、多个扫描仪、不同扫描协议或不同时间段，希望证明模型有泛化能力。
-
-它会帮你完成：
-
-- 按中心、时间、地域、扫描仪、厂家、层厚、MRI 序列、增强期相梳理数据差异；
-- 设计 pooled training、center-held-out validation、temporal validation、geographic validation 或 federated learning 路线；
-- 检查随机混合多中心数据是否被错误写成外部验证；
-- 规划 ComBat、harmonization、domain adaptation、center-stratified validation 和中心亚组分析；
-- 解释中心效应、scanner effect、batch effect 和外部中心性能下降。
-
-### 15. 我想按高水平期刊规范来写
-
-适合场景：你准备投 Radiology、Lancet Digital Health、Nature Medicine、eClinicalMedicine、EBioMedicine、Cell Reports Medicine、npj Digital Medicine 等期刊，需要符合影像 AI 报告规范。
-
-它会帮你选择和应用：
-
-- CLAIM / CLAIM 2024；
-- CLEAR、RQS、METRICS 和 IBSI；
-- TRIPOD+AI 和 PROBAST+AI；
-- STARD-AI；
-- CONSORT-AI 和 SPIRIT-AI；
-- 目标期刊的数据共享、代码共享和报告要求。
-
-### 16. 我想处理数据、mask、隐私和共享问题
-
-适合场景：你需要整理 DICOM、NIfTI、DICOM-SEG、RTSTRUCT、mask、特征表、临床表或多中心数据。
-
-它会帮你梳理：
-
-- 数据目录、患者 ID、检查 ID、序列 ID、病灶 ID 和时间点；
-- 图像、mask、标签、临床变量和模型输出之间的对应关系；
-- 去标识化、伦理限制、数据使用协议、医院政策和受控访问；
-- 数据、代码、模型权重、特征表和补充材料的可共享程度。
-
-### 17. 伦理：我想把伦理审批、知情同意和隐私写合规
-
-适合场景：你的研究涉及临床影像、病历、病理、基因组、转录组或多中心数据，需要写 Ethics、Consent、Data Availability 或隐私限制。
-
-它会帮你完成：
-
-- 明确研究是回顾性、前瞻性、注册研究还是多中心回顾性分析；
-- 梳理伦理审批机构、审批编号、知情同意豁免、中心覆盖范围和数据使用协议；
-- 检查 DICOM 元数据、临床表、组学数据和小样本罕见病数据的再识别风险；
-- 判断原始影像、mask、特征表、模型权重、代码和组学数据能否公开、受控访问或不能共享；
-- 写出不夸大、不编造的 Ethics、Consent 和 Data Availability 文本。
-
-### 18. 复现：我想让代码、特征表和模型参数更可复现
-
-适合场景：你准备投稿或回复审稿人，需要整理 radiomics 参数、深度学习训练配置、模型系数、代码环境、随机种子、数据字典和补充材料。
-
-它会帮你完成：
-
-- 规划数据字典、变量定义、ID 对应、split assignment、缺失值规则和排除病例清单；
-- 整理 Pyradiomics 或其他特征提取参数：重采样、灰度离散化、滤波器、feature class、ICC 筛选；
-- 整理深度学习参数：模型结构、输入尺寸、增强、loss、optimizer、learning rate、batch size、epoch、checkpoint、随机种子；
-- 设计 Supplementary Tables：影像参数表、标注协议表、特征参数表、模型性能表、hyperparameter 表；
-- 写 Code Availability、Data Availability 和受限共享说明。
-
-### 19. 我想写论文或修改稿件
-
-适合场景：你需要写 Methods、Results、Discussion、摘要、标题，或把中文作者笔记转成英文稿件内容。
-
-它会帮你完成：
-
-- Methods 的结构化写作；
-- Results 中队列、验证集、性能、校准、亚组和失败案例的表达；
-- Discussion 中贡献、局限性、临床意义和未来工作的表述；
-- 避免把“相关性”写成“因果”，避免把“AUC 高”写成“可临床使用”；
-- 中文研究想法到英文投稿语言的转换。
-
-### 20. 图表：我想规划高水平论文的图、表和图例
-
-适合场景：你的文章已经有模型结果，但不知道主图、补充图、Table 1、模型性能表、机制图、ROC、校准曲线、DCA、KM、SHAP 或 Grad-CAM 应该怎么安排。
-
-它会帮你完成：
-
-- 规划研究流程图、患者筛选流程图、radiomics pipeline、deep learning pipeline 和机制图；
-- 设计 Table 1、模型性能表、外部验证表、影像参数表、特征表和补充材料表；
-- 判断是否缺少校准曲线、决策曲线、失败案例、中心特异性结果、亚组分析或读者研究图；
-- 帮你写 figure legend，明确样本量、队列、指标、置信区间和统计检验；
-- 避免只放 ROC、图表与结论脱节、可解释性图被过度解释。
-
-### 21. 预审：我想投稿前模拟审稿人挑问题
-
-适合场景：论文已经基本写好，你想在投稿前从方法学、报告规范、图表、统计、数据共享和目标期刊角度做一次严格检查。
-
-它会帮你完成：
-
-- 识别可能导致拒稿或大修的硬伤：无患者级划分、数据泄漏、无外部验证、标签不清、标注不清、统计不完整；
-- 检查 CLAIM、CLEAR、RQS、IBSI、TRIPOD+AI、PROBAST+AI、STARD-AI 等规范缺项；
-- 审查摘要和 Discussion 是否把 AUC、相关性或回顾性结果写得过强；
-- 给出 Methods、Results、Discussion、图表、补充材料和 Data/Code Availability 的修改优先级；
-- 按目标期刊风格判断当前稿件更适合冲刺、主投还是备选。
-
-### 22. 我想知道这篇文章适合投哪个期刊
-
-适合场景：文章已经基本写好，你想结合现有同类文章、近年发表情况、目标期刊风格和自己的研究强弱点，判断适合投稿到哪里。
-
-它会帮你完成：
-
-- 从题目、摘要、Methods、Results 和 Discussion 中提炼文章类型、核心卖点和最大短板；
-- 结合疾病、模态、任务、样本量、中心数量、外部验证、前瞻性、读者研究、校准和临床实用性判断稿件档位；
-- 检索或整理近 3-5 年目标期刊同类文章，看哪些期刊近期发表过相似主题；
-- 按“冲刺期刊、主投期刊、备选期刊”给出投稿梯队；
-- 说明每个期刊的匹配理由、投稿风险和投稿前需要补强的内容；
-- 避免只按影响因子选刊，避免把验证不足的文章包装成顶刊稿件。
-
-### 23. 转化：我想把模型往临床应用、读者研究或前瞻验证推进
-
-适合场景：你的模型已经完成回顾性验证，希望进一步设计临床使用场景、读者研究、医生+AI 增益、前瞻性验证、真实世界验证或工作流集成。
-
-它会帮你完成：
-
-- 明确模型服务的临床场景：筛查、诊断、分型、分期、预后、疗效预测、随访或 MDT 决策；
-- 设计模型输出：风险分数、分层、mask、热图、报告辅助或治疗反应概率；
-- 规划读者研究：读片者年资、随机顺序、washout、无 AI/有 AI 对比、时间和信心评分；
-- 判断是否有校准、DCA、net benefit、阈值对应动作、假阳性/假阴性后果；
-- 设计前瞻性验证、真实世界验证、PACS/RIS 工作流位置和部署限制；
-- 避免从回顾性 AUC 直接宣称“可临床应用”。
-
-### 24. 我需要回复审稿人
-
-适合场景：审稿人质疑没有外部验证、样本量小、数据泄漏、分割不清楚、缺少校准、缺少临床实用性或报告规范不足。
-
-它会帮你制定：
-
-- 每条审稿意见的回应策略；
-- 能补做的分析、不能补做时的合理解释和局限性表述；
-- 对 manuscript 的具体修改位置和修改内容；
-- 避免承诺没有完成的实验、外部验证、代码公开或新图表。
-
-### 25. 我需要依据和来源
-
-适合场景：你需要知道某个规则、建议或写法来自哪里，或者要确认最新指南和期刊要求。
-
-它会帮你追溯：
-
-- 报告规范和方法学建议的来源；
-- 文献检索的时间范围和期刊范围；
-- 近三年前沿文献的代表性 PMID；
-- 需要重新联网核验的指南、期刊政策或最新文献。
+---
 
 ## 安装
 
 这个仓库现在只有一个可安装入口：`radiology-skills/`。
 
-22 个细分模块已经合并到 `radiology-skills/modules/`，由总入口按任务自动读取，不需要单独安装。
+22 个细分模块已经合并到 `radiology-skills/modules/`，由总入口按任务自动读取，不需要单独安装。请复制整个 `radiology-skills/` 文件夹，而不是只复制 `SKILL.md`，因为总入口依赖 `references/`、`modules/`、`scripts/` 和 `agents/`。
 
-更详细的安装说明见 [install.md](install.md)。
+更详细的安装说明见 [`install.md`](install.md)。
+
+Windows PowerShell：
 
 ```powershell
 git clone https://github.com/huang-sir1/radiology-skills.git
@@ -331,38 +235,7 @@ mkdir -p ~/.codex/skills
 cp -R radiology-skills ~/.codex/skills/
 ```
 
-内部 22 个模块包括：
-
-| 模块 | 用途 |
-|---|---|
-| `radiology-frontier` | 前沿方向、创新点和高水平期刊发表规律 |
-| `radiology-design` | 课题可行性、研究设计和验证策略 |
-| `radiology-search` | 文献和公共数据检索、PMID/DOI 核验 |
-| `radiology-annotation` | ROI/VOI/mask 标注 SOP、一致性和质控 |
-| `radiology-data` | DICOM 脱敏、数据共享、代码和 FAIR |
-| `radiology-ethics` | 伦理、知情同意、隐私和数据治理 |
-| `radiology-radiomics` | 传统影像组学流程、IBSI/CLEAR、泄漏检查 |
-| `radiology-deep-learning` | 影像深度学习、CNN/Transformer/基础模型设计 |
-| `radiology-radiogenomics` | 影像基因组学、多组学、单细胞和空间转录组机制解析 |
-| `radiology-stats` | ROC、DeLong、校准、DCA、MRMC、生存和样本量 |
-| `radiology-figure` | Radiology 风格图表、统计图和影像 panel |
-| `radiology-reporting` | CLAIM、TRIPOD+AI、CLEAR、RQS、IBSI、STARD 等规范 |
-| `radiology-writing` | Radiology 风格论文结构、摘要、Methods、Results、Discussion |
-| `radiology-polishing` | 英文润色、统计表述和过度结论检查 |
-| `radiology-reader` | 医学影像论文中英对照精读 |
-| `radiology-citation` | 影像期刊范围内的引用检索和 RIS/ENW/BibTeX 导出 |
-| `radiology-prereview` | 投稿前模拟审稿和 blocker/major/minor 问题清单 |
-| `radiology-journal` | 选刊、投稿梯队和期刊匹配判断 |
-| `radiology-response` | 审稿意见逐点回复和返修策略 |
-| `radiology-translation` | 临床转化、读者研究、前瞻验证和部署路径 |
-| `radiology-grant` | 国自然、省自然和院级课题申报写作 |
-| `radiology-paper2ppt` | 影像论文中文汇报 PPT |
-
-如有需要，重启 Codex 或重新加载 skills。
-
-## 使用
-
-可以这样向 Codex 提问：
+安装后可以直接用自然语言触发，例如：
 
 ```text
 Use $radiology-skills to design, audit, or write a radiomics or medical imaging deep learning study.
@@ -370,26 +243,37 @@ Use $radiology-skills to design, audit, or write a radiomics or medical imaging 
 
 也可以直接用中文提问，例如：
 
-- 我有 300 例多中心肝癌 MRI，想找近三年前沿方向并设计课题。
-- 根据 2023-2026 年高水平期刊文献规律，帮我判断这批数据最适合做什么影像 AI 课题。
-- 结合近三年 Radiology、Lancet Digital Health、Nature Medicine、npj Precision Oncology 等期刊发表规律，帮我找创新点。
-- 影像组学模型做完了，我有 bulk RNA、单细胞和空间转录组，帮我设计机制解析路线。
-- 我想申报国自然青年基金，帮我润色立项依据和科学问题。
-- ROI 是两位医生勾画的，帮我设计标注 SOP 和 Methods 写法。
-- 帮我检查 LASSO、Cox、C-index、校准曲线和 DCA 的统计流程是否规范。
-- 帮我规划主图、补充图、Table 1、ROC、校准曲线和 figure legend。
-- 投稿前帮我模拟审稿人做一次严格预审。
-- 帮我整理代码、特征表、模型参数和补充材料，提高可复现性。
-- 我有 4 家医院的数据，帮我设计多中心外部验证和中心差异分析。
-- 我想用 TCIA、TCGA 或 GEO 做外部验证和机制解释，帮我判断怎么用。
-- 帮我写伦理审批、知情同意豁免和数据共享限制的表述。
-- 帮我设计读者研究、前瞻性验证和临床转化路径。
-- 帮我检查这段影像组学 Methods 有没有数据泄漏。
-- 我想做 CT 深度学习预后模型，帮我设计验证方案。
-- 我的文章已经写好了，帮我结合近年发表情况选刊。
-- 我的文章是单中心回顾性影像组学，没有外部验证，结合近三年高水平期刊规律判断能不能投 Nature Medicine 或 Lancet Digital Health。
-- 审稿人说没有外部验证，帮我写回复和修改策略。
+```text
+我有 300 例多中心肝癌 MRI，想找近三年前沿方向并设计课题。
+帮我审查这个放射组学流程是否符合 IBSI / CLEAR，有没有数据泄漏。
+按 CLAIM 2024 审计这篇影像深度学习论文，列出投稿前必须补齐的问题。
+投稿前帮我模拟审稿，并给出致命问题/大修/小修分级的修改清单。
+把这个研究改写成国自然标书：科学问题、技术路线、创新点、可行性。
+我们也想申请 NIH R01，能不能用同一份研究改写？先看看我有没有资格申请。
+```
 
-## 注意
+如有需要，重启 Codex 或重新加载 skills。
+## 新增技能的约定
 
-这个 skill 用于研究设计、方法学审查和论文写作辅助，不提供临床诊断、治疗建议或针对具体患者的医学影像解读。
+```text
+radiology-skills/modules/radiology-<主题>/
+├── SKILL.md      # 必需：元信息(名称、描述) + 工作流 + 规则 + 下游衔接说明
+├── README.md     # 必需：面向人的中文/双语说明
+└── references/   # 推荐：模块化规则文件
+```
+
+新增后请同步更新本 README 的 [技能索引](#技能索引) 和 [快速选择](#我现在卡在快速选择)，并给新技能起一个符合"虚拟专科顾问"风格的中文角色名。
+
+---
+
+## 更新记录
+
+- **2026-07（三）** — README 全面中文化改写：补齐"核心卖点"独立板块；为全部 22 个技能设计中文角色名（如"课题诊断师""模拟审稿官""标书操盘手"），统一到"虚拟专科顾问团队"的表达框架；技能索引、快速选择、状态标签（测试版/稳定版/草案）等结构性文字全部改为中文，仅保留期刊名、基金机构名、国际标准化报告规范/统计方法的专有名称（如 CLAIM、TRIPOD+AI、ROC、AUC 等——这是国内影像科研领域的通行写法，保留是为了专业性而非疏漏）以及技能标识本身（因涉及实际调用，不能更名）。技术内容与结论未作任何改动。
+- **2026-07（二）** — `radiology-grant` 新增国际基金体系（`references/international-grants.md`）：NIH R01、ERC（Starting/Consolidator/Advanced，含 2026 新两段式结构）、Wellcome Trust 的结构与评审标准，以及**面向中国申请人的真实资格核查**（NIH 2025–2026 外籍分包新规、ERC 主持机构须在欧盟/联系国、Wellcome 部分项目的地区限制），并给出更易触达的跨境路径（NSFC 国际合作项目、RGC、MSCA、基金会）。国自然/省自然保持为主线与最成熟的部分。
+- **2026-07（一）** — 全套技能审查后的扩展：为写作、图表、报告规范、润色、数据、投稿策略六个技能新增 Nature 系列期刊分支（摘要结构、图表尺寸/图版字母大小写、Reporting Summary、Extended Data/Source Data、数字与参考文献格式的差异，均已标注需按具体期刊实时核实）；为深度学习技能新增可解释性/不确定性量化/鲁棒性（含 FUTURE-AI 框架引用）；为放射组学技能补充 delta 放射组学与体模/重复扫描稳定性；为选题技能补充液体活检/病理基础模型融合等前沿方向；修复图表技能内部图版字母大小写不一致的问题；补充多处技能间的衔接说明。原有的方法学规则与既有 _Radiology_ 家族内容未改动。这些更新已合并进当前 `radiology-skills/modules/`。
+
+---
+
+## 免责声明
+
+这些技能用于科研选题、研究设计、方法学、统计、图表、论文写作、投稿策略、审稿回复和基金文本辅助。它们**不提供医疗建议、临床诊断或个体患者影像判读**，也不能替代生物统计、临床、伦理、监管或法律审查，**不构成基金资助资格的正式认定**。作者仍需对所有数据、分析、结论、伦理审批、投稿材料和基金申报内容的准确性与完整性负责。投稿或申报前，请确认**当前版本**的报告规范、目标期刊投稿要求、Nature Portfolio 编辑政策，以及国自然/省自然或 NIH、ERC、Wellcome 等官方基金申报指南与申请资格——这些规则变化频繁，本工具提供的是结构化的起点，不是最终依据。

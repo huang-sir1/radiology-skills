@@ -6,6 +6,10 @@
 - Order panels by argument: overview → key result → supporting/mechanism. Reading order
   left-to-right, top-to-bottom.
 - Composite figures: a schematic/flow panel (A) can orient the reader before data panels.
+- Panel-letter case is venue-dependent, not a style choice: uppercase A/B/C is the
+  _Radiology_-family default (`radiology-figure-guidelines.md`); lowercase a/b/c is the
+  Nature-family default (`nature-figure-spec.md`). Set it once via `api.md`'s `panel_letter()`
+  and keep the same case in every figure of the manuscript.
 
 ## Typography
 - Sans-serif (Arial/Helvetica). One family throughout. Sizes: labels ~8 pt, ticks ~7 pt,
@@ -29,7 +33,10 @@
 - Bars start at 0 for counts/magnitudes; log scale only when justified and labelled.
 
 ## Accessibility & reproduction
-- Check the figure in grayscale and with a color-blindness simulator.
+- Check the figure in grayscale and with a color-blindness simulator — e.g. Coblis
+  (color-blindness.com), Color Oracle (desktop, simulates live), or programmatically via
+  `colorspacious`/`daltonlens` in the same script that renders the figure, so the check is
+  reproducible rather than a one-off manual pass.
 - Sufficient contrast; line weights ≥ 0.8 pt so they survive printing.
 - Vector text remains selectable/translatable (`svg.fonttype='none'`).
 

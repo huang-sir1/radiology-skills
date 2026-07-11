@@ -2,13 +2,15 @@
 name: radiology-skills
 description: >-
   Use when planning, auditing, writing, or revising radiomics, medical imaging AI,
-  and radiology deep learning studies. Trigger for research frontiers, literature,
+  and radiology deep learning studies for Radiology/RSNA, Nature-portfolio, Lancet,
+  Cell, npj, European Radiology, or similar venues. Trigger for research frontiers, literature,
   CT/MRI/PET/ultrasound datasets, ROI/masks/segmentation annotation, radiomics
-  features, CNN/Transformer/foundation models, radiogenomics and multi-omics
-  mechanisms, statistics, figures, pre-submission review, reproducibility,
+  features, CNN/Transformer/foundation models, trustworthy AI, FUTURE-AI,
+  uncertainty/OOD/interpretability, radiogenomics and multi-omics mechanisms,
+  statistics, figures, pre-submission review, reproducibility,
   multicenter validation, public datasets, ethics/privacy, clinical translation,
   validation/leakage, CLAIM/CLEAR/RQS/IBSI/TRIPOD+AI/PROBAST+AI/STARD-AI,
-  manuscript writing, journal selection, grants, reviewer response, and
+  manuscript writing, journal selection, NSFC/provincial/international grants, reviewer response, and
   Chinese-English support.
 ---
 
@@ -18,11 +20,18 @@ description: >-
 
 Use this skill to help researchers design, audit, write, and revise radiomics and
 medical imaging deep learning studies. Keep the work grounded in the user's data,
-clinical question, imaging modality, validation plan, and reporting standard.
+clinical question, imaging modality, target venue, validation plan, and reporting
+standard.
 
 This skill is bilingual-aware. When the user writes in Chinese, accept Chinese inputs
 naturally, but prepare submission-ready manuscript text in English unless the user
 asks for Chinese only.
+
+The bundled module set covers Radiology/RSNA-style imaging manuscripts and
+Nature-portfolio/npj-style imaging AI papers, plus Lancet-family, Cell Reports Medicine,
+European Radiology, grant, and clinical-translation workflows where relevant. Verify
+current journal, reporting, and grant requirements when the final output depends on a
+live policy.
 
 ## Default stance
 
@@ -36,6 +45,9 @@ asks for Chinese only.
   weights, or reviewer-requested analyses.
 - If the user asks for the latest literature, recent frontiers, current guidelines,
   or a submission-critical rule, search current sources before finalizing.
+- If the target venue is known, apply the correct venue family: Radiology/RSNA defaults
+  differ from Nature-portfolio/npj rules for abstract shape, panel-letter case, figure
+  dimensions, Reporting Summary, Source Data, and reference style.
 
 ## First move
 
@@ -51,10 +63,10 @@ under `modules/`.
 | Use curated 2023-2026 high-impact literature evidence for frontiers, project design, or journal fit | 证据 | `references/literature-evidence-2023-2026.md`, `references/frontier-patterns-2023-2026.md`, `references/journal-patterns-2023-2026.md` |
 | Use TCIA, TCGA, GEO, CPTAC, IDC, or other public datasets | 公库 | `references/public-datasets.md` |
 | Traditional radiomics workflow | 组学 | `references/radiomics.md` |
-| Deep learning, segmentation, foundation models | 深度 | `references/deep-learning.md` |
+| Deep learning, segmentation, foundation models, uncertainty, OOD, interpretability, trustworthy AI | 深度 | `references/deep-learning.md`, and if detailed: `modules/radiology-deep-learning/SKILL.md` |
 | Interpret radiomics or imaging AI models with transcriptomics, single-cell RNA-seq, spatial transcriptomics, or multi-omics data | 机制 | `references/mechanism.md` |
 | Turn data into a feasible study | 设计 | `references/study-design.md` |
-| Polish or restructure grant/funding proposals for imaging AI projects | 基金 | `references/grant-writing.md` |
+| Polish or restructure NSFC/provincial/institutional/international grant proposals for imaging AI projects | 基金 | `references/grant-writing.md`, and if international eligibility is involved: `modules/radiology-grant/SKILL.md` |
 | Plan or audit ROI, VOI, masks, readers, segmentation annotation, and reader agreement | 标注 | `references/annotation.md` |
 | Plan or audit sample size, feature selection, modeling statistics, metrics, survival analysis, calibration, and DCA | 统计 | `references/statistics.md` |
 | Check validation, leakage, metrics, calibration | 验证 | `references/validation.md` |
@@ -64,7 +76,7 @@ under `modules/`.
 | Ethics approval, consent waiver, privacy, and data-use limitations | 伦理 | `references/ethics.md` |
 | Reproducibility, code, feature tables, model parameters, and supplementary materials | 复现 | `references/reproducibility.md` |
 | Manuscript wording and structure | 写作 | `references/writing.md` |
-| Design manuscript figures, tables, legends, and graphical workflows | 图表 | `references/figures.md` |
+| Design manuscript figures, tables, legends, graphical workflows, or venue-specific figure sets | 图表 | `references/figures.md`, and if target venue is Nature/npj/Lancet/Cell/European Radiology: `modules/radiology-figure/SKILL.md` |
 | Simulate reviewer/methodology pre-submission audit before journal submission | 预审 | `references/pre-submission.md` |
 | Choose target journals and submission tiers after a manuscript is drafted | 选刊 | `references/journal-selection.md` |
 | Clinical utility, reader study, prospective validation, workflow integration, or deployment framing | 转化 | `references/clinical-translation.md` |
@@ -87,20 +99,20 @@ to install it separately.
 | Data availability, DICOM de-identification, repositories, or FAIR | `modules/radiology-data/SKILL.md` |
 | Ethics, consent, privacy, or data governance | `modules/radiology-ethics/SKILL.md` |
 | Hand-crafted radiomics and IBSI/CLEAR workflows | `modules/radiology-radiomics/SKILL.md` |
-| CNN, Transformer, foundation model, segmentation, or deep-learning design | `modules/radiology-deep-learning/SKILL.md` |
+| CNN, Transformer, foundation model, segmentation, interpretability, uncertainty, OOD, or trustworthy deep-learning design | `modules/radiology-deep-learning/SKILL.md` |
 | Radiogenomics, transcriptomics, single-cell, spatial, or multi-omics mechanism | `modules/radiology-radiogenomics/SKILL.md` |
 | ROC, calibration, DCA, MRMC, survival, sample size, or high-dimensional statistics | `modules/radiology-stats/SKILL.md` |
-| Publication figures, Radiology-style charts, or imaging panels | `modules/radiology-figure/SKILL.md` |
-| CLAIM, TRIPOD+AI, CLEAR, RQS, IBSI, STARD, PRISMA-DTA, PROBAST, or compliance audit | `modules/radiology-reporting/SKILL.md` |
-| Manuscript drafting or section reconstruction | `modules/radiology-writing/SKILL.md` |
-| Radiology-style English polishing | `modules/radiology-polishing/SKILL.md` |
+| Publication figures, Radiology/Nature/Lancet/European-style charts, or imaging panels | `modules/radiology-figure/SKILL.md` |
+| CLAIM, TRIPOD+AI, CLEAR, RQS/RQS 2.0, IBSI, STARD, PRISMA-DTA, PROBAST, FUTURE-AI, Nature Reporting Summary, or compliance audit | `modules/radiology-reporting/SKILL.md` |
+| Manuscript drafting or section reconstruction for Radiology, Nature, Lancet, Cell, European Radiology, or npj-style venues | `modules/radiology-writing/SKILL.md` |
+| Radiology/Nature-family English polishing and statistical style | `modules/radiology-polishing/SKILL.md` |
 | Full-paper bilingual reading | `modules/radiology-reader/SKILL.md` |
 | Citation retrieval or reference export | `modules/radiology-citation/SKILL.md` |
 | Pre-submission mock review | `modules/radiology-prereview/SKILL.md` |
 | Journal selection and submission tiering | `modules/radiology-journal/SKILL.md` |
 | Reviewer response and revision strategy | `modules/radiology-response/SKILL.md` |
 | Clinical translation, reader study, prospective validation, or deployment | `modules/radiology-translation/SKILL.md` |
-| NSFC, provincial, or institutional grant writing | `modules/radiology-grant/SKILL.md` |
+| NSFC, provincial, institutional, NIH/ERC/Wellcome-style grant writing and eligibility triage | `modules/radiology-grant/SKILL.md` |
 | Imaging paper to Chinese journal-club PPT | `modules/radiology-paper2ppt/SKILL.md` |
 
 ## Standard workflow
@@ -113,12 +125,14 @@ to install it separately.
    or `mixed`.
 2. **Build the study card.** Capture disease, modality, sample size, centers,
    labels, endpoint, segmentation, data format, split plan, external validation,
-   clinical variables, annotation details, statistics plan, ethics/sharing limits,
-   and intended output.
+   clinical variables, annotation details, target venue or funding scheme, statistics
+   plan, ethics/sharing limits, and intended output.
 3. **Choose the strictest useful path.** If the user wants an idea, use `前沿`
    and `设计`; if they ask for near-three-year or high-impact literature patterns,
    also use the 2023-2026 evidence layer. If the user has a draft or methods section,
    use `验证`, `规范`, and the relevant technical module.
+   If the user names a target journal family, load the corresponding module branch
+   instead of applying Radiology defaults blindly.
 4. **Expose risks early.** Lead with data leakage, insufficient labels, weak
    endpoint, no patient-level split, no external validation, unclear segmentation,
    weak statistics, center effects, unsupported public-data claims, missing ethics
@@ -194,6 +208,8 @@ For grant proposal polishing, return:
 - 技术路线：
 - 创新点：
 - 可行性/研究基础：
+申请资格/政策核验
+- [only for international or policy-sensitive schemes; do not assume eligibility]
 
 润色稿
 [only rewrite supplied text; do not invent preliminary data]
@@ -278,3 +294,7 @@ Scripts are helpers, not substitutes for manual scientific judgment.
 - Do not recommend public sharing of identifiable imaging, clinical, or omics data.
 - Do not claim clinical readiness, workflow benefit, or patient outcome improvement
   from retrospective model performance alone.
+- Do not assume NIH, ERC, Wellcome, or other international grant eligibility for a
+  China-based applicant or institution; verify the current funder rules first.
+- Do not apply Radiology/AMA style rules to a Nature-family manuscript without checking
+  venue-specific instructions.

@@ -30,6 +30,10 @@ author instructions (limits change) — verify live (→ radiology-search).
 - The relevant **EQUATOR checklist** (CLAIM/CLEAR/TRIPOD+AI/STARD) — most top venues require it.
 - Data/Code Availability statements (→ radiology-data).
 - Ethics/consent statement (→ radiology-ethics).
+- **Nature-portfolio venues add**: the Reporting Summary (+ Editorial Policy Checklist if
+  requested) (→ radiology-reporting/nature-reporting-summary.md), and a decided Extended
+  Data/Supplementary Information/Source Data split (→ radiology-data,
+  radiology-figure/nature-figure-spec.md).
 
 ## Transfer cascades
 
@@ -41,7 +45,7 @@ author instructions (limits change) — verify live (→ radiology-search).
 - Balance fit, speed, and risk. A long shot at the top tier costs months; weigh against a strong
   target with faster turnaround.
 
-## Pre-flight checklist
+## Pre-flight checklist (_Radiology_-family)
 
 ```
 [ ] Article type + current limits confirmed (live)
@@ -51,4 +55,23 @@ author instructions (limits change) — verify live (→ radiology-search).
 [ ] Cover letter angled to the venue
 [ ] Suggested reviewers (no COI)
 [ ] Figures meet spec (→ radiology-figure)
+```
+
+## Pre-flight checklist (Nature-portfolio-family)
+
+```
+[ ] Article type + current word/display-item limits confirmed (live)
+[ ] Abstract unstructured, within word cap, no references, no Summary statement/Key Results box
+    (→ radiology-writing/nature-family-shape.md)
+[ ] Main-text display items vs Extended Data vs Supplementary Information decided
+    (→ radiology-data, radiology-figure/nature-figure-spec.md)
+[ ] Source Data prepared per main + Extended Data figure
+[ ] Panel letters lowercase a/b/c; figure widths 89/183 mm (→ radiology-figure/nature-figure-spec.md)
+[ ] EQUATOR checklist attached AND Reporting Summary / Editorial Policy Checklist completed
+    (→ radiology-reporting/nature-reporting-summary.md)
+[ ] Data/Code Availability worded as a condition of publication + Ethics statements
+    (→ radiology-data / radiology-ethics)
+[ ] Reference list numbered in citation order (→ radiology-citation)
+[ ] Cover letter angled to the venue
+[ ] Suggested reviewers (no COI)
 ```

@@ -1,38 +1,32 @@
 # radiology-ethics
 
-**Stage 2 — Data & Annotation.** The human-subjects governance counterpart to `radiology-data`:
-Ethics, Informed-Consent, and privacy/sharing text that is compliant and honestly bounded.
+面向医学影像和影像多组学研究的伦理、知情同意、隐私和数据共享治理 skill。它帮助作者把 retrospective / prospective / multi-center / registered study 的伦理表述写清楚，并让 Ethics、Consent、Data Availability 和数据共享承诺彼此一致。
 
-## What it does
+## 它能做什么
 
-- **Approval & consent** — study-type framing (retrospective/prospective/registered/
-  multi-center), IRB/ethics-committee name, number and date (placeholders, never fabricated),
-  consent obtained vs documented waiver and its basis, per-center approvals.
-- **Re-identification risk read** — DICOM metadata, burned-in pixel PHI, facial reconstruction
-  (defacing), dates/ages, small/rare-disease cohorts, and genomic data; mitigations for each.
-- **Governance & sharing** — HIPAA/GDPR/PIPL framing, data-use agreements, controlled access,
-  and a consistency check so the Ethics text matches the Data Availability promise.
-- **Submission-ready statements** + a 待确认 list of author/IRB-only facts.
+- 起草 **approval & consent** 表述：伦理委员会名称、批准号、日期、知情同意取得或豁免、分中心审批。
+- 评估 **re-identification risk**：DICOM metadata、burned-in pixel PHI、face reconstruction、日期/年龄、小病种队列、基因组数据。
+- 规划 **governance & sharing**：HIPAA / GDPR / PIPL、DUA、controlled access、受限共享和不可共享理由。
+- 输出 submission-ready statements，并列出必须由作者或 IRB 确认的事实。
 
-## Trigger examples
+## 典型触发
 
-- "帮我写伦理审批、知情同意豁免和隐私表述。"
-- "Retrospective multi-center study — how do I word the consent waiver?"
-- "We have imaging + genomic data — what's the re-identification risk and how do we share it?"
+- “帮我写伦理审批、知情同意豁免和隐私表述。”
+- “回顾性多中心研究 consent waiver 应该怎么写？”
+- “影像 + 基因组数据共享时有什么再识别风险？”
 
-## Reference files
+## 参考文件
 
-| File | Use |
+| File | 用途 |
 |---|---|
-| `references/approval-consent.md` | Study-type → consent model; approval statement templates |
-| `references/reidentification-risk.md` | Risk sources + mitigations; genomics note |
-| `references/governance-sharing.md` | HIPAA/GDPR/PIPL, DUAs, access tiers, consistency check |
+| `references/approval-consent.md` | 研究类型到 consent model，approval statement 模板 |
+| `references/reidentification-risk.md` | 风险来源、缓解措施、基因组数据说明 |
+| `references/governance-sharing.md` | HIPAA / GDPR / PIPL、DUA、access tiers、一致性检查 |
 
-## Handoffs
+## 下游衔接
 
-`radiology-data` (de-id mechanics, repositories, availability statements) ·
-`radiology-radiogenomics` (controlled genomics) · `radiology-reporting` (open-science items) ·
-`radiology-grant` (ethics/feasibility framing).
+`radiology-data`（去标识化、仓库、availability statements）· `radiology-radiogenomics`（受控组学队列）· `radiology-reporting`（open-science checklist items）· `radiology-grant`（伦理与可行性写法）。
 
-Drafting and risk-flagging support — **not legal advice**. Confirm all approvals, consent, and
-DUAs with your institution/IRB.
+## 边界
+
+该 skill 提供科研文本和风险提示，不提供法律意见。伦理批准、同意状态、DUA 和机构要求必须由作者团队与 IRB / 机构确认。

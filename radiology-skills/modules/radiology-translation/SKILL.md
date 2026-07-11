@@ -43,6 +43,7 @@ evidence.
 | [references/reader-study.md](references/reader-study.md) | MRMC reader-study design: readers, washout, randomisation, with/without AI, outcomes |
 | [references/threshold-to-action.md](references/threshold-to-action.md) | Mapping operating points to actions; net-benefit / decision-curve; false-positive/negative consequences |
 | [references/prospective-deployment.md](references/prospective-deployment.md) | Prospective/real-world validation design; PACS/RIS integration; monitoring and drift |
+| [references/regulatory-and-deployment-readiness.md](references/regulatory-and-deployment-readiness.md) | The user asks about clinical translation, FDA/EU/regulatory readiness, silent deployment, locked/adaptive models, model cards, lifecycle monitoring, or whether a retrospective AI/radiogenomics model can claim clinical use |
 
 ## Workflow
 
@@ -52,9 +53,12 @@ evidence.
    each triggers, and net-benefit framing across plausible thresholds.
 3. **Design the reader study** (reader-study.md) if clinician impact is claimed — MRMC, washout,
    randomised order, alone vs +AI, reader experience, time/confidence outcomes.
-4. **Plan prospective/real-world validation** (prospective-deployment.md) — temporal/prospective/
+4. **For regulatory/deployment framing**, open `regulatory-and-deployment-readiness.md` and
+   bound the claim by intended use, model lock/adaptation, human oversight, monitoring, and
+   evidence level.
+5. **Plan prospective/real-world validation** (prospective-deployment.md) — temporal/prospective/
    RWE design, workflow position, monitoring for drift, failure handling.
-5. **Bound the claim** — state exactly what level of evidence supports what level of claim;
+6. **Bound the claim** — state exactly what level of evidence supports what level of claim;
    route statistics to `radiology-stats` and reporting to `radiology-reporting`.
 
 ## Output contract
@@ -63,8 +67,10 @@ evidence.
 2. **`Threshold-to-action map`** — operating point(s) → action; net-benefit/DCA framing.
 3. **`Reader-study design`** (if applicable) — readers, washout, randomisation, arms, outcomes,
    statistic (MRMC → radiology-stats).
-4. **`Prospective/real-world plan`** — design, workflow integration, monitoring, drift.
-5. **`Claim ladder`** — what each evidence level licenses (retrospective → reader → prospective →
+4. **`Regulatory/deployment readiness`** — intended use, locked/adaptive status, oversight,
+   change-control/revalidation, monitoring, and exact items needing live verification.
+5. **`Prospective/real-world plan`** — design, workflow integration, monitoring, drift.
+6. **`Claim ladder`** — what each evidence level licenses (retrospective → reader → prospective →
    deployment), with the current honest claim marked.
 
 ## Quality bar

@@ -1,59 +1,55 @@
 # radiology-reporting
 
-**Map an imaging study to the right reporting/quality guideline and audit it item-by-item
-before it reaches a reviewer.** This is the compliance backbone of `radiology-skills` and
-the single highest-leverage skill for getting AI/radiomics papers into _Radiology_.
+面向医学影像研究投稿前的报告规范与质量清单审计 skill。它是 `radiology-skills` 的合规骨架：把 AI、radiomics、prediction model、diagnostic accuracy、reader study、systematic review 等研究路由到正确 guideline stack，并逐项判断稿件是否满足审稿人会检查的要求。
 
-## What it does
+## 它能做什么
 
-1. **Classifies** the study (task, design, endpoint, model dev/validation).
-2. **Routes** it to the correct guideline stack — usually a *reporting* guideline **plus** a
-   *quality / risk-of-bias* tool.
-3. **Audits** every checklist item: `PRESENT / PARTIAL / MISSING / NA`, with manuscript
-   location and a concrete fix.
-4. **Prioritises** fixes as `Blocker / Should-fix / Polish`, each tied to the reviewer risk.
+1. **Classify** 研究类型：任务、设计、endpoint、模型开发/验证状态。
+2. **Route** 到正确 reporting guideline 与 quality / risk-of-bias 工具组合。
+3. **Audit** 每个 checklist item：`PRESENT / PARTIAL / MISSING / NA`，并给出稿件位置和具体修复动作。
+4. **Prioritise** 修改：Blocker / Should-fix / Polish，并说明对应 reviewer risk。
 
-## Guidelines covered (current versions)
+## 覆盖的规范
 
-| Guideline | Version | Scope |
-|---|---|---|
-| **CLAIM** | 2024 Update (Radiology: AI) | Any medical-imaging AI study |
-| **TRIPOD+AI** | 2024 | Diagnostic/prognostic prediction models (regression or ML) |
-| **PROBAST / PROBAST-AI** | — | Risk of bias for prediction models |
-| **CLEAR** | 2023 (ESR/EuSoMII), 58 items | Radiomics reporting |
-| **METRICS** | 2024 (EuSoMII), 30 items / 9 categories | Radiomics methodological quality |
-| **RQS / RQS 2.0** | 2017 / 2025 | Radiomics quality score (readiness levels) |
-| **IBSI** | — | Standardised radiomic features + image processing |
-| **STARD** | 2015, 30 items | Diagnostic-accuracy studies |
-| **PRISMA-DTA** | 2018 | DTA systematic reviews |
-| **QUADAS-2 / QUADAS-C** | — | Risk of bias in DTA studies |
-| **STROBE** | — | Observational studies |
-| **CONSORT-AI / SPIRIT-AI** | 2020 | AI trials / protocols |
-| **DECIDE-AI** | — | Early-stage clinical evaluation of decision-support AI |
+| Guideline | 适用范围 |
+|---|---|
+| **CLAIM** | 医学影像 AI 研究 |
+| **TRIPOD+AI** | 诊断/预后 prediction model |
+| **PROBAST / PROBAST-AI** | Prediction model risk of bias |
+| **CLEAR** | Radiomics reporting |
+| **METRICS** | Radiomics methodological quality |
+| **RQS / RQS 2.0** | Radiomics quality score / readiness |
+| **IBSI** | 标准化 radiomic features 与图像处理 |
+| **STARD** | Diagnostic accuracy studies |
+| **PRISMA-DTA** | Diagnostic test accuracy systematic reviews |
+| **QUADAS-2 / QUADAS-C** | DTA risk of bias |
+| **STROBE** | Observational studies |
+| **CONSORT-AI / SPIRIT-AI** | AI clinical trials / protocols |
+| **DECIDE-AI** | Early-stage clinical evaluation of decision-support AI |
 
-## Reference files
+使用时应实时核对 guideline 当前版本和目标期刊要求。
 
-```
+## 参考文件
+
+```text
 references/
-├── guideline-router.md          decision tree + how guidelines stack (hybrid studies)
-├── claim-2024.md                CLAIM 2024 Update, section-by-section
-├── tripod-ai-probast.md         TRIPOD+AI items + PROBAST(-AI) domains
-├── clear-metrics-rqs.md         radiomics reporting (CLEAR) + quality (METRICS, RQS/RQS 2.0)
-├── ibsi-features.md             IBSI image processing + feature reproducibility
-├── stard-prisma-quadas.md       diagnostic accuracy + DTA reviews + risk of bias
-└── radiology-submission-map.md  where each item lives in a Radiology manuscript
+├── guideline-router.md          decision tree 与 hybrid studies 的 guideline stack
+├── claim-2024.md                CLAIM 2024 Update，按章节拆解
+├── tripod-ai-probast.md         TRIPOD+AI items 与 PROBAST(-AI) domains
+├── clear-metrics-rqs.md         CLEAR、METRICS、RQS / RQS 2.0
+├── ibsi-features.md             IBSI 图像处理与特征可复现性
+├── stard-prisma-quadas.md       diagnostic accuracy、DTA reviews、risk of bias
+└── radiology-submission-map.md  每个 item 在 Radiology 稿件中的位置
 ```
 
-## Example prompts
+## 典型触发
 
-- "Audit this manuscript against CLAIM 2024 and give me page-referenced gaps."
-- "I built a CT radiomics model for IDH status. Which checklists do I need?"
-- "Is my feature extraction IBSI-compliant? What must I report?"
-- "Fill the TRIPOD+AI abstract checklist for this paper."
-- "What's my QUADAS-2 risk-of-bias exposure for this DTA review?"
+- “按 CLAIM 2024 审计这篇 manuscript，给出缺口和修改建议。”
+- “我做的是 CT radiomics 预测 IDH，需要哪些 checklist？”
+- “我的特征提取是否 IBSI-compliant？必须报告什么？”
+- “帮我填 TRIPOD+AI abstract checklist。”
+- “这个 DTA review 的 QUADAS-2 风险在哪里？”
 
-## Integrity note
+## 边界
 
-The skill never marks an item compliant to be agreeable, and never invents the missing
-experiment or metric. It surfaces gaps and hands off drafting to `radiology-writing`,
-statistics to `radiology-stats`, and availability wording to `radiology-data`.
+不会为了好看而把缺失项标为合规，也不会编造实验、指标或材料。缺口会交给 `radiology-writing`（补写）、`radiology-stats`（统计）和 `radiology-data`（availability wording）等下游技能处理。

@@ -1,6 +1,6 @@
 ---
 name: radiology-writing
-description: "Draft or rebuild Radiology (RSNA) manuscript sections from author-provided results, figures, notes, or Chinese drafts — the structured abstract, the one-sentence Summary statement, the Key Results box (up to 3 results, up to 75 words), Introduction, Materials and Methods, Results, and a structured Discussion. Use when the user wants to write or restructure imaging-research prose (not just polish it), especially for AI/radiomics/radiogenomics studies. Builds the argument from the evidence, enforces the Radiology manuscript shape and word/figure limits, and never invents data, metrics, or citations."
+description: "Draft or rebuild imaging-AI / radiomics / radiogenomics manuscript sections for Radiology (RSNA), Nature-portfolio/npj, European Radiology, NEJM, Science, or Lancet-family style from author-provided results, figures, notes, or Chinese drafts. Enforces the target venue's manuscript shape: Radiology Summary/Key Results, Nature-style broad scientific narrative, European Radiology key points/clinical relevance, NEJM four-part clinical abstract and SAP rigor, Science compact display-item story, or Lancet-series Research in context and AI/data transparency using The Lancet Digital Health guide as the default proxy. Use when the user wants to write or restructure imaging-research prose, not just polish it. Never invents data, metrics, or citations."
 ---
 
 # Radiology-Style Manuscript Writing
@@ -39,9 +39,16 @@ polishing (for sentence-level polish use `radiology-polishing`).
 | [references/results.md](references/results.md) | Results narrative: flow, performance with CIs, comparisons, validation |
 | [references/discussion.md](references/discussion.md) | Structured Discussion (key-finding first → context → limitations → conclusion) |
 | [references/chinese-author-workflow.md](references/chinese-author-workflow.md) | Notes are Chinese / mixed / lab-note style; translate intent and argument, not clause order |
+| [references/nature-family-shape.md](references/nature-family-shape.md) | Target is Nature Medicine / Nature Biomedical Engineering / Nature Communications / npj Digital Medicine / Cell Reports Medicine etc. — unstructured abstract, no Summary statement/Key Results box, different Methods placement |
+| [references/argument-spine-and-stage-gates.md](references/argument-spine-and-stage-gates.md) | Full manuscript rebuild, rejected-paper rescue, unclear contribution, high-impact submission, or a draft whose story/figures/results do not yet lock together |
+| [references/journal-family-writing-style.md](references/journal-family-writing-style.md) | Target journal family is known, or the user supplied author-guide PDFs/classic papers and wants the manuscript to carry that venue's writing style |
 
 ## Intake (identify before drafting)
 
+- **Target venue/shape**: _Radiology_-family (structured abstract, Summary statement, Key
+  Results — default) or Nature-family (unstructured abstract, no Summary statement/Key Results
+  → `references/nature-family-shape.md`). If undecided, draft the _Radiology_ shape first and
+  confirm venue before finalising the abstract (→ `radiology-journal`).
 - **Section(s)** requested.
 - **Study type**: diagnostic-accuracy, prediction model, radiomics, radiogenomics, reader
   study, observational, trial.
@@ -55,16 +62,24 @@ placeholders rather than inventing content.
 
 ## Writing workflow
 
+0. **For full manuscripts or high-impact rebuilds**, open
+   `argument-spine-and-stage-gates.md` and establish the project context, contribution-first
+   gate, and results-as-validation map before drafting long prose.
+0. **For target-venue writing taste**, open `journal-family-writing-style.md` after confirming
+   the venue family; use it to adjust article shape, title/abstract rhythm, key points, and
+   clinical relevance language.
 1. **One-sentence argument**: *"In [population/modality], we show [advance] using [approach],
    supported by [key result with CI], with [boundary]."*
 2. **Pick the architecture** (article-architecture.md) by study type.
 3. **Map each paragraph to one job**: context / gap / objective / design / cohort / technique
    / analysis / result / comparison / validation / interpretation / limitation.
-4. **Draft from evidence outward** — keep claims next to the numbers that support them.
-5. **Calibrate verbs** to evidence; remove unsupported novelty/"first" claims.
-6. **Fit the _Radiology_ shape** — abstract headings, Summary statement, Key Results,
+4. **For full sections**, draft the topic-sentence chain first. If the claims do not flow,
+   revise the chain before writing full paragraphs.
+5. **Draft from evidence outward** — keep claims next to the numbers that support them.
+6. **Calibrate verbs** to evidence; remove unsupported novelty/"first" claims.
+7. **Fit the _Radiology_ shape** — abstract headings, Summary statement, Key Results,
    structured Discussion.
-7. **Self-review** against the relevant reporting checklist; flag unmet items.
+8. **Self-review** against the relevant reporting checklist; flag unmet items.
 
 ## Section defaults
 
@@ -90,9 +105,15 @@ placeholders rather than inventing content.
 
 1. **`Draft`** — the requested prose in _Radiology_ shape.
 2. **`Section outline`** — 3–7 compact bullets (for a full section).
-3. **`Claim–evidence map`** — `Claim | Evidence (with CI) | Status: supported / needs input`.
-4. **`Assumptions / missing inputs`** — only material gaps.
-5. **`Reporting check`** — checklist items this draft does/doesn't satisfy (→ radiology-reporting).
+3. **`Topic-sentence chain`** — for full sections or major rewrites, the claim sequence before
+   paragraph expansion.
+4. **`Claim–evidence map`** — `Claim | Evidence (with CI) | Status: supported / needs input`.
+5. **`Stage gates`** — for full manuscripts: contribution gate, results-as-validation gate,
+   citation/figure/reporting gates that are passed or still open.
+6. **`Venue style check`** — if the target family is known: abstract shape, title/key-points
+   logic, clinical relevance language, and any guide-derived limits or `VERIFY FROM GUIDE`.
+7. **`Assumptions / missing inputs`** — only material gaps.
+8. **`Reporting check`** — checklist items this draft does/doesn't satisfy (→ radiology-reporting).
 
 For Chinese notes: polished English first, then brief Chinese notes on structural choices.
 
@@ -101,3 +122,5 @@ For Chinese notes: polished English first, then brief Chinese notes on structura
 - Statistics/CIs/tests behind the numbers → `radiology-stats`.
 - Checklist compliance → `radiology-reporting`.
 - Figures/legends → `radiology-figure`.
+- Finding/verifying citations to support a claim in Introduction/Discussion → `radiology-citation`.
+- Draft is complete and ready for a harsh read before submission → `radiology-prereview`.

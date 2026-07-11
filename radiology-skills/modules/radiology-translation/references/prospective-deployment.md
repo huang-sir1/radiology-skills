@@ -33,6 +33,12 @@ Mark which level the study reaches; the claim cannot exceed it.
 - Track performance and **calibration drift** over time and across scanners/sites.
 - Define triggers for recalibration/retraining and who is responsible.
 - Log failures and out-of-distribution inputs.
+- This section is the deployment-lifecycle half of the **FUTURE-AI** framework (Fairness,
+  Universality, Traceability, Usability, Robustness, Explainability —
+  → `radiology-deep-learning/interpretability-uncertainty.md` for the pre-deployment
+  Robustness/Explainability evidence, and `radiology-reporting/guideline-router.md` for how the
+  two connect). Monitoring here operationalises Universality/Robustness in production; it does
+  not substitute for the pre-deployment interpretability and uncertainty evidence.
 
 ## Claim ladder output
 

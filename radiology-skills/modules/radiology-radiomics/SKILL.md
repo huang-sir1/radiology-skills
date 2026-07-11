@@ -40,7 +40,7 @@ partition hygiene reviewers enforce.
 | File | Open when |
 |---|---|
 | [references/preprocessing-ibsi.md](references/preprocessing-ibsi.md) | Resampling, intensity normalisation, gray-level discretisation/bin width, filters, IBSI reporting |
-| [references/feature-extraction.md](references/feature-extraction.md) | Feature families, PyRadiomics settings, aggregation, software/version, parameter file |
+| [references/feature-extraction.md](references/feature-extraction.md) | Feature families, PyRadiomics settings, aggregation, software/version, parameter file, delta/longitudinal radiomics, test–retest/phantom repeatability |
 | [references/selection-modelling.md](references/selection-modelling.md) | Leakage-safe selection (variance/ICC/correlation/LASSO/mRMR), modelling, signature/score, EPV |
 | [references/leakage-audit.md](references/leakage-audit.md) | The radiomics-specific leakage checklist reviewers weaponise |
 
@@ -85,3 +85,4 @@ reported with calibration and CIs, never AUC alone.
 - Deep features / deep-learning comparison → `radiology-deep-learning`.
 - Biological interpretation of the signature → `radiology-radiogenomics`.
 - Figures (feature heatmap, ROC, calibration, nomogram) → `radiology-figure`.
+- Reframing this pipeline as a funding proposal → `radiology-grant`.
