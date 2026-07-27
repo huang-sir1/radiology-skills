@@ -7,6 +7,9 @@ description: >-
   CT/MRI/PET/ultrasound datasets, ROI/masks/segmentation annotation, radiomics
   features, CNN/Transformer/foundation models, trustworthy AI, FUTURE-AI,
   uncertainty/OOD/interpretability, radiogenomics and multi-omics mechanisms,
+  imaging-to-single-cell cross-modal mapping, spatial-omics mapping,
+  five-dimensional multi-omics fusion, federated learning, foundation-model fine-tuning,
+  LoRA/adapters/prompt tuning, RAG, LLM research agents, multi-agent orchestration,
   statistics, figures, pre-submission review, reproducibility,
   multicenter validation, public datasets, ethics/privacy, clinical translation,
   validation/leakage, CLAIM/CLEAR/RQS/IBSI/TRIPOD+AI/PROBAST+AI/STARD-AI,
@@ -65,6 +68,11 @@ under `modules/`.
 | Traditional radiomics workflow | 组学 | `references/radiomics.md` |
 | Deep learning, segmentation, foundation models, uncertainty, OOD, interpretability, trustworthy AI | 深度 | `references/deep-learning.md`, and if detailed: `modules/radiology-deep-learning/SKILL.md` |
 | Interpret radiomics or imaging AI models with transcriptomics, single-cell RNA-seq, spatial transcriptomics, or multi-omics data | 机制 | `references/mechanism.md` |
+| Map imaging phenotypes or habitats to single-cell, spatial-omics, or pathology-derived cell states | 映射 | `modules/radiology-crossmodal-mapping/SKILL.md` |
+| Jointly model imaging, clinical, pathology, bulk omics, and single-cell/spatial omics | 融合 | `modules/radiology-multiomics-fusion/SKILL.md` |
+| Design federated learning when centers cannot pool raw imaging data | 联邦 | `modules/radiology-federated-learning/SKILL.md` |
+| Select, adapt, fine-tune, or audit medical imaging foundation models, LoRA, adapters, prompt learning, or VLMs | 基模 | `modules/radiology-foundation-models/SKILL.md` |
+| Design or audit LLM research agents, RAG workflows, multi-agent orchestration, approvals, or research automation | 智能体 | `modules/radiology-research-agent/SKILL.md` |
 | Turn data into a feasible study | 设计 | `references/study-design.md` |
 | Polish or restructure NSFC/provincial/institutional/international grant proposals for imaging AI projects | 基金 | `references/grant-writing.md`, and if international eligibility is involved: `modules/radiology-grant/SKILL.md` |
 | Plan or audit ROI, VOI, masks, readers, segmentation annotation, and reader agreement | 标注 | `references/annotation.md` |
@@ -101,6 +109,11 @@ to install it separately.
 | Hand-crafted radiomics and IBSI/CLEAR workflows | `modules/radiology-radiomics/SKILL.md` |
 | CNN, Transformer, foundation model, segmentation, interpretability, uncertainty, OOD, or trustworthy deep-learning design | `modules/radiology-deep-learning/SKILL.md` |
 | Radiogenomics, transcriptomics, single-cell, spatial, or multi-omics mechanism | `modules/radiology-radiogenomics/SKILL.md` |
+| Imaging-to-single-cell, imaging-to-spatial, habitat-to-cell-state, or pathology-cell-state cross-modal mapping | `modules/radiology-crossmodal-mapping/SKILL.md` |
+| Five-dimensional fusion across imaging, clinical, pathology, bulk omics, and single-cell/spatial omics | `modules/radiology-multiomics-fusion/SKILL.md` |
+| Federated learning, data-cannot-leave-site training, secure aggregation, differential privacy, or non-IID multi-center FL | `modules/radiology-federated-learning/SKILL.md` |
+| Medical imaging foundation-model selection, zero-shot evaluation, linear probing, adapters, LoRA, prompt learning, domain adaptation, or fine-tuning | `modules/radiology-foundation-models/SKILL.md` |
+| LLM research agents, RAG, multi-agent orchestration, evidence ledgers, tool permissions, approval gates, or imaging-research automation | `modules/radiology-research-agent/SKILL.md` |
 | ROC, calibration, DCA, MRMC, survival, sample size, or high-dimensional statistics | `modules/radiology-stats/SKILL.md` |
 | Publication figures, Radiology/Nature/Lancet/European-style charts, or imaging panels | `modules/radiology-figure/SKILL.md` |
 | CLAIM, TRIPOD+AI, CLEAR, RQS/RQS 2.0, IBSI, STARD, PRISMA-DTA, PROBAST, FUTURE-AI, Nature Reporting Summary, or compliance audit | `modules/radiology-reporting/SKILL.md` |
@@ -118,7 +131,9 @@ to install it separately.
 ## Standard workflow
 
 1. **Route.** Classify the request as `frontier`, `literature`, `radiomics`,
-   `public-datasets`, `radiomics`, `deep-learning`, `mechanism`, `study-design`,
+   `public-datasets`, `radiomics`, `deep-learning`, `crossmodal-mapping`,
+   `multiomics-fusion`, `federated-learning`, `foundation-models`,
+   `research-agent`, `mechanism`, `study-design`,
    `grant-writing`, `annotation`, `statistics`, `validation`, `multicenter`,
    `checklist`, `data`, `ethics`, `reproducibility`, `writing`, `figures`,
    `pre-submission`, `journal-selection`, `clinical-translation`, `response`,
@@ -133,6 +148,12 @@ to install it separately.
    use `验证`, `规范`, and the relevant technical module.
    If the user names a target journal family, load the corresponding module branch
    instead of applying Radiology defaults blindly.
+   Use `crossmodal-mapping` when the mapping unit and spatial/assay correspondence
+   are central; use `multiomics-fusion` when joint modeling across multiple data
+   blocks is central; use `federated-learning` when raw data cannot be pooled; use
+   `foundation-models` when adaptation or benchmarking of broad pretrained models
+   is central; use `research-agent` only for research workflow automation, not
+   clinical diagnosis or treatment.
 4. **Expose risks early.** Lead with data leakage, insufficient labels, weak
    endpoint, no patient-level split, no external validation, unclear segmentation,
    weak statistics, center effects, unsupported public-data claims, missing ethics
@@ -239,6 +260,28 @@ For mechanism/radiogenomics interpretation, return:
 - [matching, batch, multiple testing, causality, validation]
 ```
 
+For advanced mapping/fusion/federated/foundation-model/agent tasks, return the
+module-specific structure from the loaded `radiology-crossmodal-mapping`,
+`radiology-multiomics-fusion`, `radiology-federated-learning`,
+`radiology-foundation-models`, or `radiology-research-agent` skill. Always include:
+
+```text
+高级模块定位
+- 主模块：
+- 数据/模型/协作约束：
+- 当前最危险的误用：
+
+必须先建的表
+- [mapping-unit table / modality availability matrix / site governance matrix /
+  model-card overlap table / agent evidence ledger, as applicable]
+
+方法路线
+- [route, baseline, validation, controls]
+
+边界声明
+- [what can be claimed, what cannot]
+```
+
 For annotation/statistics/figures/pre-submission/reproducibility/multicenter/public
 datasets/ethics/clinical translation, return the module-specific structure from the
 loaded reference file. If multiple modules are loaded, merge them into one concise
@@ -298,3 +341,14 @@ Scripts are helpers, not substitutes for manual scientific judgment.
   China-based applicant or institution; verify the current funder rules first.
 - Do not apply Radiology/AMA style rules to a Nature-family manuscript without checking
   venue-specific instructions.
+- Do not treat unpaired public single-cell or spatial-omics data as direct patient-level
+  mechanism proof for an imaging model.
+- Do not let five-dimensional fusion outrun the matched patient count, event count, and
+  external validation support.
+- Do not present federated learning alone as proof of privacy, fairness, or external
+  validity.
+- Do not call a foundation-model evaluation independent when pretraining overlap is
+  unknown or model-exposed.
+- Do not allow research agents to perform autonomous clinical diagnosis, treatment
+  recommendations, patient-specific decision-making, or external writes without explicit
+  authorization.

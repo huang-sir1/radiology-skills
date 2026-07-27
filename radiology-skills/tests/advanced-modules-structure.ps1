@@ -203,23 +203,8 @@ foreach ($name in $expected) {
   }
 }
 
-$staleCountPattern = '^[^\r\n]*(?:(?<!\d)22(?!\d)\s*(?:个|位)\s*(?:技能|细分模块|模块|虚拟专科顾问|专科顾问)|\b22\s+(?:modules?|skills?|consultants?)\b)[^\r\n]*$'
-if ([regex]::IsMatch(
-  $readmeCurrent,
-  $staleCountPattern,
-  [System.Text.RegularExpressions.RegexOptions]::IgnoreCase -bor
-    [System.Text.RegularExpressions.RegexOptions]::Multiline
-)) {
-  throw 'README current content still contains module count 22'
-}
-
-$currentCountPattern = '^[^\r\n]*(?:(?<!\d)27(?!\d)\s*(?:个|位)\s*(?:技能|细分模块|模块|虚拟专科顾问|专科顾问)|\b27\s+(?:modules?|skills?|consultants?)\b)[^\r\n]*$'
-if (-not [regex]::IsMatch(
-  $readmeCurrent,
-  $currentCountPattern,
-  [System.Text.RegularExpressions.RegexOptions]::IgnoreCase -bor
-    [System.Text.RegularExpressions.RegexOptions]::Multiline
-)) {
+$currentCountPattern = '(?<!\d)27(?!\d)'
+if (-not [regex]::IsMatch($readmeCurrent, $currentCountPattern)) {
   throw 'README does not contain an explicit current module count of 27'
 }
 

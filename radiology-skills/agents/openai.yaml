@@ -1,4 +1,4 @@
 interface:
   display_name: "Radiology Skills"
-  short_description: "Plan, audit, write, validate, reproduce, and translate radiomics and imaging AI studies for Radiology/Nature-style submission"
-  default_prompt: "Use $radiology-skills to design, audit, write, validate, reproduce, interpret mechanisms, plan Radiology/Nature-style figures, pre-review, choose journals, polish NSFC/international grants, plan clinical translation, or use 2023-2026 high-impact literature evidence for a radiomics or medical imaging deep learning study."
+  short_description: "Plan, audit, write, validate, reproduce, and translate radiomics, imaging AI, radiogenomics, federated, and foundation-model studies"
+  default_prompt: "Use $radiology-skills to design, audit, write, validate, reproduce, interpret mechanisms, plan Radiology/Nature-style figures, pre-review, choose journals, polish NSFC/international grants, plan clinical translation, map imaging to single-cell/spatial omics, design five-dimensional multi-omics fusion, federated learning, foundation-model fine-tuning, or research-agent workflows for a medical imaging AI study."
