@@ -154,4 +154,3 @@ Run the repository's existing validation scripts when available, plus a determin
 ## Publication
 
 Implementation changes will be staged by explicit paths. The existing unrelated `.gitignore`, `docs/`, and `promo-video/` working-tree changes will not be included. After fresh validation, commit the five modules, root routing, README, tests, and this approved design/implementation documentation, then push to `origin/main` at `huang-sir1/radiology-skills`.
-

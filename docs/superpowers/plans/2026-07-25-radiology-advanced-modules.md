@@ -467,4 +467,3 @@ git rev-parse HEAD
 ```
 
 Expected: both commands return the same full SHA.
-
