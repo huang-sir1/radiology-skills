@@ -1,5 +1,6 @@
 # Radiology Skills Advanced Modules Design
 
+> **历史记录（2026-09-21）**：本设计针对旧版 27 模块布局，现已由 `radiology-skills` 1.10.1 的 40 个 `skills/radiology-*` 技能包取代。文中 `radiology-skills/modules/`、旧版单入口和“继续安装一个 skill 文件夹”的表述只用于解释当时的方案，不能作为当前安装或目录判断依据。请参阅当前 [README](../../../radiology-skills/README.md)、[install.md](../../../install.md) 和内层 [RELEASE.md](../../../radiology-skills/RELEASE.md)。正文不做历史事实改写。
 Date: 2026-07-25
 
 ## Objective
