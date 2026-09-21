@@ -1,5 +1,6 @@
 # Radiology Advanced Modules Implementation Plan
 
+> **历史记录（2026-09-21）**：本计划记录的是 2026-07 将旧版 `radiology-skills` 从 22 个模块扩展到 27 个模块的设计与执行过程。该目录结构已被后续 `radiology-skills` 1.10.1 直接替换；当前包采用 `skills/radiology-*` 的 40 个独立技能布局，不再使用本计划中的 `modules/`、单入口 `SKILL.md` 或旧版测试路径。请使用当前 [40 技能索引](../../../radiology-skills/README.md)、[安装说明](../../../install.md) 和 [发布说明](../../../radiology-skills/RELEASE.md) 作为现行依据。原计划正文保留用于追溯历史决策，不是当前执行说明。
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Extend the single-entry `radiology-skills` package from 22 to 27 independently routable modules and publish the verified update to `huang-sir1/radiology-skills`.
