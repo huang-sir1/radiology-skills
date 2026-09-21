@@ -1,5 +1,22 @@
+# Repository-level defaults, synchronized with radiology-skills/.gitignore.
 __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
 .pytest_cache/
+
+# Development research corpus and generated caches are not distributable runtime assets.
+/research/
+/tmp/
+/.agents/
+
+# Python/runtime build products.
+**/__pycache__/
+*.py[cod]
+*.pyd
+
+# Local audit/build output.
+/.artifact-audit/
+/dist/
+/release-build/
+*.swp
