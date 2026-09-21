@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Bibliometrics"
+  short_description: "Run reproducible radiology bibliometrics"
+  default_prompt: "Use $radiology-bibliometrics to audit this imaging corpus and design a reproducible, responsibly interpreted bibliometric analysis."

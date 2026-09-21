@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Data Governance"
+  short_description: "Prepare imaging data sharing, code, and de-identification"
+  default_prompt: "Use $radiology-data to prepare the data, code, repository, and de-identification plan for this study."

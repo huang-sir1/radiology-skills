@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Clinical Translation"
+  short_description: "Plan reader studies, clinical utility, and deployment evidence"
+  default_prompt: "Use $radiology-translation to design the reader-study, utility, prospective, and deployment evidence pathway."

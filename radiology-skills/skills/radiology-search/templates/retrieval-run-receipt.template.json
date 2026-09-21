@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "run_id": "",
+  "run_state": "PLANNED",
+  "executed_on": "",
+  "question_or_protocol_sha256": "",
+  "execution_identity": {
+    "provider": "",
+    "tool": "",
+    "tool_version": "",
+    "system_context_digest": "not-captured"
+  },
+  "sources": [],
+  "retrieval_config": {
+    "parser": "",
+    "parser_version": "",
+    "dedup_order": [],
+    "normalization_rules": [],
+    "limits": {}
+  },
+  "retrieval_config_sha256": "",
+  "corpus_manifest": {
+    "path": "",
+    "sha256": "",
+    "record_count": 0
+  },
+  "evidence_contexts": [],
+  "index_identity": {
+    "state": "NOT_BUILT",
+    "corpus_manifest_sha256": "",
+    "retrieval_config_sha256": "",
+    "index_sha256": ""
+  },
+  "failures": [],
+  "update_triggers": [],
+  "coverage_claim": "NOT_CLAIMED",
+  "receipt_sha256": "",
+  "boundary": "Structural retrieval identity only; no source-authority, completeness, scientific-support or review-synthesis claim."
+}

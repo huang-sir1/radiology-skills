@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/methods-and-rigor.md",
+    "references/mixed-methods-integration.md",
+    "references/source-registry.md",
+    "templates/qualitative-mixed-methods-passport.md",
+    "templates/joint-display-and-discordance-ledger.md",
+    "scripts/validate_qualitative_mixed_methods_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": [
+    "scope-plan",
+    "fieldwork-protocol",
+    "analysis-audit",
+    "mixed-methods-integration",
+    "reporting-handoff"
+  ],
+  "positive_cases": [
+    {
+      "id": "integration-across-different-samples",
+      "mode": "mixed-methods-integration",
+      "prompt": "患者队列记录了三个医院的报告等待时间；另访谈各院技师和医生解释工作流差异，两边没有患者 ID 联结。按场所和构念整合是否可行？",
+      "required_checks": [
+        "declare site or construct integration level and distinct populations",
+        "NOT_APPLICABLE_PERSON_LINKAGE with rationale",
+        "traceable integrated narrative or joint display",
+        "no invented patient keys or individual-level association",
+        "sampling and temporal comparability",
+        "discordance and bounded meta-inference"
+      ]
+    },
+    {
+      "id": "patient-interview-scope",
+      "mode": "scope-plan",
+      "prompt": "设计访谈研究，了解乳腺 MRI 假阳性复查对患者决策和检查体验的影响。",
+      "required_checks": [
+        "bounded phenomenon and claim",
+        "purposeful patient variation",
+        "information power reviewed iteratively",
+        "interviewer relationship and reflexivity",
+        "consent privacy and distress route",
+        "experience not prevalence or clinical effectiveness"
+      ]
+    },
+    {
+      "id": "technologist-focus-group-protocol",
+      "mode": "fieldwork-protocol",
+      "prompt": "为多院 CT 技师焦点小组制定方案，研究协议偏离、夜班压力和重扫决策。",
+      "required_checks": [
+        "role and site sampling matrix",
+        "group hierarchy and confidentiality warning",
+        "guide and facilitator version",
+        "protocol and shift context",
+        "recording and non-participation",
+        "focus-group interaction as data"
+      ]
+    },
+    {
+      "id": "workflow-ethnography-audit",
+      "mode": "analysis-audit",
+      "prompt": "审计急诊影像工作流民族志：作者只观察了两个下午，却声称完整解释夜间中断和升级机制。",
+      "required_checks": [
+        "duration and context adequacy",
+        "observation versus motive boundary",
+        "day versus night transfer limit",
+        "field-note audit trail",
+        "negative cases and reflexivity",
+        "STOP_DESIGN_METHOD_MISMATCH if central claim unsupported"
+      ]
+    },
+    {
+      "id": "think-aloud-reporting",
+      "mode": "reporting-handoff",
+      "prompt": "冻结放射科医生阅读 AI 热图时 think-aloud 的方法和局限，用于论文 Methods。",
+      "required_checks": [
+        "case and image presentation version",
+        "prompt protocol",
+        "reader and setting hierarchy",
+        "reactivity and incomplete verbalisation",
+        "source-to-theme trace",
+        "no natural-workflow equivalence"
+      ]
+    },
+    {
+      "id": "qualitative-analysis-method-choice",
+      "mode": "analysis-audit",
+      "prompt": "团队做了访谈编码，请判断应使用反身性主题分析、框架分析还是内容分析，并审计 member checking 和双人编码。",
+      "required_checks": [
+        "question and analytic orientation",
+        "method-specific coding logic",
+        "no universal intercoder-agreement demand",
+        "member-checking purpose",
+        "negative case and audit trail",
+        "evidence versus analytic interpretation"
+      ]
+    },
+    {
+      "id": "convergent-joint-display",
+      "mode": "mixed-methods-integration",
+      "prompt": "合并报告周转时间数据与放射科医生观察访谈，制作 convergent joint display 并解释不一致。",
+      "required_checks": [
+        "shared construct unit and time window",
+        "frozen artifacts from both strands",
+        "joint display",
+        "convergence complementarity and discordance",
+        "quality asymmetry",
+        "bounded meta-inference"
+      ]
+    },
+    {
+      "id": "explanatory-sequential",
+      "mode": "mixed-methods-integration",
+      "prompt": "先发现 AI 对低年资读者帮助更大，再目的抽样访谈解释这种异质性。",
+      "required_checks": [
+        "explanatory-sequential rationale",
+        "quantitative result frozen before sampling",
+        "privacy-aware outcome-linked sampling",
+        "alternative explanations",
+        "joint display and discordance",
+        "qualitative explanation not causal proof"
+      ]
+    },
+    {
+      "id": "exploratory-sequential",
+      "mode": "mixed-methods-integration",
+      "prompt": "先用患者访谈形成影像检查负担条目，再开发量表并进行定量验证。",
+      "required_checks": [
+        "exploratory-sequential rationale",
+        "qualitative construct trace",
+        "item-generation decisions",
+        "handoff to psychometric owner",
+        "joint display across phases",
+        "themes not validated measurements"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "routine-usability-debrief",
+      "prompt": "让五位医生试用界面后随口说说感受，只整理三条产品建议，不做研究推断。",
+      "expected_owner": "radiology-translation",
+      "required_boundary": "FORMATIVE_FEEDBACK_ONLY unless a full qualitative research contract is requested"
+    },
+    {
+      "id": "survey-psychometrics",
+      "prompt": "对已经写好的 30 项问卷做探索性因子分析、信度和测量不变性。",
+      "expected_owner": "radiology-stats",
+      "required_boundary": "quantitative psychometrics is not qualitative analysis"
+    },
+    {
+      "id": "ethics-approval",
+      "prompt": "替访谈项目判断是否豁免伦理审查并批准录音同意。",
+      "expected_owner": "radiology-ethics",
+      "required_boundary": "the skill cannot confer exemption or approval"
+    },
+    {
+      "id": "dicom-deidentification",
+      "prompt": "将访谈中展示的 DICOM 和报告去标识后打包共享。",
+      "expected_owner": "radiology-data",
+      "required_boundary": "de-identification and release are data-governance tasks"
+    },
+    {
+      "id": "individual-care",
+      "prompt": "根据一位患者访谈决定她是否还要做增强 MRI。",
+      "expected_owner": "responsible-clinical-team",
+      "required_boundary": "participant account cannot authorize individual care"
+    },
+    {
+      "id": "language-polish-only",
+      "prompt": "不审方法，只把这段定性研究 Results 润色成英文。",
+      "expected_owner": "radiology-polishing",
+      "required_boundary": "prose editing is not methodological ownership"
+    },
+    {
+      "id": "quantitative-cohort-design",
+      "prompt": "设计 5000 例 CT 队列并计算诊断模型样本量。",
+      "expected_owner": "radiology-design",
+      "required_boundary": "quantitative cohort design is outside this skill"
+    }
+  ],
+  "invariants": [
+    "Participant linkage is required only when the inference uses participant-level linkage",
+    "Design construct and interpretation integration may use different samples without invented person keys",
+    "A traceable integrated narrative may enact integration without a mandatory table",
+    "The phenomenon decision and claim are frozen before method selection",
+    "Usability feedback is not automatically a qualitative study",
+    "Purposeful sampling does not establish statistical representativeness",
+    "Information power is iterative and is not a fixed sample-size calculator",
+    "Saturation is named operationalised and evidenced rather than asserted",
+    "Participant quotations and observations remain distinct from analytic interpretation",
+    "Themes are interpretations rather than untouched facts that simply emerge",
+    "Method-congruent rigor replaces universal demands for inter-coder agreement",
+    "Member checking has a defined purpose and is not a truth certificate",
+    "Negative and deviant cases test the boundary of an interpretation",
+    "Software use does not establish qualitative rigor",
+    "Think-aloud evidence retains reactivity and verbalisation limits",
+    "A brief site visit is not silently relabelled workflow ethnography",
+    "Mixed methods requires an explicit integration point",
+    "Convergent explanatory-sequential and exploratory-sequential designs remain distinct",
+    "Joint displays trace each meta-inference to both strands",
+    "Discordance is investigated and may remain unresolved",
+    "A larger or numeric strand does not automatically override the other strand",
+    "Integration cannot repair an invalid constituent strand",
+    "Qualitative acceptance does not establish safety effectiveness or cost-effectiveness",
+    "Radiology roles image versions workflow context and site shifts remain visible",
+    "Ethics approval data governance and individual patient care remain external"
+  ]
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Radiology Consensus and Guidelines"
+  short_description: "Develop evidence-linked radiology guidance"
+  default_prompt: "Use $radiology-consensus-guideline to design or audit this radiology consensus or guideline with a frozen evidence handoff, transparent panel process, and recommendation ledger."
+

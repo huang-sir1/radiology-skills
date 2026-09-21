@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/evidence-to-recommendation.md",
+    "references/formal-consensus-methods.md",
+    "references/radiology-guidance-lifecycle.md",
+    "references/source-registry.md",
+    "templates/consensus-guideline-protocol.md",
+    "templates/recommendation-etd-ledger.md",
+    "tests/routing-cases.json",
+    "scripts/validate_consensus_guideline_skill.ps1"
+  ],
+  "required_modes": [
+    "scoping",
+    "protocol",
+    "evidence-to-decision",
+    "formal-consensus",
+    "audit-update-retire"
+  ],
+  "positive_cases": [
+    {
+      "id": "research-priority-without-effect-grade",
+      "mode": "protocol",
+      "prompt": "患者、技师和研究者共同确定未来影像检查体验研究的优先问题。已有透明问题征集和证据缺口映射，现在制定 Delphi 方案，不做临床疗效推荐。",
+      "required_checks": [
+        "research-priority product and item provenance",
+        "mapping currency scope and limits",
+        "prespecified panel thresholds denominators and dissent",
+        "NOT_APPLICABLE_GRADE for clinical-effect certainty and strength",
+        "do not fabricate an effect systematic review",
+        "priority agreement is not clinical benefit evidence"
+      ]
+    },
+    {
+      "id": "imaging-guideline-scope",
+      "mode": "scoping",
+      "prompt": "规划一个急诊疑似肺栓塞影像检查指南，先决定它应是临床指南、适宜性标准还是专家共识，并定义用户和临床场景。",
+      "required_checks": [
+        "product and adoption authority",
+        "population pathway and imaging scenario",
+        "modality comparator and downstream action",
+        "stakeholder and patient-public map",
+        "evidence needs and currency",
+        "draft non-endorsement boundary"
+      ]
+    },
+    {
+      "id": "radiology-guideline-protocol",
+      "mode": "protocol",
+      "prompt": "为儿童CT剂量优化指南写开发方案，包含医学物理、技师、临床、家长代表、COI、证据综述、咨询和更新计划。",
+      "required_checks": [
+        "balanced panel with patient-public representation",
+        "COI assessment management and recusal",
+        "systematic-review handoff",
+        "technical imaging scope and dose",
+        "consultation and version control",
+        "surveillance update and retirement"
+      ]
+    },
+    {
+      "id": "diagnostic-etd",
+      "mode": "evidence-to-decision",
+      "prompt": "把冻结的前列腺MRI诊断系统综述转成GRADE EtD和推荐草案，不能只凭准确率推荐普遍筛查。",
+      "required_checks": [
+        "verified evidence handoff and currency",
+        "accuracy-to-management-to-outcome chain",
+        "benefits harms certainty and values",
+        "resources equity acceptability feasibility",
+        "strength distinct from certainty",
+        "conditional no-recommendation or research-only option"
+      ]
+    },
+    {
+      "id": "delphi-consensus-audit",
+      "mode": "formal-consensus",
+      "prompt": "审计这项影像AI术语Delphi：三轮调查、80%阈值、匿名反馈、失访和少数意见是否预先规定并如实报告。",
+      "required_checks": [
+        "method and item provenance",
+        "prespecified threshold and denominator",
+        "anonymity feedback rounds and stopping",
+        "per-round participation and attrition",
+        "stability and dissent",
+        "consensus does not establish empirical truth"
+      ]
+    },
+    {
+      "id": "guideline-update-retire",
+      "mode": "audit-update-retire",
+      "prompt": "现有乳腺MRI共识发布四年后出现新对比剂安全证据和AI重建，请判断哪些推荐要更新、部分废止或退役。",
+      "required_checks": [
+        "current version and authority map",
+        "new evidence and safety trigger",
+        "technology protocol and AI applicability",
+        "stakeholder and COI refresh",
+        "CURRENT versus SUPERSEDED or RETIRED states",
+        "replacement and communication plan"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "perform-systematic-review",
+      "prompt": "从零检索筛选文献、做偏倚评价和meta分析，形成影像诊断证据综合。",
+      "expected_owner": "radiology-systematic-review"
+    },
+    {
+      "id": "clinical-standard-facts",
+      "prompt": "核验当前肝癌治疗路径、参考标准和影像随访时间窗。",
+      "expected_owner": "radiology-clinical-domain"
+    },
+    {
+      "id": "delphi-statistics-only",
+      "prompt": "计算Delphi每轮中位数、四分位距、Kendall W和置信区间。",
+      "expected_owner": "radiology-stats"
+    },
+    {
+      "id": "right-checklist-only",
+      "prompt": "按RIGHT和AGREE II逐项检查这份已完成指南的报告位置。",
+      "expected_owner": "radiology-reporting"
+    },
+    {
+      "id": "economic-model-only",
+      "prompt": "为指南比较两种影像策略建立CEA/CUA和预算影响模型，计算QALY、ICER、PSA和VOI。",
+      "expected_owner": "radiology-health-economics"
+    },
+    {
+      "id": "claim-acr-endorsement",
+      "prompt": "把我们的草稿直接标成ACR官方指南并替协会正式通过。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "authorized-society-guideline-governance"
+    },
+    {
+      "id": "patient-specific-order",
+      "prompt": "根据这份共识替医生决定这个患者今天必须做哪一种增强检查。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "responsible-clinical-team"
+    }
+  ],
+  "invariants": [
+    "Priorities and definitions use product-appropriate item evidence without an invented effect review or GRADE rating",
+    "Guideline consensus appropriateness parameter and technical-standard products remain distinct",
+    "Official adoption and endorsement require verified external authority",
+    "The underlying systematic review has a versioned evidence handoff",
+    "Expert vote cannot substitute for evidence or create certainty",
+    "Evidence certainty recommendation strength and consensus percentage remain separate",
+    "Diagnostic accuracy is linked to management and patient-important outcomes",
+    "Panel composition includes affected people and required technical disciplines",
+    "COI is assessed managed and recorded by recommendation",
+    "Consensus method threshold denominator rounds and stopping are prespecified",
+    "No universal consensus percentage is invented",
+    "Attrition item changes and dissent remain visible",
+    "Delphi RAND-UCLA NGT and informal consensus are not interchangeable",
+    "Missing evidence permits bounded consensus no recommendation or research-only wording",
+    "Radiology scenarios declare modality protocol dose reconstruction and resource context",
+    "Reporting checklist completion does not prove trustworthy methods",
+    "Implementation cannot upgrade evidence certainty",
+    "Technology safety and clinical changes trigger surveillance and update",
+    "The skill does not endorse guidance establish law or make patient-specific decisions"
+  ]
+}

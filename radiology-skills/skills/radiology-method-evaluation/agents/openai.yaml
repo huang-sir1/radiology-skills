@@ -1,0 +1,4 @@
+interface:
+  display_name: "Parameter & Method Evaluation"
+  short_description: "Audit parameters, metrics, methods, and robustness"
+  default_prompt: "Use $radiology-method-evaluation to audit this study's parameters, evaluation metrics, methodology, sensitivity, robustness, and manuscript evidence placement."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Deep Learning"
+  short_description: "Design and audit trustworthy imaging deep-learning studies"
+  default_prompt: "Use $radiology-deep-learning to design and audit this imaging model, training, validation, and trustworthiness plan."

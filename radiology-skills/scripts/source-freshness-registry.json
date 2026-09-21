@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "radiology-skill-source-freshness",
+  "boundary": "Offline per-source freshness and artifact-identity gate only; accessed_on is registry maintenance and each Markdown Accessed cell dates its own retrieval. It does not prove URL reachability, authority, absence of supersession, or applicability at use.",
+  "online_result_states": [
+    "NOT_RUN_OFFLINE",
+    "REACHABLE_EXACT_ARTIFACT",
+    "HTTP_404_OR_410",
+    "NETWORK_UNAVAILABLE",
+    "RATE_LIMITED_403_OR_429",
+    "PORTAL_OR_AUTH_REQUIRED"
+  ],
+  "registries": [
+    {
+      "path": "skills/radiology-bibliometrics/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 90,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-consensus-guideline/references/source-registry.md",
+      "accessed_on": "2026-09-04",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "MIXED",
+      "max_age_days": 180,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-dissemination/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 60,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-health-economics/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 90,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-innovation-transfer/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 60,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-qualitative-mixed-methods/references/source-registry.md",
+      "accessed_on": "2026-09-04",
+      "source_class": "PRIMARY_METHOD_MIXED",
+      "volatility": "MIXED",
+      "max_age_days": 365,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-reproducibility/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "MIXED",
+      "max_age_days": 180,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-research-integrity/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_NORMATIVE_MIXED",
+      "volatility": "MIXED",
+      "max_age_days": 180,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-research-ops/references/source-registry.md",
+      "accessed_on": "2026-08-23",
+      "source_class": "OFFICIAL_AND_NORMATIVE_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 90,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-translation/references/source-registry.md",
+      "accessed_on": "2026-09-04",
+      "source_class": "OFFICIAL_AND_NORMATIVE_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 60,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    },
+    {
+      "path": "skills/radiology-grant/references/source-registry.md",
+      "accessed_on": "2026-09-04",
+      "source_class": "OFFICIAL_AND_PRIMARY_MIXED",
+      "volatility": "HIGH",
+      "max_age_days": 60,
+      "normative_artifact_sha256": null,
+      "normative_artifact_state": "NOT_CAPTURED_LIVE_SOURCE",
+      "supersession_state": "LIVE_RECHECK_AT_USE",
+      "online_verification_state": "NOT_RUN_OFFLINE"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Grants"
+  short_description: "Audit live NSFC and other imaging grants with code and feasibility gates"
+  default_prompt: "Use $radiology-grant to lock the live call and, for NSFC, the current year/type/division/code/attribute/special-route fields before reviewing funder criteria and radiology-specific feasibility."

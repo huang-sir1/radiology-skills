@@ -1,0 +1,2 @@
+ai_event_id,date,tool,version,operator,purpose,input_artifact_ids,input_classification,external_processing_authority,human_verification,material_changes,output_artifact_ids,disclosure_location,status,notes
+AI-001,,,,,,,,STOP_EXTERNAL_PROCESSING_UNAUTHORIZED,,,,,planned,

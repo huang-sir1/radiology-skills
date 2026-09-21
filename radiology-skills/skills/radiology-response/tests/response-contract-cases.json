@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0",
+  "cases": [
+    {
+      "id": "external-validation-unavailable",
+      "scope": "imaging-only",
+      "scenario": "A reviewer requests external validation, but no independent cohort exists.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["SOFTEN_CLAIM", "BOUND_SCOPE"],
+      "required_outputs": ["residual limitation", "exact changed locations"],
+      "forbidden_claims": ["internal cross-validation is external validation"],
+      "references": ["references/imaging-reviewer-playbook.md"]
+    },
+    {
+      "id": "confirmed-patient-leakage",
+      "scope": "imaging-only",
+      "scenario": "The reviewer correctly identifies patient leakage across image-level splits.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["REANALYZE"],
+      "required_outputs": ["corrected result", "claim consequence"],
+      "forbidden_claims": ["wording-only closure"],
+      "references": ["references/imaging-reviewer-playbook.md"]
+    },
+    {
+      "id": "unnecessary-omics-request",
+      "scope": "imaging-only",
+      "scenario": "A reviewer requests scRNA-seq although the manuscript makes no molecular claim.",
+      "expected_request_class": "scope-contested-or-infeasible",
+      "expected_action_codes": ["DISAGREE_WITH_REASON", "BOUND_SCOPE"],
+      "required_outputs": ["declared scope", "bounded future hypothesis"],
+      "forbidden_claims": ["invented molecular validation"],
+      "references": ["references/imaging-mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "single-cell-donor-pseudoreplication",
+      "scope": "mechanism-only",
+      "scenario": "A response cites thousands of cells but does not address donor-level replication.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["REANALYZE"],
+      "required_outputs": ["biological unit", "donor-level result"],
+      "forbidden_claims": ["cells replace donors"],
+      "references": ["references/mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "trajectory-causal-overclaim",
+      "scope": "mechanism-only",
+      "scenario": "The reviewer challenges a causal lineage claim based only on pseudotime.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["SOFTEN_CLAIM", "VALIDATE"],
+      "required_outputs": ["trajectory assumptions", "claim boundary"],
+      "forbidden_claims": ["pseudotime proves causality"],
+      "references": ["references/mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "spatial-communication-score",
+      "scope": "mechanism-only",
+      "scenario": "A ligand-receptor score is presented as a direct molecular interaction.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["SOFTEN_CLAIM", "VALIDATE"],
+      "required_outputs": ["spatial null", "nominated interaction wording"],
+      "forbidden_claims": ["communication score is direct causation"],
+      "references": ["references/mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "matched-imaging-omics-mismatch",
+      "scope": "imaging-mechanism",
+      "scenario": "Imaging and biopsy come from different lesions or unresolved time points.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["SOFTEN_CLAIM", "BOUND_SCOPE"],
+      "required_outputs": ["sample-to-image mapping", "patient-level boundary"],
+      "forbidden_claims": ["region-specific mechanism without mapping"],
+      "references": ["references/imaging-mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "method-preference-with-valid-assumptions",
+      "scope": "all",
+      "scenario": "A reviewer prefers Method X, but Method Y satisfies the estimand and assumptions.",
+      "expected_request_class": "reviewer-preference",
+      "expected_action_codes": ["DISAGREE_WITH_REASON", "NO_CHANGE_JUSTIFIED"],
+      "required_outputs": ["criterion-linked rationale", "existing evidence locator", "N/A—NO_MANUSCRIPT_CHANGE_JUSTIFIED"],
+      "forbidden_claims": ["reviewer preference is automatically a defect", "sensitivity analysis is a mandatory courtesy"],
+      "references": ["references/action-mapping.md"]
+    },
+    {
+      "id": "compound-comment-partial",
+      "scope": "all",
+      "scenario": "One of three required child commitments is fulfilled.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["AUTHOR_INPUT_NEEDED"],
+      "required_outputs": ["parent-child ledger", "PARTIAL"],
+      "forbidden_claims": ["parent marked fulfilled"],
+      "references": ["references/response-audit-gate.md"]
+    },
+    {
+      "id": "performed-without-result",
+      "scope": "all",
+      "scenario": "The draft says an additional analysis was performed but gives no result.",
+      "expected_request_class": "N/A—AUDIT_CONTROL",
+      "expected_action_codes": ["AUTHOR_INPUT_NEEDED"],
+      "required_outputs": ["result or evidence", "pending status"],
+      "forbidden_claims": ["FULFILLED"],
+      "references": ["references/response-audit-gate.md"]
+    },
+    {
+      "id": "conflicting-reviewers",
+      "scope": "all",
+      "scenario": "One reviewer asks to shorten and another asks for full methodological detail.",
+      "expected_request_class": "clarification-needed",
+      "expected_action_codes": ["ACCEPT_TEXT"],
+      "required_outputs": ["one consistent manuscript change", "cross-reference"],
+      "forbidden_claims": ["two incompatible manuscript states"],
+      "references": ["references/response-audit-gate.md"]
+    },
+    {
+      "id": "editor-instruction-omitted",
+      "scope": "all",
+      "scenario": "All reviewer comments are answered but one editor instruction is absent.",
+      "expected_request_class": "N/A—AUDIT_CONTROL",
+      "expected_action_codes": ["AUTHOR_INPUT_NEEDED"],
+      "required_outputs": ["E-# ledger", "NOT READY"],
+      "forbidden_claims": ["complete package"],
+      "references": ["SKILL.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "post-review-appeal-policy-dependent",
+      "scope": "all",
+      "scenario": "A manuscript is rejected after external review and the journal's current appeal instructions require a point-by-point rebuttal.",
+      "expected_request_class": "scope-contested-or-infeasible",
+      "expected_action_codes": ["DISAGREE_WITH_REASON"],
+      "required_outputs": ["current journal instructions", "point-by-point appeal rebuttal", "verified evidence and requested remedy"],
+      "forbidden_claims": ["all appeals prohibit point-by-point responses", "unverified new result"],
+      "references": ["SKILL.md", "references/reject-decision-tree.md"]
+    },
+    {
+      "id": "desk-reject-appeal-brief",
+      "scope": "all",
+      "scenario": "A desk reject contains a concrete factual error but no referee report, and the journal permits an editor appeal brief.",
+      "expected_request_class": "scope-contested-or-infeasible",
+      "expected_action_codes": ["DISAGREE_WITH_REASON"],
+      "required_outputs": ["current journal instructions", "factual error and manuscript locator", "defined remedy"],
+      "forbidden_claims": ["all desk rejects are unappealable", "invented reviewer point-by-point response"],
+      "references": ["SKILL.md", "references/reject-decision-tree.md"]
+    },
+    {
+      "id": "final-placeholder-blocker",
+      "scope": "all",
+      "scenario": "The response text is complete but the final package still contains [LOCATION_PENDING].",
+      "expected_request_class": "N/A—AUDIT_CONTROL",
+      "expected_action_codes": ["AUTHOR_INPUT_NEEDED"],
+      "required_outputs": ["unresolved_placeholder_count greater than zero", "NOT_READY_FOR_SUBMISSION_ASSEMBLY"],
+      "forbidden_claims": ["READY_FOR_SUBMISSION_ASSEMBLY"],
+      "references": ["references/response-audit-gate.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "round-two-reopens-comment",
+      "scope": "all",
+      "scenario": "A second-round reviewer reopens one child of a first-round issue after new results change the claim.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["REANALYZE"],
+      "required_outputs": ["RR2 source occurrence ID", "reopens lineage", "prior commitment ID", "new artifact state"],
+      "forbidden_claims": ["round-one parent automatically remains fulfilled"],
+      "references": ["SKILL.md", "references/response-audit-gate.md"]
+    },
+    {
+      "id": "praise-only-comment",
+      "scope": "all",
+      "scenario": "A reviewer provides praise with no request or decision-bearing concern.",
+      "expected_request_class": "non-actionable-summary-or-praise",
+      "expected_action_codes": ["ACKNOWLEDGE_ONLY"],
+      "required_outputs": ["brief acknowledgement", "N/A—NO_NEW_WORK", "NOT_APPLICABLE internal state"],
+      "forbidden_claims": ["invented analysis", "invented manuscript change"],
+      "references": ["references/action-mapping.md", "references/revision-letter-writing-chain.md"]
+    },
+    {
+      "id": "stale-artifact-manifest",
+      "scope": "all",
+      "scenario": "The manuscript was repaginated after verification, so response locators refer to an older digest.",
+      "expected_request_class": "N/A—AUDIT_CONTROL",
+      "expected_action_codes": ["AUTHOR_INPUT_NEEDED"],
+      "required_outputs": ["stale locator flag", "new manifest digest", "NOT_READY_FOR_SUBMISSION_ASSEMBLY"],
+      "forbidden_claims": ["old verification remains valid"],
+      "references": ["references/response-audit-gate.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "quoted-revision-text-mismatch",
+      "scope": "all",
+      "scenario": "The response letter quotes revised wording that does not exactly match the manifest-bound manuscript.",
+      "expected_request_class": "N/A—AUDIT_CONTROL",
+      "expected_action_codes": ["ACCEPT_TEXT"],
+      "required_outputs": ["exact diff", "quote-or-paraphrase label", "NOT_READY_FOR_SUBMISSION_ASSEMBLY"],
+      "forbidden_claims": ["quote verified"],
+      "references": ["references/response-audit-gate.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "reviewer-confirmation-without-artifact",
+      "scope": "all",
+      "scenario": "A later reviewer says a concern is addressed, but the revised artifact and result cannot be inspected.",
+      "expected_request_class": "N/A—AUDIT_CONTROL",
+      "expected_action_codes": ["AUTHOR_INPUT_NEEDED"],
+      "required_outputs": ["editorial disposition REVIEWER_ACKNOWLEDGED", "artifact fulfillment NOT_VERIFIED", "no scientific validity certificate"],
+      "forbidden_claims": ["reviewer confirmation proves scientific closure"],
+      "references": ["references/response-audit-gate.md"]
+    },
+    {
+      "id": "negative-null-result-propagation",
+      "scope": "all",
+      "scenario": "A requested analysis was performed and yielded a null result that weakens the headline claim.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["ACCEPT_ANALYSIS", "SOFTEN_CLAIM"],
+      "required_outputs": ["method", "actual null result with uncertainty", "exact locations", "weaker claim", "residual boundary"],
+      "forbidden_claims": ["analysis performed without result", "original contradicted headline retained"],
+      "references": ["references/revision-letter-writing-chain.md", "references/response-audit-gate.md"]
+    },
+    {
+      "id": "duplicate-comment-cross-reference",
+      "scope": "all",
+      "scenario": "A later source occurrence exactly repeats a fully answered atomic commitment.",
+      "expected_request_class": "clarification-needed",
+      "expected_action_codes": ["CROSS_REFERENCE_ONLY"],
+      "required_outputs": ["canonical issue ID", "source occurrence ID", "N/A—NO_NEW_WORK", "verified canonical response locator"],
+      "forbidden_claims": ["invented duplicate analysis", "source occurrence silently deleted"],
+      "references": ["references/action-mapping.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "answer-from-existing-record",
+      "scope": "all",
+      "scenario": "The reviewer asks for a factual detail already present in a versioned supplement and no manuscript change is scientifically needed.",
+      "expected_request_class": "clarification-needed",
+      "expected_action_codes": ["ANSWER_FROM_EXISTING_RECORD"],
+      "required_outputs": ["versioned existing-evidence locator", "N/A—NO_NEW_WORK", "N/A—NO_MANUSCRIPT_CHANGE_JUSTIFIED"],
+      "forbidden_claims": ["existing result described as newly generated", "invented manuscript edit"],
+      "references": ["references/action-mapping.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "no-change-justified-final",
+      "scope": "all",
+      "scenario": "A reviewer-preferred method would not change the estimand and the manifest-bound current analysis already satisfies the governing criterion.",
+      "expected_request_class": "reviewer-preference",
+      "expected_action_codes": ["NO_CHANGE_JUSTIFIED"],
+      "required_outputs": ["criterion-linked rationale", "existing-evidence locator", "N/A—NO_NEW_WORK", "residual boundary"],
+      "forbidden_claims": ["ritual sensitivity analysis", "unperformed compromise analysis"],
+      "references": ["references/action-mapping.md", "templates/final-response-and-verification-package.md"]
+    },
+    {
+      "id": "review-study-family-overlap-revision",
+      "scope": "evidence-synthesis",
+      "scenario": "A reviewer identifies that multiple reports from one cohort were treated as independent effect rows in the synthesis.",
+      "expected_request_class": "manuscript-grounded-defect",
+      "expected_action_codes": ["REANALYZE", "SOFTEN_CLAIM"],
+      "required_outputs": ["frozen study-family map", "revised synthesis with dependence handled", "updated certainty and claim ceiling", "exact changed locations"],
+      "forbidden_claims": ["reports are independent studies", "response prose alone closes the synthesis defect", "radiogenomics handoff is required"],
+      "references": ["SKILL.md", "../radiology-systematic-review/references/review-methods-and-quality-gates.md"]
+    },
+    {
+      "id": "ambiguous-editor-instruction",
+      "scope": "all",
+      "scenario": "The decision letter contains two materially conflicting submission instructions that cannot be resolved from current journal guidance.",
+      "expected_request_class": "clarification-needed",
+      "expected_action_codes": ["EDITOR_CLARIFICATION_REQUESTED"],
+      "required_outputs": ["bounded editor question", "pending state", "NOT_READY_FOR_SUBMISSION_ASSEMBLY"],
+      "forbidden_claims": ["editorial obligation guessed", "READY_FOR_SUBMISSION_ASSEMBLY"],
+      "references": ["SKILL.md", "references/response-audit-gate.md"]
+    }
+  ]
+}

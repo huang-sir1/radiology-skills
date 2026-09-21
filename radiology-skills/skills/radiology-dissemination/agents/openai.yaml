@@ -1,0 +1,5 @@
+interface:
+  display_name: "Radiology Dissemination"
+  short_description: "Plan evidence-safe radiology dissemination"
+  default_prompt: "Use $radiology-dissemination to turn this frozen imaging evidence into an audience-specific, source-traceable communication plan or draft."
+

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Figures"
+  short_description: "Create and audit publication-ready imaging research figures"
+  default_prompt: "Use $radiology-figure to create a publication-ready white-background figure set and run final render QA."

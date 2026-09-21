@@ -1,0 +1,189 @@
+{
+  "schema_version": 2,
+  "positive_cases": [
+    {"id": "ambiguous-guided-academic-mentor", "phase": "orchestration", "prompt": "我是影像科研究生，想让你引导我梳理课题，但还不知道当前应该先做哪个决策。", "expected_owner": "radiology-pipeline"},
+    {"id": "whole-project-resume", "phase": "orchestration", "prompt": "继续整个课题并从最早失效的阶段恢复。", "expected_owner": "radiology-pipeline"},
+    {"id": "frontier-question", "phase": "discovery", "prompt": "根据现有 CT 队列提出有证据和可行性边界的前沿问题。", "expected_owner": "radiology-frontier"},
+    {"id": "literature-dataset-search", "phase": "discovery", "prompt": "系统检索近两年影像与空间组学论文和可用数据集。", "expected_owner": "radiology-search"},
+    {"id": "systematic-review-project", "phase": "discovery", "prompt": "建立影像 AI 系统综述协议、筛选提取、偏倚评估并判断是否可做 meta-analysis。", "expected_owner": "radiology-systematic-review"},
+    {"id": "imaging-feasibility-estimand", "phase": "design", "prompt": "这批 MRI 能做什么？请锁定人群、endpoint、estimand 和验证方案。", "expected_owner": "radiology-design"},
+    {"id": "clinical-domain-context", "phase": "design", "prompt": "按神经肿瘤临床场景审阅人群、参考标准、治疗时间轴、影像伪影和结论边界。", "expected_owner": "radiology-clinical-domain"},
+    {"id": "acquisition-reconstruction-qc", "phase": "data", "prompt": "审计这批多中心 CT 的 series、造影时相、层厚、重建核、DICOM 定量变换、伪影、剂量、体模和协议漂移，并冻结哪些图像可进入定量分析。", "expected_owner": "radiology-acquisition-qc"},
+    {"id": "mechanism-research-design", "phase": "design", "prompt": "设计并指导 standalone scRNA 机制课题，包含替代假设和验证梯。", "expected_owner": "radiology-radiogenomics"},
+    {"id": "cohort-data-provenance", "phase": "data", "prompt": "建立队列、数据字典、DICOM 去标识和数据共享计划。", "expected_owner": "radiology-data"},
+    {"id": "annotation-sop", "phase": "data", "prompt": "设计 ROI 标注、盲法、重复勾画和几何 QC 的 SOP。", "expected_owner": "radiology-annotation"},
+    {"id": "ethics-governance", "phase": "data", "prompt": "审阅伦理批准、知情同意、隐私和基因组受控访问。", "expected_owner": "radiology-ethics"},
+    {"id": "research-integrity-audit", "phase": "governance", "prompt": "建立署名、COI、生成式 AI 披露、选择性报告及影像数据完整性的中立证据台账，并明确正当程序和升级路径。", "expected_owner": "radiology-research-integrity"},
+    {"id": "research-operations-plan", "phase": "operations", "prompt": "为多中心影像课题建立 RACI、站点依赖、资源、里程碑、冻结、偏差、风险升级和收尾计划。", "expected_owner": "radiology-research-ops"},
+    {"id": "consensus-guideline-development", "phase": "recommendation", "prompt": "设计一项影像临床实践 Delphi 共识，包含小组遴选、COI、证据到推荐、匿名投票阈值、异议和更新规则。", "expected_owner": "radiology-consensus-guideline"},
+    {"id": "radiomics-execution", "phase": "execution", "prompt": "建立 PyRadiomics 参数文件并运行 leakage-safe 特征流程。", "expected_owner": "radiology-radiomics"},
+    {"id": "deep-learning-execution", "phase": "execution", "prompt": "配置并训练 3D CNN，记录数据 split、超参数和 checkpoint。", "expected_owner": "radiology-deep-learning"},
+    {"id": "transcriptomics-execution", "phase": "execution", "prompt": "构建并运行 scRNA QC、注释和 donor-aware pseudobulk 流程，保存 run manifest。", "expected_owner": "radiology-transcriptomics-analysis"},
+    {"id": "mechanism-wetlab-design", "phase": "execution", "prompt": "设计 IHC、基因扰动、target engagement、rescue 和毒性对照的机制验证实验。", "expected_owner": "radiology-experiment-design"},
+    {"id": "parameter-method-judgement", "phase": "evaluation", "prompt": "评估参数范围、评价指标、方法比较、消融和敏感性是否足以支持结论。", "expected_owner": "radiology-method-evaluation"},
+    {"id": "statistical-inference", "phase": "evaluation", "prompt": "计算配对 AUC 差值、95% CI、P 值并控制多重性。", "expected_owner": "radiology-stats"},
+    {"id": "clinical-translation", "phase": "translation", "prompt": "设计 radiologist vs AI 阅片者研究、阈值到行动和前瞻部署。", "expected_owner": "radiology-translation"},
+    {"id": "qualitative-mixed-methods", "phase": "design", "prompt": "设计访谈、焦点小组、观察或 think-aloud 定性/混合方法研究，说明 purposeful sampling、information power/饱和度、反身性、分析轨迹，并用 joint display 保留定量结果和分歧。", "expected_owner": "radiology-qualitative-mixed-methods"},
+    {"id": "health-economic-evaluation", "phase": "evaluation", "prompt": "为指定决策者建立影像 AI 成本效用和预算影响模型，明确视角、比较策略、下游临床路径、QALY、ICER、PSA、情景和价值信息分析。", "expected_owner": "radiology-health-economics"},
+    {"id": "computational-reproducibility", "phase": "verification", "prompt": "冻结代码、配置、环境、输入输出清单和容差，独立重放主结果并签发逐结果的可复现性等级收据。", "expected_owner": "radiology-reproducibility"},
+    {"id": "scientific-figure", "phase": "communication", "prompt": "用真实结果制作期刊规格 ROC、校准和 DCA 图并做视觉 QA。", "expected_owner": "radiology-figure"},
+    {"id": "publication-table", "phase": "communication", "prompt": "制作可追溯的 Table 1、模型性能和消融表。", "expected_owner": "radiology-table"},
+    {"id": "manuscript-drafting", "phase": "communication", "prompt": "根据固定证据重建论文论证并起草 Methods 和 Results。", "expected_owner": "radiology-writing"},
+    {"id": "language-polish", "phase": "communication", "prompt": "保持数字和结论不变，精炼这段已经写好的英文。", "expected_owner": "radiology-polishing"},
+    {"id": "claim-citation-verification", "phase": "communication", "prompt": "核实这句话由哪篇文章支持并导出 RIS。", "expected_owner": "radiology-citation"},
+    {"id": "reporting-checklist", "phase": "review", "prompt": "逐项填写 CLAIM/TRIPOD+AI/CLEAR 报告清单并定位缺口。", "expected_owner": "radiology-reporting"},
+    {"id": "whole-manuscript-prereview", "phase": "review", "prompt": "对影像 AI 整稿做投稿前科学预审并冻结修复标准。", "expected_owner": "radiology-prereview"},
+    {"id": "revision-response", "phase": "review", "prompt": "裁决审稿意见，写逐条修回信并核验修改闭环。", "expected_owner": "radiology-response"},
+    {"id": "journal-selection", "phase": "publication", "prompt": "根据稿件真实强弱项给出冲刺、主投和稳妥期刊梯队。", "expected_owner": "radiology-journal"},
+    {"id": "submission-file-audit", "phase": "publication", "prompt": "审阅全部投稿文件、文件类型、格式和上传清单。", "expected_owner": "radiology-submission"},
+    {"id": "grant-proposal", "phase": "funding", "prompt": "核对当年指南后审阅这份国自然影像标书，按评审准则找问题并建立 aims、证据、风险、停止规则和修订闭环。", "expected_owner": "radiology-grant"},
+    {"id": "funder-package-finalization", "phase": "funding", "prompt": "按本年度基金系统核验最终字段、正文、预算、附件与机构步骤，生成交科研处的闭合包，但不登录或提交。", "expected_owner": "radiology-grant"},
+    {"id": "post-award-funder-reporting", "phase": "operations", "prompt": "项目已获批，请按 award 条款跟踪变更、年度/中期/结题报告与 sponsor deliverables，科学结果仍交原负责人核验。", "expected_owner": "radiology-research-ops"},
+    {"id": "bilingual-paper-reader", "phase": "education", "prompt": "把这篇影像论文做成带图表锚点的全文中英对照研读。", "expected_owner": "radiology-reader"},
+    {"id": "paper-to-slides", "phase": "education", "prompt": "把已冻结的论文或项目证据做成面向指定受众的组会、会议或答辩 PPTX，保留证据链并完成渲染质检。", "expected_owner": "radiology-paper2ppt"},
+    {"id": "research-dissemination", "phase": "impact-pathway", "prompt": "把已冻结的影像研究制作成患者通俗摘要、政策简报和社交媒体衍生物，逐项绑定来源并检查隐私、无障碍、版本和撤回计划。", "expected_owner": "radiology-dissemination"},
+    {"id": "responsible-bibliometrics", "phase": "post-publication", "prompt": "对本团队影像研究做可复现的文献计量影响快照，完成作者机构消歧、数据库日期锁定、领域归一化和负责任指标解释。", "expected_owner": "radiology-bibliometrics"},
+    {"id": "innovation-transfer-readiness", "phase": "impact-pathway", "prompt": "在公开披露前整理发明披露、贡献者与发明人边界、现有技术检索交接、软件数据权利及机构技转升级路径。", "expected_owner": "radiology-innovation-transfer"},
+    {"id": "ppi-equity-protocol-impact", "phase": "design", "prompt": "让患者、公众、技师和临床团队共同决定影像研究问题、终点、扫描负担、行动阈值与公平性 estimand，并记录他们如何改变方案。", "expected_owner": "radiology-design"},
+    {"id": "postpublication-integrity-correction", "phase": "post-publication", "prompt": "发表后发现主图可能重复且影响结论，请冻结版本证据并走期刊和机构的更正或撤稿升级路径，不要自行裁定 misconduct。", "expected_owner": "radiology-research-integrity"},
+    {"id": "postpublication-current-citation", "phase": "post-publication", "prompt": "核验这篇已发表文章当前是否有更正版本，并给这项主张提供当前版本的准确引用。", "expected_owner": "radiology-citation"},
+    {"id": "postpublication-production-deposit", "phase": "post-publication", "prompt": "核验 copyedited proof、作者查询、accepted manuscript 和 public-access deposit 文件是否与最终版本一致，并列出仍需作者或机构完成的动作。", "expected_owner": "radiology-submission"},
+    {"id": "postpublication-data-request", "phase": "post-publication", "prompt": "处理发表后数据和代码访问请求，核验 DUA、同意范围、受控仓库、拟释放对象、保留期限和授权人。", "expected_owner": "radiology-data"},
+    {"id": "living-review-update", "phase": "post-publication", "prompt": "对已发表 living review 运行预定监测，冻结新检索、变更研究、重分析、确定性与结论变化，并决定更新或退役。", "expected_owner": "radiology-systematic-review"},
+    {"id": "postpublication-derivative-correction", "phase": "post-publication", "prompt": "源论文更正后，盘点患者摘要、政策简报和媒体稿，按来源版本更新、重发或撤回每个公共衍生物。", "expected_owner": "radiology-dissemination"},
+    {"id": "deployed-system-retirement", "phase": "post-publication", "prompt": "已部署影像 AI 在监测中触发安全阈值，请整理 CAPA、再验证、回滚或退役证据并交授权临床和监管 owner。", "expected_owner": "radiology-translation"},
+    {"id": "postpublication-project-staleness", "phase": "post-publication", "prompt": "一篇源论文发生版本变更，请找出整项目里哪些标书、PPT、稿件、指南、传播和部署产物失效，并从最早受影响 gate 重新路由。", "expected_owner": "radiology-pipeline"}
+  ],
+  "boundary_cases": [
+    {"id": "mentor-entry-versus-radiomics-task", "prompt_a": "我还不知道该从哪一步开始，请像导师一样带我梳理课题", "owner_a": "radiology-pipeline", "prompt_b": "请设置 PyRadiomics bin width 并审计特征流程", "owner_b": "radiology-radiomics"},
+    {"id": "mentor-entry-versus-mechanism-interpretation", "prompt_a": "请引导我判断手上材料能回答什么问题", "owner_a": "radiology-pipeline", "prompt_b": "请判断这些 bulk RNA 结果支持哪种机制并比较竞争解释", "owner_b": "radiology-radiogenomics"},
+    {"id": "set-and-run-versus-evaluate", "prompt_a": "设置 AdamW 学习率并训练", "owner_a": "radiology-deep-learning", "prompt_b": "评价学习率范围和选择过程是否支持稳健性主张", "owner_b": "radiology-method-evaluation"},
+    {"id": "evaluate-versus-infer", "prompt_a": "设计公平方法比较和消融", "owner_a": "radiology-method-evaluation", "prompt_b": "计算已定义比较的差值和置信区间", "owner_b": "radiology-stats"},
+    {"id": "write-versus-polish", "prompt_a": "从证据重建 Results", "owner_a": "radiology-writing", "prompt_b": "精炼已有 Results 文字", "owner_b": "radiology-polishing"},
+    {"id": "prereview-versus-reporting", "prompt_a": "检查整稿科学漏洞", "owner_a": "radiology-prereview", "prompt_b": "逐项填 CLAIM 清单", "owner_b": "radiology-reporting"},
+    {"id": "prereview-versus-submission", "prompt_a": "检查整稿科学结论", "owner_a": "radiology-prereview", "prompt_b": "检查上传文件类型和格式", "owner_b": "radiology-submission"},
+    {"id": "search-versus-citation", "prompt_a": "系统检索一个领域", "owner_a": "radiology-search", "prompt_b": "核实一句话的引用并导出", "owner_b": "radiology-citation"},
+    {"id": "paper-reader-versus-reader-study", "prompt_a": "全文中英对照研读", "owner_a": "radiology-reader", "prompt_b": "设计放射科医生阅片者研究", "owner_b": "radiology-translation"},
+    {"id": "journal-versus-package", "prompt_a": "选择目标期刊", "owner_a": "radiology-journal", "prompt_b": "审阅目标期刊投稿包", "owner_b": "radiology-submission"},
+    {"id": "frontier-versus-design", "prompt_a": "找前沿方向和创新点", "owner_a": "radiology-frontier", "prompt_b": "锁定现有数据的 estimand 和验证设计", "owner_b": "radiology-design"},
+    {"id": "data-versus-ethics", "prompt_a": "建立数据字典和去标识计划", "owner_a": "radiology-data", "prompt_b": "判断 consent/waiver 和治理", "owner_b": "radiology-ethics"}
+    ,{"id": "search-versus-systematic-review", "prompt_a": "检索一批相关论文", "owner_a": "radiology-search", "prompt_b": "建立协议并完成系统综述筛选、提取和综合", "owner_b": "radiology-systematic-review"}
+    ,{"id": "transcriptomics-run-versus-meaning", "prompt_a": "构建并运行单细胞流程", "owner_a": "radiology-transcriptomics-analysis", "prompt_b": "判断单细胞结果支持什么机制和影像桥", "owner_b": "radiology-radiogenomics"}
+    ,{"id": "transcriptomics-run-versus-method-evaluation", "prompt_a": "配置 integration 并执行流程", "owner_a": "radiology-transcriptomics-analysis", "prompt_b": "评价 integration 选择是否足以支持结论", "owner_b": "radiology-method-evaluation"}
+    ,{"id": "mechanism-interpret-versus-wetlab", "prompt_a": "解释候选通路和竞争机制", "owner_a": "radiology-radiogenomics", "prompt_b": "设计扰动、target engagement 和 rescue 实验", "owner_b": "radiology-experiment-design"}
+    ,{"id": "design-versus-clinical-domain", "prompt_a": "锁定研究 estimand 和验证方案", "owner_a": "radiology-design", "prompt_b": "补充肺癌参考标准、治疗时间轴和影像伪影约束", "owner_b": "radiology-clinical-domain"}
+    ,{"id": "clinical-domain-versus-acquisition-qc", "prompt_a": "肺癌随访应该用什么检查和临床时间窗", "owner_a": "radiology-clinical-domain", "prompt_b": "核验现有 CT 时相、层厚、重建核和伪影是否足以做定量测量", "owner_b": "radiology-acquisition-qc"}
+    ,{"id": "data-versus-acquisition-qc", "prompt_a": "盘点 DICOM 病例来源并制定去标识计划", "owner_a": "radiology-data", "prompt_b": "判定哪些 series 通过采集重建和定量 QC，可进入分析", "owner_b": "radiology-acquisition-qc"}
+    ,{"id": "acquisition-qc-versus-downstream-preprocessing", "prompt_a": "评价扫描协议、重建和体模漂移对测量结论的影响", "owner_a": "radiology-acquisition-qc", "prompt_b": "设置 PyRadiomics 重采样和灰度离散化流程", "owner_b": "radiology-radiomics"}
+    ,{"id": "grant-review-versus-defense-deck", "prompt_a": "按当年基金评审标准模拟审阅并修订标书内容", "owner_a": "radiology-grant", "prompt_b": "把已冻结的标书做成 10 分钟项目答辩 PPTX", "owner_b": "radiology-paper2ppt"}
+    ,{"id": "scientific-deck-versus-figure", "prompt_a": "规划并制作影像科研会议报告 PPT，包含叙事、演讲者备注和渲染 QA", "owner_a": "radiology-paper2ppt", "prompt_b": "单独制作一张投稿级 ROC 与校准曲线组合图", "owner_b": "radiology-figure"}
+    ,{"id": "grant-review-versus-manuscript-prereview", "prompt_a": "按当年基金 call 和评审准则审阅这份未来研究计划", "owner_a": "radiology-grant", "prompt_b": "检查这篇已完成影像 AI 论文的整稿科学漏洞", "owner_b": "radiology-prereview"}
+    ,{"id": "scientific-deck-versus-manuscript-writing", "prompt_a": "把冻结结果做成面向放射学年会的 8 分钟 PPTX", "owner_a": "radiology-paper2ppt", "prompt_b": "从同一份冻结证据起草论文 Results", "owner_b": "radiology-writing"}
+    ,{"id": "deck-qa-versus-submission-package", "prompt_a": "修复论文答辩 PPT 的溢出、图片和演讲者备注并逐页渲染 QA", "owner_a": "radiology-paper2ppt", "prompt_b": "按目标期刊核验所有投稿文件和上传清单", "owner_b": "radiology-submission"}
+    ,{"id": "integrity-versus-ethics", "prompt_a": "审计署名资格、COI、AI 披露和选择性报告风险", "owner_a": "radiology-research-integrity", "prompt_b": "判断知情同意、隐私和 IRB 路径", "owner_b": "radiology-ethics"}
+    ,{"id": "integrity-versus-prereview", "prompt_a": "建立疑似图像重复的中立证据台账和正当程序升级", "owner_a": "radiology-research-integrity", "prompt_b": "检查整稿方法和结论的科学漏洞", "owner_b": "radiology-prereview"}
+    ,{"id": "research-ops-versus-pipeline", "prompt_a": "建立多中心 RACI、里程碑、依赖和延期升级台账", "owner_a": "radiology-research-ops", "prompt_b": "判断整项课题从哪个失效科研阶段恢复", "owner_b": "radiology-pipeline"}
+    ,{"id": "consensus-versus-review", "prompt_a": "设计 Delphi 小组、匿名投票、异议和推荐阈值", "owner_a": "radiology-consensus-guideline", "prompt_b": "建立系统综述协议、筛选、偏倚和证据综合", "owner_b": "radiology-systematic-review"}
+    ,{"id": "consensus-versus-reporting", "prompt_a": "把证据转成分级推荐并管理 COI 和更新", "owner_a": "radiology-consensus-guideline", "prompt_b": "逐项审计 RIGHT、AGREE II 和 ACCORD 报告条目", "owner_b": "radiology-reporting"}
+    ,{"id": "qualitative-versus-translation", "prompt_a": "设计访谈抽样、反身性编码、饱和度和 joint display", "owner_a": "radiology-qualitative-mixed-methods", "prompt_b": "设计部署工作流、静默期和前瞻影响评价", "owner_b": "radiology-translation"}
+    ,{"id": "economics-versus-grant-budget", "prompt_a": "计算 QALY、增量成本、ICER 和 PSA", "owner_a": "radiology-health-economics", "prompt_b": "编制并审阅基金项目经费预算", "owner_b": "radiology-grant"}
+    ,{"id": "economics-versus-dca", "prompt_a": "做医疗系统预算影响和成本效用评价", "owner_a": "radiology-health-economics", "prompt_b": "计算预测模型的 decision-curve net benefit", "owner_b": "radiology-stats"}
+    ,{"id": "reproducibility-versus-data", "prompt_a": "独立重放冻结代码环境并按容差签发运行收据", "owner_a": "radiology-reproducibility", "prompt_b": "制定数据共享、保留和受控访问计划", "owner_b": "radiology-data"}
+    ,{"id": "replay-versus-offline-external-validation", "prompt_a": "在相同数据上由独立团队重放冻结分析并按预设容差签发收据", "owner_a": "radiology-reproducibility", "prompt_b": "在已冻结的新医院回顾性外部队列上锁定 population、estimand、validation plan 和分析边界", "owner_b": "radiology-design"}
+    ,{"id": "offline-external-validation-versus-prospective-deployment", "prompt_a": "设计新医院离线回顾性外部验证并预先锁定队列、终点和统计方案", "owner_a": "radiology-design", "prompt_b": "在新医院前瞻工作流中评价 reader/impact、override、延迟、漂移和患者结局", "owner_b": "radiology-translation"}
+    ,{"id": "dissemination-versus-slides", "prompt_a": "制作患者通俗摘要、政策简报和社交媒体衍生物", "owner_a": "radiology-dissemination", "prompt_b": "制作有讲者备注并完成逐页 QA 的学术 PPTX", "owner_b": "radiology-paper2ppt"}
+    ,{"id": "bibliometrics-versus-search", "prompt_a": "做领域归一化、作者消歧和引文网络影响快照", "owner_a": "radiology-bibliometrics", "prompt_b": "检索并去重一个主题的论文语料库", "owner_b": "radiology-search"}
+    ,{"id": "innovation-versus-translation", "prompt_a": "整理发明披露、现有技术交接和软件数据权利边界", "owner_a": "radiology-innovation-transfer", "prompt_b": "设计临床部署、读者影响和生产监测", "owner_b": "radiology-translation"}
+    ,{"id": "conference-abstract-routing", "prompt_a": "把冻结结果压缩成带 venue 字段和传播边界的会议摘要", "owner_a": "radiology-dissemination", "prompt_b": "从证据构建论文 abstract 的论证", "owner_b": "radiology-writing"}
+    ,{"id": "conference-abstract-versus-portal", "prompt_a": "设计会议摘要内容与受众信息", "owner_a": "radiology-dissemination", "prompt_b": "核验会议 portal 最终字段和上传文件", "owner_b": "radiology-submission"}
+    ,{"id": "conference-abstract-versus-internal-minutes", "prompt_a": "把冻结研究结果写成面向年会投稿的会议摘要并核对传播边界", "owner_a": "radiology-dissemination", "prompt_b": "把多中心启动会整理成决策、行动项、RACI、责任人和截止日期", "owner_b": "radiology-research-ops"}
+    ,{"id": "ppi-design-versus-qualitative-study", "prompt_a": "记录患者与技师如何改变研究问题、扫描负担和方案阈值", "owner_a": "radiology-design", "prompt_b": "设计患者访谈抽样、反身性分析和主题整合", "owner_b": "radiology-qualitative-mixed-methods"}
+    ,{"id": "ppi-design-versus-ethics", "prompt_a": "让患者共同决定研究终点并记录方案影响", "owner_a": "radiology-design", "prompt_b": "核验参与者同意、退出和影像二次使用授权", "owner_b": "radiology-ethics"}
+    ,{"id": "equity-inference-versus-engagement", "prompt_a": "对已定义 subgroup equity estimand 估计差值、置信区间和多重性", "owner_a": "radiology-stats", "prompt_b": "把公平性结果制作成患者公众可理解的传播材料", "owner_b": "radiology-dissemination"}
+    ,{"id": "postpublication-correction-versus-current-citation", "prompt_a": "冻结疑似错误证据并走期刊机构更正或撤回升级", "owner_a": "radiology-research-integrity", "prompt_b": "核验出版商当前版本并更新这句话的引用", "owner_b": "radiology-citation"}
+    ,{"id": "postpublication-production-versus-data-request", "prompt_a": "核验作者校样、production query 和 accepted-manuscript deposit 文件", "owner_a": "radiology-submission", "prompt_b": "审查发表后受控数据代码访问请求与释放权限", "owner_b": "radiology-data"}
+    ,{"id": "living-review-versus-bibliometric-snapshot", "prompt_a": "更新 living review 的检索、纳入、综合、确定性和结论", "owner_a": "radiology-systematic-review", "prompt_b": "更新该领域引文网络和归一化影响快照", "owner_b": "radiology-bibliometrics"}
+    ,{"id": "public-derivative-versus-deployed-system-retirement", "prompt_a": "源论文更正后更新或撤回患者摘要、政策简报和媒体衍生物", "owner_a": "radiology-dissemination", "prompt_b": "对已部署系统执行 CAPA、回滚、再验证或退役证据设计", "owner_b": "radiology-translation"}
+    ,{"id": "funder-package-versus-post-award-reporting", "prompt_a": "核验本年度申请系统的最终字段附件和机构提交包", "owner_a": "radiology-grant", "prompt_b": "按已获批 award 条款管理变更和年度结题报告", "owner_b": "radiology-research-ops"}
+    ,{"id": "annotation-versus-acquisition-geometry", "prompt_a": "制定 ROI 定义、标注者盲法、重复勾画和掩膜几何验收 SOP", "owner_a": "radiology-annotation", "prompt_b": "判定原始序列、采集重建、物理空间和协议 QC 是否允许定量分析", "owner_b": "radiology-acquisition-qc"}
+    ,{"id": "annotation-versus-radiomics-preprocessing", "prompt_a": "定义病灶掩膜、参考标准、标注版本和观察者一致性", "owner_a": "radiology-annotation", "prompt_b": "在已验收掩膜上冻结重采样、灰度离散化和特征提取参数", "owner_b": "radiology-radiomics"}
+    ,{"id": "response-versus-prereview", "prompt_a": "裁决审稿意见、逐条写回复并验证每项修改闭环", "owner_a": "radiology-response", "prompt_b": "在投稿或返修前独立检查整稿科学漏洞并冻结修复标准", "owner_b": "radiology-prereview"}
+    ,{"id": "response-versus-writing", "prompt_a": "维护 comment 到 author decision、稿件修改和回复信的逐项可核验映射", "owner_a": "radiology-response", "prompt_b": "依据冻结证据重新起草 Results 或 Discussion 的论证", "owner_b": "radiology-writing"}
+    ,{"id": "table-versus-figure", "prompt_a": "制作带来源键、单位、分母和脚注的可编辑结果表", "owner_a": "radiology-table", "prompt_b": "把同一冻结结果制作成期刊规格 ROC、校准或流程图并做视觉 QA", "owner_b": "radiology-figure"}
+    ,{"id": "table-versus-statistical-inference", "prompt_a": "把已核验统计结果编排成 Table 1、性能表和消融表", "owner_a": "radiology-table", "prompt_b": "计算效应估计、置信区间、P 值和多重性调整", "owner_b": "radiology-stats"}
+  ],
+  "clarification_cases": [
+    {
+      "id": "bare-conference-abstract",
+      "prompt": "会议摘要",
+      "expected_action": "CLARIFY",
+      "silent_primary_owner_forbidden": true,
+      "disambiguation_options": [
+        {"option_id": "conference-abstract-content", "meaning": "大会投稿摘要的内容、受众、venue 字段与传播边界", "owner": "radiology-dissemination"},
+        {"option_id": "manuscript-abstract", "meaning": "论文 Abstract 的论证与正文一致性", "owner": "radiology-writing"},
+        {"option_id": "conference-portal-package", "meaning": "会议 portal 的最终字段、文件与上传包核验", "owner": "radiology-submission"},
+        {"option_id": "internal-meeting-minutes", "meaning": "内部会议纪要、决策、行动项、责任人与截止日期", "owner": "radiology-research-ops"},
+        {"option_id": "conference-presentation", "meaning": "会议报告 PPTX、讲者备注与渲染质检", "owner": "radiology-paper2ppt"}
+      ]
+    },
+    {
+      "id": "bare-meta-analysis",
+      "prompt": "做个 meta-analysis",
+      "expected_action": "CLARIFY",
+      "silent_primary_owner_forbidden": true,
+      "disambiguation_options": [
+        {"option_id": "full-evidence-synthesis", "meaning": "从协议、检索、筛选、提取和偏倚评估到综合的完整证据综合", "owner": "radiology-systematic-review"},
+        {"option_id": "defined-effect-row-pooling", "meaning": "对已经定义且确认可比的效应量行进行统计合并与推断", "owner": "radiology-stats"}
+      ]
+    },
+    {
+      "id": "bare-external-validation",
+      "prompt": "做外部验证",
+      "expected_action": "CLARIFY",
+      "silent_primary_owner_forbidden": true,
+      "disambiguation_options": [
+        {"option_id": "offline-retrospective-external-validation", "meaning": "在独立医院或队列上做离线或回顾性外部验证并锁定 estimand", "owner": "radiology-design"},
+        {"option_id": "prospective-workflow-impact-validation", "meaning": "在新站点前瞻工作流中评价 reader、impact、override、漂移或患者结局", "owner": "radiology-translation"},
+        {"option_id": "same-data-independent-replay", "meaning": "由独立团队在相同冻结输入上按容差重放分析", "owner": "radiology-reproducibility"}
+      ]
+    },
+    {
+      "id": "vague-paper-review",
+      "prompt": "帮我看看论文",
+      "expected_action": "CLARIFY",
+      "silent_primary_owner_forbidden": true,
+      "disambiguation_options": [
+        {"option_id": "whole-manuscript-scientific-prereview", "meaning": "审阅待投稿整稿的科学设计、证据与结论边界", "owner": "radiology-prereview"},
+        {"option_id": "reporting-checklist-audit", "meaning": "逐项完成适用报告清单并定位缺口", "owner": "radiology-reporting"},
+        {"option_id": "submission-package-audit", "meaning": "核验目标期刊或会议的文件、格式与上传包", "owner": "radiology-submission"},
+        {"option_id": "language-polish", "meaning": "在不改变科学内容的前提下润色已有文字", "owner": "radiology-polishing"},
+        {"option_id": "published-paper-reader", "meaning": "研读和解释一篇已经发表的论文及其图表", "owner": "radiology-reader"}
+      ]
+    },
+    {
+      "id": "bare-ppi-equity",
+      "prompt": "做 PPI/公平性",
+      "expected_action": "CLARIFY",
+      "silent_primary_owner_forbidden": true,
+      "disambiguation_options": [
+        {"option_id": "ppi-protocol-impact", "meaning": "患者公众或利益相关方共同塑造研究问题、终点、负担、阈值或方案", "owner": "radiology-design"},
+        {"option_id": "qualitative-experience-study", "meaning": "设计可分析的访谈、焦点小组或反身性定性研究", "owner": "radiology-qualitative-mixed-methods"},
+        {"option_id": "participation-rights", "meaning": "核验参与者权利、同意、退出、隐私或二次使用授权", "owner": "radiology-ethics"},
+        {"option_id": "equity-estimand-inference", "meaning": "对已定义 subgroup 或 equity estimand 做统计估计与不确定性分析", "owner": "radiology-stats"},
+        {"option_id": "workflow-access-and-harm", "meaning": "评价部署工作流中的可及性、差异伤害、阈值和监测", "owner": "radiology-translation"},
+        {"option_id": "public-engagement-product", "meaning": "制作患者公众传播、回馈或 engagement 衍生物", "owner": "radiology-dissemination"}
+      ]
+    }
+  ],
+  "tutor_cases": [
+    {"id": "guided-learning-no-write", "prompt": "请用苏格拉底式提问教我判断数据泄漏，不要创建项目文件。", "expected_owner": "radiology-pipeline", "interaction_style": "guided-learning", "artifact_mode": "read-only", "simulation_authorized": false},
+    {"id": "direct-expert-no-quiz", "prompt": "直接给我整个课题的优先修复顺序并解释原因。", "expected_owner": "radiology-pipeline", "interaction_style": "direct-expert", "artifact_mode": "read-only", "simulation_authorized": false},
+    {"id": "teaching-is-not-simulation-consent", "prompt": "我想学习如何设计外部验证，但请基于概念教学。", "expected_owner": "radiology-pipeline", "interaction_style": "guided-learning", "artifact_mode": "read-only", "simulation_authorized": false},
+    {"id": "explicit-scoped-simulation", "prompt": "请为这个教学例子生成一个明确标注的合成混淆矩阵；不要创建完整项目。", "expected_owner": "radiology-pipeline", "interaction_style": "direct-expert", "artifact_mode": "read-only", "simulation_authorized": true}
+  ],
+  "required_lifecycle_phases": [
+    "orchestration", "discovery", "design", "data", "execution", "evaluation",
+    "communication", "review", "publication", "translation", "funding", "education",
+    "governance", "operations", "recommendation", "verification", "impact-pathway", "post-publication"
+  ]
+}

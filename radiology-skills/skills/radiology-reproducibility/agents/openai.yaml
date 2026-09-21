@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Reproducibility"
+  short_description: "Audit, replay, and archive reproducible imaging research"
+  default_prompt: "Use $radiology-reproducibility to audit or package this imaging analysis with frozen identities, replay receipts, tolerances, and evidence levels."

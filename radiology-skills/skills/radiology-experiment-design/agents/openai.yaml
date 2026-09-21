@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mechanism Experiment Design"
+  short_description: "Plan and audit causal wet-lab validation"
+  default_prompt: "Use $radiology-experiment-design to plan or audit this mechanism experiment, distinguish association from intervention-supported evidence, and return constructive minimum, stronger, and resource-limited routes."

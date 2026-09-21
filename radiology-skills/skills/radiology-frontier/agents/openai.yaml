@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Frontier"
+  short_description: "Find evidence-grounded frontier imaging research directions"
+  default_prompt: "Use $radiology-frontier to identify publishable imaging research directions that fit the available data."

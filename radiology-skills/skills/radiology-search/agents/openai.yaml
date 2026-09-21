@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Literature Search"
+  short_description: "Build reproducible imaging literature or dataset corpora"
+  default_prompt: "Use $radiology-search to search, deduplicate and document an imaging literature or dataset candidate corpus without claiming formal review synthesis."

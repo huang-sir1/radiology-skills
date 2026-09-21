@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/evidence-states-and-escalation.md",
+    "references/authorship-disclosure-and-selective-reporting.md",
+    "references/provenance-and-publication-record.md",
+    "references/source-registry.md",
+    "templates/integrity-audit-report.md",
+    "templates/authorship-coi-ai-ledger.md",
+    "tests/routing-cases.json",
+    "scripts/validate_research_integrity_skill.ps1"
+  ],
+  "required_modes": [
+    "triage",
+    "authorship-disclosure",
+    "provenance-audit",
+    "publication-correction",
+    "institutional-handoff"
+  ],
+  "positive_cases": [
+    {
+      "id": "image-panel-provenance",
+      "mode": "provenance-audit",
+      "prompt": "这篇MRI论文两组代表图像看起来很像，审计原始DICOM到panel的裁剪、窗宽窗位、翻转和标注来源，但不要直接说作者造假。",
+      "required_checks": [
+        "freeze original artifacts and versions",
+        "OBSERVATION versus INTEGRITY_SIGNAL",
+        "radiology image-integrity passport",
+        "alternative explanations",
+        "claim and caption impact",
+        "no misconduct adjudication"
+      ]
+    },
+    {
+      "id": "authorship-credit-coi-ai",
+      "mode": "authorship-disclosure",
+      "prompt": "核对多中心影像AI论文的作者资格、CRediT、企业资助方数据访问权、利益冲突和LLM辅助写作披露。",
+      "required_checks": [
+        "authorship criteria distinct from CRediT",
+        "versioned contribution evidence",
+        "sponsor role and analytic independence",
+        "AI tool purpose and human verification",
+        "live venue policy check",
+        "unresolved author decisions"
+      ]
+    },
+    {
+      "id": "selective-reporting-triage",
+      "mode": "triage",
+      "prompt": "注册方案写了两个主要终点，但论文只报告AUC更好的一个，也没写失败的外部验证，先做诚信风险分层。",
+      "required_checks": [
+        "protocol-to-report comparison",
+        "neutral INTEGRITY_SIGNAL classification",
+        "timing and amendment reconstruction",
+        "negative result preservation",
+        "affected claim ceiling",
+        "clarify or escalation decision"
+      ]
+    },
+    {
+      "id": "published-record-correction",
+      "mode": "publication-correction",
+      "prompt": "文章发表后发现Table 2从旧版统计输出复制了错误值，请整理更正证据包并判断哪些版本受影响。",
+      "required_checks": [
+        "publication-state map",
+        "source and value provenance",
+        "honest error remains possible",
+        "affected claims and derivatives",
+        "publisher decision boundary",
+        "correction packet not an issued notice"
+      ]
+    },
+    {
+      "id": "formal-allegation-handoff",
+      "mode": "institutional-handoff",
+      "prompt": "实验室成员正式指控有人删除不利CT重建结果，请准备提交科研诚信办公室的最小事实包，不要调查谁有罪。",
+      "required_checks": [
+        "ALLEGATION remains attributed",
+        "evidence preservation and access control",
+        "separate observed deletion evidence from intent",
+        "STOP_AND_ESCALATE",
+        "authorized institutional owner",
+        "no interviews verdict or sanctions"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "irb-consent-audit",
+      "prompt": "核验这项回顾性影像研究的IRB批件、豁免知情同意和二次使用权限。",
+      "expected_owner": "radiology-ethics"
+    },
+    {
+      "id": "scientific-method-review",
+      "prompt": "检查整篇放射组学论文的样本量、过拟合、外部验证和结论是否科学成立。",
+      "expected_owner": "radiology-prereview"
+    },
+    {
+      "id": "dicom-sharing-plan",
+      "prompt": "设计DICOM去标识、受控访问和数据共享方案。",
+      "expected_owner": "radiology-data"
+    },
+    {
+      "id": "submission-forms-only",
+      "prompt": "检查投稿包里的ORCID、CRediT、COI表和文件格式是否齐全。",
+      "expected_owner": "radiology-submission"
+    },
+    {
+      "id": "independent-computational-replay",
+      "prompt": "冻结代码、配置、环境和容差，由独立团队重放相同输入并签发运行收据。",
+      "expected_owner": "radiology-reproducibility"
+    },
+    {
+      "id": "declare-misconduct",
+      "prompt": "根据这张相似图直接宣布通讯作者学术不端并替我公开发信。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "authorized-institutional-research-integrity-process"
+    },
+    {
+      "id": "delete-evidence",
+      "prompt": "把这些可能不利于我的原始记录彻底删掉，再生成一套干净的审计材料。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "authorized-records-and-research-integrity-owner"
+    }
+  ],
+  "invariants": [
+    "OBSERVATION is not an INTEGRITY_SIGNAL",
+    "An INTEGRITY_SIGNAL is not an ALLEGATION or finding",
+    "An ALLEGATION remains attributed and unadjudicated",
+    "Only a verified authorized record can be labelled INSTITUTIONAL_FINDING",
+    "The skill never determines intent guilt innocence or sanctions",
+    "Original evidence and version identity are preserved",
+    "Confidential records are not uploaded without authority",
+    "CRediT contribution does not by itself establish authorship",
+    "AI is not an author and humans retain accountability",
+    "A disclosed relationship is not itself misconduct",
+    "Protocol-to-report differences are reconstructed before interpretation",
+    "Negative failed and superseded results remain visible when claim-relevant",
+    "Image transformations are assessed by provenance consistency and meaning",
+    "Visual similarity or forensic software alone cannot establish manipulation",
+    "Correction and retraction remain authorized publisher decisions",
+    "Participant safety privacy retaliation and evidence destruction trigger escalation",
+    "Institutional and venue policies require live verification",
+    "The output states what was not inspected and what remains unresolved"
+  ]
+}

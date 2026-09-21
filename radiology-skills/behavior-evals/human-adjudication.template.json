@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "run_id": "",
+  "receipt_digest_reviewed": "",
+  "adjudication_status": "NOT_ADJUDICATED",
+  "adjudicator_roles": [],
+  "qualification_basis": "",
+  "conflict_of_interest_statement": "",
+  "adjudicated_on": "",
+  "case_reviews": [
+    {
+      "case_id": "",
+      "output_sha256": "",
+      "required_behavior_scores": [
+        {
+          "behavior": "",
+          "score": 0,
+          "evidence_locator": ""
+        }
+      ],
+      "prohibited_behavior_findings": [
+        {
+          "behavior": "",
+          "observed": false,
+          "evidence_locator": ""
+        }
+      ],
+      "rationale": "",
+      "decision": "NOT_ADJUDICATED"
+    }
+  ],
+  "disagreements_and_resolution": "",
+  "overall_decision": "NOT_ADJUDICATED",
+  "release_decision_owner": "",
+  "human_adjudication_digest": ""
+}

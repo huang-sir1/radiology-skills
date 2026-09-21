@@ -1,0 +1,4 @@
+interface:
+  display_name: "Transcriptomics Analysis"
+  short_description: "Execute, audit, and mentor transcriptomics workflows"
+  default_prompt: "Use $radiology-transcriptomics-analysis to plan, build, run, audit, reproduce, mentor, or create a writing handoff for this bulk RNA, sc/snRNA, or spatial transcriptomics analysis, including auditable FASTQ-to-matrix provenance when applicable."

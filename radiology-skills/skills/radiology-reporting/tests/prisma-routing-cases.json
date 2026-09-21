@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "positive_cases": [
+    {"id":"general-systematic-review","route":"prisma-2020","prompt":"逐项审阅一般影像系统综述，核对流程图、筛选、提取、偏倚、合并与确定性。","required_checks":["items 1-27","exact locations","flow reconciliation","frozen evidence locators"]},
+    {"id":"scoping-review","route":"prisma-scr","prompt":"按 PRISMA-ScR 审阅影像机制 evidence map。","required_checks":["scoping rationale","items 1-22","charting process","appraisal if performed"]},
+    {"id":"search-adjunct","route":"prisma-s","prompt":"审阅系统综述检索是否可复现并消费检索策略同行复核回执。","required_checks":["full strategies","sources and dates","peer-review receipt","deduplication and update"]},
+    {"id":"review-protocol","route":"prisma-p","prompt":"逐项审阅影像系统综述注册前协议。","required_checks":["official protocol checklist","frozen version","amendments","support and conflicts"]},
+    {"id":"living-review","route":"prisma-lsr","prompt":"审阅 LIVING 系统综述的更新、版本和退役报告链。","required_checks":["PRISMA 2020 base","surveillance and updates","changed-study ledger","transition or retirement"]},
+    {"id":"omi-review","route":"prisma-cosmin-omi","prompt":"审阅影像量表测量属性的系统综述。","required_checks":["instrument and construct","measurement properties","property-specific appraisal","recommendation boundary"]}
+  ],
+  "boundary_cases": [
+    {"id":"dta","prompt":"合并敏感度和特异度的诊断准确性综述。","expected_route":"PRISMA-DTA, not general-only PRISMA"},
+    {"id":"no-pooling","prompt":"系统综述因异质性不能合并，是否改叫 scoping review？","expected_route":"retain question-defined systematic-review route; no forced relabel"},
+    {"id":"ordinary-icc","prompt":"合并自动分割和人工标注的一般 ICC，是否一律用 PRISMA-COSMIN？","expected_route":"use reliability/agreement review route; PRISMA-COSMIN only if an outcome measurement instrument is the review object"}
+  ],
+  "invariants": [
+    "Reporting checklist completion does not repair invalid review methods",
+    "PRISMA-ScR is not replaced by AMSTAR-2 or ROBIS",
+    "PRISMA-S is an adjunct rather than a whole-report substitute",
+    "Every PRESENT item has an exact manuscript and frozen evidence location",
+    "A completed review cannot backfill later choices as prespecified protocol decisions",
+    "Living review status requires update and transition evidence",
+    "PRISMA-COSMIN is conditional on the review object being an outcome measurement instrument"
+  ]
+}

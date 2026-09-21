@@ -1,0 +1,5 @@
+interface:
+  display_name: "Radiology Research Integrity"
+  short_description: "Audit integrity without adjudicating misconduct"
+  default_prompt: "Use $radiology-research-integrity to audit this research record, classify concerns without accusation, and prepare evidence-bounded repairs or escalation."
+

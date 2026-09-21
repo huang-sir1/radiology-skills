@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Publication Tables"
+  short_description: "Create and audit publication-ready imaging research tables"
+  default_prompt: "Use $radiology-table to build and audit publication-ready tables from the supplied imaging study results."

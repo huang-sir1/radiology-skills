@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/evaluation-design-and-imaging-pathway.md",
+    "references/modeling-uncertainty-and-hta.md",
+    "references/source-registry.md",
+    "templates/health-economic-evaluation-passport.md",
+    "templates/model-and-uncertainty-register.md",
+    "scripts/validate_health_economics_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": [
+    "scope-plan",
+    "trial-based-evaluation",
+    "model-based-evaluation",
+    "budget-impact",
+    "uncertainty-voi",
+    "audit-reporting"
+  ],
+  "positive_cases": [
+    {
+      "id": "mri-ai-cua-scope",
+      "mode": "scope-plan",
+      "prompt": "规划 MRI AI 辅助诊断相对当前流程的成本效用分析，明确 NHS 视角、比较策略、时域、QALY 和下游治疗。",
+      "required_checks": [
+        "live jurisdiction and reference case",
+        "population strategy and current comparator",
+        "perspective horizon discounting and price year",
+        "diagnostic-to-treatment pathway",
+        "QALY source and no double counting",
+        "claim and reimbursement boundary"
+      ]
+    },
+    {
+      "id": "ct-screening-trial-economic",
+      "mode": "trial-based-evaluation",
+      "prompt": "为低剂量 CT 筛查试验预设同期经济评价，收集资源利用、效用、重复检查和长期外推。",
+      "required_checks": [
+        "preserve randomised strategy",
+        "resource and utility collection timing",
+        "missingness censoring and clustering",
+        "trial versus routine-practice resource boundary",
+        "downstream extrapolation model layer",
+        "uncertainty and subgroup plan"
+      ]
+    },
+    {
+      "id": "cost-consequence-workflow",
+      "mode": "scope-plan",
+      "prompt": "比较急诊 CT 自动分诊与常规流程，用 cost-consequence 同时列出成本、周转时间、漏诊升级、辐射重复和公平性。",
+      "required_checks": [
+        "named decision maker and strategies",
+        "disaggregated consequences",
+        "capacity and cash-saving distinction",
+        "nondiagnostic repeat and delay pathway",
+        "no forced QALY aggregation",
+        "no automatic adoption recommendation"
+      ]
+    },
+    {
+      "id": "pet-ct-budget-impact",
+      "mode": "budget-impact",
+      "prompt": "估算地区医疗系统引入 PET/CT 新示踪剂三年的预算影响，包括符合条件人群、采用率、替代检查和年度成本。",
+      "required_checks": [
+        "specific budget holder and horizon",
+        "eligible population entry and exit",
+        "current and future technology mix",
+        "uptake access and displacement scenarios",
+        "annual and cumulative costs",
+        "BIA not cost-effectiveness"
+      ]
+    },
+    {
+      "id": "diagnostic-decision-tree",
+      "mode": "model-based-evaluation",
+      "prompt": "审计一次性肺结节分流 decision tree：CT 风险分层后进入随访、PET/CT 或活检。",
+      "required_checks": [
+        "short acyclic pathway fit",
+        "mutually exclusive strategies and branches",
+        "equivocal and failed tests",
+        "false-positive false-negative consequences",
+        "input provenance and structural alternatives",
+        "verification and incremental analysis"
+      ]
+    },
+    {
+      "id": "markov-surveillance-model",
+      "mode": "model-based-evaluation",
+      "prompt": "构建肿瘤影像随访的长期 Markov 模型，处理复发、重复扫描、治疗后状态和死亡。",
+      "required_checks": [
+        "state-transition rationale",
+        "mutually exclusive exhaustive states",
+        "cycle memory and recurrent events",
+        "competing risk and time horizon",
+        "calibration and validation",
+        "structural and parameter uncertainty"
+      ]
+    },
+    {
+      "id": "psa-scenario-interpretation",
+      "mode": "uncertainty-voi",
+      "prompt": "解释这份 CUA 的单因素、结构情景和 PSA；作者只给 95% cost-effective 就说 95% 会获批。",
+      "required_checks": [
+        "parameter structural and methodological uncertainty",
+        "distribution and correlation rationale",
+        "Monte Carlo error and run receipt",
+        "cost-effectiveness plane or acceptability summary",
+        "probability cost-effective not approval probability",
+        "residual decision uncertainty"
+      ]
+    },
+    {
+      "id": "voi-research-priority",
+      "mode": "uncertainty-voi",
+      "prompt": "在现有影像筛查模型上做 EVPI/EVPPI/EVSI，判断是继续研究检查准确性、效用还是采用率。",
+      "required_checks": [
+        "valid decision model prerequisite",
+        "population and decision horizon",
+        "EVPI EVPPI and EVSI distinction",
+        "research cost and delay",
+        "candidate study design handoff",
+        "VOI not ethics funding or feasibility approval"
+      ]
+    },
+    {
+      "id": "cheers-ai-audit",
+      "mode": "audit-reporting",
+      "prompt": "按 CHEERS 2022 和 CHEERS-AI 审阅影像 AI 经济评价，并核对当地 HTA 方法是否仍适用。",
+      "required_checks": [
+        "CHEERS reporting not validity certificate",
+        "CHEERS-AI conditional applicability",
+        "live local HTA source receipt",
+        "decision problem and model transparency",
+        "uncertainty stakeholder and distributional fields",
+        "no reimbursement guarantee"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "grant-budget-only",
+      "prompt": "给国自然标书列出扫描费、劳务费和服务器费预算。",
+      "expected_owner": "radiology-grant",
+      "required_boundary": "a project grant budget is not an economic evaluation or BIA"
+    },
+    {
+      "id": "decision-curve-only",
+      "prompt": "计算预测模型的 decision curve 和 threshold probability 下的 net benefit。",
+      "expected_owner": "radiology-stats",
+      "required_boundary": "decision-curve net benefit is not monetary net benefit or cost-effectiveness"
+    },
+    {
+      "id": "decision-curve-fit-audit",
+      "prompt": "审计这个阈值范围和 decision-curve net-benefit 指标是否适合支持临床效用主张。",
+      "expected_owner": "radiology-method-evaluation",
+      "required_boundary": "metric and threshold fitness is method evaluation; it is not economic value"
+    },
+    {
+      "id": "clinical-effect-estimation",
+      "prompt": "估计 MRI 新序列对复发风险的因果效应并处理混杂。",
+      "expected_owner": "radiology-stats",
+      "required_boundary": "clinical-effect estimation precedes economic modelling"
+    },
+    {
+      "id": "current-care-pathway",
+      "prompt": "决定当前指南下肺结节应该用哪个影像随访路径。",
+      "expected_owner": "radiology-clinical-domain",
+      "required_boundary": "current clinical pathway ownership remains external"
+    },
+    {
+      "id": "reimbursement-authorization",
+      "prompt": "根据这个 ICER 正式批准医保报销并给出收费编码。",
+      "expected_owner": "local-hta-payer-authority",
+      "required_boundary": "STOP_AUTHORIZATION_REQUEST"
+    },
+    {
+      "id": "individual-patient-payment",
+      "prompt": "根据 QALY 和费用决定这个患者能否做 PET/CT。",
+      "expected_owner": "responsible-clinical-team",
+      "required_boundary": "population economic results do not authorize individual care"
+    },
+    {
+      "id": "economic-prose-polish",
+      "prompt": "不要审模型，只把 health economics Discussion 改成英文。",
+      "expected_owner": "radiology-polishing",
+      "required_boundary": "language editing is not economic-method ownership"
+    }
+  ],
+  "invariants": [
+    "Jurisdiction decision maker and live reference case precede HTA-specific advice",
+    "Population strategies comparator perspective horizon and outcome define the decision problem",
+    "A threshold is not transferred across jurisdictions as a universal constant",
+    "CEA CUA cost-consequence BIA and VOI remain distinct",
+    "A grant budget is not a budget impact analysis",
+    "Budget impact does not establish cost-effectiveness",
+    "A favourable ICER does not prove affordability",
+    "Diagnostic accuracy is an intermediate input rather than a QALY",
+    "Imaging benefit is linked through downstream actions and outcomes",
+    "Nondiagnostic equivocal false-positive false-negative repeat and incidental pathways remain visible",
+    "Time saved is not cash saved without an explicit capacity and valuation mechanism",
+    "Decision trees and state-transition models are selected for problem fit rather than prestige",
+    "Greater model complexity does not establish validity",
+    "Observed inputs external sources assumptions derivations scenarios inferences and recommendations remain distinct",
+    "Incremental results and dominance precede ICER interpretation",
+    "Negative ICERs are not interpreted without their cost-effect quadrant",
+    "Parameter structural methodological stochastic uncertainty and heterogeneity remain distinct",
+    "PSA preserves distributions correlations run identity and Monte Carlo error",
+    "Probability cost-effective is not probability clinically effective or approved",
+    "VOI requires a valid decision model and does not approve research",
+    "CHEERS is reporting guidance rather than a model-validity certificate",
+    "CHEERS-AI supplements rather than replaces CHEERS when applicable",
+    "Decision-curve net benefit is not monetary net benefit or an economic evaluation",
+    "HTA is multidisciplinary and economic evidence alone does not determine adoption",
+    "Coverage reimbursement procurement and individual patient decisions remain with authorised bodies"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Biostatistics"
+  short_description: "Plan, mentor, and run defensible biostatistics"
+  default_prompt: "Use $radiology-stats to plan, audit, mentor, interpret, or compute a unit-aware statistical brief, compute only from sufficient verified inputs, and stop with BIOSTATISTICIAN_REQUIRED when needed."

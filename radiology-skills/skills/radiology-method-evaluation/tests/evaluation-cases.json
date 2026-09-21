@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/parameter-and-methodology-evaluation.md",
+    "templates/parameter-methodology-evaluation-matrix.md",
+    "templates/local-parameter-and-method-experience-registry.md"
+  ],
+  "positive_cases": [
+    {
+      "id": "radiomics-parameter-robustness",
+      "mode": "plan",
+      "focus": "parameters",
+      "modality": "radiomics",
+      "prompt": "评估 voxel spacing、bin width、插值器、ICC cutoff 和分割扰动，并设计最小敏感性实验。",
+      "required_checks": ["parameter provenance", "test isolation", "sensitivity range", "claim consequence"]
+    },
+    {
+      "id": "deep-imaging-fair-ablation",
+      "mode": "audit",
+      "focus": "methodology",
+      "modality": "deep-imaging",
+      "prompt": "检查 architecture ablation、learning-rate/patch-size search 和 baseline tuning budget 是否公平。",
+      "required_checks": ["matched splits", "matched tuning budget", "seed hierarchy", "efficiency conditions"]
+    },
+    {
+      "id": "bulk-rna-method-comparison",
+      "mode": "plan",
+      "focus": "combined",
+      "modality": "bulk-rna",
+      "prompt": "比较 filtering、normalization、DE model 和 pathway universe 对主要机制结论的影响。",
+      "required_checks": ["design contrast", "batch/composition", "gene-set universe", "multiplicity handoff"]
+    },
+    {
+      "id": "single-cell-qc-integration-resolution",
+      "mode": "audit",
+      "focus": "combined",
+      "modality": "single-cell",
+      "prompt": "审阅 scRNA QC、HVG、PC、kNN、integration 和 clustering resolution 的选择与 donor-level 结论。",
+      "required_checks": ["donor unit", "outcome peeking", "held-out preservation", "pseudobulk"]
+    },
+    {
+      "id": "spatial-scale-null-sensitivity",
+      "mode": "interpret",
+      "focus": "parameters",
+      "modality": "spatial",
+      "prompt": "解释替代 segmentation、domain resolution、radius/kernel 和 spatial null 的真实敏感性结果。",
+      "required_checks": ["spatial scale", "patient aggregation", "null model", "failure boundary"]
+    },
+    {
+      "id": "pathology-threshold-tiling",
+      "mode": "plan",
+      "focus": "evaluation-metrics",
+      "modality": "pathology",
+      "prompt": "评价 stain/scoring cutoff、tile magnification、phenotype threshold 和 patient aggregation。",
+      "required_checks": ["threshold freeze", "tile-to-patient hierarchy", "metric blind spot", "segmentation perturbation"]
+    },
+    {
+      "id": "multi-omics-modality-ablation",
+      "mode": "audit",
+      "focus": "methodology",
+      "modality": "multi-omics",
+      "prompt": "审阅 factor number、modality weights、missing-modality policy 与 unimodal/paired ablation。",
+      "required_checks": ["matched intersection", "unimodal baseline", "modality ablation", "validation freeze"]
+    },
+    {
+      "id": "perturbation-dose-time-redline",
+      "mode": "plan",
+      "focus": "methodology",
+      "modality": "perturbation",
+      "prompt": "评价 guide assignment、dose-time、target engagement、toxicity 与 rescue 设计。",
+      "required_checks": ["experimental-design factor", "off-target", "target engagement", "dose-time order"]
+    },
+    {
+      "id": "imaging-mechanism-bridge-sensitivity",
+      "mode": "audit",
+      "focus": "combined",
+      "modality": "imaging-mechanism",
+      "prompt": "审阅影像到组织、空间和单细胞桥接参数，判断 discordance 是否改变机制解释。",
+      "required_checks": ["cross-scale mapping", "matched n", "bridge sensitivity", "association ceiling"]
+    },
+    {
+      "id": "evaluation-writing-package",
+      "mode": "writing-package",
+      "focus": "writing",
+      "modality": "radiomics",
+      "prompt": "把已完成的 benchmark、ablation 和 parameter sensitivity 证据安排进 Methods、Results 与 Supplement。",
+      "required_checks": ["evidence state", "methods placement", "results placement", "supplement provenance"]
+    },
+    {
+      "id": "verification-from-logs",
+      "mode": "audit",
+      "focus": "verification",
+      "modality": "deep-imaging",
+      "prompt": "根据配置、日志和结果文件核验作者声称的敏感性分析是否真的运行并冻结。",
+      "required_checks": ["artifact locator", "reported versus verified", "freeze point", "test access"]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "statistics-only",
+      "prompt": "计算两个模型 AUC 差异的置信区间和 P 值。",
+      "expected_owner": "radiology-stats"
+    },
+    {
+      "id": "pipeline-execution",
+      "prompt": "用 AdamW 选择学习率并实际训练模型。",
+      "expected_owner": "radiology-deep-learning"
+    },
+    {
+      "id": "results-prose-only",
+      "prompt": "已有最终消融表，帮我写成 Results 段落。",
+      "expected_owner": "radiology-writing"
+    },
+    {
+      "id": "whole-manuscript-review",
+      "prompt": "检查整篇稿件全部设计、统计、写作和投稿风险。",
+      "expected_owner": "radiology-prereview"
+    },
+    {
+      "id": "submission-format",
+      "prompt": "检查所有投稿文件类型和期刊格式是否符合上传要求。",
+      "expected_owner": "radiology-submission"
+    }
+  ],
+  "invariants": [
+    "No test-set tuning or configuration selection",
+    "No patient-level inference from folds, seeds, cells, spots, tiles, patches, or model runs",
+    "No invented parameter ranges, results, compute costs, or best settings",
+    "Planned, author-reported, verified, and not-assessable states remain distinct",
+    "A setting that changes the estimand, biological object, spatial scale, cell identity, or decision threshold is a distinct analysis",
+    "Perturbation dose, time, and guide design are experimental-design factors rather than ordinary ML hyperparameters",
+    "Ablation evidence does not establish biological mechanism or universal necessity"
+  ]
+}

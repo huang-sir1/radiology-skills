@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.1",
+  "candidate_id": "",
+  "status": "DRAFT",
+  "observation_ids": [],
+  "observation_artifacts": [
+    {
+      "observation_id": "",
+      "path": "",
+      "sha256": ""
+    }
+  ],
+  "evidence_pattern": {
+    "distinct_run_ids": [],
+    "distinct_case_or_prompt_ids": [],
+    "repeated_defect_class": "",
+    "repeated_invariant_id": "",
+    "repeated_defect_signature": "",
+    "repeated_root_cause_state": "",
+    "affected_contracts": [],
+    "highest_severity": "P2",
+    "high_severity_invariant_break": false,
+    "basis": ""
+  },
+  "target_file": "",
+  "smallest_change": "",
+  "affected_routes": [],
+  "regression_to_add": "",
+  "source_freshness_impact": "",
+  "rollback": "",
+  "scientific_owner": "",
+  "independent_reviewer": "",
+  "decision_evidence_locator": "",
+  "persistent_change_authorized": false
+}

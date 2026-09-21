@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.1",
+  "target_journal_id": "radiology",
+  "article_type": "Original Research",
+  "submission_stage": "initial",
+  "publisher_stage_label": "initial submission",
+  "package_root": "C:/absolute/path/to/author-confirmed-upload-root",
+  "review_scope": "upload-root",
+  "study_design": [
+    "observational"
+  ],
+  "review_model": "double-anonymized",
+  "manuscript_version": "v1.0",
+  "project_id": "PROJECT-001",
+  "study_scope": "imaging-mechanism",
+  "project_state_digest": "replace-with-nonzero-64-lowercase-hex",
+  "modality_role_digest": "replace-with-nonzero-64-lowercase-hex",
+  "scientific_handoff_packet_digest": "replace-with-nonzero-64-lowercase-hex",
+  "scientific_prereview_receipt_digest": "not-applicable",
+  "source_artifact_id": "ARTIFACT-MANUSCRIPT-V1",
+  "analysis_lock_digest": "replace-with-64-lowercase-hex",
+  "claim_registry_digest": "replace-with-64-lowercase-hex",
+  "response_package_digest": "not-applicable",
+  "guide_checked_on": "2026-08-22",
+  "transfer_context": null
+}

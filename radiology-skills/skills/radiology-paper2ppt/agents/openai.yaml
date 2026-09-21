@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Research Presentations"
+  short_description: "Plan and build evidence-led radiology research decks"
+  default_prompt: "Use $radiology-paper2ppt to plan or build an audience-specific radiology research deck with source-linked visuals, speaker notes, and explicit QA."

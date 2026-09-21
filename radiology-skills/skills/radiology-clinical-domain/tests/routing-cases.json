@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/clinical-domain-routing.md",
+    "references/domain-playbooks.md",
+    "references/acute-emergency-imaging-research.md",
+    "references/musculoskeletal-imaging-research.md",
+    "references/pediatric-imaging-research.md",
+    "references/nuclear-medicine-theranostics-research.md",
+    "templates/local-clinical-expert-profile.md",
+    "templates/live-standard-receipt.md"
+  ],
+  "positive_cases": [
+    {
+      "id": "later-pathology-not-predictor-leakage",
+      "mode": "audit",
+      "domain": "breast",
+      "prompt": "乳腺 MRI 之后两周活检病理作为参考标准，中间无治疗，模型仅使用 MRI 时可得的信息；审计时间关系，不要把后续病理标签自动判为泄漏。",
+      "required_checks": ["later reference ascertainment can be valid", "index-to-reference interval and intervening treatment", "lesion mapping and verification selection", "no future information in earlier predictors", "diagnostic claim limited by reference and spectrum"]
+    },
+    {
+      "id": "lung-screening-plan",
+      "mode": "plan",
+      "domain": "thoracic-lung-oncology",
+      "prompt": "设计低剂量 CT 筛查结节分诊研究，明确人群、时间零点、验证偏倚和临床用途。",
+      "required_checks": ["screening pathway", "PICO/estimand", "verification", "protocol", "claim ceiling"]
+    },
+    {
+      "id": "neuro-response-audit",
+      "mode": "audit",
+      "domain": "neuro-oncology",
+      "prompt": "审阅胶质瘤治疗反应稿件，检查 baseline、RANO 版本、激素、假性进展和组织映射。",
+      "required_checks": ["baseline", "live standard", "treatment timeline", "reference standard", "review red flags"]
+    },
+    {
+      "id": "liver-lesion-mentor",
+      "mode": "mentor",
+      "domain": "liver-hepatobiliary",
+      "prompt": "指导学生把肝脏多期增强影像和机制想法变成可执行研究。",
+      "required_checks": ["applicable population", "phase timing", "mechanism alternatives", "validation ladder", "learner prompts"]
+    },
+    {
+      "id": "breast-results-interpret",
+      "mode": "interpret",
+      "domain": "breast",
+      "prompt": "解释病理富集乳腺 MRI 队列的真实结果，判断能否推广到筛查。",
+      "required_checks": ["spectrum", "pathology verification", "screening transport", "clinical meaning", "claim ceiling"]
+    },
+    {
+      "id": "prostate-writing-handoff",
+      "mode": "writing-handoff",
+      "domain": "prostate-pelvic",
+      "prompt": "把已冻结的前列腺 MRI 研究临床事实交给论文写作，保留 PI-RADS 和活检边界。",
+      "required_checks": ["diagnostic pathway", "standard version", "biopsy route", "unit hierarchy", "writing placement"]
+    },
+    {
+      "id": "cardiovascular-ccta-audit",
+      "mode": "audit",
+      "domain": "cardiovascular",
+      "prompt": "审阅 CCTA 自动 CAD-RADS 研究，检查节段聚类、钙化伪影、有创验证和治疗后偏倚。",
+      "required_checks": ["patient aggregation", "artifact", "verification pathway", "post-index treatment", "claim ceiling"]
+    },
+    {
+      "id": "acute-emergency-time-to-action",
+      "mode": "audit",
+      "domain": "acute-emergency",
+      "prompt": "审阅急诊影像 AI 的 time-to-action 研究，核对时钟、队列干扰、路径分母、验证和安全后果。",
+      "required_checks": ["workflow clocks", "pathway denominator", "queue interference", "reference standard", "claim ceiling"]
+    },
+    {
+      "id": "musculoskeletal-postoperative-plan",
+      "mode": "plan",
+      "domain": "musculoskeletal",
+      "prompt": "设计术后带金属植入物的肌骨 MRI 纵向研究，区分侧别、负重、结构层级、手术时间轴和伪影。",
+      "required_checks": ["laterality", "load and position", "postoperative timeline", "hardware artifact", "claim ceiling"]
+    },
+    {
+      "id": "pediatric-cross-age-audit",
+      "mode": "audit",
+      "domain": "pediatric",
+      "prompt": "审阅儿童到青少年跨年龄 CT 模型，检查发育阶段、体型和剂量、镇静选择、家庭依赖与成人外推。",
+      "required_checks": ["developmental state", "body size and dose", "sedation", "family dependence", "cross-age validation"]
+    },
+    {
+      "id": "nuclear-theranostics-plan",
+      "mode": "plan",
+      "domain": "nuclear-medicine-theranostics",
+      "prompt": "设计诊疗一体化核医学研究，冻结示踪剂与治疗配对、时间轴、定量 PET/SPECT、剂量学和结论上限。",
+      "required_checks": ["tracer identity", "theranostic timeline", "dosimetry", "acquisition-QC handoff", "claim ceiling"]
+    },
+    {
+      "id": "local-expert-extension",
+      "mode": "mentor",
+      "domain": "local-extension-needed",
+      "prompt": "将本院罕见盆腔肿瘤 MDT 经验整理为研究启发，但不当作普遍规则。",
+      "required_checks": ["local expert confirmation", "case denominator", "applicability boundary", "external corroboration", "learner question"]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "individual-treatment-request",
+      "prompt": "根据这位患者的影像直接给出治疗方案。",
+      "expected_action": "decline individual management and route to responsible clinician"
+    },
+    {
+      "id": "pipeline-execution",
+      "prompt": "实际训练这个肺结节模型并调参。",
+      "expected_action": "handoff clinical passport to execution and method-evaluation modules"
+    },
+    {
+      "id": "statistics-only",
+      "prompt": "计算 time-dependent AUC 的置信区间。",
+      "expected_action": "handoff estimand and independent unit to statistics"
+    },
+    {
+      "id": "current-guideline-memory",
+      "prompt": "不联网，凭记忆告诉我当前分期和治疗标准。",
+      "expected_action": "retain LIVE_VERIFICATION_REQUIRED and require normative ID version section-page locator retrieved artifact SHA-256 and superseded relation before asserting currency"
+    },
+    {
+      "id": "translation-study",
+      "prompt": "根据冻结的肺结节临床路径设计读者研究、阈值动作和前瞻工作流验证。",
+      "expected_action": "handoff disease pathway and claim ceiling to radiology-translation"
+    },
+    {
+      "id": "human-subjects-governance",
+      "prompt": "用可识别临床影像、病历和剩余肿瘤组织建立多中心机制队列，顺便确认知情同意和隐私合规。",
+      "expected_action": "handoff activity and data-tissue map to radiology-ethics human-subjects without inferring approval"
+    }
+  ],
+  "required_modes": ["plan", "audit", "mentor", "interpret", "writing-handoff"],
+  "required_domains": [
+    "thoracic-lung-oncology",
+    "neuro-oncology",
+    "liver-hepatobiliary",
+    "breast",
+    "prostate-pelvic",
+    "cardiovascular",
+    "acute-emergency",
+    "musculoskeletal",
+    "pediatric",
+    "nuclear-medicine-theranostics",
+    "local-extension-needed"
+  ],
+  "invariants": [
+    "Clinical decision and estimand precede feature or model selection",
+    "Screening, diagnosis, staging, response, prognosis, and treatment effect remain distinct",
+    "Changing standards require live verification",
+    "Patient, lesion, vessel, examination, and time-point units are not interchangeable",
+    "Reference-standard sampling, timing, mapping, and verification pathway remain explicit",
+    "Treatment and calendar time are part of the causal and availability timeline",
+    "Association and prediction do not establish mechanism or treatment benefit",
+    "Local expert experience retains denominator and applicability boundaries",
+    "Representativeness, equity, access, harm, workflow burden, and stakeholder consequences remain explicit",
+    "Broad stable route IDs require a subtype gate before starter playbook content is applied",
+    "Pediatric development body size dose sedation and family dependence are not adult-protocol footnotes",
+    "Nuclear-medicine clinical intent remains separate from PET-SPECT acquisition quantification and dosimetry receipts",
+    "Clinical design does not substitute for human-subjects consent privacy tissue and governance review",
+    "A live-standard receipt binds normative ID version exact section-page locator retrieved artifact SHA-256 and superseded relations"
+  ]
+}

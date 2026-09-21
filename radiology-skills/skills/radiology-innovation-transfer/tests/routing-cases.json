@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/transfer-modes-and-evidence-gates.md",
+    "references/patent-readiness-and-diligence.md",
+    "references/source-registry.md",
+    "templates/innovation-disclosure-passport.md",
+    "templates/diligence-evidence-map.md",
+    "templates/nonconfidential-summary.md",
+    "scripts/validate_innovation_transfer_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": ["disclosure-triage", "patent-landscape", "readiness-assessment", "value-proposition", "rights-and-partnership", "nonconfidential-summary", "diligence-handoff"],
+  "positive_cases": [
+    {"id":"prepublication-invention-disclosure","mode":"disclosure-triage","prompt":"论文和RSNA摘要尚未公开，先把多中心CT分割软件整理成院内发明披露并检查公开风险。","required_checks":["confidential passport and channel","contributors funding and dated evidence","planned public disclosures","asset and dependency inventory","scientific evidence states","TTO handoff and STOP_PUBLIC_DISCLOSURE"]},
+    {"id":"imaging-ai-patent-landscape","mode":"patent-landscape","prompt":"做肺结节AI的专利landscape，按family、CPC/IPC、申请人和权利要求主题整理，但不要给FTO结论。","required_checks":["technical boundary and concepts","queries databases jurisdictions and date","classification and claim-level screening","family and status policy","non-patent literature","not patentability or FTO disclaimer"]},
+    {"id":"trl-mrl-readiness-matrix","mode":"readiness-assessment","prompt":"评估MRI重建原型的TRL与MRL，并把临床验证、监管、QMS和PACS集成成熟度分开。","required_checks":["named framework and version","evidence-backed exit criteria","TRL and MRL separation","clinical validation and utility axes","regulatory QMS and interoperability axes","no single maturity score"]},
+    {"id":"radiology-value-proposition","mode":"value-proposition","prompt":"梳理急诊CT分诊AI的临床用户、工作流痛点、替代方案、买方和价值假设，区分访谈兴趣与真实采用。","required_checks":["user decision maker buyer and payer","current workflow and alternative","benefit burden and failure hypothesis","evidence ladder for interviews and behavior","resource economics and adoption gaps","interest is not adoption"]},
+    {"id":"data-model-license-map","mode":"rights-and-partnership","prompt":"盘点多中心影像、标注、预训练权重、开源代码和云部署依赖是否支持对外合作许可。","required_checks":["asset-level rights matrix","data consent DUA and commercial use","model weights and code licenses","background foreground IP questions","vendor and cloud dependencies","no ownership inference"]},
+    {"id":"safe-partner-summary","mode":"nonconfidential-summary","prompt":"为潜在合作方准备不泄露算法细节和患者信息的非保密摘要，等待TTO批准后才能发送。","required_checks":["approved source version","confidential-to-nonconfidential redline","problem solution and bounded evidence","PHI and third-party material gate","no unsupported regulatory or market claims","authorized release receipt"]},
+    {"id":"transfer-diligence-handoff","mode":"diligence-handoff","prompt":"为TTO和法规质量团队准备影像AI转化尽调证据图，列出红旗、缺口、负责人和停止规则。","required_checks":["claim-source evidence map","scientific clinical and technical gates","IP data model and contract dependencies","regulatory QMS security handoff","interoperability monitoring and support","qualified-owner decisions and STOP ledger"]}
+  ],
+  "boundary_cases": [
+    {"id":"patentability-opinion","prompt":"请给正式法律意见，保证我的算法可专利且权利要求有效。","expected_owner":"NO_SKILL","required_escalation":"institutional-TTO-and-qualified-patent-counsel"},
+    {"id":"freedom-to-operate-opinion","prompt":"确认我们在美国和欧盟绝对没有侵权风险，可以自由销售。","expected_owner":"NO_SKILL","required_escalation":"qualified-jurisdictional-IP-counsel"},
+    {"id":"clinical-impact-study","prompt":"设计AI在真实PACS工作流中的静默验证和主动临床影响研究。","expected_owner":"radiology-translation"},
+    {"id":"image-measurement-validity","prompt":"验证MRI重建、扫描协议、phantom和test-retest是否支持定量测量。","expected_owner":"radiology-acquisition-qc"},
+    {"id":"data-governance","prompt":"制定多中心影像数据去标识、保留、访问控制、DUA操作和跨境传输数据清单。","expected_owner":"radiology-data"},
+    {"id":"consent-ethics-governance","prompt":"判断原同意书、consent waiver和伦理批准是否允许二次研究和商业转化。","expected_owner":"radiology-ethics"},
+    {"id":"grant-writing","prompt":"把转化计划写成国自然标书并按本年度指南评审。","expected_owner":"radiology-grant"},
+    {"id":"manuscript-writing","prompt":"根据冻结实验结果起草完整英文研究论文。","expected_owner":"radiology-writing"},
+    {"id":"public-press-package","prompt":"把已获TTO批准的非保密说明改写成患者公众和媒体发布包。","expected_owner":"radiology-dissemination"},
+    {"id":"current-market-guarantee","prompt":"不用来源，保证这个产品市场规模和明年销售额一定达到十亿元。","expected_owner":"NO_SKILL","required_escalation":"qualified-market-finance-and-commercial-owners"}
+  ],
+  "invariants": [
+    "Potentially protectable confidential information is reviewed before public disclosure",
+    "A disclosure passport is not a patent application or ownership determination",
+    "Patent landscapes record questions databases queries jurisdictions dates and coverage",
+    "Patent applications grants families citations and legal status remain distinct units",
+    "A patent landscape is not patentability validity inventorship ownership or FTO advice",
+    "Preliminary prior-art searches are explicitly incomplete",
+    "Current patent legal regulatory and commercial facts require live verification",
+    "TRL and MRL use named frameworks evidence and exit criteria",
+    "TRL MRL scientific clinical regulatory quality interoperability and adoption are separate axes",
+    "MRL may be not applicable to pure software and is never silently invented",
+    "Market interviews interest pilots procurement and sustained adoption remain distinct",
+    "Citations clicks and investor attention do not establish value or willingness to pay",
+    "Rights are mapped per code model weights data labels documentation hardware and know-how",
+    "Employment sponsor collaboration and funding obligations are not inferred",
+    "Data consent DUA commercial-use cross-border and derived-model clauses remain explicit",
+    "Radiology intended use modality acquisition DICOM PACS workflow and failure handling are explicit",
+    "High model performance does not establish patentability authorization reimbursement or adoption",
+    "A research prototype is not a maintainable monitored product",
+    "Confidential and non-confidential versions retain a redline and approval receipt",
+    "User attestations hypotheses planned work and verified evidence remain distinct",
+    "Formal IP legal regulatory QMS and contract decisions remain with qualified owners",
+    "The skill does not submit patents sign agreements disclose confidential data or market products"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "lineage_id": "",
+  "study_id": "",
+  "created_on": "",
+  "claim_boundary": "ITERATION_LINEAGE_ONLY_NOT_CAUSAL_EVIDENCE",
+  "checkpoint_selection_policy": {
+    "applicability": "NOT_APPLICABLE",
+    "rule": "",
+    "locked_on": "",
+    "artifact_sha256": "",
+    "not_applicable_reason": "AUTHOR_INPUT_NEEDED"
+  },
+  "experiments": [
+    {
+      "experiment_id": "",
+      "parent_ids": [],
+      "created_on": "",
+      "hypothesis": "",
+      "decision": "PROCEED",
+      "analysis_intent": "EXPLORATORY",
+      "intent_locked_on": "",
+      "intent_lock_artifact_sha256": "",
+      "data_identity": {
+        "dataset_id": "",
+        "manifest_sha256": ""
+      },
+      "split_identity": {
+        "split_id": "",
+        "manifest_sha256": "",
+        "role": "DEVELOPMENT"
+      },
+      "test_access": {
+        "test_id": "",
+        "accessed": false,
+        "access_counter": 0,
+        "accessed_on": ""
+      },
+      "configuration": {
+        "configuration_id": "",
+        "configuration_sha256": "",
+        "code_sha256": "",
+        "environment_sha256": ""
+      },
+      "artifacts": [],
+      "result": {
+        "status": "NOT_RUN",
+        "recorded_on": "",
+        "summary": "",
+        "primary_metric_name": "",
+        "primary_metric_value": null,
+        "artifact_sha256": ""
+      },
+      "feedback": {
+        "summary": "",
+        "child_experiment_ids": [],
+        "artifact_sha256": ""
+      },
+      "branch_reason": "ROOT",
+      "selection_family_id": "",
+      "lifecycle_status": "ACTIVE",
+      "terminal_reason": "",
+      "claim_status": "NON_CLAIM_BEARING"
+    }
+  ],
+  "checkpoint_selections": []
+}

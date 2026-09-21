@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Pre-Review"
+  short_description: "Run adversarial pre-submission review for imaging papers"
+  default_prompt: "Use $radiology-prereview to run a rigorous multi-perspective pre-submission review and prioritize fixes."

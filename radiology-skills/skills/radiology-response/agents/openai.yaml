@@ -1,0 +1,4 @@
+interface:
+  display_name: "Biomedical Reviewer Response"
+  short_description: "Write and verify evidence-linked revision letters"
+  default_prompt: "Use $radiology-response to adjudicate, draft, and independently verify a point-by-point revision-letter package for this imaging, radiomics, transcriptomic, pathology, multi-omics, perturbation, or mechanism manuscript."

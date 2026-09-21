@@ -1,0 +1,401 @@
+{
+  "name": "radiology-radiogenomics",
+  "version": "2.9.0",
+  "description": "Declarative router for standalone biological-mechanism interpretation and cross-scale imaging-mechanism claim auditing, with explicit handoffs to specialist execution, writing, review, response and submission owners.",
+  "always_load": [
+    "static/core/stance-and-boundaries.md"
+  ],
+  "axes": {
+    "interaction_mode": {
+      "values": ["unknown", "reviewer", "mentor", "combined"],
+      "default": "unknown",
+      "detect": "Use reviewer for judgement of supplied work, mentor for question or mechanism development, and combined only when the user requests both preservation and redesign. Leave unknown when the interaction cannot yet be identified."
+    },
+    "tutor_style": {
+      "values": ["not-applicable", "provisional", "direct-expert", "guided-learning"],
+      "default": "provisional",
+      "detect": "Use direct-expert for a requested answer or recommendation and guided-learning only for explicit learning, practice or Socratic coaching; never silently turn an answer request into a quiz."
+    },
+    "study_scope": {
+      "values": ["unknown", "imaging-only", "mechanism-only", "imaging-mechanism"],
+      "default": "unknown",
+      "detect": "Select mechanism-only for a biological claim without imaging and imaging-mechanism only when the requested claim connects a named imaging object to biology. Pure imaging-only work is handed to its specialist owner."
+    },
+    "task": {
+      "values": ["unknown", "idea-feasibility", "protocol-design", "pipeline-qc", "analysis-interpretation", "biological-validation", "statistics-sap", "manuscript-review", "writing-revision", "revision-verification", "initial-submission-package", "post-decision-adjudication", "submission-rebuttal", "evidence-trace"],
+      "default": "unknown",
+      "detect": "Choose the immediate radiogenomics decision or artifact. A focused parameter, evaluation-metric or methodology assessment is handed to the peer radiology-method-evaluation skill with this router's active modality context. Use initial-submission-package for first submission and post-decision-adjudication for reviewer/editor correspondence. submission-rebuttal is a deprecated compatibility alias that still requires submission_phase."
+    },
+    "writing_job": {
+      "values": ["not-applicable", "argument-map", "section-draft", "scientific-rewrite", "evidence-compression", "language-polish-handoff", "consistency-audit"],
+      "default": "not-applicable",
+      "detect": "For writing-revision, identify the immediate scientific writing operation. Language polish still passes through the scientific fidelity gate before specialist handoff."
+    },
+    "manuscript_section": {
+      "values": ["not-applicable", "title", "abstract", "introduction", "methods", "results", "figure-legend", "discussion", "conclusion", "supplement", "full-manuscript"],
+      "multi": true,
+      "allow_scalar": true,
+      "default": "not-applicable",
+      "detect": "Name one or more requested sections or full manuscript so section-specific evidence placement and consistency checks can be applied."
+    },
+    "submission_phase": {
+      "values": ["not-applicable", "initial", "post-decision"],
+      "default": "not-applicable",
+      "detect": "Use initial for first submission packaging and post-decision for reviewer/editor correspondence; never merge the two artifact chains."
+    },
+    "project_stage": {
+      "values": ["unknown", "idea", "feasibility", "protocol", "data", "analysis", "results", "manuscript", "revision", "submission"],
+      "default": "unknown",
+      "detect": "Infer from the materials actually supplied, not from the user's eventual aspiration."
+    },
+    "active_modalities": {
+      "values": ["radiomics", "bulk-rna", "single-cell", "spatial", "pathology", "deep-fusion", "multi-omics", "other-omics", "perturbation"],
+      "multi": true,
+      "default": [],
+      "detect": "Include a modality only when it is measured or is the actual analysis/design target at this stage; generated data can be active when they are themselves being audited."
+    },
+    "external_reference_modalities": {
+      "values": ["bulk-rna", "single-cell", "spatial", "pathology", "multi-omics", "other-omics"],
+      "multi": true,
+      "default": [],
+      "detect": "Record atlases or public references used only for annotation, nomination or contextual comparison; they do not become patient-matched measurement."
+    },
+    "generated_or_predicted_modalities": {
+      "values": ["radiomics", "bulk-rna", "single-cell", "spatial", "pathology", "deep-fusion", "multi-omics", "other-omics"],
+      "multi": true,
+      "default": [],
+      "detect": "Record every imputed, mapped, deconvolved, generated or predicted layer even when it is also an active analysis target."
+    },
+    "proposed_validation_modalities": {
+      "values": ["bulk-rna", "single-cell", "spatial", "pathology", "multi-omics", "other-omics", "perturbation"],
+      "multi": true,
+      "default": [],
+      "detect": "Record future validation suggestions separately; add them to active_modalities only after the user chooses an executable design task for that modality."
+    },
+    "claim_target": {
+      "values": ["unknown", "provisional", "technical-validity", "descriptive", "association", "localization-or-concordance", "prognostic-prediction", "treatment-effect", "average-treatment-effect", "effect-modification", "mechanistic", "causal"],
+      "multi": true,
+      "allow_scalar": true,
+      "default": "provisional",
+      "detect": "Record every material claim branch. Treatment-contextual prognosis, average treatment effect and effect modification are distinct; treatment-effect is a compatibility alias that must be resolved before final wording."
+    },
+    "input_evidence": {
+      "values": ["unknown", "user-description", "manuscript-prose-or-figure", "summary-results", "processed-data", "raw-data-plus-code"],
+      "default": "unknown",
+      "detect": "This controls whether execution can be verified or only reconstructed from claims."
+    },
+    "audience": {
+      "values": ["unknown", "learner", "investigator", "reviewer"],
+      "default": "unknown",
+      "detect": "Adjust explanation depth, never the evidence threshold."
+    }
+  },
+  "rules": [
+    {
+      "id": "unresolved-request-alignment",
+      "when": {"task": "unknown"},
+      "load": ["static/core/research-request-passport.md"]
+    },
+    {
+      "id": "request-passport-planning",
+      "when": {"task": ["idea-feasibility", "protocol-design", "pipeline-qc", "analysis-interpretation", "biological-validation", "statistics-sap"]},
+      "load": ["static/core/research-request-passport.md"]
+    },
+    {
+      "id": "integrity-gates-review",
+      "when": {"interaction_mode": ["reviewer", "combined"]},
+      "load": ["static/core/failure-modes-and-integrity-gates.md"]
+    },
+    {
+      "id": "claim-ledger-task",
+      "when": {"task": ["analysis-interpretation", "biological-validation", "manuscript-review", "writing-revision", "revision-verification", "post-decision-adjudication"]},
+      "load": ["static/core/terminology-and-claim-ledgers.md"]
+    },
+    {
+      "id": "mentor-core",
+      "when": {"interaction_mode": ["mentor", "combined"]},
+      "load": ["static/core/reader-and-mentor-workflow.md"]
+    },
+    {
+      "id": "task-output-contract",
+      "when": {"task": ["idea-feasibility", "protocol-design", "pipeline-qc", "analysis-interpretation", "biological-validation", "statistics-sap", "manuscript-review", "writing-revision", "revision-verification", "initial-submission-package", "post-decision-adjudication", "submission-rebuttal"]},
+      "load": ["static/core/output-presets-and-revision-loop.md"]
+    },
+    {
+      "id": "scientific-writing-chain",
+      "when": {"task": "writing-revision", "interaction_mode": ["reviewer", "mentor", "combined"], "study_scope": ["imaging-only", "mechanism-only", "imaging-mechanism"]},
+      "load": ["references/scientific-writing-chain.md", "references/scientific-handoff-contract.md"]
+    },
+    {
+      "id": "constructive-manuscript-review-chain",
+      "when": {"task": "manuscript-review", "interaction_mode": ["reviewer", "mentor", "combined"], "study_scope": ["imaging-only", "mechanism-only", "imaging-mechanism"]},
+      "load": ["references/constructive-manuscript-review-chain.md"]
+    },
+    {
+      "id": "transparent-peer-review-lessons",
+      "when": {"task": ["writing-revision", "manuscript-review", "revision-verification", "initial-submission-package", "post-decision-adjudication", "submission-rebuttal"]},
+      "load": ["references/transparent-peer-review-lessons-2024-2026.md"]
+    },
+    {
+      "id": "mentor-imaging-only",
+      "when": {"interaction_mode": ["mentor", "combined"], "study_scope": "imaging-only"},
+      "load": ["references/imaging-only-mentoring.md"]
+    },
+    {
+      "id": "mentor-imaging-mechanism",
+      "when": {"interaction_mode": ["mentor", "combined"], "study_scope": "imaging-mechanism"},
+      "load": ["references/research-mentoring-and-idea-development.md"]
+    },
+    {
+      "id": "mentor-standalone-mechanism",
+      "when": {"interaction_mode": ["mentor", "combined"], "study_scope": "mechanism-only"},
+      "load": ["references/standalone-mechanism-mentoring.md"]
+    },
+    {
+      "id": "manuscript-review-imaging-only",
+      "when": {"task": "manuscript-review", "study_scope": "imaging-only"},
+      "load": ["references/pitfalls.md", "references/imaging-reviewer-playbook.md"]
+    },
+    {
+      "id": "manuscript-review-mechanism-only",
+      "when": {"task": "manuscript-review", "study_scope": "mechanism-only"},
+      "load": ["references/pitfalls.md", "references/mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "manuscript-review-imaging-mechanism",
+      "when": {"task": "manuscript-review", "study_scope": "imaging-mechanism"},
+      "load": ["references/pitfalls.md", "references/reviewer-playbook.md"]
+    },
+    {
+      "id": "submission-rebuttal-imaging-only",
+      "when": {"task": ["post-decision-adjudication", "submission-rebuttal"], "submission_phase": "post-decision", "study_scope": "imaging-only"},
+      "load": ["references/imaging-reviewer-playbook.md", "references/imaging-submission-package.md", "references/review-response-state-crosswalk.md"]
+    },
+    {
+      "id": "submission-rebuttal-mechanism-only",
+      "when": {"task": ["post-decision-adjudication", "submission-rebuttal"], "submission_phase": "post-decision", "study_scope": "mechanism-only"},
+      "load": ["references/mechanism-reviewer-playbook.md", "references/mechanism-submission-package.md", "references/review-response-state-crosswalk.md"]
+    },
+    {
+      "id": "submission-rebuttal-imaging-mechanism",
+      "when": {"task": ["post-decision-adjudication", "submission-rebuttal"], "submission_phase": "post-decision", "study_scope": "imaging-mechanism"},
+      "load": ["references/reviewer-playbook.md", "references/radiogenomics-submission-package.md", "references/review-response-state-crosswalk.md"]
+    },
+    {
+      "id": "revision-verification-imaging-only",
+      "when": {"task": "revision-verification", "study_scope": "imaging-only"},
+      "load": ["references/imaging-reviewer-playbook.md"]
+    },
+    {
+      "id": "revision-verification-mechanism-only",
+      "when": {"task": "revision-verification", "study_scope": "mechanism-only"},
+      "load": ["references/mechanism-reviewer-playbook.md"]
+    },
+    {
+      "id": "revision-verification-imaging-mechanism",
+      "when": {"task": "revision-verification", "study_scope": "imaging-mechanism"},
+      "load": ["references/reviewer-playbook.md"]
+    },
+    {
+      "id": "imaging-mechanism-bridge",
+      "when": {"study_scope": "imaging-mechanism"},
+      "load": ["references/radiomics-mechanism-bridge.md", "references/sample-to-image-mapping.md"]
+    },
+    {
+      "id": "radiomics-active",
+      "when": {"study_scope": ["imaging-only", "imaging-mechanism"], "active_modalities": "radiomics"},
+      "load": ["references/radiomics-pipeline.md"]
+    },
+    {
+      "id": "deep-fusion",
+      "when": {"study_scope": "imaging-mechanism", "active_modalities": "deep-fusion"},
+      "load": ["references/deep-radiogenomics-fusion-strategies.md", "references/cohort-design.md", "references/analysis-plan-sap.md"]
+    },
+    {
+      "id": "bulk-rna-active",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "active_modalities": "bulk-rna"},
+      "load": ["references/bulk-rna-research-guidance.md"]
+    },
+    {
+      "id": "single-cell-active",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "active_modalities": "single-cell"},
+      "load": ["references/single-cell-research-guidance.md"]
+    },
+    {
+      "id": "spatial-active",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "active_modalities": "spatial"},
+      "load": ["references/spatial-transcriptomics-research-guidance.md"]
+    },
+    {
+      "id": "pathology-imaging-active",
+      "when": {"study_scope": "imaging-mechanism", "active_modalities": "pathology"},
+      "load": ["references/radiopathology-mechanism-validation.md", "references/sample-to-image-mapping.md"]
+    },
+    {
+      "id": "pathology-standalone-active",
+      "when": {"study_scope": "mechanism-only", "active_modalities": "pathology"},
+      "load": ["references/pathology-mechanism-research-guidance.md"]
+    },
+    {
+      "id": "external-cell-or-spatial-reference",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "external_reference_modalities": ["single-cell", "spatial"]},
+      "load": ["references/single-cell-spatial.md"]
+    },
+    {
+      "id": "generated-transcriptomic-layer",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "generated_or_predicted_modalities": ["bulk-rna", "single-cell", "spatial"]},
+      "load": ["references/transcriptomics-interpretation-framework.md"]
+    },
+    {
+      "id": "multi-omics-active",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "active_modalities": ["multi-omics", "other-omics"]},
+      "load": ["references/omics-qc-preprocessing.md", "references/multi-omics-integration.md"]
+    },
+    {
+      "id": "cohort-feasibility",
+      "when": {"task": ["idea-feasibility", "protocol-design"]},
+      "load": ["references/cohort-design.md"]
+    },
+    {
+      "id": "statistical-plan-task",
+      "when": {"task": ["protocol-design", "statistics-sap"]},
+      "load": ["references/analysis-plan-sap.md", "references/association-validation.md"]
+    },
+    {
+      "id": "association-analysis-task",
+      "when": {"task": "analysis-interpretation"},
+      "load": ["references/association-validation.md"]
+    },
+    {
+      "id": "prediction-or-treatment-claim",
+      "when": {"claim_target": ["prognostic-prediction", "treatment-effect", "average-treatment-effect", "effect-modification"]},
+      "load": ["references/analysis-plan-sap.md", "references/association-validation.md"]
+    },
+    {
+      "id": "localization-or-mechanism-claim",
+      "when": {"claim_target": ["localization-or-concordance", "mechanistic", "causal"]},
+      "load": ["references/biological-validation.md"]
+    },
+    {
+      "id": "active-perturbation-playbook",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "active_modalities": "perturbation"},
+      "load": ["references/biological-validation.md", "references/perturbation-causal-review.md"]
+    },
+    {
+      "id": "causal-evidence-playbook",
+      "when": {"study_scope": ["mechanism-only", "imaging-mechanism"], "claim_target": "causal"},
+      "load": ["references/perturbation-causal-review.md"]
+    },
+    {
+      "id": "literature-evidence-trace",
+      "when": {"task": "evidence-trace"},
+      "load": ["references/transcriptomics-literature-evidence-map-2024-2026.md"]
+    },
+    {
+      "id": "initial-submission-imaging-only",
+      "when": {"task": ["initial-submission-package", "submission-rebuttal"], "submission_phase": "initial", "study_scope": "imaging-only"},
+      "load": ["references/imaging-submission-package.md"]
+    },
+    {
+      "id": "initial-submission-mechanism-only",
+      "when": {"task": ["initial-submission-package", "submission-rebuttal"], "submission_phase": "initial", "study_scope": "mechanism-only"},
+      "load": ["references/mechanism-submission-package.md"]
+    },
+    {
+      "id": "initial-submission-imaging-mechanism",
+      "when": {"task": ["initial-submission-package", "submission-rebuttal"], "submission_phase": "initial", "study_scope": "imaging-mechanism"},
+      "load": ["references/radiogenomics-submission-package.md"]
+    }
+  ],
+  "on_demand": [
+    {
+      "condition": "The user requests manuscript argument planning, section drafting, scientific rewriting, evidence compression, a language-polishing handoff or a whole-manuscript consistency audit.",
+      "path": "references/scientific-writing-chain.md"
+    },
+    {
+      "condition": "A shared scientific state is exchanged between radiology tasks for writing, polishing, review, response or submission and stable claim IDs, evidence roles and artifact digests must be preserved.",
+      "path": "references/scientific-handoff-contract.md"
+    },
+    {
+      "condition": "A scientific review finding enters response drafting or closure verification and review-state terms must map without hiding an unresolved or worsened criterion.",
+      "path": "references/review-response-state-crosswalk.md"
+    },
+    {
+      "condition": "A manuscript review must convert scientific findings into evidence-anchored, proportionate and verifiable constructive advice.",
+      "path": "references/constructive-manuscript-review-chain.md"
+    },
+    {
+      "condition": "Writing, review, revision or rebuttal needs reviewer-perspective stress tests, response classes or paper-level provenance from the screened 100-paper transparent-review corpus.",
+      "path": "references/transparent-peer-review-lessons-2024-2026.md"
+    },
+    {
+      "condition": "A cross-paper transparent-review frequency, concern-family route or corpus update must map fine-grained raw concern codes through the declared versioned ontology.",
+      "path": "references/transparent-peer-review-concern-ontology-v1.tsv"
+    },
+    {
+      "condition": "Public and local cohorts may overlap or an external-validation claim depends on patient/UID independence.",
+      "path": "references/public-data-overlap-check.md"
+    },
+    {
+      "condition": "The task compares bulk, single-cell and spatial evidence families, or concerns virtual transcriptomics, virtual knockout or generated molecular layers.",
+      "path": "references/transcriptomics-interpretation-framework.md"
+    },
+    {
+      "condition": "A non-transcriptomic molecular matrix needs generic QC and batch handling without a full modality playbook.",
+      "path": "references/omics-qc-preprocessing.md"
+    },
+    {
+      "condition": "A short linkage orientation using deconvolution, pseudobulk or an external cell/spatial atlas is sufficient.",
+      "path": "references/single-cell-spatial.md"
+    },
+    {
+      "condition": "A rule, limitation or writing instruction needs paper-level provenance from the screened 100-paper corpus.",
+      "path": "references/transcriptomics-literature-evidence-map-2024-2026.md"
+    },
+    {
+      "condition": "An imaging-mechanism study needs full publication packaging rather than scientific paragraph drafting alone.",
+      "path": "references/radiogenomics-submission-package.md"
+    },
+    {
+      "condition": "An imaging-only study needs full publication packaging without requesting absent molecular assays.",
+      "path": "references/imaging-submission-package.md"
+    },
+    {
+      "condition": "A mechanism-only study needs full publication packaging without requesting absent imaging inputs.",
+      "path": "references/mechanism-submission-package.md"
+    },
+    {
+      "condition": "A measured perturbation or causal claim needs assignment, efficiency, off-target, dose-time, target-engagement, control and rescue review.",
+      "path": "references/perturbation-causal-review.md"
+    },
+    {
+      "condition": "The user asks which external skill architectures informed this router or requests a future framework refresh.",
+      "path": "references/architecture-provenance.md"
+    }
+  ],
+  "templates": {
+    "request_passport": "templates/research-request-passport.md",
+    "claim_ledger": "templates/claim-evidence-mechanism-ledger.md",
+    "mechanism_canvas": "templates/mechanism-bridge-canvas.md",
+    "reviewer_audit": "templates/reviewer-audit.md",
+    "constructive_review": "templates/constructive-review-and-repair-matrix.md",
+    "mentor_memo": "templates/mentor-decision-memo.md",
+    "revision_trace": "templates/revision-trace-matrix.md",
+    "writing_map": "templates/claim-to-section-writing-map.md",
+    "writing_handoff": "templates/scientific-writing-handoff-packet.template.json"
+  },
+  "sister_skills": {
+    "literature_and_accessions": ["radiology-search", "radiology-citation"],
+    "evidence_synthesis": ["radiology-systematic-review"],
+    "clinical_context": ["radiology-clinical-domain"],
+    "transcriptomics_execution": ["radiology-transcriptomics-analysis"],
+    "functional_experiment_design": ["radiology-experiment-design"],
+    "parameter_and_method_evaluation": ["radiology-method-evaluation"],
+    "statistics": ["radiology-stats"],
+    "scientific_writing": ["radiology-writing"],
+    "language_polish": ["radiology-polishing"],
+    "reporting_and_submission": ["radiology-reporting", "radiology-submission", "radiology-response"],
+    "figures_and_tables": ["radiology-figure", "radiology-table"],
+    "data_and_ethics": ["radiology-data", "radiology-ethics"]
+  }
+}

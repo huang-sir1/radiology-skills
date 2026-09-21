@@ -1,0 +1,1068 @@
+{
+  "schema_version": 1,
+  "required_templates": [
+    "templates/research-request-passport.md",
+    "templates/claim-evidence-mechanism-ledger.md",
+    "templates/mechanism-bridge-canvas.md",
+    "templates/reviewer-audit.md",
+    "templates/constructive-review-and-repair-matrix.md",
+    "templates/mentor-decision-memo.md",
+    "templates/revision-trace-matrix.md",
+    "templates/claim-to-section-writing-map.md"
+  ],
+  "cases": [
+    {
+      "id": "unresolved-request-keeps-provisional-axes",
+      "description": "Do not turn an ambiguous direct invocation into combined mechanism analysis before the current decision is known.",
+      "axes": {
+        "interaction_mode": "unknown",
+        "tutor_style": "provisional",
+        "study_scope": "unknown",
+        "active_modalities": [],
+        "external_reference_modalities": [],
+        "generated_or_predicted_modalities": [],
+        "proposed_validation_modalities": [],
+        "task": "unknown",
+        "writing_job": "not-applicable",
+        "manuscript_section": "not-applicable",
+        "submission_phase": "not-applicable",
+        "claim_target": "provisional",
+        "project_stage": "unknown",
+        "input_evidence": "unknown",
+        "audience": "unknown"
+      },
+      "must_load": [
+        "static/core/research-request-passport.md"
+      ],
+      "must_not_load": [
+        "static/core/failure-modes-and-integrity-gates.md",
+        "static/core/terminology-and-claim-ledgers.md",
+        "static/core/reader-and-mentor-workflow.md",
+        "static/core/output-presets-and-revision-loop.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md"
+      ]
+    },
+    {
+      "id": "pure-radiomics-pipeline-review",
+      "description": "Review feature stability, segmentation, harmonisation, and leakage in an imaging-only radiomics pipeline.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "pipeline-qc",
+        "claim_target": "technical-validity",
+        "project_stage": "data",
+        "input_evidence": "processed-data"
+      },
+      "must_load": [
+        "references/radiomics-pipeline.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/transcriptomics-interpretation-framework.md",
+        "references/research-mentoring-and-idea-development.md"
+      ]
+    },
+    {
+      "id": "imaging-bulk-mechanism-design",
+      "description": "Design a CT radiomics and matched bulk RNA study intended to support a bounded mechanistic explanation.",
+      "axes": {
+        "interaction_mode": "combined",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "task": "protocol-design",
+        "claim_target": "mechanistic",
+        "project_stage": "protocol",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/sample-to-image-mapping.md"
+      ],
+      "must_not_load": [
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/radiopathology-mechanism-validation.md"
+      ]
+    },
+    {
+      "id": "imaging-single-cell-external-atlas",
+      "description": "Use an external single-cell atlas to nominate, but not claim patient-specific, cell states for an MRI phenotype.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics"],
+        "external_reference_modalities": ["single-cell"],
+        "task": "analysis-interpretation",
+        "claim_target": "mechanistic",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/single-cell-spatial.md",
+        "references/research-mentoring-and-idea-development.md"
+      ],
+      "must_not_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/radiopathology-mechanism-validation.md"
+      ]
+    },
+    {
+      "id": "imaging-spatial-localization",
+      "description": "Audit whether a radiomic habitat is spatially registered to a spatial-transcriptomics region strongly enough for localization claims.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "spatial"],
+        "task": "analysis-interpretation",
+        "claim_target": "localization-or-concordance",
+        "project_stage": "results",
+        "input_evidence": "processed-data"
+      },
+      "must_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/sample-to-image-mapping.md"
+      ],
+      "must_not_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-research-guidance.md",
+        "references/research-mentoring-and-idea-development.md"
+      ]
+    },
+    {
+      "id": "imaging-pathology-validation",
+      "description": "Plan patient-aware H&E, IHC, multiplex IF, or WSI validation of a radiomic phenotype.",
+      "axes": {
+        "interaction_mode": "combined",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "pathology"],
+        "task": "biological-validation",
+        "claim_target": "mechanistic",
+        "project_stage": "protocol",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/radiopathology-mechanism-validation.md",
+        "references/sample-to-image-mapping.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md"
+      ]
+    },
+    {
+      "id": "standalone-single-cell-mechanism-interpretation",
+      "description": "Interpret a standalone scRNA or snRNA study without introducing an imaging bridge.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["single-cell"],
+        "task": "analysis-interpretation",
+        "claim_target": "mechanistic",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/single-cell-research-guidance.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/transcriptomics-interpretation-framework.md"
+      ]
+    },
+    {
+      "id": "imaging-only-manuscript-review",
+      "description": "Review an imaging-only radiomics manuscript without requesting molecular assays or an imaging-mechanism bridge.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "manuscript-review",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/pitfalls.md",
+        "references/radiomics-pipeline.md",
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/scientific-writing-chain.md",
+        "references/reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/radiogenomics-submission-package.md",
+        "references/mechanism-submission-package.md"
+      ]
+    },
+    {
+      "id": "full-radiogenomics-manuscript-review",
+      "description": "Review parallel prognostic-prediction and mechanistic claims in an imaging and bulk RNA manuscript.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "task": "manuscript-review",
+        "claim_target": ["prognostic-prediction", "mechanistic"],
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md",
+        "references/biological-validation.md",
+        "references/pitfalls.md",
+        "references/reviewer-playbook.md"
+      ],
+      "must_not_load": [
+        "references/scientific-writing-chain.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/imaging-only-mentoring.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/radiogenomics-submission-package.md",
+        "references/transcriptomics-literature-evidence-map-2024-2026.md"
+      ]
+    },
+    {
+      "id": "learner-topic-and-feasibility-advice",
+      "description": "Help a learner turn a broad radiomics and bulk RNA idea into conservative, standard, and ambitious plans.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "task": "idea-feasibility",
+        "claim_target": "mechanistic",
+        "project_stage": "idea",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/research-mentoring-and-idea-development.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/cohort-design.md"
+      ],
+      "must_not_load": [
+        "references/reviewer-playbook.md",
+        "references/radiogenomics-submission-package.md",
+        "references/spatial-transcriptomics-research-guidance.md"
+      ]
+    },
+    {
+      "id": "statistics-and-sap-for-radiomics-prediction",
+      "description": "Audit the inferential unit, multiplicity, validation, and analysis plan for an imaging prediction study.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "statistics-sap",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "protocol",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/radiogenomics-submission-package.md"
+      ]
+    },
+    {
+      "id": "mechanistic-results-writing-revision",
+      "description": "Revise Results and Discussion for association plus mechanism claims while keeping an image-predicted spatial layer explicitly generated.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "generated_or_predicted_modalities": ["spatial"],
+        "task": "writing-revision",
+        "writing_job": "scientific-rewrite",
+        "manuscript_section": ["results", "discussion"],
+        "claim_target": ["association", "mechanistic"],
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/scientific-writing-chain.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/transcriptomics-interpretation-framework.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/radiogenomics-submission-package.md",
+        "references/reviewer-playbook.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/spatial-transcriptomics-research-guidance.md"
+      ]
+    },
+    {
+      "id": "bulk-rna-treatment-effect-claim",
+      "description": "Check whether a bulk RNA biomarker study can claim differential treatment benefit rather than outcome under one regimen.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["bulk-rna"],
+        "task": "statistics-sap",
+        "claim_target": "treatment-effect",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/spatial-transcriptomics-research-guidance.md"
+      ]
+    },
+    {
+      "id": "transcriptomics-corpus-evidence-trace",
+      "description": "Trace a scientific rule to the screened 100-paper transcriptomics corpus without opening every modality playbook.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": [],
+        "external_reference_modalities": [],
+        "task": "evidence-trace",
+        "claim_target": "technical-validity",
+        "project_stage": "manuscript",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/transcriptomics-literature-evidence-map-2024-2026.md"
+      ],
+      "must_not_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/radiomics-mechanism-bridge.md"
+      ]
+    },
+    {
+      "id": "radiogenomics-submission-and-rebuttal",
+      "description": "Prepare a post-decision imaging-mechanism reviewer response and revised submission package after the scientific analysis is fixed.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "task": "post-decision-adjudication",
+        "submission_phase": "post-decision",
+        "claim_target": "association",
+        "project_stage": "submission",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/radiogenomics-submission-package.md",
+        "references/reviewer-playbook.md"
+      ],
+      "must_not_load": [
+        "references/imaging-submission-package.md",
+        "references/mechanism-submission-package.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/transcriptomics-literature-evidence-map-2024-2026.md",
+        "references/spatial-transcriptomics-research-guidance.md"
+      ]
+    },
+    {
+      "id": "deep-radiogenomics-fusion-design",
+      "description": "Design a deep imaging and molecular fusion study with matched-n and validation constraints.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "deep-fusion"],
+        "task": "protocol-design",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "protocol",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/deep-radiogenomics-fusion-strategies.md",
+        "references/cohort-design.md",
+        "references/analysis-plan-sap.md",
+        "references/radiomics-pipeline.md"
+      ],
+      "must_not_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/research-mentoring-and-idea-development.md"
+      ]
+    },
+    {
+      "id": "radiomics-multi-omics-association",
+      "description": "Integrate imaging with multiple measured molecular views without loading assay playbooks for absent modalities.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "multi-omics"],
+        "task": "analysis-interpretation",
+        "claim_target": "association",
+        "project_stage": "analysis",
+        "input_evidence": "processed-data"
+      },
+      "must_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/omics-qc-preprocessing.md",
+        "references/multi-omics-integration.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/research-mentoring-and-idea-development.md"
+      ]
+    },
+    {
+      "id": "standalone-perturbation-causal-validation",
+      "description": "Assess measured perturbation evidence for a standalone causal mechanism claim without introducing imaging dependencies.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["perturbation"],
+        "task": "biological-validation",
+        "claim_target": "causal",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/biological-validation.md",
+        "references/perturbation-causal-review.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/reviewer-playbook.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/research-mentoring-and-idea-development.md"
+      ]
+    },
+    {
+      "id": "initial-submission-readiness",
+      "description": "Prepare the domain-specific initial submission package after the prediction claim and analysis have been locked.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "initial-submission-package",
+        "submission_phase": "initial",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "submission",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/imaging-submission-package.md",
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/radiogenomics-submission-package.md",
+        "references/mechanism-submission-package.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/research-mentoring-and-idea-development.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-submission-and-rebuttal",
+      "description": "Prepare a mechanism-only transcriptomic submission and response without requesting imaging acquisition, segmentation, or sample-to-image mapping.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["single-cell"],
+        "task": "post-decision-adjudication",
+        "submission_phase": "post-decision",
+        "claim_target": "mechanistic",
+        "project_stage": "submission",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/mechanism-submission-package.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/single-cell-research-guidance.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/radiogenomics-submission-package.md",
+        "references/imaging-submission-package.md",
+        "references/reviewer-playbook.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md"
+      ]
+    },
+    {
+      "id": "mixed-role-imaging-bulk-external-scrna",
+      "description": "Interpret measured radiomics and bulk RNA while using a single-cell atlas only as an external reference.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "external_reference_modalities": ["single-cell"],
+        "task": "analysis-interpretation",
+        "claim_target": "mechanistic",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/single-cell-spatial.md"
+      ],
+      "must_not_load": [
+        "references/single-cell-research-guidance.md",
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/radiopathology-mechanism-validation.md"
+      ]
+    },
+    {
+      "id": "frozen-revision-verification",
+      "description": "Verify a revised radiogenomics manuscript against frozen finding IDs without loading the submission package.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "task": "revision-verification",
+        "claim_target": "mechanistic",
+        "project_stage": "revision",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/reviewer-playbook.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md"
+      ],
+      "must_not_load": [
+        "references/radiogenomics-submission-package.md",
+        "references/imaging-submission-package.md",
+        "references/mechanism-submission-package.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/standalone-mechanism-mentoring.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-manuscript-review",
+      "description": "Review a bulk RNA mechanism manuscript with a mechanism-only playbook and no imaging review requirements.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["bulk-rna"],
+        "task": "manuscript-review",
+        "claim_target": "mechanistic",
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/pitfalls.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/scientific-writing-chain.md",
+        "references/reviewer-playbook.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md"
+      ]
+    },
+    {
+      "id": "imaging-only-revision-verification",
+      "description": "Verify an imaging-only revision against frozen finding IDs without omics or radiogenomics review requirements.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "revision-verification",
+        "claim_target": "technical-validity",
+        "project_stage": "revision",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/imaging-reviewer-playbook.md",
+        "references/radiomics-pipeline.md"
+      ],
+      "must_not_load": [
+        "references/reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/pitfalls.md",
+        "references/radiogenomics-submission-package.md",
+        "references/mechanism-submission-package.md",
+        "references/radiomics-mechanism-bridge.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-revision-verification",
+      "description": "Verify a mechanism-only revision without adding scanner, segmentation, radiomics or image-to-sample requirements.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["single-cell"],
+        "task": "revision-verification",
+        "claim_target": "mechanistic",
+        "project_stage": "revision",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/mechanism-reviewer-playbook.md",
+        "references/single-cell-research-guidance.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/reviewer-playbook.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/pitfalls.md",
+        "references/radiogenomics-submission-package.md",
+        "references/imaging-submission-package.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md"
+      ]
+    },
+    {
+      "id": "standalone-pathology-mechanism-mentoring",
+      "description": "Mentor a pathology-only H&E, IHC, multiplex IF, or WSI mechanism study without an imaging bridge.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["pathology"],
+        "task": "idea-feasibility",
+        "claim_target": "mechanistic",
+        "project_stage": "idea",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/standalone-mechanism-mentoring.md",
+        "references/pathology-mechanism-research-guidance.md",
+        "references/cohort-design.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/research-mentoring-and-idea-development.md",
+        "references/radiopathology-mechanism-validation.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md"
+      ]
+    },
+    {
+      "id": "generated-spatial-context-does-not-load-full-playbook",
+      "description": "Keep an image-predicted spatial layer visible as generated evidence without treating it as measured spatial transcriptomics.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "generated_or_predicted_modalities": ["spatial"],
+        "task": "analysis-interpretation",
+        "claim_target": "localization-or-concordance",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/transcriptomics-interpretation-framework.md"
+      ],
+      "must_not_load": [
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/single-cell-spatial.md",
+        "references/radiopathology-mechanism-validation.md"
+      ]
+    },
+    {
+      "id": "proposed-pathology-validation-does-not-load-full-playbook",
+      "description": "Record a suggested future pathology validation without loading its full protocol before the user selects that route.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "proposed_validation_modalities": ["pathology"],
+        "task": "analysis-interpretation",
+        "claim_target": "mechanistic",
+        "project_stage": "results",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md"
+      ],
+      "must_not_load": [
+        "references/radiopathology-mechanism-validation.md",
+        "references/pathology-mechanism-research-guidance.md"
+      ]
+    },
+    {
+      "id": "generated-spatial-layer-as-active-audit-target",
+      "description": "Load the full spatial playbook when a generated spatial layer is itself the active audit target, while retaining its generated status.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["spatial"],
+        "generated_or_predicted_modalities": ["spatial"],
+        "task": "pipeline-qc",
+        "claim_target": "technical-validity",
+        "project_stage": "analysis",
+        "input_evidence": "processed-data"
+      },
+      "must_load": [
+        "references/spatial-transcriptomics-research-guidance.md",
+        "references/transcriptomics-interpretation-framework.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/single-cell-spatial.md",
+        "references/radiomics-pipeline.md"
+      ]
+    },
+    {
+      "id": "imaging-only-writing-combined",
+      "description": "Build an imaging-only Results and abstract argument without importing omics, mechanism-review or submission requirements.",
+      "axes": {
+        "interaction_mode": "combined",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "writing-revision",
+        "writing_job": "argument-map",
+        "manuscript_section": "abstract",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "manuscript",
+        "input_evidence": "summary-results"
+      },
+      "must_load": [
+        "references/scientific-writing-chain.md",
+        "references/radiomics-pipeline.md",
+        "references/imaging-only-mentoring.md",
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/radiogenomics-submission-package.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-writing-mentor",
+      "description": "Mentor a single-cell mechanism Discussion rewrite using an external spatial atlas without presenting it as patient-matched evidence.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["single-cell"],
+        "external_reference_modalities": ["spatial"],
+        "task": "writing-revision",
+        "writing_job": "scientific-rewrite",
+        "manuscript_section": "discussion",
+        "claim_target": "mechanistic",
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/scientific-writing-chain.md",
+        "references/standalone-mechanism-mentoring.md",
+        "references/single-cell-research-guidance.md",
+        "references/single-cell-spatial.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/spatial-transcriptomics-research-guidance.md"
+      ]
+    },
+    {
+      "id": "imaging-only-manuscript-review-mentor",
+      "description": "Give a learner a constructive imaging-only manuscript review with scientific judgement, repair options and no molecular assay demand.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "manuscript-review",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/pitfalls.md",
+        "references/radiomics-pipeline.md",
+        "references/imaging-only-mentoring.md"
+      ],
+      "must_not_load": [
+        "references/scientific-writing-chain.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/standalone-mechanism-mentoring.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/imaging-submission-package.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-manuscript-review-combined",
+      "description": "Preserve valid bulk RNA mechanism work, audit it constructively and redesign blocked claims without importing imaging requirements.",
+      "axes": {
+        "interaction_mode": "combined",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["bulk-rna"],
+        "task": "manuscript-review",
+        "claim_target": "mechanistic",
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/constructive-manuscript-review-chain.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/pitfalls.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/standalone-mechanism-mentoring.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/scientific-writing-chain.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/research-mentoring-and-idea-development.md",
+        "references/mechanism-submission-package.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-initial-submission",
+      "description": "Prepare a mechanism-only initial submission package without loading post-decision reviewer-response material or imaging requirements.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["bulk-rna"],
+        "task": "initial-submission-package",
+        "submission_phase": "initial",
+        "claim_target": "descriptive",
+        "project_stage": "submission",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/mechanism-submission-package.md",
+        "references/bulk-rna-research-guidance.md"
+      ],
+      "must_not_load": [
+        "references/mechanism-reviewer-playbook.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/constructive-manuscript-review-chain.md",
+        "references/radiomics-pipeline.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/imaging-submission-package.md",
+        "references/radiogenomics-submission-package.md"
+      ]
+    },
+    {
+      "id": "imaging-mechanism-initial-submission",
+      "description": "Prepare an imaging-mechanism initial submission package without loading post-decision reviewer-response material.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "bulk-rna"],
+        "task": "initial-submission-package",
+        "submission_phase": "initial",
+        "claim_target": "association",
+        "project_stage": "submission",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/radiogenomics-submission-package.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/radiomics-pipeline.md",
+        "references/bulk-rna-research-guidance.md"
+      ],
+      "must_not_load": [
+        "references/reviewer-playbook.md",
+        "references/imaging-reviewer-playbook.md",
+        "references/mechanism-reviewer-playbook.md",
+        "references/constructive-manuscript-review-chain.md",
+        "references/imaging-submission-package.md",
+        "references/mechanism-submission-package.md"
+      ]
+    },
+    {
+      "id": "imaging-only-post-decision-rebuttal",
+      "description": "Prepare an imaging-only post-decision response and revised package without introducing molecular or cross-scale requirements.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-only",
+        "active_modalities": ["radiomics"],
+        "task": "post-decision-adjudication",
+        "submission_phase": "post-decision",
+        "claim_target": "prognostic-prediction",
+        "project_stage": "submission",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/imaging-reviewer-playbook.md",
+        "references/imaging-submission-package.md",
+        "references/radiomics-pipeline.md",
+        "references/analysis-plan-sap.md",
+        "references/association-validation.md"
+      ],
+      "must_not_load": [
+        "references/mechanism-reviewer-playbook.md",
+        "references/reviewer-playbook.md",
+        "references/constructive-manuscript-review-chain.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/bulk-rna-research-guidance.md",
+        "references/mechanism-submission-package.md",
+        "references/radiogenomics-submission-package.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-perturbation-mentor",
+      "description": "Mentor a standalone perturbation study with the full causal-evidence playbook and no imaging bridge.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["perturbation"],
+        "task": "idea-feasibility",
+        "claim_target": "causal",
+        "project_stage": "idea",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/perturbation-causal-review.md",
+        "references/biological-validation.md",
+        "references/standalone-mechanism-mentoring.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/radiomics-pipeline.md"
+      ]
+    },
+    {
+      "id": "mechanism-only-perturbation-protocol",
+      "description": "Design a standalone perturbation protocol with assignment, efficiency, dose-time, controls and rescue constraints.",
+      "axes": {
+        "interaction_mode": "combined",
+        "study_scope": "mechanism-only",
+        "active_modalities": ["perturbation"],
+        "task": "protocol-design",
+        "claim_target": "causal",
+        "project_stage": "protocol",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/perturbation-causal-review.md",
+        "references/biological-validation.md"
+      ],
+      "must_not_load": [
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/radiomics-pipeline.md"
+      ]
+    },
+    {
+      "id": "imaging-mechanism-perturbation-review",
+      "description": "Review an imaging-linked perturbation study with both the causal-evidence playbook and cross-scale bridge.",
+      "axes": {
+        "interaction_mode": "reviewer",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "perturbation"],
+        "task": "manuscript-review",
+        "manuscript_section": "full-manuscript",
+        "claim_target": "causal",
+        "project_stage": "manuscript",
+        "input_evidence": "manuscript-prose-or-figure"
+      },
+      "must_load": [
+        "references/perturbation-causal-review.md",
+        "references/biological-validation.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/constructive-manuscript-review-chain.md"
+      ],
+      "must_not_load": [
+        "references/standalone-mechanism-mentoring.md",
+        "references/mechanism-reviewer-playbook.md"
+      ]
+    },
+    {
+      "id": "imaging-mechanism-perturbation-mentor",
+      "description": "Mentor an imaging-linked perturbation project without dropping causal controls or cross-scale mapping.",
+      "axes": {
+        "interaction_mode": "mentor",
+        "study_scope": "imaging-mechanism",
+        "active_modalities": ["radiomics", "perturbation"],
+        "task": "protocol-design",
+        "claim_target": "mechanistic",
+        "project_stage": "protocol",
+        "input_evidence": "user-description"
+      },
+      "must_load": [
+        "references/perturbation-causal-review.md",
+        "references/biological-validation.md",
+        "references/radiomics-mechanism-bridge.md",
+        "references/sample-to-image-mapping.md",
+        "references/research-mentoring-and-idea-development.md"
+      ],
+      "must_not_load": [
+        "references/standalone-mechanism-mentoring.md",
+        "references/mechanism-reviewer-playbook.md"
+      ]
+    }
+  ]
+}

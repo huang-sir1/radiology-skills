@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.2",
+  "receipt_id": "",
+  "project_id": "",
+  "manuscript_id": "",
+  "study_scope": "",
+  "review_route": "",
+  "project_state_digest": "",
+  "modality_role_digest": "",
+  "analysis_lock_digest": "",
+  "claim_registry_digest": "",
+  "scientific_handoff_digest": "not-applicable",
+  "source_artifacts": [
+    {
+      "artifact_id": "",
+      "role": "",
+      "version": "",
+      "sha256": ""
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "",
+      "severity": "P1",
+      "criterion": "",
+      "affected_claim_ids": [],
+      "source_artifact_id": "",
+      "source_artifact_sha256": "",
+      "evidence_anchor": "",
+      "minimum_repair": "",
+      "repair_owner": "",
+      "closure_evidence_required": "",
+      "next_gate": "",
+      "source_review_state": "NOT VERIFIABLE",
+      "prior_verification_state": "not-applicable",
+      "verification_state": "NOT_VERIFIED",
+      "verification_evidence_locator": "",
+      "state_change_evidence": "",
+      "residual_boundary": "",
+      "required_for_pass": true,
+      "not_applicable_reason": ""
+    }
+  ],
+  "reviewer_roles": [],
+  "reviewed_on": "",
+  "unresolved_placeholder_count": 1,
+  "scientific_prereview_state": "SCIENTIFIC_PREREVIEW_CONDITIONAL",
+  "scientific_prereview_receipt_digest": ""
+}

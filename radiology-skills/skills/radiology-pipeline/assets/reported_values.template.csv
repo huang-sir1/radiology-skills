@@ -1,0 +1,1 @@
+value_id,metric,value,unit,precision,cohort,endpoint,timepoint,ci_lower,ci_upper,p_value,source_artifact,source_location,verified_status,notes

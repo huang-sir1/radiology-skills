@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/analysis-contract-and-methods.md",
+    "references/responsible-interpretation.md",
+    "references/source-registry.md",
+    "templates/corpus-passport.md",
+    "templates/bibliometric-analysis-and-claim-ledger.md",
+    "scripts/validate_bibliometrics_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": ["corpus-audit", "descriptive-impact", "collaboration-network", "science-mapping", "benchmarking", "temporal-evolution", "audit-reanalysis"],
+  "positive_cases": [
+    {"id":"corpus-coverage-audit","mode":"corpus-audit","prompt":"审计Web of Science导出的放射组学语料，核对数据库覆盖、检索式、日期、DOI去重和缺失引用。","required_checks":["corpus passport","database and index coverage","exact query and retrieval date","raw export and immutable IDs","DOI and work-family deduplication","missingness and access constraints"]},
+    {"id":"field-normalized-impact","mode":"descriptive-impact","prompt":"描述2018-2025年影像AI论文与引用趋势，使用可解释的归一化和时间窗，不做科研质量排名。","required_checks":["publication and citation distributions","field document year normalization","citation census and right censoring","full or fractional counting","coverage limitations","no quality inference"]},
+    {"id":"multicenter-collaboration-network","mode":"collaboration-network","prompt":"分析多中心MRI研究的作者和机构合作网络，处理医院别名、联盟作者和超大团队。","required_checks":["author and institution entity levels","ORCID ROR and manual disambiguation","organization hierarchy","consortium and hyperauthorship policy","edge counting and threshold","identity sensitivity"]},
+    {"id":"radiology-science-map","mode":"science-mapping","prompt":"对医学影像基础模型语料做共词和文献耦合地图，报告聚类参数和社区稳定性。","required_checks":["feature and edge definitions","association or stated normalization","threshold and pruning","algorithm resolution seed","community stability sensitivity","exploratory label boundary"]},
+    {"id":"institution-benchmarking","mode":"benchmarking","prompt":"比较五家影像研究机构的产出和引用影响，避免让规模和学科构成主导结论。","required_checks":["fair comparison set","institution disambiguation","size dependent and independent indicators","fractional counting","field normalized distributions and intervals","responsible assessment boundary"]},
+    {"id":"temporal-topic-change","mode":"temporal-evolution","prompt":"研究放射学AI主题网络十年演变，区分真实变化和数据库扩容、关键词漂移。","required_checks":["fixed or moving windows","database backfill and coverage drift","classification and label continuity","citation truncation","network parameter stability","bounded change claims"]},
+    {"id":"reproduce-vosviewer-map","mode":"audit-reanalysis","prompt":"复现一篇VOSviewer影像文献计量图，并检验阈值、计数、resolution和seed改变后是否稳定。","required_checks":["frozen prior corpus and software version","method replay","threshold sensitivity","counting and normalization sensitivity","resolution seed and community agreement","claim-drift ledger"]}
+  ],
+  "boundary_cases": [
+    {"id":"build-literature-corpus","prompt":"系统检索所有数据库并交付可复现的影像AI文献语料。","expected_owner":"radiology-search"},
+    {"id":"find-novel-question","prompt":"基于最新研究判断下一个真正有价值的影像科研创新问题。","expected_owner":"radiology-frontier"},
+    {"id":"meta-analysis-effect","prompt":"系统评价影像AI诊断准确性并做meta分析和GRADE证据结论。","expected_owner":"radiology-systematic-review"},
+    {"id":"verify-one-reference","prompt":"核对这条引用的DOI、作者、题名、页码并导出参考文献。","expected_owner":"radiology-citation"},
+    {"id":"make-network-figure","prompt":"根据已经冻结的节点边数据制作可投稿的网络Figure并做视觉QA。","expected_owner":"radiology-figure"},
+    {"id":"rank-researcher-quality","prompt":"只按影响因子和引用数自动决定谁最优秀并淘汰其余申请人。","expected_owner":"NO_SKILL","required_escalation":"responsible-human-research-assessment-panel"}
+  ],
+  "invariants": [
+    "A versioned corpus passport precedes every metric or network",
+    "Database platform index query retrieval date and coverage are reported",
+    "Counts from different databases are not silently treated as the same corpus",
+    "DOI normalization precedes composite non-DOI duplicate resolution",
+    "Work versions corrections retractions and conference-to-article families are explicit",
+    "Author and institution disambiguation never relies on names alone",
+    "ORCID and ROR assertion provenance is retained",
+    "Ambiguous identity clusters remain visible and receive sensitivity analysis",
+    "Full and fractional counting are declared with unit denominator and consortium policy",
+    "Citation comparison specifies field document year source and census window",
+    "Recent publications are recognized as citation right-censored",
+    "Network nodes edges weights self-loops thresholds and pruning are explicit",
+    "Normalization layout and clustering are separate analytical choices",
+    "Clustering algorithm resolution seed and stability are reported",
+    "A visual cluster is not assumed to be a natural or stable scientific field",
+    "Citation centrality journal metrics and altmetrics do not establish quality",
+    "Publication growth does not prove novelty clinical adoption or innovation",
+    "Bibliometric maps do not answer intervention diagnostic or prognostic effect questions",
+    "Radiology venue modality task and clinical-stage coverage asymmetries are explicit",
+    "Consortium and hyperauthorship sensitivity is required when it can dominate networks",
+    "Quantitative indicators supplement rather than replace expert qualitative judgment",
+    "The skill does not make automated hiring funding or individual merit decisions"
+  ]
+}
+

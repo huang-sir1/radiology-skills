@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Reporting Audit"
+  short_description: "Audit imaging manuscripts against reporting guidelines"
+  default_prompt: "Use $radiology-reporting to select the correct guideline stack and audit this manuscript item by item."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Prose Polish"
+  short_description: "Polish imaging manuscripts to target-journal house style"
+  default_prompt: "Use $radiology-polishing to polish this imaging manuscript without changing its scientific meaning or numbers."

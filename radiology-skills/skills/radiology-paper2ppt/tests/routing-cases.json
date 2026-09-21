@@ -1,0 +1,263 @@
+{
+  "schema_version": 2,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/scientific-deck-routing.md",
+    "references/claim-evidence-and-narrative.md",
+    "references/visual-evidence-and-radiology-images.md",
+    "references/deck-quality-qa.md",
+    "templates/deck-brief.md",
+    "templates/slide-map-and-source-ledger.md",
+    "scripts/validate_scientific_presentation_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_deck_types": [
+    "proposal-defense",
+    "lab-meeting",
+    "conference-talk",
+    "journal-club",
+    "project-review",
+    "thesis-defense",
+    "results-deck"
+  ],
+  "required_artifact_scopes": ["PLAN_ONLY", "CREATE", "EDIT", "AUDIT"],
+  "required_artifact_fidelity_classes": [
+    "NATIVE_EDITABLE",
+    "MIXED_EDITABLE_AND_SOURCE_CROPS",
+    "RENDERED_REFERENCE_ONLY"
+  ],
+  "required_evidence_fidelity_classes": [
+    "EVIDENCE_CRITICAL",
+    "EVIDENCE_SUPPORTING",
+    "EXPLORATORY_STORYBOARD"
+  ],
+  "required_evidence_states": [
+    "PLANNED",
+    "EXPLORATORY",
+    "INTERIM",
+    "FROZEN_INTERNAL",
+    "EXTERNALLY_VALIDATED",
+    "PUBLISHED",
+    "MIXED"
+  ],
+  "positive_cases": [
+    {
+      "id": "grant-defense-from-frozen-handoff",
+      "deck_type": "proposal-defense",
+      "artifact_scope": "CREATE",
+      "evidence_state": "PLANNED",
+      "prompt": "基于 radiology-grant 已冻结的国自然标书和评审要点，制作 8 分钟中文答辩 PPTX。",
+      "required_checks": [
+        "consume frozen grant handoff",
+        "bind exact sponsor rubric",
+        "separate preliminary evidence from proposed work",
+        "show aims rigor feasibility and risk alternatives",
+        "use PROPOSED claim state",
+        "render and accessibility QA",
+        "timed rehearsal status"
+      ]
+    },
+    {
+      "id": "lab-meeting-exploratory-plan",
+      "deck_type": "lab-meeting",
+      "artifact_scope": "PLAN_ONLY",
+      "evidence_state": "EXPLORATORY",
+      "prompt": "只要 slide map：组会讨论外部中心性能下降，分析还没锁定，重点决定下一步实验。",
+      "required_checks": [
+        "no PPTX claim",
+        "decision question opening",
+        "label exploratory analyses",
+        "show negative and discordant findings",
+        "competing explanations",
+        "next experiment and owner"
+      ]
+    },
+    {
+      "id": "conference-talk-frozen-result",
+      "deck_type": "conference-talk",
+      "artifact_scope": "CREATE",
+      "evidence_state": "FROZEN_INTERNAL",
+      "prompt": "把冻结的多中心 MRI 模型结果做成 7 分钟 RSNA 口头报告，突出一个结论并留 2 分钟问答。",
+      "required_checks": [
+        "verify current organizer rules",
+        "one main question",
+        "anchor result with uncertainty",
+        "internal-validation claim ceiling",
+        "evidence-critical content remains native editable or an accurate source crop",
+        "section timing and cut path",
+        "venue-scale image QA",
+        "Q&A backup"
+      ]
+    },
+    {
+      "id": "journal-club-published-paper",
+      "deck_type": "journal-club",
+      "artifact_scope": "CREATE",
+      "evidence_state": "PUBLISHED",
+      "prompt": "把这篇 CT radiomics 论文做成中文 journal club，区分作者结论与我们能推断的内容。",
+      "required_checks": [
+        "paper-type evidence arc",
+        "author conclusion versus presenter appraisal",
+        "cohort and split hierarchy",
+        "radiomics measurement provenance",
+        "uncertainty and denominator",
+        "figure source ledger",
+        "generated imagery is not used as an evidence carrier",
+        "discussion questions"
+      ]
+    },
+    {
+      "id": "project-review-interim-edit",
+      "deck_type": "project-review",
+      "artifact_scope": "EDIT",
+      "evidence_state": "INTERIM",
+      "prompt": "修改现有项目中期评审 PPT：对照里程碑呈现偏差、根因、风险和需管理层决定的资源选项。",
+      "required_checks": [
+        "preserve existing deck hierarchy",
+        "baseline versus current state",
+        "outcome not activity inventory",
+        "root cause uncertainty",
+        "options consequences owners and dates",
+        "interim claim ceiling",
+        "export inspected copy unless in-place authorized"
+      ]
+    },
+    {
+      "id": "thesis-defense-mixed-evidence-audit",
+      "deck_type": "thesis-defense",
+      "artifact_scope": "AUDIT",
+      "evidence_state": "MIXED",
+      "prompt": "审计博士答辩 PPT：有两章已发表、一章内部验证，检查原创贡献、证据链、局限和备份页。",
+      "required_checks": [
+        "read-only audit",
+        "candidate versus collaborator contribution",
+        "chapter-specific evidence state",
+        "global thesis claim support",
+        "failed and negative work relevance",
+        "future work not completed contribution",
+        "backup question map"
+      ]
+    },
+    {
+      "id": "external-results-decision-deck",
+      "deck_type": "results-deck",
+      "artifact_scope": "CREATE",
+      "evidence_state": "EXTERNALLY_VALIDATED",
+      "prompt": "为临床与统计联合会制作外部验证结果 deck，决定是否进入前瞻性 reader study。",
+      "required_checks": [
+        "decision and analysis population",
+        "result versus interpretation versus recommendation",
+        "external untouched or adaptation label",
+        "effect or accuracy with uncertainty",
+        "failure and missingness evidence",
+        "clinical utility remains unproven",
+        "source-linked recommendation"
+      ]
+    },
+    {
+      "id": "medical-image-privacy-audit",
+      "deck_type": "conference-talk",
+      "artifact_scope": "AUDIT",
+      "evidence_state": "FROZEN_INTERNAL",
+      "prompt": "检查这份公开影像会议 PPT 的 PHI；作者只在 PowerPoint 内裁剪姓名并盖了黑条。",
+      "required_checks": [
+        "PowerPoint crop is not permanent removal",
+        "black bars are not de-identification",
+        "permanently clean source before insertion",
+        "inspect pixels metadata notes and hidden slides",
+        "final package sanitization",
+        "public delivery STOP until resolved"
+      ]
+    },
+    {
+      "id": "accessibility-and-render-repair",
+      "deck_type": "results-deck",
+      "artifact_scope": "EDIT",
+      "evidence_state": "FROZEN_INTERNAL",
+      "prompt": "修复结果 PPT 的标题重叠、图表 alt text、reading order、红绿配色和投影可读性。",
+      "required_checks": [
+        "render all final slides",
+        "inspect contact sheet and each full-size slide",
+        "fix all unintended overlap and clipping",
+        "editable PPTX parity and round-trip status",
+        "unique descriptive slide titles",
+        "reviewed alt text and logical reading order",
+        "non-color encoding and contrast",
+        "Accessibility Checker status"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "review-grant-science",
+      "prompt": "审阅这份项目标书的科学问题、创新性、研究方案和预算可行性，不需要 PPT。",
+      "expected_owner": "radiology-grant"
+    },
+    {
+      "id": "standalone-publication-figure",
+      "prompt": "根据原始数据制作一张可投稿的多面板影像科研 Figure。",
+      "expected_owner": "radiology-figure"
+    },
+    {
+      "id": "standalone-manuscript-table",
+      "prompt": "为论文制作可投稿的基线特征 Table 1 并核对统计值。",
+      "expected_owner": "radiology-table"
+    },
+    {
+      "id": "write-manuscript-results",
+      "prompt": "根据结果起草英文论文 Results 和 Discussion，不需要演示文稿。",
+      "expected_owner": "radiology-writing"
+    },
+    {
+      "id": "prereview-manuscript",
+      "prompt": "投稿前模拟审稿人审阅整篇影像论文。",
+      "expected_owner": "radiology-prereview"
+    },
+    {
+      "id": "journal-submission-package",
+      "prompt": "准备期刊投稿系统材料和文件清单。",
+      "expected_owner": "radiology-submission"
+    },
+    {
+      "id": "current-clinical-pathway",
+      "prompt": "确定这个疾病目前适用的影像诊断路径和参考标准。",
+      "expected_owner": "radiology-clinical-domain"
+    },
+    {
+      "id": "acquisition-protocol-audit",
+      "prompt": "审计 MRI 序列、b 值、重建和扫描仪漂移是否支持定量结论。",
+      "expected_owner": "radiology-acquisition-qc"
+    }
+  ],
+  "invariants": [
+    "One primary deck job controls opening evidence order close and cut priorities",
+    "Audience outcome and decision precede slide selection",
+    "Artifact scopes PLAN_ONLY CREATE EDIT and AUDIT remain distinct",
+    "A content plan is not a PPTX and a rendered PPTX is not scientific validation",
+    "Proposal scientific content remains owned by radiology-grant",
+    "A proposal defense consumes a frozen grant handoff and does not silently repair aims or methods",
+    "Each content slide has one narrative job and a message supported by visible evidence",
+    "Question status and proposed slides are not forced into result assertions",
+    "SOURCE_OBSERVED ANALYSIS_DERIVED INTERPRETATION RECOMMENDATION and PROPOSED remain distinct",
+    "Evidence maturity limits confirmation generalization causality clinical utility and deployment claims",
+    "Figures retain population denominator metric units uncertainty comparison and source context",
+    "Medical images retain modality sequence or view orientation laterality frame context and transformations",
+    "PowerPoint crops black bars masks and off-canvas placement do not permanently remove PHI",
+    "Clinical image sources are permanently de-identified before insertion and final packages are sanitized",
+    "A presentation projector or screenshot is not a diagnostic display",
+    "Source attribution and permission or license state remain distinct",
+    "Speaker notes contain delivery support caveats timing anticipated questions and Sources blocks",
+    "Every final slide is rendered and inspected at full size in addition to a contact sheet",
+    "All unintended overlap clipping title wrap and unreadable visual evidence are repaired",
+    "Accessibility Checker alt text reading order unique descriptive titles contrast and non-color encoding are reported",
+    "Automated accessibility success is not a complete accessibility certificate",
+    "Timed rehearsal is a separate receipt and model-estimated timing is not rehearsal",
+    "Artifact fidelity and evidence fidelity are explicit independent classes",
+    "Every slide map row carries an upstream Claim ID",
+    "Evidence-critical numbers tables equations citations and data graphics remain native editable or use an accurate source-linked crop",
+    "Generated images and text-to-image renderings never carry scientific evidence",
+    "Missing and unverified evidence dependencies remain visibly labelled and never receive plausible generated replacements",
+    "Editable PPTX delivery requires a save-reopen-render parity and round-trip receipt"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clinical Domain Research"
+  short_description: "Frame and audit disease-specific imaging research"
+  default_prompt: "Use $radiology-clinical-domain to frame or audit this disease-specific imaging study, including its clinical decision, PICO/estimand, protocol, reference standard, timeline, validation, claim ceiling, and live-standard checks."

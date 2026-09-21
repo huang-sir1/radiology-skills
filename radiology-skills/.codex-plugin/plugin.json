@@ -1,0 +1,44 @@
+{
+  "name": "radiology-skills",
+  "version": "1.10.1",
+  "description": "影像科研全链路技能包：40 个 radiology-* 技能，覆盖立题、运行治理、影像测量、分析、证据综合、健康经济学、科研传播、创新转化、标书/PPT与投稿审阅（Radiology/Nature 双规格）。",
+  "author": {
+    "name": "Huang Yuhong, Gu Wenchao, Song Xinyang"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "radiology",
+    "medical-imaging",
+    "quantitative-imaging",
+    "acquisition-qc",
+    "grant-review",
+    "scientific-presentations",
+    "research-integrity",
+    "reproducibility",
+    "health-economics",
+    "research-impact",
+    "research",
+    "systematic-review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Radiology Skills",
+    "shortDescription": "Traceable radiology research workflows",
+    "longDescription": "Forty coordinated skills for evidence-bounded radiology research: governance and operations, acquisition and analysis, evidence synthesis, reproducibility, consensus, qualitative and economic evaluation, grants, presentations, dissemination, innovation transfer, writing, review, submission and post-publication stewardship.",
+    "developerName": "Huang Yuhong, Gu Wenchao, Song Xinyang",
+    "category": "Research",
+    "capabilities": [
+      "Analysis",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Route this radiology research task to the narrowest appropriate skill.",
+      "Freeze the acquisition, reconstruction, and quantitative-imaging QC passport before analysis.",
+      "Audit this study while preserving evidence and claim boundaries.",
+      "Plan the next traceable gate for this imaging research project.",
+      "Review this imaging grant against the live call and return criterion-level closure actions.",
+      "Build an audience-specific, source-grounded radiology research deck and report each QA receipt.",
+      "Route integrity, operations, reproducibility, impact and post-publication work to their unique owners."
+    ]
+  }
+}

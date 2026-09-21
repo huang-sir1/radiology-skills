@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Radiomics"
+  short_description: "Design leakage-safe, IBSI-aligned radiomics studies"
+  default_prompt: "Use $radiology-radiomics to build and audit a leakage-safe, reproducible IBSI-aligned radiomics pipeline."

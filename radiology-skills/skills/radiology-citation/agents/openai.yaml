@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Citation Audit"
+  short_description: "Verify claims, references, and citation metadata"
+  default_prompt: "Use $radiology-citation to verify every important claim and reference in this imaging manuscript."

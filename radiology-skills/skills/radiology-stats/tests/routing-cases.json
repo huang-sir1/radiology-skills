@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/meta-analysis-inference.md",
+    "references/experimental-inference-and-power.md",
+    "references/sample-size.md",
+    "references/analysis-hierarchy-and-missingness.md",
+    "references/incremental-value.md",
+    "references/quantitative-imaging-measurement-science.md",
+    "references/causal-and-clinical-impact-inference.md",
+    "references/longitudinal-and-multistate-imaging.md",
+    "templates/meta-analysis-statistical-brief.md",
+    "templates/experimental-inference-power-brief.md",
+    "tests/routing-cases.json",
+    "scripts/validate_stats_skill.ps1"
+  ],
+  "positive_cases": [
+    {
+      "id": "single-study-clustered-dta",
+      "mode": "compute",
+      "route": "single-study-inference",
+      "prompt": "同一患者可有多个病灶，计算诊断准确性和区间并审计患者级聚类。",
+      "required_checks": ["patient independent unit", "cluster-aware uncertainty", "reference standard", "computed evidence state"]
+    },
+    {
+      "id": "incremental-censored-frozen-models",
+      "mode": "audit",
+      "route": "single-study-inference",
+      "prompt": "两个冻结的生存模型在同一独立外部队列上有删失结局，审阅用 DeLong 比较 C-index 并在外部重做 LRT 的计划。",
+      "required_checks": ["censoring-aware discrimination", "no ordinary ROC DeLong for censored C-index", "no development LRT on frozen external predictions", "paired subject-level uncertainty"]
+    },
+    {
+      "id": "incremental-no-decision-contract",
+      "mode": "plan",
+      "route": "single-study-inference",
+      "prompt": "比较影像和临床模型的外部预测增益，目前没有具体临床动作和阈值，是否必须做 DCA 并优先连续 NRI？",
+      "required_checks": ["comparator-specific claim", "DCA omitted without decision contract", "no default continuous NRI", "calibration and overall error remain distinct"]
+    },
+    {
+      "id": "measurement-crossed-heteroscedastic",
+      "mode": "audit",
+      "route": "quantitative-measurement",
+      "prompt": "两扫描仪重复 ADC 测量具有患者与读者交叉结构及异方差，高 ICC 是否足以确认绝对一致性？",
+      "required_checks": ["measurand and units", "crossed variance components", "heteroscedastic limits with uncertainty", "ICC not absolute agreement"]
+    },
+    {
+      "id": "causal-observational-ai-rollout",
+      "mode": "plan",
+      "route": "causal-clinical-impact",
+      "prompt": "用不同医院分期上线 AI 的观测资料估计等待时间和患者结局变化，不能直接用上线前后显著性认定因果。",
+      "required_checks": ["target causal contrast", "assignment exposure time", "calendar trend confounding and interference", "identification and sensitivity assumptions"]
+    },
+    {
+      "id": "longitudinal-informative-visits-competing-events",
+      "mode": "audit",
+      "route": "longitudinal-multistate",
+      "prompt": "用症状触发的重复 CT 预测进展，纳入要求第二次扫描，且死亡阻止后续进展观察，审阅时间零和模型。",
+      "required_checks": ["landmark eligible population", "informative visit process", "competing-event estimand", "patient-level dependence and future leakage"]
+    },
+    {
+      "id": "meta-generic-dependent-effects",
+      "mode": "plan",
+      "route": "meta-analysis-inference",
+      "prompt": "为同一研究含多个终点和时间窗的随机效应 meta-analysis 建立可执行统计 brief。",
+      "required_checks": ["study-family unit", "dependent effects", "random-effects estimand", "covariance sensitivity"]
+    },
+    {
+      "id": "meta-dta-bivariate-hsroc",
+      "mode": "audit",
+      "route": "meta-analysis-inference",
+      "prompt": "审阅诊断准确性综述是否应使用 bivariate/HSROC，而不是分别合并 sensitivity 和 specificity。",
+      "required_checks": ["paired sensitivity specificity", "threshold relationship", "bivariate or HSROC", "sparse cell stop"]
+    },
+    {
+      "id": "meta-prevalence-incidence",
+      "mode": "plan",
+      "route": "meta-analysis-inference",
+      "prompt": "规划 prevalence、cumulative incidence 与 incidence rate 的统计综合，保留分母、人时和周期。",
+      "required_checks": ["quantity distinction", "numerator denominator person-time", "period", "zero-event handling"]
+    },
+    {
+      "id": "meta-log-ratio-effects",
+      "mode": "compute",
+      "route": "meta-analysis-inference",
+      "prompt": "已提供可兼容 HR、OR 或 RR effect rows，请按各自效应量在 log scale 合并并保留 adjusted class。",
+      "required_checks": ["effect scale", "log transformation", "adjusted class", "no interchangeability"]
+    },
+    {
+      "id": "meta-reliability-agreement",
+      "mode": "audit",
+      "route": "meta-analysis-inference",
+      "prompt": "审阅 ICC、weighted kappa、Dice 和 Bland-Altman evidence 是否被错误当成一种 agreement 指标合并。",
+      "required_checks": ["exact metric model form", "correlation not agreement", "reader device repeat hierarchy", "stop for missing uncertainty"]
+    },
+    {
+      "id": "meta-prediction-calibration",
+      "mode": "interpret",
+      "route": "meta-analysis-inference",
+      "prompt": "解释外部验证研究中 AUC、calibration slope、O:E 和 Brier 的综合结果，不把 AUC 当成 calibration。",
+      "required_checks": ["frozen model identity", "external validation", "calibration distinct from discrimination", "dependent performance metrics"]
+    },
+    {
+      "id": "meta-few-study-publication-bias",
+      "mode": "writing-handoff",
+      "route": "meta-analysis-inference",
+      "prompt": "少量且异质研究的 meta-analysis 如何写 heterogeneity、prediction interval、funnel asymmetry 和 publication-bias 限制。",
+      "required_checks": ["no universal study-count threshold", "heterogeneity uncertainty", "asymmetry not proof", "claim ceiling"]
+    },
+    {
+      "id": "experiment-continuous-donor-cluster",
+      "mode": "plan",
+      "route": "experimental-inference-power",
+      "prompt": "规划 donor-derived organoid 连续端点的 mixed model 和 power，不能把 wells 当 donors。",
+      "required_checks": ["donor allocation unit", "continuous estimand", "mixed hierarchy", "power input ledger"]
+    },
+    {
+      "id": "experiment-binary-litter-cage",
+      "mode": "plan",
+      "route": "experimental-inference-power",
+      "prompt": "动物实验二元端点按 litter/cage 分配，建立 cluster-aware model 与样本量输入。",
+      "required_checks": ["actual assignment unit", "binary estimand", "cluster ICC", "no universal animal count"]
+    },
+    {
+      "id": "experiment-count-offset-overdispersion",
+      "mode": "audit",
+      "route": "experimental-inference-power",
+      "prompt": "审阅重复计数端点是否需要 exposure offset、overdispersion 和 Poisson/negative-binomial mixed model。",
+      "required_checks": ["count versus rate", "exposure offset", "overdispersion", "repeated dependence"]
+    },
+    {
+      "id": "experiment-longitudinal-mixed",
+      "mode": "interpret",
+      "route": "experimental-inference-power",
+      "prompt": "解释 group-by-time mixed model，不用每个时间点独立检验替代纵向 estimand。",
+      "required_checks": ["group time contrast", "unit random effect", "covariance", "multiplicity boundary"]
+    },
+    {
+      "id": "experiment-attrition-power-sensitivity",
+      "mode": "writing-handoff",
+      "route": "experimental-inference-power",
+      "prompt": "把 attrition、assay failure、cluster loss 和 power sensitivity 写入 Methods 与限制，不把 inflation 当偏倚修复。",
+      "required_checks": ["attrition types", "estimand consequence", "scenario sensitivity", "planned not achieved power"]
+    },
+    {
+      "id": "biostatistician-required-missing-unit",
+      "mode": "audit",
+      "route": "experimental-inference-power",
+      "prompt": "研究者只给了 cells 数量，没有 donor、随机分配单位、方差、ICC 或 effect-worth-detecting，却要求最终样本量。",
+      "required_checks": ["BIOSTATISTICIAN_REQUIRED", "no final sample size", "exact blocker", "minimum pilot inputs"]
+    },
+    {
+      "id": "learner-meta-route",
+      "mode": "mentor",
+      "route": "meta-analysis-inference",
+      "prompt": "指导学员在研究很少、效应相关且资源有限时选择最低可辩护、标准和增强 meta-analysis 方案。",
+      "required_checks": ["minimum defensible route", "standard and stronger route", "resource cost and failure signal", "fallback closure evidence and surviving claim"]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "review-compatibility-owner",
+      "prompt": "决定哪些研究符合资格以及是否临床上可合并。",
+      "expected_owner": "radiology-systematic-review"
+    },
+    {
+      "id": "mechanism-control-owner",
+      "prompt": "选择 target engagement、rescue 和湿实验对照。",
+      "expected_owner": "radiology-experiment-design"
+    },
+    {
+      "id": "method-choice-owner",
+      "prompt": "决定哪些参数、算法和 benchmark comparator 科学上必须比较。",
+      "expected_owner": "radiology-method-evaluation"
+    },
+    {
+      "id": "plot-owner",
+      "prompt": "绘制 forest、HSROC、calibration 和 power 曲线。",
+      "expected_owner": "radiology-figure"
+    },
+    {
+      "id": "reporting-owner",
+      "prompt": "按目标期刊统计报告清单逐项核查页码。",
+      "expected_owner": "radiology-reporting"
+    },
+    {
+      "id": "manuscript-prose-owner",
+      "prompt": "根据冻结统计结果撰写整篇 Results 和 Discussion。",
+      "expected_owner": "radiology-writing"
+    }
+  ],
+  "invariants": [
+    "A statistical plan or brief is never labelled COMPUTED",
+    "The estimand and independent or allocation unit precede model selection",
+    "Patients, donors, litters, cages, animals, clusters, readers, wells, fields, cells, spots, folds, and seeds retain distinct roles",
+    "Dependent effects, shared comparators, readers, thresholds, and overlapping cohorts are not treated as independent studies",
+    "Random effects do not justify pooling incompatible estimands",
+    "Sensitivity and specificity remain paired in bivariate or HSROC diagnostic meta-analysis when their threshold relationship matters",
+    "Prevalence, cumulative incidence, and incidence rates retain denominator or person-time and period",
+    "HR, OR, RR, rate ratio, and mean differences are not interchangeable",
+    "ICC model type form, kappa weighting, correlation, agreement, overlap, and limits of agreement remain distinct",
+    "Prediction discrimination, calibration, overall accuracy, and clinical utility remain distinct",
+    "Heterogeneity and publication-bias procedures disclose weak information and cannot certify homogeneity or absence of bias",
+    "Continuous, binary, and count endpoints use estimand-matched models",
+    "Repeated measures and group-by-time contrasts preserve within-unit dependence",
+    "Attrition inflation does not repair attrition bias",
+    "Power inputs include effect worth detecting or precision, nuisance parameters, allocation, dependence, multiplicity, attrition, and feasibility",
+    "No universal EPV, event-count, sample, donor, litter, cage, animal, cluster, reader, or replicate threshold is used",
+    "Unknown covariance, ICC, variance, event rate, attrition, or power inputs are never invented",
+    "BIOSTATISTICIAN_REQUIRED stops a final model or sample-size recommendation until the named blocker is resolved",
+    "Mentor routes state prerequisites, resources, failure signals, fallback, closure evidence, and surviving claims without guessing inputs",
+    "Incremental inference distinguishes apparent nested fits, out-of-fold predictions, and frozen independent evaluation",
+    "Ordinary ROC DeLong is not used for censored C-index differences and a development LRT is not repeated on frozen external predictions",
+    "DCA requires a defined decision contract and continuous NRI is not a default requirement",
+    "Quantitative measurement, causal clinical impact, and longitudinal multistate routes each retain their own estimand and uncertainty assumptions"
+  ]
+}

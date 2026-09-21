@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/replay-contract-and-levels.md",
+    "references/restricted-data-archiving-and-software.md",
+    "references/source-registry.md",
+    "templates/reproducibility-passport.md",
+    "templates/minimum-replay-package-manifest.md",
+    "scripts/validate_reproducibility_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": [
+    "trace-audit",
+    "package-plan",
+    "replay",
+    "discrepancy-diagnosis",
+    "archive-handoff"
+  ],
+  "required_computational_levels": [
+    "TRACEABLE",
+    "RERUNNABLE",
+    "REPLAYED",
+    "INDEPENDENTLY_REPRODUCED"
+  ],
+  "positive_cases": [
+    {
+      "id": "paper-artifact-trace",
+      "mode": "trace-audit",
+      "expected_level": "TRACEABLE",
+      "prompt": "论文有代码链接、输入清单和图表来源，但从未运行；审计每张结果图目前能声称的可重复性等级。",
+      "required_checks": [
+        "target per result",
+        "commit config input and output provenance",
+        "link is PRESENT_UNVERIFIED",
+        "no execution receipt",
+        "mixed levels remain per artifact",
+        "file existence is not replay"
+      ]
+    },
+    {
+      "id": "minimum-rerunnable-package",
+      "mode": "package-plan",
+      "expected_level": "RERUNNABLE",
+      "prompt": "把多中心 MRI radiomics 代码整理成最小重放包，数据受控但可在安全环境申请。",
+      "required_checks": [
+        "immutable code and resolved config",
+        "environment lock or container digest",
+        "privacy-safe IO manifest and controlled access route",
+        "annotation preprocessing and data version",
+        "expected outputs and frozen tolerance",
+        "no claim of replay before execution"
+      ]
+    },
+    {
+      "id": "same-input-replay",
+      "mode": "replay",
+      "expected_level": "REPLAYED",
+      "prompt": "在授权工作区按冻结容器和相同 CT 输入重放 Table 2，核对行数、AUC 和置信区间容差并出具 run receipt。",
+      "required_checks": [
+        "execution authorization",
+        "code config container data and weights identity",
+        "fresh workspace and exact command",
+        "run ID logs exit and output manifest",
+        "prespecified tolerance comparison",
+        "same-input replay not external validity"
+      ]
+    },
+    {
+      "id": "independent-replay",
+      "mode": "replay",
+      "expected_level": "INDEPENDENTLY_REPRODUCED",
+      "prompt": "让未参与开发的团队只凭归档包在新机器重建环境并复现同一数据结果。",
+      "required_checks": [
+        "different operator or team",
+        "no hidden author state or private coaching",
+        "environment rebuild from package",
+        "same identified input and method",
+        "frozen tolerance pass and signed receipt",
+        "independent reproduction not new-data replication"
+      ]
+    },
+    {
+      "id": "gpu-discrepancy-diagnosis",
+      "mode": "discrepancy-diagnosis",
+      "expected_level": "TRACEABLE",
+      "prompt": "相同 seed 的深度学习重放 AUC 差 0.02；不要直接改代码，诊断 GPU、CUDA、data loader 和非确定性。",
+      "required_checks": [
+        "preserve failed run",
+        "seed is not determinism proof",
+        "environment dependency hardware and nondeterminism classes",
+        "first divergence or controlled repeats",
+        "observed evidence versus hypothesised cause",
+        "repair creates new package and run"
+      ]
+    },
+    {
+      "id": "restricted-data-archive",
+      "mode": "archive-handoff",
+      "expected_level": "RERUNNABLE",
+      "prompt": "患者 DICOM 不能公开，设计可申请受控数据、公开代码和合成 fixture 的归档重放方案。",
+      "required_checks": [
+        "restricted data need not be public",
+        "consent DUA and access route",
+        "privacy-safe manifest without identifiers",
+        "synthetic fixture mechanics-only boundary",
+        "separate code data weights licences",
+        "controlled package can be rerunnable without public data"
+      ]
+    },
+    {
+      "id": "version-doi-container-archive",
+      "mode": "archive-handoff",
+      "expected_level": "RERUNNABLE",
+      "prompt": "给最终分析创建可引用归档：固定 release DOI、代码 commit、OCI image digest、许可证和运行说明。",
+      "required_checks": [
+        "version-specific persistent identifier",
+        "mutable repository link is not archive",
+        "container digest not tag alone",
+        "component licence matrix",
+        "secrets and identifier scan",
+        "archive readiness does not prove replay"
+      ]
+    },
+    {
+      "id": "external-site-computational-receipt",
+      "mode": "trace-audit",
+      "expected_level": "REPLAYED",
+      "prompt": "另一个国家的新医院按预设方案运行同一模型；只审计其冻结包和运行收据，并把外部运输结论交给科学 owner。",
+      "required_checks": [
+        "new-site package input code config and environment identity",
+        "execution receipt and frozen tolerance",
+        "computational level assigned independently",
+        "external protocol receipt preserved but not adjudicated",
+        "scientific validation owner handoff",
+        "external state is not a fifth computational level"
+      ]
+    },
+    {
+      "id": "radiomics-reference-replay",
+      "mode": "discrepancy-diagnosis",
+      "expected_level": "REPLAYED",
+      "prompt": "PyRadiomics 输出与冻结 IBSI 参考值不一致，定位 series、resampling、binning、mask geometry、版本和数值容差。",
+      "required_checks": [
+        "DICOM or NIfTI object identity",
+        "series and reconstruction selection",
+        "preprocessing and feature definition",
+        "software and dependency version",
+        "geometry numerical discrepancy class",
+        "IBSI agreement not whole-study validity"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "acquisition-validity",
+      "prompt": "判断这个 CT 序列的重建核、层厚和 HU 是否支持跨中心定量。",
+      "expected_owner": "radiology-acquisition-qc",
+      "required_boundary": "checksums and replay do not establish acquisition validity"
+    },
+    {
+      "id": "statistical-method-validity",
+      "prompt": "判断多重比较、缺失数据和置信区间方法是否统计正确。",
+      "expected_owner": "radiology-stats",
+      "required_boundary": "computational replay does not certify statistical validity"
+    },
+    {
+      "id": "dicom-release",
+      "prompt": "决定这些患者 DICOM 能否公开并执行去标识。",
+      "expected_owner": "radiology-data",
+      "required_boundary": "data release and de-identification are not reproducibility ownership"
+    },
+    {
+      "id": "dua-consent",
+      "prompt": "批准外部团队访问受控影像并解释同意书是否允许模型训练。",
+      "expected_owner": "radiology-ethics",
+      "required_boundary": "the skill cannot grant access or interpret approval authoritatively"
+    },
+    {
+      "id": "train-new-model",
+      "prompt": "重新训练 3D CNN，调学习率并选择最佳 checkpoint。",
+      "expected_owner": "radiology-deep-learning",
+      "required_boundary": "model development is not a replay audit"
+    },
+    {
+      "id": "prospective-clinical-validation",
+      "prompt": "设计前瞻性多中心试验证明模型改善患者结局。",
+      "expected_owner": "radiology-translation",
+      "required_boundary": "external clinical impact requires prospective scientific design"
+    },
+    {
+      "id": "security-certification",
+      "prompt": "认证这个容器没有供应链漏洞并批准临床部署。",
+      "expected_owner": "responsible-software-security-team",
+      "required_boundary": "reproducibility packaging is not cybersecurity certification"
+    },
+    {
+      "id": "project-governance-state",
+      "prompt": "更新整个科研项目各模块的状态、交接和最终关闭记录。",
+      "expected_owner": "radiology-pipeline",
+      "required_boundary": "project lifecycle ownership is broader than computational reproducibility"
+    }
+  ],
+  "invariants": [
+    "Evidence levels are assigned per target result rather than per paper",
+    "TRACEABLE precedes RERUNNABLE REPLAYED and INDEPENDENTLY_REPRODUCED on the computational axis",
+    "External replication or transport is a separate scientific-validation axis",
+    "File existence and repository links are not execution evidence",
+    "A container tag is not immutable identity without a digest",
+    "Code commit and dirty state remain visible",
+    "Resolved configuration includes defaults and overrides",
+    "Input output data model-weight and environment versions remain distinct",
+    "A checksum verifies identity rather than correctness ethics or clinical validity",
+    "Seeds do not guarantee deterministic GPU or parallel execution",
+    "Tolerance is frozen before observing replay output",
+    "Failed and negative runs remain visible",
+    "Silent code data environment or tolerance repair is prohibited",
+    "Every repair creates a new package version and run receipt",
+    "Replay execution requires current authorization and a safe workspace",
+    "REPLAYED requires execution on identified same inputs and tolerance passage",
+    "INDEPENDENTLY_REPRODUCED requires a different operator or team without hidden author state",
+    "External replication or transport uses new data site population protocol or time and a scientific-owner receipt",
+    "External evidence does not require prior same-data independent reproduction",
+    "Same-input replay does not establish external clinical validity",
+    "External-data adaptation is not untouched external validation",
+    "Restricted data need not be public to support a controlled replay route",
+    "Synthetic fixtures test mechanics rather than reproduce real-data results",
+    "Code data weights dependencies and vendor assets retain separate licences",
+    "An open repository without a licence does not automatically grant reuse",
+    "Mutable repositories are distinct from versioned citable archives",
+    "Archive readiness does not upgrade the computational evidence level",
+    "Radiology patient exam series reconstruction derived-object and annotation hierarchy remains explicit",
+    "Acquisition validity statistical correctness and data-sharing authority remain external",
+    "Observed discrepancy evidence causal inference and repair recommendation remain distinct"
+  ]
+}

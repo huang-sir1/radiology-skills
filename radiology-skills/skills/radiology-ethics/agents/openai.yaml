@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Ethics"
+  short_description: "Audit human, animal, and biosafety governance"
+  default_prompt: "Use $radiology-ethics to classify and audit the human-subjects, animal-welfare, and biosafety/biosecurity branches for this study, apply current local-owner STOP gates, and draft only evidence-supported statements without dangerous operational detail."

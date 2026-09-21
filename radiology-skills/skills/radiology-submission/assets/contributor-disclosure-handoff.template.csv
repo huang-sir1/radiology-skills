@@ -1,0 +1,5 @@
+requirement_id,requirement,authority,official_url,version_status_effective_date,accessed,applicability,human_owner,artifact_or_portal_location,attestation_status,cross_file_status,unresolved_action
+DECL-001,author eligibility order and final approval,ICMJE,,,2026-08-23,conditional,, ,NOT_VERIFIED,NOT_CHECKED,
+DECL-002,CRediT contribution confirmation,NISO CRediT,,,2026-08-23,conditional,, ,NOT_VERIFIED,NOT_CHECKED,
+DECL-003,AI tool purpose verification and disclosure,ICMJE and target journal,,,2026-08-23,conditional,, ,NOT_VERIFIED,NOT_CHECKED,
+DECL-004,public access route,funder and institution,,,2026-08-23,conditional,, ,NOT_VERIFIED,NOT_CHECKED,

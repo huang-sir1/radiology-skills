@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Annotation"
+  short_description: "Plan reproducible imaging annotation and mask quality control"
+  default_prompt: "Use $radiology-annotation to design and audit the annotation protocol for this imaging study."

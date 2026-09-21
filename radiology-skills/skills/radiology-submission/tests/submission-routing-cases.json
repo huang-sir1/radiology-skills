@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "supported_routes": [
+    {"journal_id": "radiology", "article_type": "Original Research", "profile": "radiology.md", "initial_model": "double-anonymized"},
+    {"journal_id": "nature-medicine", "article_type": "Article", "profile": "nature-medicine.md", "initial_model": "optional-double-anonymized"},
+    {"journal_id": "nature-communications", "article_type": "Article", "profile": "nature-communications.md", "initial_model": "optional-double-anonymized"},
+    {"journal_id": "lancet-digital-health", "article_type": "Article", "profile": "lancet-digital-health.md", "initial_model": "single-anonymized"},
+    {"journal_id": "eclinicalmedicine", "article_type": "Article", "profile": "eclinicalmedicine.md", "initial_model": "single-anonymized"},
+    {"journal_id": "cancer-cell", "article_type": "Research Article", "profile": "cancer-cell.md", "initial_model": "single-anonymized"},
+    {"journal_id": "cell-reports-medicine", "article_type": "Research article", "profile": "cell-reports-medicine.md", "initial_model": "single-anonymized"},
+    {"journal_id": "npj-digital-medicine", "article_type": "Article", "profile": "npj-digital-medicine.md", "initial_model": "single-anonymized"},
+    {"journal_id": "npj-precision-oncology", "article_type": "Article", "profile": "npj-precision-oncology.md", "initial_model": "single-anonymized"},
+    {"journal_id": "advanced-science", "article_type": "Research Article", "profile": "advanced-science.md", "initial_model": "not-confirmed"},
+    {"journal_id": "jama-network-open", "article_type": "Original Investigation", "profile": "jama-network-open.md", "initial_model": "single-anonymized"}
+  ],
+  "conference_portal_route": {
+    "route_id": "conference-portal-finalization",
+    "request_boundary": "final meeting or congress portal fields, file designations, upload bytes and attestations",
+    "scientific_content_owner": "radiology-dissemination",
+    "portal_package_owner": "radiology-submission",
+    "required_live_bindings": [
+      "venue_series_id",
+      "submission_cycle",
+      "submission_type",
+      "current_call",
+      "live_portal"
+    ],
+    "progression_state": "HUMAN_PORTAL_ACTION_REQUIRED",
+    "blocking_states": [
+      "CALL_EVIDENCE_UNVERIFIED",
+      "PORTAL_EVIDENCE_UNVERIFIED",
+      "PORTAL_PACKAGE_BLOCKED"
+    ],
+    "final_action_owner": "authorized-human",
+    "forbidden_machine_claims": [
+      "READY",
+      "SUBMITTED",
+      "ACCEPTED",
+      "PUBLISHED",
+      "EMBARGO CLEARED"
+    ]
+  },
+  "negative_contracts": [
+    {
+      "id": "family-proxy-forbidden",
+      "input": "NPJ final figure type unavailable; Nature Communications has a TIFF rule",
+      "expected": "UNVERIFIED_CURRENT_GUIDE",
+      "forbidden": "copy Nature Communications rule to npj",
+      "test_method": "test_family_proxy_cannot_satisfy_npj_final_figure_rule"
+    },
+    {
+      "id": "exemplar-not-hard",
+      "input": "A published paper has a Source Data workbook",
+      "expected": "OBSERVED_EXEMPLAR",
+      "forbidden": "required manifest row without official guide or portal source",
+      "test_method": "test_published_exemplar_cannot_create_hard_rule"
+    },
+    {
+      "id": "partial-inventory",
+      "input": "Only manuscript.docx is attached; upload folder is unavailable",
+      "expected": "ATTACHMENT_SET_CLOSED or INVENTORY_PARTIAL",
+      "forbidden": "all-files READY",
+      "test_method": "test_attachment_set_never_gets_whole_package_ready"
+    },
+    {
+      "id": "advanced-science-403",
+      "input": "Journal-specific guide cannot be read and real portal is not captured",
+      "expected": "INCOMPLETE",
+      "forbidden": "borrow a Wiley sibling file type",
+      "test_method": "test_advanced_science_development_portal_cannot_resolve_guide"
+    },
+    {
+      "id": "initial-versus-revision",
+      "input": "Cancer Cell initial submission lacks STAR Methods and graphical abstract",
+      "expected": "do not block initial package for revision/final-only materials",
+      "forbidden": "stage-flattened requirement",
+      "test_method": "test_cancer_cell_initial_does_not_require_revision_or_final_materials"
+    },
+    {
+      "id": "tar-path-traversal",
+      "input": "An allowed TAR supplement contains ../escape.txt",
+      "expected": "TAR_UNSAFE_PATH and BLOCKED_STRUCTURAL without extraction",
+      "forbidden": "extract or mark structurally safe",
+      "test_method": "test_tar_parent_traversal_member_is_blocked_without_extraction"
+    },
+    {
+      "id": "duplicate-receipt-key",
+      "input": "A portal receipt repeats portal_journal_id with conflicting values",
+      "expected": "PORTAL_EVIDENCE_RECEIPT failure",
+      "forbidden": "silently accept first or last value",
+      "test_method": "test_duplicate_structured_receipt_key_is_rejected"
+    },
+    {
+      "id": "manifest-parent-escape",
+      "input": "--manifest points to ../outside.csv",
+      "expected": "MANIFEST_ESCAPE before file receipt/read",
+      "forbidden": "read or hash the outside manifest",
+      "test_method": "test_manifest_parent_escape_is_rejected_before_receipt_or_read"
+    },
+    {
+      "id": "ooxml-external-relationship",
+      "input": "A DOCX references a remote attached template",
+      "expected": "OOXML_EXTERNAL_RELATIONSHIP before rendering",
+      "forbidden": "network-enabled rendering or structural PASS",
+      "test_method": "test_ooxml_external_relationship_is_blocked_before_rendering"
+    },
+    {
+      "id": "duplicate-latex-receipt-key",
+      "input": "A LaTeX compile receipt repeats a digest key with conflicting values",
+      "expected": "ROUTE_LATEX_RECEIPT failure",
+      "forbidden": "silently accept first or last value",
+      "test_method": "test_cancer_cell_latex_receipt_rejects_duplicate_keys"
+    }
+  ]
+}

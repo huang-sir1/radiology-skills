@@ -1,0 +1,49 @@
+{
+  "study_scope": "evidence-synthesis",
+  "review_route": "evidence-synthesis-review",
+  "scientific_handoff_digest": "not-applicable",
+  "required_source_artifacts": [
+    {
+      "artifact_id": "",
+      "role": "protocol",
+      "version": "",
+      "sha256": ""
+    },
+    {
+      "artifact_id": "",
+      "role": "search",
+      "version": "",
+      "sha256": ""
+    },
+    {
+      "artifact_id": "",
+      "role": "selection-flow",
+      "version": "",
+      "sha256": ""
+    },
+    {
+      "artifact_id": "",
+      "role": "extraction",
+      "version": "",
+      "sha256": ""
+    },
+    {
+      "artifact_id": "",
+      "role": "risk-of-bias-applicability",
+      "version": "",
+      "sha256": ""
+    },
+    {
+      "artifact_id": "",
+      "role": "synthesis",
+      "version": "",
+      "sha256": ""
+    },
+    {
+      "artifact_id": "",
+      "role": "certainty",
+      "version": "",
+      "sha256": ""
+    }
+  ]
+}

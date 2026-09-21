@@ -1,0 +1,4 @@
+interface:
+  display_name: "Imaging–Mechanism Interpreter"
+  short_description: "Audit biological mechanisms and imaging-mechanism bridges"
+  default_prompt: "Use $radiology-radiogenomics to interpret this biological mechanism or imaging-to-mechanism bridge with matched-unit mapping, competing explanations, causal boundaries and a defensible claim ceiling."

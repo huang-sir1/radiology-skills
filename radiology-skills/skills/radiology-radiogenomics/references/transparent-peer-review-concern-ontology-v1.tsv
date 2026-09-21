@@ -1,0 +1,60 @@
+ontology_version	raw_concern_code	canonical_concern_family	family_definition
+1.0.0	NOVELTY_CONTRIBUTION	CONTRIBUTION_CLAIM_CALIBRATION	Contribution, novelty, reporting clarity and claim scope.
+1.0.0	NOVELTY_POSITIONING	CONTRIBUTION_CLAIM_CALIBRATION	Contribution, novelty, reporting clarity and claim scope.
+1.0.0	CLAIM_CALIBRATION	CONTRIBUTION_CLAIM_CALIBRATION	Contribution, novelty, reporting clarity and claim scope.
+1.0.0	CLAIM_SCOPE	CONTRIBUTION_CLAIM_CALIBRATION	Contribution, novelty, reporting clarity and claim scope.
+1.0.0	REPORTING_CLARITY	CONTRIBUTION_CLAIM_CALIBRATION	Contribution, novelty, reporting clarity and claim scope.
+1.0.0	FIGURE_CLARITY	CONTRIBUTION_CLAIM_CALIBRATION	Contribution, novelty, reporting clarity and claim scope.
+1.0.0	COHORT_REPRESENTATIVENESS	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	COHORT_SAMPLE_SIZE	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	REPLICATION_UNIT	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	DATA_LEAKAGE_SPLIT	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	DATA_OVERLAP_LEAKAGE	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	LABEL_REFERENCE_STANDARD	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	HUMAN_READER_VALIDATION	COHORT_LABEL_UNIT_LEAKAGE	Cohort provenance, labels, independent units, sample size and leakage.
+1.0.0	BENCHMARK_FAIRNESS	COMPARATOR_CONTROL_ABLATION	Applicable comparators, controls, baselines and component or modality ablations.
+1.0.0	COMPARATOR_FAIRNESS	COMPARATOR_CONTROL_ABLATION	Applicable comparators, controls, baselines and component or modality ablations.
+1.0.0	ABLATION_COMPONENT	COMPARATOR_CONTROL_ABLATION	Applicable comparators, controls, baselines and component or modality ablations.
+1.0.0	MULTIMODAL_ABLATION	COMPARATOR_CONTROL_ABLATION	Applicable comparators, controls, baselines and component or modality ablations.
+1.0.0	CONTROLS	COMPARATOR_CONTROL_ABLATION	Applicable comparators, controls, baselines and component or modality ablations.
+1.0.0	CONTROLS_BASELINES	COMPARATOR_CONTROL_ABLATION	Applicable comparators, controls, baselines and component or modality ablations.
+1.0.0	STATISTICAL_RIGOR	STATISTICAL_INFERENCE_CONFOUNDING	Estimands, hierarchy, uncertainty, multiplicity, confounding, missingness and fairness.
+1.0.0	STATISTICAL_INFERENCE	STATISTICAL_INFERENCE_CONFOUNDING	Estimands, hierarchy, uncertainty, multiplicity, confounding, missingness and fairness.
+1.0.0	MULTIPLE_TESTING	STATISTICAL_INFERENCE_CONFOUNDING	Estimands, hierarchy, uncertainty, multiplicity, confounding, missingness and fairness.
+1.0.0	BATCH_CONFOUNDING	STATISTICAL_INFERENCE_CONFOUNDING	Estimands, hierarchy, uncertainty, multiplicity, confounding, missingness and fairness.
+1.0.0	MISSING_DATA_CONFOUNDING	STATISTICAL_INFERENCE_CONFOUNDING	Estimands, hierarchy, uncertainty, multiplicity, confounding, missingness and fairness.
+1.0.0	SUBGROUP_FAIRNESS	STATISTICAL_INFERENCE_CONFOUNDING	Estimands, hierarchy, uncertainty, multiplicity, confounding, missingness and fairness.
+1.0.0	EXTERNAL_VALIDATION	EXTERNAL_VALIDATION_ROBUSTNESS	Independent validation, transport, distribution shift, robustness and failure cases.
+1.0.0	GENERALIZABILITY_OOD	EXTERNAL_VALIDATION_ROBUSTNESS	Independent validation, transport, distribution shift, robustness and failure cases.
+1.0.0	ROBUSTNESS_OOD	EXTERNAL_VALIDATION_ROBUSTNESS	Independent validation, transport, distribution shift, robustness and failure cases.
+1.0.0	FAILURE_ANALYSIS	EXTERNAL_VALIDATION_ROBUSTNESS	Independent validation, transport, distribution shift, robustness and failure cases.
+1.0.0	IMAGE_QUALITY_REALISM	EXTERNAL_VALIDATION_ROBUSTNESS	Independent validation, transport, distribution shift, robustness and failure cases.
+1.0.0	QC_PREPROCESSING	MEASUREMENT_QC_SPATIAL_TRUTH	Measurement validity, preprocessing, spatial resolution, segmentation and ground truth.
+1.0.0	SPATIAL_RESOLUTION_SEGMENTATION	MEASUREMENT_QC_SPATIAL_TRUTH	Measurement validity, preprocessing, spatial resolution, segmentation and ground truth.
+1.0.0	SPATIAL_SPECIFICITY	MEASUREMENT_QC_SPATIAL_TRUTH	Measurement validity, preprocessing, spatial resolution, segmentation and ground truth.
+1.0.0	VALIDATION_GROUND_TRUTH	MEASUREMENT_QC_SPATIAL_TRUTH	Measurement validity, preprocessing, spatial resolution, segmentation and ground truth.
+1.0.0	MULTIOMICS_INTEGRATION	MULTIOMICS_ALIGNMENT_ANNOTATION	Multi-omics integration, cross-scale alignment, cell annotation and interaction inference.
+1.0.0	MULTISCALE_ALIGNMENT	MULTIOMICS_ALIGNMENT_ANNOTATION	Multi-omics integration, cross-scale alignment, cell annotation and interaction inference.
+1.0.0	CELL_ANNOTATION_VALIDITY	MULTIOMICS_ALIGNMENT_ANNOTATION	Multi-omics integration, cross-scale alignment, cell annotation and interaction inference.
+1.0.0	CELL_CELL_INTERACTION_INFERENCE	MULTIOMICS_ALIGNMENT_ANNOTATION	Multi-omics integration, cross-scale alignment, cell annotation and interaction inference.
+1.0.0	MECHANISM_CAUSALITY	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	FUNCTIONAL_VALIDATION	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	PERTURBATION_RESCUE	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	ORTHOGONAL_VALIDATION	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	BIOLOGICAL_VALIDATION	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	TRAJECTORY_TEMPORAL_CAUSALITY	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	CAUSAL_MECHANISM	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	MECHANISM_VALIDATION	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	TIME_SERIES	MECHANISM_FUNCTION_PERTURBATION	Mechanism, functional validation, perturbation, temporal evidence and causal identification.
+1.0.0	INTERPRETABILITY_MECHANISM	INTERPRETABILITY_ALTERNATIVES	Interpretability, alternative explanations and model error.
+1.0.0	BIOLOGICAL_PLAUSIBILITY	INTERPRETABILITY_ALTERNATIVES	Interpretability, alternative explanations and model error.
+1.0.0	ALTERNATIVE_EXPLANATION	INTERPRETABILITY_ALTERNATIVES	Interpretability, alternative explanations and model error.
+1.0.0	REPRODUCIBILITY_OPENNESS	REPRODUCIBILITY_OPENNESS	Methods, model and resource transparency, reconstructability and availability.
+1.0.0	DATA_CODE_AVAILABILITY	REPRODUCIBILITY_OPENNESS	Methods, model and resource transparency, reconstructability and availability.
+1.0.0	METHODS_REPRODUCIBILITY	REPRODUCIBILITY_OPENNESS	Methods, model and resource transparency, reconstructability and availability.
+1.0.0	REPORTING_TRANSPARENCY	REPRODUCIBILITY_OPENNESS	Methods, model and resource transparency, reconstructability and availability.
+1.0.0	DATA_AVAILABILITY	REPRODUCIBILITY_OPENNESS	Methods, model and resource transparency, reconstructability and availability.
+1.0.0	MODEL_REPORTING_REPRODUCIBILITY	REPRODUCIBILITY_OPENNESS	Methods, model and resource transparency, reconstructability and availability.
+1.0.0	CLINICAL_WORKFLOW_UTILITY	CLINICAL_ETHICS_FEASIBILITY	Clinical utility, workflow, ethics, privacy and feasibility boundaries.
+1.0.0	ETHICS_PRIVACY	CLINICAL_ETHICS_FEASIBILITY	Clinical utility, workflow, ethics, privacy and feasibility boundaries.
+1.0.0	FEASIBILITY_LIMITATION	CLINICAL_ETHICS_FEASIBILITY	Clinical utility, workflow, ethics, privacy and feasibility boundaries.

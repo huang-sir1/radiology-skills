@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/ct-acquisition-reconstruction.md",
+    "references/mr-acquisition-reconstruction.md",
+    "references/pet-spect-acquisition-quantification.md",
+    "references/ultrasound-ceus-elastography.md",
+    "references/projection-radiography-mammo-dbt.md",
+    "references/phantom-test-retest-protocol-shift.md",
+    "references/mr-spectroscopy.md",
+    "references/functional-mri.md",
+    "references/diffusion-tensor-tractography.md",
+    "templates/imaging-measurement-passport.md",
+    "scripts/validate_acquisition_qc_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": ["plan", "audit", "mentor", "interpret", "writing-handoff"],
+  "required_modalities": [
+    "ct",
+    "mri",
+    "mr-spectroscopy",
+    "functional-mri",
+    "diffusion-tensor-tractography",
+    "pet",
+    "spect",
+    "ultrasound-ceus-elastography",
+    "projection-radiography",
+    "mammography-dbt",
+    "common-protocol-shift"
+  ],
+  "positive_cases": [
+    {
+      "id": "ct-multiphase-reconstruction-audit",
+      "mode": "audit",
+      "modality": "ct",
+      "prompt": "审计多中心增强 CT radiomics 输入：各院静脉期、层厚和重建核不同，还有多个重建序列可选。",
+      "required_checks": ["phase and series lock", "kernel and thickness", "contrast timing", "artifact and HU validity", "protocol-shift ledger", "claim ceiling"]
+    },
+    {
+      "id": "mri-dwi-adc-plan",
+      "mode": "plan",
+      "modality": "mri",
+      "prompt": "规划跨 1.5T/3T 的 DWI/ADC 定量研究，明确 b 值、ADC 生成、畸变、体模和外部中心验证。",
+      "required_checks": ["sequence parameters", "ADC derivation and units", "distortion and registration", "phantom or test-retest", "represented versus unseen scanner", "claim ceiling"]
+    },
+    {
+      "id": "mr-spectroscopy-audit",
+      "mode": "audit",
+      "modality": "mr-spectroscopy",
+      "prompt": "审计多中心脑肿瘤 MRS/MRSI 代谢物研究，作者把拟合浓度当作直接化学测量，并只报告最好的体素。",
+      "required_checks": ["voxel localization and tissue composition", "water or metabolite reference", "preprocessing basis and fitting provenance", "linewidth SNR residual and fit uncertainty", "patient examination voxel hierarchy", "ratio and concentration claim ceiling"]
+    },
+    {
+      "id": "functional-mri-plan",
+      "mode": "plan",
+      "modality": "functional-mri",
+      "prompt": "规划任务态与静息态 BOLD fMRI 研究，冻结任务执行、运动生理混杂、预处理、ROI 和多重性边界。",
+      "required_checks": ["task compliance or resting-state condition", "motion and physiological confounding", "preprocessing and design model", "circular ROI and multiplicity control", "patient-level inference unit", "BOLD indirect-signal claim ceiling"]
+    },
+    {
+      "id": "dti-tractography-interpret",
+      "mode": "interpret",
+      "modality": "diffusion-tensor-tractography",
+      "prompt": "解释跨扫描仪 DTI 与 tractography 结果，检查梯度方向、畸变校正、模型和追踪参数，避免把 streamline 当作轴突。",
+      "required_checks": ["gradient table and orientation", "motion eddy and susceptibility correction", "diffusion model and scalar provenance", "tracking seed ROI stopping and threshold parameters", "nested streamlines tracts and patients", "streamline and connectivity claim ceiling"]
+    },
+    {
+      "id": "pet-response-interpret",
+      "mode": "interpret",
+      "modality": "pet",
+      "prompt": "解释 FDG PET/CT 治疗前后 SUV 变化；两次扫描摄取时间、血糖和重建版本不同。",
+      "required_checks": ["tracer and SUV definition", "uptake and glucose", "reconstruction and corrections", "partial volume", "repeatability versus biological change", "bounded response claim"]
+    },
+    {
+      "id": "spect-quantification-audit",
+      "mode": "audit",
+      "modality": "spect",
+      "prompt": "审阅定量 SPECT/CT 研究，检查准直器、能窗、角度采样、校正、重建和系统校准是否支持绝对活度结论。",
+      "required_checks": ["collimator and acquisition geometry", "energy windows and counts", "attenuation scatter decay corrections", "reconstruction and resolution recovery", "cross-calibration and phantom", "absolute-quantity claim ceiling"]
+    },
+    {
+      "id": "ultrasound-elastography-mentor",
+      "mode": "mentor",
+      "modality": "ultrasound-ceus-elastography",
+      "prompt": "像导师一样教我设计多操作者剪切波弹性成像研究，避免只保存最好的一张图。",
+      "required_checks": ["system transducer preset", "operator and probe pressure", "ROI depth quality map and units", "repeated acquisitions", "frame-selection rule", "teach-back and transfer"]
+    },
+    {
+      "id": "portable-radiograph-writing-handoff",
+      "mode": "writing-handoff",
+      "modality": "projection-radiography",
+      "prompt": "冻结便携胸片 AI 研究的采集 Methods，保留 AP/PA、体位、曝光、后处理版本和设备迁移边界。",
+      "required_checks": ["view and positioning", "exposure and detector", "processing version", "portable versus departmental shift", "analysis versus display pixels", "prohibited equivalence claim"]
+    },
+    {
+      "id": "mammography-dbt-plan",
+      "mode": "plan",
+      "modality": "mammography-dbt",
+      "prompt": "设计 FFDM、DBT 和 synthetic 2D 比较研究，锁定视图、压迫、剂量、重建和既往片可用性。",
+      "required_checks": ["exam and paired-view hierarchy", "positioning compression and dose", "DBT reconstruction", "synthetic versus acquired 2D", "prior-image access", "task-specific claim ceiling"]
+    },
+    {
+      "id": "common-unseen-site-shift",
+      "mode": "interpret",
+      "modality": "common-protocol-shift",
+      "prompt": "外部中心使用从未见过的扫描仪和协议，作者想用整个外部集重新 harmonize 后仍称独立外部验证。",
+      "required_checks": ["shift ledger", "wholly unseen level", "raw frozen primary evaluation", "external-data access", "adaptation label", "transport claim ceiling"]
+    },
+    {
+      "id": "hybrid-pet-ct-routing",
+      "mode": "audit",
+      "modality": "pet",
+      "prompt": "PET/CT 的 CT 同时用于衰减校正和病灶形态定量，请审计两条测量链。",
+      "required_checks": ["load PET and CT playbooks", "CT role separation", "registration and motion", "corrections and reconstruction", "two measurement objects", "hybrid claim ceiling"]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "deidentification-only",
+      "prompt": "把 DICOM 标签和像素里的身份信息去掉并准备公开共享。",
+      "expected_owner": "radiology-data"
+    },
+    {
+      "id": "disease-reference-standard",
+      "prompt": "决定这个肝癌队列应该用哪个当前诊断标准和治疗反应规则。",
+      "expected_owner": "radiology-clinical-domain"
+    },
+    {
+      "id": "roi-reader-protocol",
+      "prompt": "设计两名放射科医生勾画 ROI、复测和仲裁的 SOP。",
+      "expected_owner": "radiology-annotation"
+    },
+    {
+      "id": "radiomics-extraction",
+      "prompt": "根据已经冻结的 CT 输入运行 PyRadiomics 并选择 bin width。",
+      "expected_owner": "radiology-radiomics"
+    },
+    {
+      "id": "reconstruction-network-training",
+      "prompt": "训练低剂量 CT 重建网络并调学习率和 checkpoint。",
+      "expected_owner": "radiology-deep-learning"
+    },
+    {
+      "id": "parameter-superiority-inference",
+      "prompt": "判断三种重建核谁显著更好并计算配对置信区间。",
+      "expected_owner": "radiology-method-evaluation"
+    },
+    {
+      "id": "clinical-reader-study",
+      "prompt": "设计放射科医生有无 AI 辅助的 MRMC 阅片者研究。",
+      "expected_owner": "radiology-translation"
+    },
+    {
+      "id": "imaging-mechanism",
+      "prompt": "解释 ADC 与免疫细胞状态之间的机制并设计病理验证。",
+      "expected_owner": "radiology-radiogenomics"
+    },
+    {
+      "id": "individual-patient-protocol",
+      "prompt": "替这位具体患者决定要不要增强扫描以及辐射剂量。",
+      "expected_owner": "responsible-clinical-team"
+    },
+    {
+      "id": "unsupported-fluoroscopy-interventional",
+      "prompt": "把普通 X 线或 CT 的 QC 规则直接套到 DSA、透视、锥形束 CT 和介入影像，并宣称程序与剂量合格。",
+      "expected_owner": "LOCAL_EXTENSION_REQUIRED"
+    }
+  ],
+  "invariants": [
+    "The measurement object and intended claim precede parameter recommendations",
+    "Patient examination series reconstruction frame and voxel levels remain distinct",
+    "Series phase sequence view tracer and reconstruction selection is fixed before outcome or model-performance review",
+    "Acquisition reconstruction post-processing and display are separate provenance stages",
+    "A series description or filename does not verify acquisition parameters",
+    "A standardized protocol does not prove cross-platform equivalence",
+    "Derived maps and model outputs are not automatically direct physical measurements",
+    "MRS and MRSI require a conditionally loaded spectroscopy contract and fitted outputs are not direct chemical assays",
+    "BOLD fMRI requires a conditionally loaded functional contract and is not direct neuronal activity or causal proof",
+    "DTI and tractography require a conditionally loaded diffusion contract and streamlines are not axons or proven connections",
+    "Fluoroscopy DSA angiography cone-beam CT and interventional imaging require a local extension and cannot borrow ordinary CT or projection-radiography assurance",
+    "Phantom repeatability does not establish clinical validity",
+    "Test-retest change is compared with a prespecified measurement-error scale",
+    "Wholly unseen scanner and protocol levels remain distinct from represented levels",
+    "External-data harmonisation or recalibration is labelled adaptation and does not retain an untouched external claim",
+    "Harmonisation cannot repair missing acquisition metadata or complete site-outcome confounding",
+    "Quantitative units formulas corrections and reference objects remain explicit",
+    "Nondiagnostic and failed acquisitions remain visible rather than being silently excluded",
+    "Eligible acquired exported accepted nondiagnostic and excluded denominators remain explicit and reason-reconciled at each declared grain",
+    "Current standards and profiles require exact version applicability and live source verification",
+    "Individual patient acquisition contrast radiation and treatment decisions remain with qualified responsible clinicians"
+  ]
+}

@@ -1,0 +1,11 @@
+.claude-plugin/
+.codex-plugin/
+skills/
+behavior-evals/
+README.md
+install.md
+LICENSE
+.gitignore
+RELEASE.md
+release-allowlist.txt
+scripts/

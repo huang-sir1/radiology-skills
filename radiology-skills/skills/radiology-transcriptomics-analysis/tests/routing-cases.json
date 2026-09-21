@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/modality-execution-workflows.md",
+    "references/runtime-and-reproducibility-contract.md",
+    "templates/transcriptomics-analysis-plan.md",
+    "templates/analysis-run-manifest.md",
+    "templates/local-transcriptomics-runtime-profile.md",
+    "templates/local-analysis-experience-registry.md",
+    "templates/qc-decision-log.md"
+  ],
+  "positive_cases": [
+    {"id":"bulk-plan","mode":"plan","modality":"bulk-rna","prompt":"从原始 counts 和 metadata 设计 donor-aware bulk RNA 分析。","required_checks":["identity map","design contrast","gene universe","expected artifacts"]},
+    {"id":"bulk-run","mode":"run-audit","modality":"bulk-rna","prompt":"从 FASTQ 运行已锁定的 bulk RNA 定量和差异表达流程并记录全部输出。","required_checks":["FASTQ manifest and reference index","exact command","exit status","artifact verification"]},
+    {"id":"scrna-build","mode":"build","modality":"scrna","prompt":"为 10x scRNA 构建含 ambient、doublet、QC、integration、annotation 和 pseudobulk 的代码。","required_checks":["donor map","layer contract","pseudobulk","failure assertions"]},
+    {"id":"snrna-audit","mode":"run-audit","modality":"snrna","prompt":"审计 snRNA 对象的 QC、注释和 donor-level DE 是否真的运行。","required_checks":["nuclei context","artifact locator","donor unit","execution state"]},
+    {"id":"spatial-plan","mode":"plan","modality":"spatial","prompt":"规划空间转录组 geometry QC、去卷积、空间域和 patient aggregation。","required_checks":["coordinate system","estimated composition","spatial null","patient aggregation"]},
+    {"id":"spatial-reproduce","mode":"reproduce","modality":"spatial","prompt":"按原命令和环境重跑空间分析并比较 domains 与患者级结果。","required_checks":["determinism class","locked comparison","deviation log","reproducibility verdict"]},
+    {"id":"interpret-handoff","mode":"interpret-handoff","modality":"scrna","prompt":"把真实 pseudobulk 和细胞丰度结果交给机制解读与写作。","required_checks":["verified result","alternative explanation","claim ceiling","exact locator"]},
+    {"id":"mentor-route","mode":"mentor","modality":"spatial","prompt":"指导学员在资源有限时选择可辩护的空间转录组分析路线，并说明升级条件。","required_checks":["minimum defensible route","stronger alternative and cost","failure signal and fallback","closure evidence and surviving claim"]},
+    {"id":"writing-handoff","mode":"writing-handoff","modality":"snrna","prompt":"把冻结的 snRNA 工作流和真实结果交给论文写作，限制摘要与标题的主张。","required_checks":["Methods and Results placement","figure and supplement locators","Discussion alternatives","Abstract-title claim ceiling"]}
+  ],
+  "boundary_cases": [
+    {"id":"mechanism-claim","prompt":"这些单细胞结果能否证明免疫通路导致影像异质性？","expected_owner":"radiology-radiogenomics"},
+    {"id":"parameter-defensibility","prompt":"integration 和 clustering resolution 的选择是否足以支持结论？","expected_owner":"radiology-method-evaluation"},
+    {"id":"statistical-inference","prompt":"计算 donor-level 差异的 CI 并校正多重比较。","expected_owner":"radiology-stats"},
+    {"id":"wetlab-validation","prompt":"设计敲低和 rescue 实验验证候选通路。","expected_owner":"radiology-experiment-design"},
+    {"id":"manuscript-writing","prompt":"根据已经冻结的单细胞结果写 Results。","expected_owner":"radiology-writing"}
+  ],
+  "invariants": [
+    "Plans and code drafts are never reported as completed runs",
+    "Cells, nuclei, spots, sections, genes, and technical replicates are not independent patients or donors",
+    "Donor-sample mapping is frozen before execution",
+    "Integrated values and inferred compositions are not measured biology",
+    "Protected test data cannot select QC, parameters, methods, seeds, figures, or claims",
+    "Raw inputs are never overwritten",
+    "Every completed run has exact command, environment, log, exit status, and verified artifacts",
+    "Computational association or trajectory is not causal proof",
+    "FASTQ-to-matrix provenance binds sample sheet, chemistry, reference index, commands, logs, and produced matrix",
+    "Imaging-based spatial assays are not forced through a sequencing pipeline"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Health Economics"
+  short_description: "Plan imaging economic evaluations and HTA-ready evidence"
+  default_prompt: "Use $radiology-health-economics to scope or audit this imaging economic evaluation with explicit perspective, pathway, uncertainty, and jurisdiction limits."

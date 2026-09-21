@@ -1,0 +1,4 @@
+interface:
+  display_name: "Submission Package Auditor"
+  short_description: "Audit journal packages or final conference portal fields/files"
+  default_prompt: "Use $radiology-submission to audit this journal package or final conference-portal field/file map against the current exact-venue rules, while keeping scientific content and the final human submission action outside the audit."

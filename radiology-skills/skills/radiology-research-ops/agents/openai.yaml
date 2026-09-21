@@ -1,0 +1,5 @@
+interface:
+  display_name: "Radiology Research Operations"
+  short_description: "Run traceable radiology research operations"
+  default_prompt: "Use $radiology-research-ops to turn this frozen study plan into an evidence-backed operating, readiness, risk, freeze, and closeout system."
+

@@ -1,0 +1,9 @@
+{
+  "name": "radiology-skills",
+  "version": "1.10.1",
+  "description": "影像科研全链路技能包：40 个 radiology-* 技能，覆盖立题、运行治理、影像测量、分析、证据综合、健康经济学、科研传播、创新转化、标书/PPT与投稿审阅（Radiology/Nature 双规格）。",
+  "author": {
+    "name": "Huang Yuhong, Gu Wenchao, Song Xinyang"
+  },
+  "license": "SEE LICENSE IN LICENSE"
+}

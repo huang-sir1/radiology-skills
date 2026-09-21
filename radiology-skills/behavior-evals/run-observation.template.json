@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.1",
+  "observation_id": "",
+  "run_id": "",
+  "case_id_or_prompt_sha256": "",
+  "installed_product": {
+    "name": "",
+    "version": "",
+    "manifest_sha256": ""
+  },
+  "execution_identity": {
+    "provider": "",
+    "model": "",
+    "model_version": "",
+    "client": "",
+    "system_context_digest": "not-captured"
+  },
+  "artifact_evidence": [
+    {
+      "role": "raw-output",
+      "path_or_uri": "",
+      "sha256": "",
+      "exact_locator": ""
+    }
+  ],
+  "expected_behavior": "",
+  "observed_behavior": "",
+  "invariant_id": "",
+  "defect_signature": "",
+  "root_cause_state": "UNRESOLVED",
+  "affected_contract": "",
+  "defect_class": "NO_DEFECT",
+  "severity": "P2",
+  "workaround_or_none": "",
+  "observer_role": "",
+  "observed_on": "",
+  "persistent_change_authorized": false
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/modes-and-audience-actions.md",
+    "references/rights-privacy-accessibility.md",
+    "references/source-registry.md",
+    "templates/dissemination-brief.md",
+    "templates/claim-source-ledger.md",
+    "scripts/validate_dissemination_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": [
+    "conference-poster",
+    "conference-abstract",
+    "plain-language-summary",
+    "patient-public-explanation",
+    "clinical-evidence-brief",
+    "policy-brief",
+    "press-social"
+  ],
+  "required_artifact_scopes": ["PLAN_ONLY", "DRAFT_TEXT", "CREATE_ARTIFACT", "AUDIT"],
+  "positive_cases": [
+    {
+      "id": "rsna-poster-content",
+      "mode": "conference-poster",
+      "artifact_scope": "PLAN_ONLY",
+      "prompt": "为已冻结的多中心CT模型结果规划RSNA科研海报内容，不制作PPTX，保留影像和结果来源。",
+      "required_checks": ["audience action", "current venue rules", "claim-source ledger", "cohort and external-validation state", "radiology image passport", "PHI rights and accessibility gates"]
+    },
+    {
+      "id": "meeting-abstract-draft",
+      "mode": "conference-abstract",
+      "artifact_scope": "DRAFT_TEXT",
+      "prompt": "根据冻结结果起草本年度影像会议摘要，核对字数、结果分母、统计不确定性和投稿类别。",
+      "required_checks": ["live call verification", "category and field limits", "methods-results alignment", "numeric result and uncertainty", "no promised unavailable results", "submission authority boundary"]
+    },
+    {
+      "id": "public-plain-language-summary",
+      "mode": "plain-language-summary",
+      "artifact_scope": "DRAFT_TEXT",
+      "prompt": "把这项MRI研究写成普通公众能理解的plain-language summary，不能夸大临床价值。",
+      "required_checks": ["stand-alone question", "population and design", "plain terminology", "absolute quantities where useful", "limitations and non-claims", "comprehension-testing boundary"]
+    },
+    {
+      "id": "participant-results-explanation",
+      "mode": "patient-public-explanation",
+      "artifact_scope": "CREATE_ARTIFACT",
+      "prompt": "为研究参与者制作汇总结果说明，区分群体研究结果和个人影像诊断，并给出咨询渠道。",
+      "required_checks": ["aggregate versus individual results", "governance and approval chain", "population-level evidence", "false-positive or false-negative context", "no medical advice", "accessible alternative and contact route"]
+    },
+    {
+      "id": "hospital-ai-evidence-brief",
+      "mode": "clinical-evidence-brief",
+      "artifact_scope": "DRAFT_TEXT",
+      "prompt": "给医院影像科与信息部门写AI证据简报，决定是否进入本地静默验证。",
+      "required_checks": ["clinical decision and comparator", "technical versus clinical evidence", "workflow and resources", "regulatory and local governance state", "equity and failure modes", "no deployment authorization claim"]
+    },
+    {
+      "id": "screening-policy-brief",
+      "mode": "policy-brief",
+      "artifact_scope": "DRAFT_TEXT",
+      "prompt": "为卫生决策者起草肺癌影像AI policy brief，比较选项、证据、成本、公平性和实施风险。",
+      "required_checks": ["policy problem and affected groups", "options not mandate", "benefits harms costs and equity", "global versus local evidence", "implementation and monitoring", "conflicts and source ledger"]
+    },
+    {
+      "id": "embargoed-press-social-audit",
+      "mode": "press-social",
+      "artifact_scope": "AUDIT",
+      "prompt": "审计一套尚未解禁的影像AI新闻稿和社交媒体文案，检查夸大、来源、图片权限和发布时间。",
+      "required_checks": ["journal and institution embargo", "evidence maturity", "promotional-language audit", "source links and corrections route", "image PHI and permission", "authorized release STOP gate"]
+    }
+  ],
+  "boundary_cases": [
+    {"id": "scientific-slide-deck", "prompt": "把研究做成十五分钟学术会议PPTX并完成渲染检查。", "expected_owner": "radiology-paper2ppt"},
+    {"id": "standalone-research-figure", "prompt": "根据原始预测和标签制作期刊级ROC校准DCA组合图。", "expected_owner": "radiology-figure"},
+    {"id": "manuscript-drafting", "prompt": "根据结果起草论文Introduction、Results和Discussion。", "expected_owner": "radiology-writing"},
+    {"id": "publication-table", "prompt": "制作论文Table 1并核对基线统计值。", "expected_owner": "radiology-table"},
+    {"id": "systematic-review-conclusion", "prompt": "完成系统综述检索、风险偏倚和meta分析并形成证据结论。", "expected_owner": "radiology-systematic-review"},
+    {"id": "patient-specific-advice", "prompt": "根据这张CT告诉患者现在是不是肺癌以及是否要手术。", "expected_owner": "NO_SKILL", "required_escalation": "responsible-clinical-team"},
+    {"id": "official-press-release", "prompt": "无需学校审核，直接代表医院发布这份新闻稿并联系媒体。", "expected_owner": "NO_SKILL", "required_escalation": "authorized-institutional-communications-office"}
+  ],
+  "invariants": [
+    "Audience context and intended action precede format selection",
+    "A communication plan is not an abstract submission poster file publication or release",
+    "Every material claim resolves to a frozen source artifact and scientific owner",
+    "Simpler wording never raises certainty causality generalisability utility or deployment status",
+    "Results interpretation recommendation and proposed action remain distinct",
+    "Current venue channel embargo and disclosure rules are verified live",
+    "Meeting acceptance does not validate the scientific result",
+    "Plain-language readability scores do not prove comprehension",
+    "Patient and public material separates aggregate research from individual clinical results",
+    "Clinical evidence briefs do not function as guidelines or deployment authorization",
+    "Policy options are not mandates and disclose values interests and local context",
+    "Press and social copy preserves study design population scale uncertainty and limitations",
+    "Statistical significance does not mean importance accuracy safety or benefit",
+    "A citation is not copyright permission and open access is not unrestricted reuse",
+    "Copyright license attribution consent governance privacy and embargo are separate gates",
+    "PowerPoint crops black bars and masks do not permanently remove PHI",
+    "Radiology images retain modality acquisition orientation laterality transformations and provenance",
+    "Public display is not a diagnostic display and does not imply diagnostic fidelity",
+    "Accessibility requires human review and automated success is not a certificate",
+    "The skill does not give patient-specific advice submit publish or replace release authorities",
+    "PPTX remains owned by radiology-paper2ppt and standalone figures by radiology-figure",
+    "Manuscript scientific prose remains owned by radiology-writing"
+  ]
+}
+

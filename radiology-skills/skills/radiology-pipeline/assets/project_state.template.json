@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.3",
+  "study_id": "",
+  "project_title": "",
+  "project_owner": "",
+  "data_provenance": "real",
+  "teaching_only": false,
+  "target_venue": {
+    "journal": "",
+    "article_type": "",
+    "guide_source": "",
+    "guide_version": "",
+    "verified_on": ""
+  },
+  "research_scope": {
+    "study_scope": "",
+    "active_modalities": [],
+    "external_reference_modalities": [],
+    "generated_or_predicted_modalities": [],
+    "proposed_validation_modalities": []
+  },
+  "evidence_topology": {
+    "independent_unit": "",
+    "biological_hierarchy": [],
+    "matched_intersections": []
+  },
+  "core_design": {
+    "disease_population": "",
+    "modality": "",
+    "primary_endpoint_estimand": "",
+    "unit_of_analysis": "patient",
+    "cohorts": [],
+    "centers": null,
+    "event_count": null,
+    "primary_model": "",
+    "validation_design": ""
+  },
+  "analysis_lock": {
+    "status": "draft",
+    "locked_on": "",
+    "source_manifest": "",
+    "source_manifest_sha256": "",
+    "split_manifest": "",
+    "split_manifest_sha256": "",
+    "software_environment": "",
+    "software_environment_sha256": "",
+    "random_seed": null
+  },
+  "analysis_lock_digest": "",
+  "modality_role_digest": "",
+  "scientific_handoff": {
+    "status": "not-created",
+    "packet_path": "",
+    "canonical_packet_sha256": "",
+    "packet_file_sha256": "",
+    "source_manifest_digest": "",
+    "claim_register_sha256": ""
+  },
+  "project_state_digest": "",
+  "reporting_stack": [],
+  "current_stage": "intake",
+  "stage_status": {},
+  "hard_gates": {},
+  "unresolved_items": [],
+  "last_updated": ""
+}

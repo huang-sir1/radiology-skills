@@ -1,0 +1,5 @@
+interface:
+  display_name: "Radiology Innovation Transfer"
+  short_description: "Plan evidence-based radiology innovation transfer"
+  default_prompt: "Use $radiology-innovation-transfer to prepare this imaging innovation for disclosure, readiness review and qualified transfer diligence."
+

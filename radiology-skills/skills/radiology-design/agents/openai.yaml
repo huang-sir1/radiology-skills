@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Study Design"
+  short_description: "Assess feasibility and design rigorous imaging studies"
+  default_prompt: "Use $radiology-design to assess this dataset and produce a rigorous, validated imaging study blueprint."

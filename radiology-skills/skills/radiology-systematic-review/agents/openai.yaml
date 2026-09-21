@@ -1,0 +1,4 @@
+interface:
+  display_name: "Systematic Review & Evidence Synthesis"
+  short_description: "Protocol-first review, pooling gate, and synthesis"
+  default_prompt: "Use $radiology-systematic-review to design or audit this imaging/omics review, preserve the true evidence hierarchy, decide whether pooling is defensible, and package bounded synthesis and writing handoffs."

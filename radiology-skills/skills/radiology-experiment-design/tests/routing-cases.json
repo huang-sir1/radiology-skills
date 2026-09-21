@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/mechanism-experiment-workflow.md",
+    "references/assay-control-matrix.md",
+    "templates/mechanism-experiment-plan.md",
+    "templates/local-assay-capability-profile.md",
+    "templates/local-mechanism-validation-experience-registry.md",
+    "templates/failure-decision-log.md"
+  ],
+  "positive_cases": [
+    {
+      "id": "plan-genetic-perturbation-rescue",
+      "mode": "plan",
+      "system": "cell-line",
+      "prompt": "设计基因敲低、target engagement、独立 guide 和 rescue 的机制验证路线。",
+      "required_checks": ["competing explanation", "independent unit", "target engagement", "rescue validity"]
+    },
+    {
+      "id": "audit-ihc-mif-human-tissue",
+      "mode": "audit",
+      "system": "tissue",
+      "prompt": "审阅 IHC/mIF 的 ROI、批次、盲法、细胞到患者聚合与成像机制对应。",
+      "required_checks": ["assay controls", "ROI sampling", "patient unit", "cross-scale mapping"]
+    },
+    {
+      "id": "mentor-resource-limited-organoid",
+      "mode": "mentor",
+      "system": "organoid",
+      "prompt": "组织有限，指导学员设计最小、增强和资源受限的类器官药理实验。",
+      "required_checks": ["three design routes", "donor unit", "feasibility", "claim ceiling"]
+    },
+    {
+      "id": "interpret-animal-null-phenotype",
+      "mode": "interpret",
+      "system": "animal",
+      "prompt": "动物实验已有 target engagement 但主要表型为阴性，解释结果并判断是否继续。",
+      "required_checks": ["engagement before phenotype", "uncertainty", "failure classification", "stop rule"]
+    },
+    {
+      "id": "writing-handoff-mixed-evidence",
+      "mode": "writing-handoff",
+      "system": "mixed",
+      "prompt": "把组织、细胞干预与 rescue 的已核验证据安排到 Methods、Results 和 Supplement。",
+      "required_checks": ["evidence state", "negative results", "replicate hierarchy", "Title/Abstract claim ceiling", "prohibited causal upgrade", "separate Data/Code/Reagent/Source Data availability placement"]
+    },
+    {
+      "id": "pharmacology-dose-time-freeze",
+      "mode": "plan",
+      "system": "cell-line",
+      "prompt": "规划药理干预的剂量时间探索、毒性控制和独立确认，避免结果导向选条件。",
+      "required_checks": ["dose-time rationale", "selection rule", "freeze", "toxicity and specificity"]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "human-imaging-mechanism-integration",
+      "prompt": "解释影像表型与单细胞通路的跨尺度机制对应。",
+      "expected_owner": "radiology-radiogenomics"
+    },
+    {
+      "id": "experimental-factor-robustness",
+      "prompt": "审计多种 assay 方法和已冻结剂量条件的稳健性与替代方法。",
+      "expected_owner": "radiology-method-evaluation"
+    },
+    {
+      "id": "sample-size-and-mixed-model",
+      "prompt": "计算动物样本量并拟合批次和重复测量混合模型。",
+      "expected_owner": "radiology-stats"
+    },
+    {
+      "id": "biosafety-and-animal-ethics",
+      "prompt": "判断基因操作与动物实验的伦理和生物安全审批是否充分。",
+      "expected_owner": "radiology-ethics",
+      "required_handoff_checks": ["animal-welfare IACUC/equivalent", "biosafety-biosecurity IBC/equivalent", "independent branch verdicts", "STOP unresolved local authority"]
+    },
+    {
+      "id": "results-prose-only",
+      "prompt": "实验结论和证据都已锁定，只需撰写论文段落。",
+      "expected_owner": "radiology-writing"
+    }
+  ],
+  "invariants": [
+    "No invented dose, duration, guide, sample size, result, protocol, or local capability",
+    "Experimental design factors remain distinct from machine-learning hyperparameters",
+    "Target engagement is required before attributing a phenotype to the intended target",
+    "Cells, fields, wells, sections, repeated measures, and technical replicates are not automatically independent biological units",
+    "Exploratory dose-time selection is frozen before confirmatory evaluation",
+    "Association, perturbation response, specificity, rescue, and translation have distinct claim ceilings",
+    "Human-subjects, animal-welfare, and biosafety-biosecurity approvals are independent and remain with authorized current local owners",
+    "Negative results, failures, exclusions, attrition, and deviations remain visible"
+    ,"Single laboratory cases retain applicability and counterexample boundaries and are never generalized into universal truth"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Manuscript Writing"
+  short_description: "Draft evidence-bounded imaging manuscripts by journal style"
+  default_prompt: "Use $radiology-writing to draft this imaging manuscript from a confirmed contribution and evidence map."

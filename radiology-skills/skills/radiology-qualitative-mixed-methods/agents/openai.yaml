@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Qualitative and Mixed Methods"
+  short_description: "Design rigorous qualitative and mixed-methods imaging studies"
+  default_prompt: "Use $radiology-qualitative-mixed-methods to design or audit this imaging study with explicit sampling, reflexivity, integration, and claim limits."

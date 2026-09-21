@@ -1,0 +1,4 @@
+interface:
+  display_name: "Imaging Acquisition QC"
+  short_description: "Audit modality physics, reconstruction, QC, and protocol shift"
+  default_prompt: "Use $radiology-acquisition-qc to audit this study's acquisition, reconstruction, series selection, quantitative validity, artifacts, repeatability, protocol shift, and measurement claim ceiling."

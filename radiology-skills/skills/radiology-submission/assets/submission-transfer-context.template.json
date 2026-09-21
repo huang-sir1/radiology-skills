@@ -1,0 +1,11 @@
+{
+  "source_journal_id": "replace-with-exact-source-journal-id",
+  "target_journal_id": "replace-with-exact-target-journal-id",
+  "target_article_type": "replace-with-exact-target-article-type",
+  "transfer_offer_receipt_sha256": "replace-with-64-lowercase-hex",
+  "transfer_offer_checked_on": "2026-08-22",
+  "transfer_mode": "as-is-or-modify",
+  "source_inventory_sha256": "replace-with-64-lowercase-hex",
+  "target_portal_inventory_sha256": "replace-with-64-lowercase-hex",
+  "target_initial_route_id": "target-journal-id::Exact Article Type::initial"
+}

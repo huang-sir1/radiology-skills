@@ -1,0 +1,380 @@
+{
+  "schema_version": "1.0",
+  "snapshot_checked_on": "2026-08-22",
+  "contract": "Minimum validated material contract. Exact-journal live-portal requirements and human profile/content checks are additive; decision letters require separate human adjudication and validated contract maintenance.",
+  "non_contract_evidence": [
+    {"rule_id": "NM-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "NCOM-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "TLDH-RIC", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "TLDH-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "ECM-RIC", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "ECM-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "CC-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "CRM-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "NPJDM-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "NPJPO-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "AS-FREE-FORM", "stage": "initial", "disposition": "policy-context"},
+    {"rule_id": "AS-DATA-STATEMENT", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "JNO-COVER", "stage": "initial", "disposition": "optional-outside-minimum"},
+    {"rule_id": "JNO-KEY-POINTS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "JNO-LIMITS", "stage": "initial", "disposition": "embedded-content"},
+    {"rule_id": "NPJDM-OTHER-CHECKLISTS", "stage": "pre-review", "disposition": "optional-outside-minimum"},
+    {"rule_id": "NPJPO-OTHER-CHECKLISTS", "stage": "pre-review", "disposition": "optional-outside-minimum"}
+  ],
+  "routes": [
+    {
+      "journal_id": "radiology",
+      "article_type": "Original Research",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "RAD-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file", "blinded": true},
+        {"rule_id": "RAD-INITIAL-TITLE", "requirement_class": "required", "item_kind": "file", "blinded": false},
+        {"rule_id": "RAD-INITIAL-COVER", "requirement_class": "required", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "portal-only"], "blinded": false},
+        {"rule_id": "RAD-INITIAL-FIGURES", "requirement_class": "conditional", "item_kind": "file", "blinded": true},
+        {"rule_id": "RAD-ACK-PERM", "requirement_class": "conditional", "item_kind": "file", "blinded": false},
+        {"rule_id": "RAD-SUPP-DOC", "requirement_class": "conditional", "item_kind": "file", "blinded": true},
+        {"rule_id": "RAD-SUPP-MEDIA", "requirement_class": "conditional", "item_kind": "file", "blinded": true},
+        {"rule_id": "RAD-REPORTING", "requirement_class": "conditional", "item_kind": "file", "blinded": true}
+      ]
+    },
+    {
+      "journal_id": "nature-medicine",
+      "article_type": "Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "NM-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NM-COVER", "requirement_class": "required", "item_kind": "file", "blinded": false, "resolution_required": true},
+        {"rule_id": "NM-SI", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "NM-MICLAIM", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "nature-communications",
+      "article_type": "Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "NCOM-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file", "max_file_bytes": 30000000},
+        {"rule_id": "NCOM-COVER", "requirement_class": "required", "item_kind": "file", "blinded": false, "resolution_required": true},
+        {"rule_id": "NCOM-SI", "requirement_class": "conditional", "item_kind": "file", "max_file_bytes": 30000000, "max_total_bytes": 150000000},
+        {"rule_id": "NCOM-RELATED", "requirement_class": "conditional", "item_kind": "file", "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "lancet-digital-health",
+      "article_type": "Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "TLDH-MAIN", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "TLDH-COVER", "requirement_class": "portal-only", "item_kind": "portal"},
+        {"rule_id": "TLDH-AUTHOR-FORM", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true},
+        {"rule_id": "TLDH-FIG-RASTER", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "TLDH-FIG-FLOW", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "TLDH-FIG-VECTOR", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "TLDH-TRIAL", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "TLDH-SI", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "eclinicalmedicine",
+      "article_type": "Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "ECM-MAIN", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "ECM-COVER", "requirement_class": "portal-only", "item_kind": "portal"},
+        {"rule_id": "ECM-AUTHOR-FORM", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "ECM-FIG-RASTER", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "ECM-FIG-FLOW", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "ECM-FIG-VECTOR", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "ECM-TRIAL", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "ECM-SI", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "cancer-cell",
+      "article_type": "Research Article",
+      "stage": "initial",
+      "max_package_bytes": 20000000,
+      "requirements": [
+        {"rule_id": "CC-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "CC-COVER", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "CC-DOI", "requirement_class": "required", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "cell-reports-medicine",
+      "article_type": "Research article",
+      "stage": "initial",
+      "max_package_bytes": 20000000,
+      "requirements": [
+        {"rule_id": "CRM-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "CRM-COVER", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "CRM-DOI", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "CRM-TRIAL", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "npj-digital-medicine",
+      "article_type": "Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "NPJDM-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NPJDM-COVER", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "NPJDM-COI", "requirement_class": "required", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "portal-only"], "resolution_required": true},
+        {"rule_id": "NPJDM-RELATED", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "NPJDM-SI", "requirement_class": "conditional", "item_kind": "file", "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "npj-precision-oncology",
+      "article_type": "Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "NPJPO-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NPJPO-COVER", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "NPJPO-COI", "requirement_class": "required", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "portal-only"], "resolution_required": true},
+        {"rule_id": "NPJPO-RELATED", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "NPJPO-SI", "requirement_class": "conditional", "item_kind": "file", "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "advanced-science",
+      "article_type": "Research Article",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "AS-MAIN-TYPE", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "AS-BIO-CHECK", "requirement_class": "conditional", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "AS-ML-CHECK", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "jama-network-open",
+      "article_type": "Original Investigation",
+      "stage": "initial",
+      "requirements": [
+        {"rule_id": "JNO-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "JNO-SUPP", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-PROTOCOL", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-REPORTING", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-INIT-FIG-GRAPH", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-INIT-FIG-FLOW", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-INIT-FIG-ILLUS", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-INIT-FIG-PHOTO", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-INIT-FIG-LINE", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-INIT-FIG-MARKER-PAIR", "requirement_class": "conditional", "item_kind": "field", "pair_receipt_kind": "marked-unmarked-figure", "parent_rule_ids": ["JNO-INIT-FIG-PHOTO"]}
+      ]
+    },
+    {
+      "journal_id": "nature-medicine",
+      "article_type": "Article",
+      "stage": "pre-review",
+      "requirements": [
+        {"rule_id": "NM-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NM-REPORTING", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "NM-MICLAIM", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "nature-communications",
+      "article_type": "Article",
+      "stage": "pre-review",
+      "requirements": [
+        {"rule_id": "NCOM-INITIAL-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NCOM-REPORTING", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "npj-digital-medicine",
+      "article_type": "Article",
+      "stage": "pre-review",
+      "requirements": [
+        {"rule_id": "NPJDM-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NPJDM-REPORTING", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "NPJDM-CONSORT-PRISMA", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "npj-precision-oncology",
+      "article_type": "Article",
+      "stage": "pre-review",
+      "requirements": [
+        {"rule_id": "NPJPO-MAIN", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "NPJPO-REPORTING", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "NPJPO-CONSORT-PRISMA", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "radiology",
+      "article_type": "Original Research",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "RAD-REVISION", "requirement_class": "required", "item_kind": "file", "minimum_rows": 2, "required_revision_variants": ["clean", "marked"], "allows_marked_revision": true},
+        {"rule_id": "RAD-REV-RESPONSE", "requirement_class": "required", "item_kind": "file", "required_revision_variants": ["response"], "resolution_required": true},
+        {"rule_id": "RAD-REV-FIGURES", "requirement_class": "conditional", "item_kind": "file", "blinded": true, "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "nature-medicine",
+      "article_type": "Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "NM-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "response", "cover"], "unblinded_revision_variants": ["cover"], "resolution_required": true},
+        {"rule_id": "NM-REV-CLEAN-MARKED", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "nature-communications",
+      "article_type": "Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "NCOM-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "minimum_rows": 2, "required_revision_variants": ["clean", "cover"], "unblinded_revision_variants": ["cover"], "resolution_required": true},
+        {"rule_id": "NCOM-REV-RESPONSE", "requirement_class": "required", "item_kind": "file", "required_revision_variants": ["response"], "resolution_required": true},
+        {"rule_id": "NCOM-REV-CLEAN-MARKED", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true},
+        {"rule_id": "NCOM-REV-FIGURES", "requirement_class": "conditional", "item_kind": "file", "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "lancet-digital-health",
+      "article_type": "Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "TLDH-REVISION", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "marked", "response"], "resolution_required": true, "allows_marked_revision": true}
+      ]
+    },
+    {
+      "journal_id": "eclinicalmedicine",
+      "article_type": "Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "ECM-REVISION", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "marked", "response"], "resolution_required": true, "allows_marked_revision": true},
+        {"rule_id": "ECM-EPD", "requirement_class": "conditional", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "cancer-cell",
+      "article_type": "Research Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "CC-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "response", "cover"], "resolution_required": true},
+        {"rule_id": "CC-STAR", "requirement_class": "required", "item_kind": "embedded", "parent_rule_id": "CC-REV-PACKAGE"},
+        {"rule_id": "CC-KRT", "requirement_class": "conditional", "item_kind": "embedded", "parent_rule_id": "CC-REV-PACKAGE"}
+      ]
+    },
+    {
+      "journal_id": "cell-reports-medicine",
+      "article_type": "Research article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "CRM-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "response", "cover"], "resolution_required": true},
+        {"rule_id": "CRM-STAR", "requirement_class": "required", "item_kind": "embedded", "parent_rule_id": "CRM-REV-PACKAGE"},
+        {"rule_id": "CRM-KRT", "requirement_class": "conditional", "item_kind": "embedded", "parent_rule_id": "CRM-REV-PACKAGE"},
+        {"rule_id": "CRM-LIMITATIONS", "requirement_class": "required", "item_kind": "embedded", "parent_rule_id": "CRM-REV-PACKAGE"}
+      ]
+    },
+    {
+      "journal_id": "npj-digital-medicine",
+      "article_type": "Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "NPJDM-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "response", "cover"], "resolution_required": true},
+        {"rule_id": "NPJDM-REV-CLEAN-MARKED", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true},
+        {"rule_id": "NPJDM-REV-FIGURES", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["conditional", "portal-only"], "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "npj-precision-oncology",
+      "article_type": "Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "NPJPO-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "minimum_rows": 3, "required_revision_variants": ["clean", "response", "cover"], "resolution_required": true},
+        {"rule_id": "NPJPO-REV-CLEAN-MARKED", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true},
+        {"rule_id": "NPJPO-REV-FIGURES", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["conditional", "portal-only"], "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "advanced-science",
+      "article_type": "Research Article",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "AS-REV-PACKAGE", "requirement_class": "required", "item_kind": "file", "resolution_required": true},
+        {"rule_id": "AS-FIG-TYPE", "requirement_class": "conditional", "item_kind": "file", "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "jama-network-open",
+      "article_type": "Original Investigation",
+      "stage": "revision",
+      "requirements": [
+        {"rule_id": "JNO-REVISION-PAIR", "requirement_class": "required", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "portal-only"], "resolution_required": true},
+        {"rule_id": "JNO-REV-FIG-GRAPH", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-REV-FIG-FLOW", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-REV-FIG-ILLUS", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-REV-FIG-PHOTO", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-REV-FIG-LINE", "requirement_class": "conditional", "item_kind": "file"},
+        {"rule_id": "JNO-REV-FIG-MARKER-PAIR", "requirement_class": "conditional", "item_kind": "field", "pair_receipt_kind": "marked-unmarked-figure", "parent_rule_ids": ["JNO-REV-FIG-PHOTO"]}
+      ]
+    },
+    {
+      "journal_id": "nature-medicine",
+      "article_type": "Article",
+      "stage": "final-files",
+      "requirements": [
+        {"rule_id": "NM-FINAL-SOURCE", "requirement_class": "required", "item_kind": "file", "blinded": false}
+      ]
+    },
+    {
+      "journal_id": "nature-communications",
+      "article_type": "Article",
+      "stage": "final-files",
+      "requirements": [
+        {"rule_id": "NCOM-FINAL-SOURCE", "requirement_class": "required", "item_kind": "file", "blinded": false},
+        {"rule_id": "NCOM-FINAL-VECTOR", "requirement_class": "conditional", "item_kind": "file", "blinded": false},
+        {"rule_id": "NCOM-FINAL-RASTER", "requirement_class": "conditional", "item_kind": "file", "blinded": false}
+      ]
+    },
+    {
+      "journal_id": "cancer-cell",
+      "article_type": "Research Article",
+      "stage": "final-files",
+      "requirements": [
+        {"rule_id": "CC-FINAL-SOURCE", "requirement_class": "required", "item_kind": "file", "blinded": false, "file_set_alternatives": [{"name": "word-source", "any_extensions": [".doc", ".docx"]}, {"name": "latex-source-plus-checked-pdf", "all_extensions": [".tex", ".pdf"], "notes_required_extensions": [".tex", ".pdf"], "receipt_kind": "latex-source-plus-checked-pdf"}]},
+        {"rule_id": "CC-STAR", "requirement_class": "required", "item_kind": "embedded", "parent_rule_id": "CC-FINAL-SOURCE"},
+        {"rule_id": "CC-KRT", "requirement_class": "conditional", "item_kind": "embedded", "parent_rule_id": "CC-FINAL-SOURCE"},
+        {"rule_id": "CC-FINAL-FIGURES", "requirement_class": "conditional", "item_kind": "file", "max_file_bytes": 20000000},
+        {"rule_id": "CC-GA", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "CC-HIGHLIGHTS", "requirement_class": "required", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "cell-reports-medicine",
+      "article_type": "Research article",
+      "stage": "final-files",
+      "requirements": [
+        {"rule_id": "CRM-FINAL-SOURCE", "requirement_class": "required", "item_kind": "file", "blinded": false, "file_set_alternatives": [{"name": "word-source", "any_extensions": [".doc", ".docx"]}, {"name": "latex-source-plus-checked-pdf", "all_extensions": [".tex", ".pdf"], "notes_required_extensions": [".tex", ".pdf"], "receipt_kind": "latex-source-plus-checked-pdf"}]},
+        {"rule_id": "CRM-STAR", "requirement_class": "required", "item_kind": "embedded", "parent_rule_id": "CRM-FINAL-SOURCE"},
+        {"rule_id": "CRM-KRT", "requirement_class": "conditional", "item_kind": "embedded", "parent_rule_id": "CRM-FINAL-SOURCE"},
+        {"rule_id": "CRM-LIMITATIONS", "requirement_class": "required", "item_kind": "embedded", "parent_rule_id": "CRM-FINAL-SOURCE"},
+        {"rule_id": "CRM-FINAL-FIGURES", "requirement_class": "conditional", "item_kind": "file", "max_file_bytes": 20000000},
+        {"rule_id": "CRM-GA", "requirement_class": "required", "item_kind": "file"},
+        {"rule_id": "CRM-HIGHLIGHTS", "requirement_class": "required", "item_kind": "file"}
+      ]
+    },
+    {
+      "journal_id": "npj-digital-medicine",
+      "article_type": "Article",
+      "stage": "final-files",
+      "requirements": [
+        {"rule_id": "NPJDM-FINAL-SOURCE", "requirement_class": "required", "item_kind": "file", "blinded": false},
+        {"rule_id": "NPJDM-FIG-TYPE", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true}
+      ]
+    },
+    {
+      "journal_id": "npj-precision-oncology",
+      "article_type": "Article",
+      "stage": "final-files",
+      "requirements": [
+        {"rule_id": "NPJPO-FINAL-SOURCE", "requirement_class": "required", "item_kind": "file", "blinded": false},
+        {"rule_id": "NPJPO-FIG-TYPE", "requirement_class": "conditional", "item_kind": "file-or-portal", "allowed_requirement_classes": ["required", "conditional", "portal-only"], "resolution_required": true}
+      ]
+    }
+  ]
+}

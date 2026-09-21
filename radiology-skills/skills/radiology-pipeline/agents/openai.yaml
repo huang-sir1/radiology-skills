@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Research Tutor"
+  short_description: "Guide learners and coordinate multistage imaging research"
+  default_prompt: "Use $radiology-pipeline as a read-only academic mentor unless I request artifacts: identify my current decision, choose direct-expert or guided-learning, then route any isolated task to its unique specialist."

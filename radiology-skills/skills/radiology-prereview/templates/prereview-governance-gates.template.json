@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "project_id": "",
+  "manuscript_id": "",
+  "human_subjects_applicability": "APPLICABLE",
+  "ethics_receipt": {
+    "producer": "radiology-ethics",
+    "branch": "human-subjects",
+    "artifact_id": "",
+    "artifact_path": "",
+    "artifact_version": "",
+    "artifact_sha256": "",
+    "evidence_state": "UNKNOWN_AUTHOR_INPUT_NEEDED",
+    "verdict": "STOP",
+    "verified_on": "",
+    "local_owner": "",
+    "activity_scope_locator": "",
+    "approval_locator": "",
+    "consent_or_waiver_locator": "",
+    "data_use_authorization_locator": "",
+    "non_applicability_locator": "",
+    "stop_reasons": []
+  },
+  "data_code_sharing_gate": {
+    "status": "CONDITIONAL",
+    "data_availability_evidence_locator": "",
+    "code_availability_evidence_locator": "",
+    "consent_dua_consistency_locator": "",
+    "residual_restrictions": "",
+    "owner": "radiology-data",
+    "not_applicable_reason": ""
+  },
+  "reviewed_on": "",
+  "governance_gate_receipt_digest": ""
+}

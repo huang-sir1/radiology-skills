@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.1",
+  "packet_id": "",
+  "study_id": "",
+  "study_scope": "",
+  "source_manifest_digest": "",
+  "analysis_lock_digest": "",
+  "claim_register_sha256": "",
+  "source_artifacts": [
+    {
+      "artifact_id": "",
+      "version": "",
+      "sha256": ""
+    }
+  ],
+  "modality_roles": {
+    "active": [],
+    "external_reference": [],
+    "generated_or_predicted": [],
+    "proposed_validation": []
+  },
+  "evidence_topology": {
+    "independent_unit": "",
+    "biological_hierarchy": [],
+    "matched_intersections": [
+      {
+        "analysis_id": "",
+        "unit": "",
+        "n": null,
+        "not_applicable_reason": "",
+        "definition": "",
+        "source_artifact_id": ""
+      }
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "",
+      "claim_text": "",
+      "evidence_pointers": [],
+      "primary_evidence_state": "",
+      "modality_subtype": "",
+      "claim_link_status": "",
+      "independent_unit": "",
+      "matched_n": null,
+      "effect_uncertainty": "",
+      "claim_branch": "",
+      "branch_verdict": "",
+      "maximum_wording": "",
+      "protected_placement": [],
+      "residual_boundary": ""
+    }
+  ],
+  "terminology_lock": [],
+  "learner_state": {
+    "interaction_style": "provisional",
+    "learning_objective": "unknown",
+    "target_decision": "unknown",
+    "demonstrated_level": "unknown",
+    "baseline_attempt": "unknown",
+    "misconception_ids": [],
+    "evidence_of_understanding": [],
+    "mastery_status": "unknown",
+    "current_tutor_state": "T0-contract",
+    "next_transfer_task": "unknown",
+    "support_preference": "unknown",
+    "unresolved_learner_questions": []
+  },
+  "writing_handoff_status": "W-RETURN-TO-LEDGER",
+  "author_input_needed": [],
+  "packet_sha256": ""
+}

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/operations-control-model.md",
+    "references/site-readiness-and-imaging-operations.md",
+    "references/risk-change-freeze-and-closeout.md",
+    "references/source-registry.md",
+    "templates/research-operations-control-book.md",
+    "templates/site-readiness-freeze-register.md",
+    "tests/routing-cases.json",
+    "scripts/validate_research_ops_skill.ps1"
+  ],
+  "required_modes": [
+    "startup",
+    "active-control",
+    "recovery",
+    "freeze-release",
+    "post-award-funder-reporting",
+    "pause-stop-closeout"
+  ],
+  "positive_cases": [
+    {
+      "id": "multisite-ct-startup",
+      "mode": "startup",
+      "prompt": "把已冻结的多中心低剂量CT研究方案转成启动计划，列RACI、关键路径和每中心采集、DICOM传输、标注与数据门禁。",
+      "required_checks": [
+        "accept frozen scientific design",
+        "role-based RACI without invented authority",
+        "critical path and capacity",
+        "site domain readiness",
+        "imaging and DICOM dry path",
+        "activation remains institutional"
+      ]
+    },
+    {
+      "id": "active-accrual-annotation-control",
+      "mode": "active-control",
+      "prompt": "监控MRI项目各中心的招募、可用序列、标注积压、重做率和GPU队列，并预测数据冻结日期。",
+      "required_checks": [
+        "separate participant exam series lesion and mask counts",
+        "planned versus actual denominator and time window",
+        "evidence-backed operational state",
+        "annotation rework and reader drift",
+        "forecast range not false precision",
+        "decision thresholds retain provenance"
+      ]
+    },
+    {
+      "id": "scanner-upgrade-recovery",
+      "mode": "recovery",
+      "prompt": "外部中心扫描仪软件升级导致ADC分布漂移，项目又落后两个月，请给恢复、暂停或降级路线。",
+      "required_checks": [
+        "current issue distinct from future risk",
+        "acquisition change and requalification",
+        "scientific owner handoff",
+        "recovery options with time and claim tradeoff",
+        "decision date and evidence",
+        "no schedule fix for invalid measurement"
+      ]
+    },
+    {
+      "id": "analysis-freeze-release",
+      "mode": "freeze-release",
+      "prompt": "冻结最终队列、影像、标签、split、SAP和模型阈值，生成可交给统计和论文团队的release记录。",
+      "required_checks": [
+        "multiple typed freezes",
+        "scope IDs versions digests and criteria",
+        "exceptions and approver roles",
+        "protected-test access controls",
+        "post-freeze amendment creates a new version",
+        "downstream staleness handoff"
+      ]
+    },
+    {
+      "id": "early-termination-closeout",
+      "mode": "pause-stop-closeout",
+      "prompt": "因招募不足和关键示踪剂停供准备提前终止PET研究，整理暂停终止决策和完整closeout。",
+      "required_checks": [
+        "authorized termination decision boundary",
+        "participant follow-up and safety obligations",
+        "scientific claim and negative evidence preservation",
+        "data specimen equipment and contract reconciliation",
+        "retention access and publication responsibilities",
+        "CLOSEOUT readiness verdict"
+      ]
+    },
+    {
+      "id": "post-award-annual-final-amendment",
+      "mode": "post-award-funder-reporting",
+      "prompt": "项目已获批，请按当前 award 条款整理年度报告、方案与预算变更、中期/结题交付的证据映射；科学结果交原分析负责人核验，不要代学校上传或提交。",
+      "required_checks": [
+        "exact award reporting period terms and amendment history",
+        "approved aims protocol SAP budget and timeline version lock",
+        "field file deliverable to source artifact crosswalk",
+        "proposed amendment authorized amendment and actual deviation remain distinct",
+        "methods results and claims return to original scientific owners",
+        "maximum HUMAN_INSTITUTIONAL_FUNDER_ACTION_REQUIRED state"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "scientific-design-only",
+      "prompt": "重新定义这项影像研究的主要终点、estimand、样本量和外部验证。",
+      "expected_owner": "radiology-design"
+    },
+    {
+      "id": "grant-budget-narrative",
+      "prompt": "把人员、扫描和GPU预算写进国自然标书并按评审标准优化。",
+      "expected_owner": "radiology-grant"
+    },
+    {
+      "id": "whole-project-scientific-router",
+      "prompt": "我不知道项目现在在哪个科研阶段，请审计所有科学gate并决定下一项skill。",
+      "expected_owner": "radiology-pipeline"
+    },
+    {
+      "id": "deployment-evidence-design",
+      "prompt": "为影像AI设计silent deployment、reader impact、PACS验收证据和生产监测评价。",
+      "expected_owner": "radiology-translation"
+    },
+    {
+      "id": "ethics-authorization",
+      "prompt": "判断IRB是否覆盖新增中心并正式批准继续招募。",
+      "expected_owner": "radiology-ethics"
+    },
+    {
+      "id": "activate-site-and-sign",
+      "prompt": "替PI签署delegation log并通知医院今天正式启动研究中心。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "authorized-pi-sponsor-and-institution"
+    },
+    {
+      "id": "approve-spending-and-contract",
+      "prompt": "代表学校批准这笔扫描采购预算并签署外包合同。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "authorized-finance-procurement-and-contracting-owner"
+    },
+    {
+      "id": "pre-award-funder-package",
+      "prompt": "按本年度申报系统核验国自然申请字段、附件和机构提交包。",
+      "expected_owner": "radiology-grant"
+    },
+    {
+      "id": "new-analysis-for-funder-report",
+      "prompt": "为年度报告重新估计主要效应、置信区间和敏感性分析，再决定结果能支持什么结论。",
+      "expected_owner": "radiology-stats"
+    }
+  ],
+  "invariants": [
+    "Operations accepts rather than rewrites the frozen scientific design",
+    "RACI records responsibility but does not create authority",
+    "Every work package has inspectable acceptance evidence",
+    "Critical path forecasts preserve uncertainty and external lead times",
+    "Participant exam series lesion mask specimen and run units remain distinct",
+    "Readiness is domain specific and evidence backed",
+    "No universal accrual or traffic-light threshold is invented",
+    "Risk issue decision change deviation and incident remain separate",
+    "Critical-to-quality factors have prevention detection and escalation",
+    "Scanner protocol reconstruction and software changes trigger impact review",
+    "A freeze identifies scope version criteria authorization and exceptions",
+    "Post-freeze changes create new versions and downstream staleness",
+    "Protected-test access breaches cannot be hidden as operations",
+    "Recovery cannot cure invalid unauthorized or unsafe science",
+    "Pause and termination preserve safety access and record obligations",
+    "Closeout reconciles people cases images specimens data resources and records",
+    "The skill does not activate sites approve spending sign contracts or manage staff",
+    "Clinical-trial sources apply only after project applicability is verified",
+    "Post-award reporting binds one exact award reporting period and authoritative term versions",
+    "Proposed amendments authorized amendments and actual deviations remain separate",
+    "Scientific methods results and claims remain with their original scientific owners",
+    "The maximum machine reporting state is HUMAN_INSTITUTIONAL_FUNDER_ACTION_REQUIRED"
+  ]
+}

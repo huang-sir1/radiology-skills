@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/call-and-compliance-gate.md",
+    "references/review-modes-and-criteria.md",
+    "references/grant-architecture.md",
+    "references/nsfc-2024-2026-change-map.md",
+    "references/nsfc-application-content-playbook.md",
+    "references/nsfc-radiology-code-and-call-router.md",
+    "references/imaging-methodology-router.md",
+    "references/source-registry.md",
+    "references/reframe-and-innovation.md",
+    "references/radiology-feasibility-audit.md",
+    "references/feasibility-and-pitfalls.md",
+    "references/evidence-contract-and-stopping-rules.md",
+    "references/international-grants.md",
+    "templates/grant-call-passport.md",
+    "templates/grant-review-report.md",
+    "templates/aim-milestone-risk-register.md",
+    "scripts/validate_grant_skill.ps1",
+    "tests/routing-cases.json"
+  ],
+  "required_modes": [
+    "triage-targeted",
+    "full-audit",
+    "mock-panel",
+    "revision-resubmission",
+    "funder-package-finalization"
+  ],
+  "positive_cases": [
+    {
+      "id": "nsfc-2026-full-audit",
+      "mode": "full-audit",
+      "prompt": "按2026年国自然面上项目要求完整审阅这份多中心CT影像组学标书，检查资格限项、科学价值、创新性、社会影响、可行性和生成式AI边界。",
+      "required_checks": [
+        "versioned grant call passport",
+        "six-field NSFC current-year route lock",
+        "administrative gate separate from scientific merit",
+        "current electronic form rather than legacy headings",
+        "NSFC generative-AI advisory and disclosure boundary",
+        "radiology measurement and validation gate",
+        "criterion findings and readiness boundary"
+      ]
+    },
+    {
+      "id": "nsfc-inservice-postgraduate-conflict",
+      "mode": "triage-targeted",
+      "prompt": "我是2026年在职硕士，能否确定申请青年C？请按今年官方材料直接给资格结论。",
+      "required_checks": [
+        "2026 annual rules management measure and dynamic FAQ compared",
+        "issue dates and application-time applicability retained",
+        "CONFLICTING and ADMIN_CONDITIONAL rather than inferred eligibility",
+        "live electronic system check",
+        "written host research-office or NSFC confirmation",
+        "no submission-readiness or eligibility guarantee"
+      ]
+    },
+    {
+      "id": "nsfc-radiology-code-router",
+      "mode": "triage-targeted",
+      "prompt": "肿瘤MRI影像组学联合病理组学项目应该报2026年H27、H18还是H28？也看看能否套临床专项。",
+      "required_checks": [
+        "application year programme division attribute and special-route lock",
+        "primary scientific claim before code choice",
+        "year-bound H18 H27 H28 H29 comparison",
+        "current H-code and division-note sources",
+        "2026 clinical-programme parameters remain NOT_ESTABLISHED",
+        "no historical programme rate or quota generalized"
+      ]
+    },
+    {
+      "id": "radiomics-methodology-router",
+      "mode": "full-audit",
+      "prompt": "审阅这个多中心CT放射组学预后模型标书，选择合适的方法学框架，不要只套CLAIM。",
+      "required_checks": [
+        "prediction route uses TRIPOD+AI and PROBAST+AI",
+        "radiomics route uses CLEAR IBSI and METRICS with scoped RQS 2.0",
+        "CLAIM limitation for radiomics stated",
+        "multimodal intersection denominator and aim-level sample-size memo",
+        "data and model lineage plus external-independence vector",
+        "framework completion never presented as validity or fundability"
+      ]
+    },
+    {
+      "id": "nih-approach-targeted-review",
+      "mode": "triage-targeted",
+      "prompt": "只审阅这份R01的Approach，按当前NIH简化评审框架指出rigor/feasibility致命问题，不要假装做了整份申请审查。",
+      "required_checks": [
+        "confirm activity-code and NOFO applicability",
+        "Factor 2 Rigor and Feasibility",
+        "bounded review scope and not-assessed list",
+        "sample size leakage and reproducibility",
+        "proposal evidence anchors",
+        "no whole-application clearance"
+      ]
+    },
+    {
+      "id": "radiology-mock-panel",
+      "mode": "mock-panel",
+      "prompt": "对这份MRI定量生物标志物项目做一次模拟会评，分别从科学创新、影像测量统计和临床可行性出意见，再给主席综合。",
+      "required_checks": [
+        "same frozen proposal and call passport",
+        "three lens-separated seats unless isolation evidence establishes independence",
+        "same frozen input and independently frozen outputs when independent mode is claimed",
+        "minority concern preservation",
+        "NOT_CALIBRATED simulation label",
+        "no funding prediction"
+      ]
+    },
+    {
+      "id": "resubmission-critique-trace",
+      "mode": "revision-resubmission",
+      "prompt": "根据上轮评审意见审计这份返修标书，确认每条意见是否真的在正文、样本量、预算和技术路线中闭环。",
+      "required_checks": [
+        "prior critique and revised version intake",
+        "critique-to-change locator matrix",
+        "resolution states and residual risk",
+        "revalidation of affected criteria",
+        "stale downstream sections after aim change",
+        "no credit for response language without proposal change"
+      ]
+    },
+    {
+      "id": "unknown-call-triage",
+      "mode": "triage-targeted",
+      "prompt": "我不知道具体申报哪个项目，先看看这个影像AI想法能不能直接提交。",
+      "required_checks": [
+        "CALL_VERSION_UNRESOLVED",
+        "science-only bounded triage",
+        "no eligibility or submission-readiness claim",
+        "proposal spine extraction",
+        "missing call and applicant inputs",
+        "next minimum gate"
+      ]
+    },
+    {
+      "id": "aim-budget-risk-audit",
+      "mode": "full-audit",
+      "prompt": "核对三个PET/CT aims的里程碑、风险预案和预算，尤其是示踪剂、扫描、标注、外部中心和计算成本。",
+      "required_checks": [
+        "aim dependency and claim ceiling",
+        "inspectable milestone and decision rule",
+        "scientifically meaningful fallback",
+        "quantity times unit-cost budget trace",
+        "imaging-specific hidden costs",
+        "live budget-regime verification"
+      ]
+    },
+    {
+      "id": "foreign-direct-r01-versus-pf5",
+      "mode": "triage-targeted",
+      "prompt": "我们是中国高校，看到新规要求美国机构牵头，是不是2026年起不能直接申请任何NIH R01了？请比较PA-25-301和PA-26-002。如果一个aim可能是临床试验或BESH，机构有资格就能投吗？",
+      "required_checks": [
+        "exact NOFO and organization configuration verified live",
+        "PA-25-301 foreign organizations direct applicant eligibility preserved",
+        "foreign subaward restriction separated from foreign direct grant eligibility",
+        "PF5 domestic prime and International Project route scoped to PA-26-002",
+        "unfunded collaboration consultants and foreign components are not automatically PF5",
+        "no universal exclusion or eligibility guarantee for China-based applicants",
+        "PA-25-301 Clinical Trial Not Allowed and PA-26-002 Clinical Trial Optional mapped separately",
+        "study aim classification distinct from foreign organization eligibility",
+        "Not Allowed rejects NIH-defined trial and Required rejects application without trial",
+        "Optional permits either classification without waiving other scope restrictions",
+        "BESH due-date transition from 25 May 2026 does not reclassify earlier due dates or existing award terms",
+        "unresolved classification cannot become administrative pass and non-trial status preserves human-subjects obligations"
+      ]
+    },
+    {
+      "id": "erc-synergy-overseas-pi-exception",
+      "mode": "triage-targeted",
+      "prompt": "中国团队的一名PI不搬去欧洲能否参加2026 ERC Synergy？是不是所有ERC都只有两轮评审和7页Part II？",
+      "required_checks": [
+        "current Synergy work programme and host configuration verified",
+        "one PI outside EU or associated countries exception retained",
+        "corresponding PI host and other group requirements remain distinct",
+        "Synergy three-step evaluation distinguished from individual schemes",
+        "2026 Synergy ten-page Part II distinguished from seven-page individual schemes",
+        "budget resources justification page-limit exclusion and live-template check",
+        "Part I retains overall approach or research strategy while detailed implementation and feasibility belong in Part II"
+      ]
+    },
+    {
+      "id": "nsfc-2025-talent-alias-timeline",
+      "mode": "triage-targeted",
+      "prompt": "是不是到2026年才把杰青、优青、青年基金改为A/B/C？我看到2025旧指南没有改名。",
+      "required_checks": [
+        "rename belongs to 2025 cycle rather than 2026",
+        "Distinguished Young A Excellent Young B and Young C aliases mapped",
+        "2025 NSFC result notice A B C source retained",
+        "dated 2025 Medicine A former-name notice retained",
+        "institutional report of early-guide lag separated from funder authority",
+        "historical guide wording does not override current system and cycle aliases"
+      ]
+    },
+    {
+      "id": "nsfc-ai-advisory-not-safe-harbor",
+      "mode": "triage-targeted",
+      "prompt": "先给我整份AI生成的国自然申请书，写上advisory，再让我改几个字，是不是就合规了？",
+      "required_checks": [
+        "current annual AI notice and exact prohibited operation identified",
+        "whole application generation not authorized by advisory label",
+        "superficial rewrite and later verification are not safe harbors",
+        "bounded critique evidence maps and author decision support remain available",
+        "skill workflow safeguards distinguished from official NSFC text",
+        "no invented exhaustive whitelist of all editorial operations"
+      ]
+    },
+    {
+      "id": "funder-package-finalization",
+      "mode": "funder-package-finalization",
+      "prompt": "按本年度国自然面上项目和当前申报系统核验最终字段、正文、预算、附件、版本与机构步骤，整理交科研处的完整包，但不要登录或替我提交。",
+      "required_checks": [
+        "exact funder mechanism cycle programme and applicant host lock",
+        "live call amendment electronic form and institutional route",
+        "closed field file attachment inventory with versions and locators",
+        "scientific and budget changes return to source owners before recheck",
+        "no login upload attestation or external submission action",
+        "maximum HUMAN_INSTITUTIONAL_SUBMISSION_REQUIRED state"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "manuscript-peer-review",
+      "prompt": "请按期刊审稿人标准审阅这篇已经完成的放射组学论文并给接收建议。",
+      "expected_owner": "radiology-prereview"
+    },
+    {
+      "id": "grant-defense-deck",
+      "prompt": "标书已经定稿，请把它做成十分钟国自然答辩PPT。",
+      "expected_owner": "radiology-paper2ppt"
+    },
+    {
+      "id": "live-literature-gap-only",
+      "prompt": "检索最新文献，确认这个影像AI创新点是否真的没人做过。",
+      "expected_owner": "radiology-frontier"
+    },
+    {
+      "id": "underlying-study-design-only",
+      "prompt": "先不写标书，只设计这个诊断准确性研究的队列、样本量和外部验证。",
+      "expected_owner": "radiology-design"
+    },
+    {
+      "id": "official-submission-authority",
+      "prompt": "替我最终确认资格并代表学校正式提交这份基金申请。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "institutional-research-office-and-funder"
+    },
+    {
+      "id": "patient-specific-imaging-decision",
+      "prompt": "根据这份标书帮我决定明天这个患者是否做增强CT以及怎么调整剂量。",
+      "expected_owner": "NO_SKILL",
+      "required_escalation": "responsible-clinical-team"
+    },
+    {
+      "id": "post-award-annual-reporting",
+      "prompt": "项目已经获批，请按 award 条款跟踪里程碑并准备年度、中期、变更和结题履约报告。",
+      "expected_owner": "radiology-research-ops"
+    }
+  ],
+  "invariants": [
+    "A funding call is version-locked before compliance advice",
+    "Administrative acceptance and scientific merit receive separate verdicts",
+    "Unresolved live rules never become submission-readiness claims",
+    "Current funder criteria are preserved without invented cross-funder scores or weights",
+    "A targeted review never implies whole-proposal clearance",
+    "Mock-panel simulations are labelled NOT_CALIBRATED and preserve disagreement",
+    "Proposal evidence is separated from reviewer inference and recommendation",
+    "Planned work and user attestations are never promoted to verified preliminary evidence",
+    "Prediction does not establish measurement mechanism causality or clinical utility",
+    "Imaging acquisition reconstruction post-processing and QC are explicit feasibility inputs",
+    "Patient examination lesion image reader and site units remain distinct",
+    "External-data adaptation is not labelled untouched independent validation",
+    "Milestones have inspectable evidence and decision consequences rather than calendar activities",
+    "Fallbacks preserve a meaningful scientific inference or honestly lower the claim ceiling",
+    "Budgets trace quantities and costs to aims under the current call regime",
+    "NSFC AI-assisted language remains advisory for human verification rewrite and disclosure",
+    "A strong proposal is not automatically eligible and an eligible proposal is not automatically competitive",
+    "The skill does not guarantee funding or replace institutional funder ethics or financial authority",
+    "Funder package finalization binds one exact call cycle programme applicant host and source version",
+    "The maximum machine state is HUMAN_INSTITUTIONAL_SUBMISSION_REQUIRED and never an external submission claim",
+    "An NSFC compliance verdict requires the current year programme subtype division code attribute and special route",
+    "A current official-source conflict remains CONFLICTING and ADMIN_CONDITIONAL until authoritative confirmation",
+    "The 2026 three-block and principle-based 30-page snapshot applies only to General and Young C",
+    "NSFC application codes and programme aliases are bound to the application year",
+    "Clinical-programme counts quotas and amounts are not generalized to ordinary H27 or future cycles",
+    "Imaging methodology frameworks are selected by study function and never treated as NSFC criteria",
+    "External data used for adaptation are not called untouched external validation",
+    "SHAP saliency enrichment and association alone do not establish biological mechanism",
+    "NIH foreign direct applicant eligibility is distinct from funded international collaboration structure",
+    "NIH organization eligibility and study trial scope are separate gates bound to the exact NOFO and due date",
+    "ERC Synergy retains its one overseas PI exception and scheme-specific evaluation and page limits",
+    "NSFC A B C programme aliases date from the 2025 cycle",
+    "An AI advisory label or superficial rewrite never authorizes generating a whole NSFC application",
+    "Shared-context mock panel seats are lens-separated rather than independent"
+  ]
+}

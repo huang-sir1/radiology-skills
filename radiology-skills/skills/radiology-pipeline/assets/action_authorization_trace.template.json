@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "record_type": "ACTION_AUTHORIZATION_EXECUTION_TRACE",
+  "action_id": "ACTION-TEMPLATE-001",
+  "action_class": "WORKSPACE_WRITE",
+  "requester": {
+    "actor_id": "agent:runtime",
+    "actor_type": "AGENT",
+    "requested_at": "2026-08-23T12:00:00Z"
+  },
+  "target_scope": {
+    "scope_id": "SCOPE-TEMPLATE-001",
+    "targets": [
+      {
+        "target_id": "workspace://project/manuscript.md",
+        "target_kind": "WORKSPACE_FILE",
+        "allowed_operations": [
+          "MODIFY"
+        ]
+      }
+    ],
+    "scope_sha256": "15e67f10b07b05fa18f43d2aa72862fb0244cf27b413885cc4a0f9ee54c43def"
+  },
+  "authorization": {
+    "state": "APPROVED",
+    "bound_action_class": "WORKSPACE_WRITE",
+    "bound_scope_sha256": "15e67f10b07b05fa18f43d2aa72862fb0244cf27b413885cc4a0f9ee54c43def",
+    "approver": {
+      "actor_id": "user:workspace-owner",
+      "role": "WORKSPACE_OWNER"
+    },
+    "evidence": {
+      "evidence_id": "AUTH-EVIDENCE-TEMPLATE-001",
+      "evidence_type": "USER_MESSAGE",
+      "locator": "conversation://approval/message-template-001",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "approved_at": "2026-08-23T12:01:00Z",
+    "expires_at": "2026-08-23T13:01:00Z",
+    "revoked_at": null
+  },
+  "host_enforcement": {
+    "declared_level": "AUDITABLE_CONTRACT",
+    "runtime_authorization_enforcement": false,
+    "host_id": "host:unspecified",
+    "enforcement_receipt_id": null,
+    "enforcement_receipt_sha256": null
+  },
+  "execution": {
+    "state": "SUCCEEDED",
+    "started_at": "2026-08-23T12:02:00Z",
+    "completed_at": "2026-08-23T12:02:02Z",
+    "tool_call_ids": [
+      "tool-call-template-001"
+    ],
+    "events": [
+      {
+        "sequence": 1,
+        "tool_call_id": "tool-call-template-001",
+        "tool_call_id_kind": "LOCAL_CORRELATION",
+        "actor_id": "agent:runtime",
+        "executed_at": "2026-08-23T12:02:01Z",
+        "target_id": "workspace://project/manuscript.md",
+        "operation": "MODIFY",
+        "state": "SUCCEEDED",
+        "before_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "after_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "result_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "result_locator": "trace://results/tool-call-template-001"
+      }
+    ],
+    "aggregate_result_sha256": "f4286cda0c02f1522c1ab7102d87241526fb7669e24ad91fbc302710dae275a0"
+  },
+  "trace_digest": "faaf28cac268530c316f81bbbdfe92317f89f45d18eb108791c6890ce8e3a18f"
+}

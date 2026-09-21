@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Journal Fit"
+  short_description: "Match imaging manuscripts to journals and submission tiers"
+  default_prompt: "Use $radiology-journal to grade this manuscript and build a verified reach, target, and safety submission ladder."

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "required_files": [
+    "SKILL.md",
+    "agents/openai.yaml",
+    "references/evidence-synthesis-routing.md",
+    "references/review-methods-and-quality-gates.md",
+    "templates/systematic-review-protocol.md",
+    "templates/data-extraction-and-synthesis-matrix.md",
+    "templates/risk-of-bias-applicability-matrix.md",
+    "tests/routing-cases.json",
+    "scripts/validate_systematic_review_skill.ps1"
+  ],
+  "positive_cases": [
+    {
+      "id": "scoping-imaging-method-map",
+      "mode": "protocol",
+      "route": "scoping",
+      "prompt": "建立医学影像基础模型临床用途与证据缺口的范围综述方案。",
+      "required_checks": ["population-concept-context", "protocol status", "evidence map", "claim ceiling"]
+    },
+    {
+      "id": "systematic-narrative-no-forced-pooling",
+      "mode": "mentor",
+      "route": "systematic-narrative",
+      "prompt": "这些影像生物标志物研究终点和时间窗差异很大，指导我如何系统综合而不是硬做 meta。",
+      "required_checks": ["estimand lock", "grouping dimensions", "no p-value vote counting", "narrative rationale"]
+    },
+    {
+      "id": "dta-hierarchical-synthesis",
+      "mode": "synthesis-handoff",
+      "route": "diagnostic-accuracy-meta",
+      "prompt": "把 MRI 诊断研究的 2×2 数据整理给统计模块，兼顾阈值、每患者/每病灶和同队列重复发表。",
+      "required_checks": ["PIRD", "threshold relationship", "study-family overlap", "patient-lesion hierarchy"]
+    },
+    {
+      "id": "prevalence-incidence-denominator-period",
+      "mode": "protocol",
+      "route": "prevalence-incidence-meta",
+      "prompt": "设计肺结节检出率与肺癌发生率的定量综述，避免混合横断面比例、累积发生风险和人时发生率。",
+      "required_checks": ["sampling frame", "numerator denominator or person-time", "measurement period", "quantity claim ceiling"]
+    },
+    {
+      "id": "observational-association-adjustment-audit",
+      "mode": "audit",
+      "route": "observational-association-meta",
+      "prompt": "审阅影像特征与炎症指标关联的 meta-analysis，检查横断面相关、不同效应量、adjusted 与 unadjusted 结果及因果措辞。",
+      "required_checks": ["exposure contrast", "effect scale", "adjustment class", "association not causation"]
+    },
+    {
+      "id": "reliability-agreement-reader-synthesis",
+      "mode": "synthesis-handoff",
+      "route": "reliability-agreement-method-comparison-meta",
+      "prompt": "汇总多读者分割与定量影像测量研究，区分 ICC 形式、kappa 权重、Dice、相关性和 Bland-Altman agreement。",
+      "required_checks": ["exact metric definition", "reader object hierarchy", "correlation not agreement", "dependence"]
+    },
+    {
+      "id": "ai-radiomics-performance-audit",
+      "mode": "audit",
+      "route": "prediction-radiomics-ai-meta",
+      "prompt": "审阅影像 AI meta-analysis 是否混合开发集 AUC、内部验证和外部验证，并检查 calibration 与 leakage。",
+      "required_checks": ["validation type", "test isolation", "calibration", "pooling feasibility"]
+    },
+    {
+      "id": "prognostic-horizon-adjustment",
+      "mode": "protocol",
+      "route": "prognostic-meta",
+      "prompt": "设计影像特征与两年复发风险的预后系统综述，分开 adjusted 和 unadjusted estimates。",
+      "required_checks": ["time horizon", "confounder set", "effect scale", "adjusted class"]
+    },
+    {
+      "id": "intervention-cluster-multiarm",
+      "mode": "synthesis-handoff",
+      "route": "intervention-meta",
+      "prompt": "准备 AI 辅助诊疗干预综述的统计交接，处理 cluster trial、multi-arm 和 shared comparator。",
+      "required_checks": ["PICO", "cluster dependence", "shared comparator", "harms"]
+    },
+    {
+      "id": "scrna-spatial-mechanism-synthesis",
+      "mode": "mentor",
+      "route": "omics-mechanism-synthesis",
+      "prompt": "指导 scRNA 和空间转录组机制证据综合，区分 donor、cell、spot，评估 perturbation 和 rescue。",
+      "required_checks": ["donor unit", "measured versus inferred", "cross-scale alignment", "causal ceiling"]
+    },
+    {
+      "id": "bulk-rna-imaging-bridge-audit",
+      "mode": "audit",
+      "route": "omics-mechanism-synthesis",
+      "prompt": "检查 bulk RNA 与影像表型综述是否混淆 unmatched cohorts、composition 和 patient-level inference。",
+      "required_checks": ["matchedness", "composition", "patient unit", "association ceiling"]
+    },
+    {
+      "id": "review-writing-package",
+      "mode": "writing-handoff",
+      "route": "diagnostic-accuracy-meta",
+      "prompt": "把已锁定的诊断准确性综述结果整理成 PRISMA、Methods、Results、图表和 Discussion 写作交接。",
+      "required_checks": ["verified evidence state", "PRISMA flow", "certainty", "forbidden stronger claim"]
+    },
+    {
+      "id": "retrospective-protocol-reconstruction",
+      "mode": "audit",
+      "route": "prediction-radiomics-ai-meta",
+      "prompt": "综述已经筛选了一半但没注册，重建 protocol 并诚实记录 result-aware deviations。",
+      "required_checks": ["retrospective status", "amendment ledger", "result awareness", "surviving claim"]
+    },
+    {
+      "id": "living-review-search-peer-review-audit",
+      "mode": "audit",
+      "route": "prevalence-incidence-meta",
+      "prompt": "审阅一个自称 living review 的影像流行率综述，核对最近更新、更新触发器和完整检索式的同行复核闭环。",
+      "required_checks": ["lifecycle state", "last completed update", "search-strategy peer-review receipt", "unresolved comments"]
+    },
+    {
+      "id": "priority-screening-recall-safeguard",
+      "mode": "audit",
+      "route": "systematic-narrative",
+      "prompt": "我们用一个大模型给题录排优先级，准备直接排除低分文献；请审查这个筛选方案。",
+      "required_checks": ["tool model prompt version", "pilot calibration", "frozen threshold", "low-priority exclusion audit", "recall safeguard", "human override", "final human responsibility"]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "id": "database-search-only",
+      "prompt": "在 PubMed 和 Crossref 实际执行检索并去重。",
+      "expected_owner": "radiology-search"
+    },
+    {
+      "id": "identifier-verification-only",
+      "prompt": "核验这批 DOI、PMID 和参考文献元数据。",
+      "expected_owner": "radiology-citation"
+    },
+    {
+      "id": "fit-meta-model-only",
+      "prompt": "用已整理的 effect rows 实际拟合 random-effects model 并计算置信区间。",
+      "expected_owner": "radiology-stats"
+    },
+    {
+      "id": "prisma-checklist-only",
+      "prompt": "按当前 PRISMA-DTA 清单逐项核查页码和缺项。",
+      "expected_owner": "radiology-reporting"
+    },
+    {
+      "id": "manuscript-prose-only",
+      "prompt": "证据已经锁定，直接写系统综述 Results 和 Discussion。",
+      "expected_owner": "radiology-writing"
+    },
+    {
+      "id": "whole-manuscript-peer-review",
+      "prompt": "模拟审稿人审阅整篇稿件的设计、写作、统计和投稿风险。",
+      "expected_owner": "radiology-prereview"
+    }
+  ],
+  "invariants": [
+    "Protocol and estimand precede result-aware synthesis decisions",
+    "Registration status and amendments are never fabricated or backdated",
+    "Reports, studies, effects, patients, donors, lesions, cells, spots, and readers remain distinct units",
+    "Overlapping cohorts and multiple reports are linked before counting evidence",
+    "Pooling requires clinical and methodological compatibility before statistical modelling",
+    "A random-effects model does not justify averaging incompatible questions",
+    "Development, internal validation, and external validation performance remain separate",
+    "Adjusted and unadjusted estimates or incompatible time horizons are not silently pooled",
+    "Prevalence, cumulative incidence, and incidence rate retain their denominators or person-time and measurement periods",
+    "Observational effect scales, exposure contrasts, temporal order, and adjustment classes remain distinct",
+    "Correlation, reliability, agreement, overlap, and diagnostic accuracy are not interchangeable constructs",
+    "ICC forms, kappa weighting, readers, devices, repetitions, and measurement units remain explicit before pooling",
+    "Risk of bias and applicability use design-matched domains with evidence anchors rather than prestige or mean scores",
+    "Non-pooling synthesis does not vote-count statistical significance",
+    "Omics cells, spots, genes, tiles, or sections do not inflate patient or donor sample size",
+    "Association, prediction, diagnostic performance, intervention effect, mechanism, and clinical utility retain distinct claim ceilings",
+    "Planned, author-reported, partly verified, verified, and not-assessable evidence states remain distinct",
+    "STATIC, LIVING, and RETIRED lifecycle labels retain update or retirement evidence and do not certify currency",
+    "Search-strategy peer review requires a versioned receipt and cannot be inferred from team composition",
+    "AI or priority screening freezes tool model prompt version threshold and calibration before production exclusions",
+    "Low-priority exclusions require a prespecified audit recall safeguard human override and final human responsibility"
+  ]
+}

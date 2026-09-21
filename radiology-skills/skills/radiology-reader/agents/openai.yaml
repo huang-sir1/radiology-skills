@@ -1,0 +1,4 @@
+interface:
+  display_name: "Radiology Paper Reader"
+  short_description: "Build grounded bilingual readers for imaging research papers"
+  default_prompt: "Use $radiology-reader to build a source-grounded Chinese-English reader with correctly placed figures and tables."
